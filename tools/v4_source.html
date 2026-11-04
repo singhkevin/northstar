@@ -1,0 +1,1315 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Northstar · Physical AI for the Real World</title>
+<meta name="description" content="We bring intelligence into the physical world through autonomous drones, quadruped robots, humanoid robotics, and connected industrial systems.">
+<meta name="theme-color" content="#060E1C">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Northstar · Physical AI for the Real World">
+<meta property="og:description" content="We bring intelligence into the physical world through autonomous drones, quadruped robots, humanoid robotics, and connected industrial systems.">
+<meta property="og:image" content="https://northstar.viralinbound.in/media/og-c.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://northstar.viralinbound.in/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#060E1C">
+<link rel="icon" href="brand/northstar-flight-ribbon-icon.svg" type="image/svg+xml">
+<link rel="preload" as="video" href="media/hero-loop-b.mp4">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<style>
+:root{
+  --navy:#102B4E;--night:#060E1C;--deep:#0B1B33;--cloud:#F3F6FB;--white:#fff;--slate:#5A6B85;--mist:#E3EAF4;
+  --cyan:#00CDD9;--sky:#009CF4;--blue:#245FFF;--lblue:#3BA7FF;--indigo:#284BDE;--violet:#9471FF;--red:#FF4D5E;
+  --flight:linear-gradient(100deg,#00CDD9 0%,#009CF4 32%,#245FFF 70%,#9471FF 100%);
+  --dim:rgba(255,255,255,.62);--line:rgba(255,255,255,.12);
+  --g:clamp(18px,3.2vw,48px);--r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--night);color:var(--white);font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.mono{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+h1,h2,h3,h4{font-family:Sora,sans-serif;font-weight:500;letter-spacing:-.04em;line-height:.98}
+.gr{background:var(--flight);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.04em}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--lblue)}
+.eyebrow::before{content:"";width:28px;height:2px;border-radius:2px;background:var(--flight)}
+.light .eyebrow{color:var(--blue)}
+.wrap{padding:0 var(--g);max-width:1480px;margin:0 auto}
+
+/* Buttons */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:14px 24px;font:500 14px Inter,sans-serif;text-decoration:none;cursor:pointer;border:0;
+  background:var(--white);color:var(--navy);overflow:hidden;isolation:isolate;transition:color .35s,transform .35s}
+.btn::before{content:"";position:absolute;inset:0;background:var(--flight);opacity:0;transition:opacity .35s;z-index:-1}
+.btn:hover{color:#fff;transform:translateY(-1px)}
+.btn:hover::before{opacity:1}
+.btn svg{width:14px;height:14px;transition:transform .35s}
+.btn:hover svg{transform:translateX(3px)}
+.btn.navy{background:var(--navy);color:#fff}
+.ghost{display:inline-flex;align-items:center;gap:10px;color:#fff;border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:13px 22px;font-size:14px;text-decoration:none;backdrop-filter:blur(10px);background:rgba(6,14,28,.2);transition:border-color .3s}
+.ghost:hover{border-color:var(--cyan)}
+
+/* ---------- Header ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px var(--g);opacity:0;transform:translateY(-12px);transition:background .4s,padding .4s,box-shadow .4s}
+header .logo{position:relative;height:34px;width:122px}
+header .logo img{position:absolute;inset:0;height:34px;width:auto;transition:opacity .4s}
+header .logo .dk{opacity:0}
+nav{display:flex;gap:32px;font-size:14px;color:rgba(255,255,255,.8)}
+nav a{text-decoration:none;position:relative;transition:color .3s}
+nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-7px;height:2px;border-radius:2px;background:var(--flight);transition:right .35s}
+nav a:hover::after,nav a.on::after{right:0}
+nav a.on{color:#fff}
+header.lt nav a.on{color:var(--navy)}
+header.solid{background:rgba(6,14,28,.72);backdrop-filter:blur(14px);padding-top:14px;padding-bottom:14px;box-shadow:0 1px 0 var(--line)}
+header.lt{background:rgba(243,246,251,.82);box-shadow:0 1px 0 var(--mist)}
+header.lt nav{color:var(--navy)}
+header.lt .logo .wt{opacity:0}header.lt .logo .dk{opacity:1}
+header.lt .btn{background:var(--navy);color:#fff}
+
+/* ---------- Film ---------- */
+.film{position:relative;height:900vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000}
+.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#loop{z-index:2;transition:opacity .9s ease}
+#film{z-index:1}
+.grade{position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 45%,transparent 45%,rgba(3,8,18,.6) 100%),linear-gradient(180deg,rgba(3,8,18,.5) 0%,transparent 22%,transparent 60%,rgba(3,8,18,.8) 100%)}
+.grain{position:absolute;inset:-50%;z-index:4;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+.bars{display:none}
+.bars.t{top:0}.bars.b{bottom:0}
+
+.hud{position:absolute;inset:0;z-index:6;pointer-events:none}
+.corner{position:absolute;width:26px;height:26px;border-color:rgba(0,205,217,.8);border-style:solid;opacity:0;transition:opacity .6s}
+.corner.tl{top:96px;left:var(--g);border-width:2px 0 0 2px}.corner.tr{top:96px;right:var(--g);border-width:2px 2px 0 0}
+.corner.bl{bottom:var(--g);left:var(--g);border-width:0 0 2px 2px}.corner.br{bottom:var(--g);right:var(--g);border-width:0 2px 2px 0}
+.hud.on .corner{opacity:1}
+.scanline{position:absolute;left:0;right:0;height:2px;top:0;opacity:0;background:linear-gradient(90deg,transparent,var(--cyan) 20%,var(--blue) 60%,var(--violet) 80%,transparent);box-shadow:0 0 24px 4px rgba(0,205,217,.4)}
+.scanline::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:140px;background:linear-gradient(0deg,rgba(0,156,244,.16),transparent)}
+.gridfx{position:absolute;inset:0;opacity:0;background-image:linear-gradient(rgba(0,205,217,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(0,205,217,.1) 1px,transparent 1px);background-size:80px 80px;
+  -webkit-mask-image:radial-gradient(60% 55% at 50% 60%,#000,transparent);mask-image:radial-gradient(60% 55% at 50% 60%,#000,transparent)}
+.target{position:absolute;opacity:0;border:1.5px solid var(--cyan);border-radius:2px;transition:opacity .4s}
+.target::before{content:attr(data-l);position:absolute;left:-1.5px;top:-26px;background:var(--flight);color:#fff;font:500 10px "JetBrains Mono",monospace;letter-spacing:.12em;padding:5px 8px;border-radius:2px;white-space:nowrap}
+
+.ch{position:absolute;z-index:10;pointer-events:none}
+.ch .k{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.5);margin-bottom:20px;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}
+.ch h1,.ch h2{text-shadow:0 2px 40px rgba(0,0,0,.35)}
+.ch h1{font-size:clamp(52px,8.6vw,146px);font-weight:500}
+.ch h2{font-size:clamp(42px,6vw,100px)}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.w>span{display:inline-block;transform:translateY(125%);transition:transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i) * 55ms)}
+.ch p{margin-top:24px;font-size:clamp(16px,1.2vw,19px);line-height:1.55;color:rgba(255,255,255,.82);max-width:450px;opacity:0;transform:translateY(14px);transition:opacity .8s .25s,transform .8s .25s}
+.ch .row{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;opacity:0;transform:translateY(14px);transition:opacity .8s .35s,transform .8s .35s;pointer-events:auto}
+.ch .tags{display:flex;gap:8px;margin-top:26px;flex-wrap:wrap;opacity:0;transition:opacity .8s .3s}
+.tag{border:1px solid rgba(0,205,217,.5);color:#fff;background:rgba(6,14,28,.35);backdrop-filter:blur(6px);padding:8px 12px;border-radius:999px}
+.ch.on .k,.ch.on p,.ch.on .row{opacity:1;transform:none}
+.ch.on .tags{opacity:1}
+.ch.on .w>span{transform:none}
+.ch.out .w>span{transform:translateY(-125%);transition-duration:.6s;transition-delay:calc(var(--i) * 25ms)}
+.c0{left:var(--g);bottom:var(--g);max-width:900px}
+.c0 h1{font-size:clamp(38px,min(4.1vw,6.8vh),68px);max-width:13.2em}
+.c0 p{max-width:560px}
+.c0::before{content:"";position:absolute;z-index:-1;left:calc(-1 * var(--g) - 10vw);right:-18vw;top:-22vh;bottom:-14vh;background:radial-gradient(70% 75% at 25% 72%,rgba(3,8,18,.72),rgba(3,8,18,.35) 55%,transparent 80%);opacity:0;transition:opacity .8s;pointer-events:none}
+.c0.on::before{opacity:1}
+.c1{right:var(--g);top:28vh;text-align:right;max-width:640px}.c1 p{margin-left:auto}
+.c2{left:var(--g);bottom:calc(var(--g) + 40px);max-width:640px}
+.c3{right:var(--g);top:26vh;text-align:right;max-width:640px}
+.c3 h2{font-size:clamp(42px,6vw,100px)}
+.c4{left:var(--g);top:24vh;max-width:620px}
+.c5{left:var(--g);top:26vh;max-width:660px}
+
+.rail{position:absolute;right:calc(var(--g) + 40px);bottom:calc(var(--g) + 4px);z-index:12;display:flex;gap:22px;opacity:0;transition:opacity .6s}
+.rail.show{opacity:1}
+.rail div{display:flex;flex-direction:column;gap:10px;color:rgba(255,255,255,.4);transition:color .4s}
+.rail div b{width:18px;height:2px;border-radius:2px;background:currentColor;transition:width .4s;order:-1}
+.rail div.on{color:#fff}
+.rail div.on b{width:42px;background:var(--flight)}
+.tc{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:12;display:flex;align-items:center;gap:14px;color:var(--dim)}
+.tc .bar{width:160px;height:2px;border-radius:2px;background:var(--line);position:relative;overflow:hidden}
+.tc .bar i{position:absolute;left:0;top:0;height:2px;width:0;background:var(--flight)}
+.tc .dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:rec 1.4s infinite}
+@keyframes rec{50%{opacity:.2}}
+.hint{position:absolute;right:var(--g);bottom:calc(var(--g) + 10px);z-index:12;color:var(--dim);display:flex;flex-direction:column;align-items:center;gap:10px}
+.hint span{display:block;width:1px;height:46px;background:linear-gradient(#fff,transparent);animation:drip 1.8s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- Sections ---------- */
+section.sec{position:relative;padding:clamp(72px,8vw,124px) 0}
+.light{background:var(--cloud);color:var(--navy)}
+.white{background:#fff;color:var(--navy)}
+.lead{font-size:clamp(38px,5.2vw,84px);max-width:1150px;margin-top:24px}
+.lead .soft{color:rgba(255,255,255,.4)}
+.light .lead .soft,.white .lead .soft{color:rgba(16,43,78,.36)}
+.sub{font-size:clamp(16px,1.25vw,19px);line-height:1.6;color:var(--dim);max-width:560px}
+.light .sub,.white .sub{color:var(--slate)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap}
+
+/* Ticker */
+.ticker{background:var(--night);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:22px 0;position:relative;z-index:5}
+.ticker .track{display:flex;gap:56px;width:max-content;animation:tick 38s linear infinite}
+.ticker span{display:flex;align-items:center;gap:56px;color:rgba(255,255,255,.78);white-space:nowrap;font:400 clamp(18px,1.8vw,26px) Sora,sans-serif;letter-spacing:-.02em}
+.ticker span::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--flight)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* Models: supply / operate / platform */
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+.model{position:relative;background:#fff;border:1px solid var(--mist);border-radius:var(--r);padding:34px 32px 36px;overflow:hidden;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s}
+.model:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(16,43,78,.35)}
+.model::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--flight);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.model:hover::after{transform:none}
+.model .n{font:500 12px "JetBrains Mono",monospace;color:var(--slate);letter-spacing:.14em}
+.model .diag{margin:22px 0 28px;border-radius:10px;background:var(--cloud) radial-gradient(rgba(16,43,78,.14) 1px,transparent 1.2px) 0 0/14px 14px;padding:12px 10px 6px}
+.model .diag svg{display:block;width:100%;height:auto}
+.model .diag .dg,.model .diag .dg *{fill:none;stroke:var(--navy);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.model .diag .dl{stroke:rgba(16,43,78,.25);stroke-width:1}.model .diag .mk{stroke:rgba(16,43,78,.35)}
+.model .diag .rt{fill:none;stroke:var(--blue);stroke-width:2}
+.model .diag .rt2{fill:rgba(36,95,255,.1);stroke:var(--blue);stroke-width:2;stroke-linejoin:round}
+.model .diag .gr-dot{fill:var(--cyan);stroke:#fff;stroke-width:2}.model .diag .pin-r{fill:var(--red)}.model .diag .pin-c{fill:var(--cyan)}
+.model .diag text{font:500 9px "JetBrains Mono",monospace;letter-spacing:.14em;fill:var(--slate);text-anchor:middle}
+.model:nth-child(3) .diag text{text-anchor:start}
+.model h3{font-size:32px;letter-spacing:-.035em}
+.model p{margin-top:14px;color:var(--slate);line-height:1.6;font-size:16px}
+.model ul{list-style:none;margin-top:24px;border-top:1px solid var(--mist)}
+.model li{padding:12px 0;border-bottom:1px solid var(--mist);font-size:15px;display:flex;gap:10px;align-items:center}
+.model li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);flex:none}
+
+/* Fleet */
+.fleet{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:18px;margin-top:56px}
+.unit{position:relative;border-radius:var(--r);overflow:hidden;min-height:420px;background:var(--deep);isolation:isolate}
+.unit.big{grid-row:span 2;min-height:860px}
+.unit img{position:absolute;inset:0;width:100%;height:115%;object-fit:cover;object-position:50% 70%;z-index:-2;transform:scale(1.04);transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.unit:hover img{transform:scale(1.09)}
+.unit::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,14,28,0) 25%,rgba(6,14,28,.55) 55%,rgba(6,14,28,.95) 100%)}
+.unit .in .eyebrow{color:#fff}
+.unit .in{position:absolute;left:0;right:0;bottom:0;padding:34px}
+.unit h3{font-size:clamp(34px,3.4vw,56px);margin:14px 0 12px}
+.unit p{color:rgba(255,255,255,.75);line-height:1.55;max-width:460px}
+.unit .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.unit .chips span{border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:7px 12px;color:#fff;background:rgba(6,14,28,.3);backdrop-filter:blur(8px)}
+.unit .bracket{position:absolute;top:22px;left:22px;right:22px;display:flex;justify-content:space-between;color:#fff}
+.unit .bracket span{background:rgba(6,14,28,.62);backdrop-filter:blur(8px);border:1px solid rgba(0,205,217,.45);border-radius:999px;padding:6px 11px}
+.unit::after{content:"";position:absolute;left:0;right:0;top:0;height:120px;z-index:-1;background:linear-gradient(180deg,rgba(6,14,28,.45),transparent)}
+.note{margin-top:28px;color:var(--dim);font-size:15px;display:flex;gap:12px;align-items:center}
+.note b{font-weight:500;color:#fff}
+
+/* Platform mockup */
+.app{margin-top:56px;background:#fff;border:1px solid var(--mist);border-radius:var(--r);box-shadow:0 60px 120px -50px rgba(16,43,78,.45);overflow:hidden}
+.app .bar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--mist)}
+.app .bar i{width:10px;height:10px;border-radius:50%;background:var(--mist)}
+.app .bar span{margin-left:14px;color:var(--slate)}
+.app .bar em{margin-left:auto;font-style:normal;color:var(--slate);background:var(--cloud);border-radius:999px;padding:5px 10px}
+.app .body{display:grid;grid-template-columns:220px 1fr 330px;min-height:560px}
+.app .side{border-right:1px solid var(--mist);padding:22px 16px;display:flex;flex-direction:column;gap:4px}
+.app .side .mono{color:var(--slate);padding:0 10px 12px}
+.app .side a{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;font-size:14px;text-decoration:none;color:var(--navy)}
+.app .side a.on{background:var(--cloud);font-weight:500}
+.app .side a i{width:8px;height:8px;border-radius:50%;background:var(--mist)}
+.app .side a.on i{background:var(--flight)}
+.app .map{position:relative;overflow:hidden;background:var(--deep)}
+.app .map img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.7) brightness(.85)}
+.app .map .layer{position:absolute;inset:0;background-image:linear-gradient(rgba(0,205,217,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(0,205,217,.18) 1px,transparent 1px);background-size:56px 56px;mix-blend-mode:screen;clip-path:inset(0 100% 0 0)}
+.pin{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;display:grid;place-items:center;font:600 12px Sora,sans-serif;color:#fff;background:var(--blue);box-shadow:0 0 0 6px rgba(36,95,255,.25);transform:scale(0)}
+.pin.hi{background:var(--red);box-shadow:0 0 0 6px rgba(255,77,94,.25)}
+.pin.ok{background:var(--cyan);box-shadow:0 0 0 6px rgba(0,205,217,.25)}
+.pin::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid currentColor;opacity:.0;animation:ping 2.4s infinite}
+@keyframes ping{0%{transform:scale(.6);opacity:.8}100%{transform:scale(2.2);opacity:0}}
+.app .maptag{position:absolute;left:18px;bottom:18px;display:flex;gap:8px}
+.app .maptag span{background:rgba(6,14,28,.6);backdrop-filter:blur(8px);color:#fff;border-radius:999px;padding:7px 11px}
+.app .feed{border-left:1px solid var(--mist);padding:22px 20px;display:flex;flex-direction:column;gap:12px}
+.app .feed .mono{color:var(--slate)}.app{color:var(--navy)}
+.issue{border:1px solid var(--mist);border-radius:var(--r);padding:14px 16px;opacity:0;transform:translateX(20px)}
+.issue .t{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.issue h4{font:500 15px Inter,sans-serif;letter-spacing:0;color:var(--navy)}
+.issue p{margin-top:6px;color:var(--slate);font-size:13px}
+.sev{font:500 10px "JetBrains Mono",monospace;letter-spacing:.1em;padding:4px 8px;border-radius:999px;white-space:nowrap}
+.sev.h{background:rgba(255,77,94,.12);color:#D92D3F}.sev.m{background:rgba(36,95,255,.1);color:var(--blue)}.sev.o{background:rgba(0,205,217,.14);color:#008C94}
+.illus{margin-top:14px;color:var(--slate);text-align:right}
+.sample-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:18px}.sample-row .illus{margin:0}
+.dl-link{display:inline-flex;align-items:center;gap:12px;color:var(--navy);text-decoration:none;font-weight:500;font-size:15px;border:1px solid rgba(16,43,78,.18);border-radius:999px;padding:11px 18px 11px 14px;transition:border-color .3s,background .3s}
+.dl-link:hover{border-color:var(--blue);background:rgba(36,95,255,.05)}
+.dl-link svg{width:16px;height:16px;color:var(--blue)}
+.dl-link em{font-style:normal;color:var(--slate);margin-left:8px;font-size:10px}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px}
+.pillar{border-top:1px solid rgba(16,43,78,.16);padding-top:28px}
+.pillar .mono{color:var(--blue)}
+.pillar h3{font-size:28px;letter-spacing:-.03em;margin:18px 0 12px}
+.pillar p{color:var(--slate);line-height:1.6}
+
+/* Inside the site: alerts over footage */
+.inside{position:relative;min-height:84vh;overflow:hidden;display:flex;align-items:center;padding:clamp(72px,8vw,124px) 0}
+.inside img{display:none}
+.inside::after{display:none}
+.inside .copy{position:relative;z-index:3;max-width:560px;padding:0 var(--g)}
+.inside h2{font-size:clamp(40px,5vw,80px);margin:22px 0 22px}
+.alert{position:absolute;z-index:3;display:flex;align-items:center;gap:12px;background:rgba(6,14,28,.62);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:10px 16px 10px 12px;color:#fff;opacity:0;transform:translateY(16px) scale(.96)}
+.alert i{width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 0 5px rgba(255,77,94,.25)}
+.alert.b i{background:var(--cyan);box-shadow:0 0 0 5px rgba(0,205,217,.25)}
+.inside .illus{position:absolute;z-index:3;right:var(--g);bottom:var(--g);color:rgba(255,255,255,.5)}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px;position:relative}
+.steps .line{position:absolute;left:0;right:0;top:27px;height:2px;background:var(--line);border-radius:2px}
+.steps .line i{position:absolute;inset:0;background:var(--flight);transform:scaleX(0);transform-origin:left;border-radius:2px}
+.step{position:relative;padding-right:20px}
+.step .dot{width:56px;height:56px;border-radius:50%;background:var(--night);border:1px solid var(--line);display:grid;place-items:center;font:500 15px Sora,sans-serif;position:relative}
+.step .dot::before{content:"";position:absolute;inset:-1px;border-radius:50%;padding:1px;background:var(--flight);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.step h3{font-size:28px;margin:34px 0 12px;letter-spacing:-.03em}
+.step p{color:var(--dim);line-height:1.6}
+
+/* Industries */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:60px}
+.tabs button{font:500 14px Inter,sans-serif;border:1px solid rgba(16,43,78,.18);background:transparent;color:var(--navy);border-radius:999px;padding:11px 18px;cursor:pointer;transition:all .3s}
+.tabs button:hover{border-color:var(--blue)}
+.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.ind{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;margin-top:40px;align-items:stretch}
+.ind .pic{position:relative;border-radius:var(--r);overflow:hidden;min-height:480px;background:var(--deep)}
+.ind .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s}
+.ind .txt h3{font-size:clamp(34px,3.4vw,54px);margin-bottom:18px}
+.ind .txt>p{color:var(--slate);line-height:1.6;font-size:17px;max-width:520px}
+.ind ul{list-style:none;margin-top:32px;border-top:1px solid rgba(16,43,78,.14)}
+.ind li{display:grid;grid-template-columns:44px 1fr;align-items:center;padding:18px 0;border-bottom:1px solid rgba(16,43,78,.14);font-size:17px}
+.ind li .mono{color:var(--slate)}
+.ind li b{font:500 11px "JetBrains Mono",monospace;letter-spacing:.12em;color:var(--blue);text-transform:uppercase}
+.fade{animation:fade .6s cubic-bezier(.16,1,.3,1)}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* Why */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px}
+.card{background:var(--deep);border:1px solid var(--line);border-radius:var(--r);padding:32px 28px 34px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;width:260px;height:260px;right:-120px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(36,95,255,.35),transparent 70%);opacity:0;transition:opacity .6s}
+.card:hover::before{opacity:1}
+.card .mono{color:var(--lblue)}
+.card h3{font-size:24px;letter-spacing:-.03em;margin:46px 0 12px}
+.card p{color:var(--dim);line-height:1.6;font-size:15px}
+.why.list .card{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:26px 6px 0 0}
+.why.list .card::after{content:"";position:absolute;left:0;top:-1px;width:48px;height:2px;border-radius:2px;background:var(--flight)}
+.why.list .card::before{display:none}
+.why.list .card h3{margin:22px 0 10px;font-size:26px}
+.watermark{position:absolute;right:-6vw;top:50%;width:60vw;max-width:900px;transform:translateY(-50%);opacity:.05;pointer-events:none}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:1fr 1.4fr;gap:80px}
+.ask{margin-top:48px;max-width:420px;background:var(--cloud);border:1px solid var(--mist);border-radius:var(--r);padding:28px}
+.ask .mono{color:var(--blue)}.ask p{margin-top:14px;color:var(--slate);line-height:1.6}
+.ask .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.qa .a p a{color:var(--blue)}
+.qa{border-top:1px solid rgba(16,43,78,.14)}
+.qa:last-child{border-bottom:1px solid rgba(16,43,78,.14)}
+.qa button{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;width:100%;padding:26px 0;font:500 clamp(18px,1.5vw,22px) Sora,sans-serif;letter-spacing:-.02em;color:var(--navy)}
+.qa button span{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid rgba(16,43,78,.2);display:grid;place-items:center;transition:all .35s}
+.qa button span::before{content:"+";font:400 20px Inter,sans-serif;line-height:1;transition:transform .35s}
+.qa.open button span{background:var(--navy);color:#fff;border-color:var(--navy)}
+.qa.open button span::before{transform:rotate(45deg)}
+.qa .a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.16,1,.3,1)}
+.qa.open .a{grid-template-rows:1fr}
+.qa .a>div{overflow:hidden}
+.qa .a p{padding:0 60px 26px 0;color:var(--slate);line-height:1.65;font-size:16px}
+
+/* CTA / demo */
+.cta{position:relative;overflow:hidden;background:var(--night)}
+.cta .bg{position:absolute;inset:0;background:radial-gradient(60% 80% at 85% 20%,rgba(36,95,255,.35),transparent 60%),radial-gradient(50% 70% at 10% 100%,rgba(0,205,217,.22),transparent 60%),radial-gradient(40% 60% at 60% 110%,rgba(148,113,255,.25),transparent 60%)}
+.cta .grid2{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+.cta h2{font-size:clamp(44px,6vw,104px)}
+form{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:var(--r);padding:32px;backdrop-filter:blur(12px);display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form label{display:flex;flex-direction:column;gap:8px;color:var(--dim)}
+form label.full{grid-column:1/-1}
+input,select,textarea{font:400 15px Inter,sans-serif;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:13px 14px;outline:none;transition:border-color .3s;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
+textarea{min-height:96px;resize:vertical}
+select option{color:#000}
+form .btn{grid-column:1/-1;justify-content:center;margin-top:6px}
+::placeholder{color:rgba(255,255,255,.45)}
+.next{list-style:none;margin-top:34px;display:grid;gap:12px;max-width:440px}
+.next li{display:flex;gap:16px;align-items:baseline;color:rgba(255,255,255,.82);border-top:1px solid var(--line);padding-top:12px}
+.next .mono{color:var(--lblue)}
+.privacy{grid-column:1/-1;color:rgba(255,255,255,.5);font-size:13px;margin-top:-4px}
+.formnote{grid-column:1/-1;color:var(--dim);font-size:13px;min-height:18px}
+
+footer{background:var(--night);border-top:1px solid var(--line);padding:70px 0 34px}
+footer .top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:40px}
+.foot-cta{display:inline-flex;align-items:center;gap:10px;margin-top:26px;color:#fff;text-decoration:none;font:500 15px Sora,sans-serif;border-bottom:1px solid rgba(0,205,217,.5);padding-bottom:6px}
+.foot-cta svg{width:14px;height:14px}
+footer .bot a{color:inherit;text-decoration:none}footer .bot a:hover{color:var(--cyan)}
+footer .top img{height:56px;width:auto}
+footer .top p{margin-top:22px;color:var(--dim);max-width:340px;line-height:1.6}
+footer h5{font:500 11px "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:18px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+footer ul a{text-decoration:none;color:rgba(255,255,255,.82);transition:color .3s}
+footer ul a:hover{color:var(--cyan)}
+footer .bot{display:flex;justify-content:space-between;gap:20px;margin-top:70px;padding-top:26px;border-top:1px solid var(--line);color:rgba(255,255,255,.45);flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(24px)}
+
+@media (max-width:1080px){
+  .app .body{grid-template-columns:1fr 300px}
+  .why{grid-template-columns:1fr 1fr}
+  footer .top{grid-template-columns:repeat(3,1fr)}
+  footer .top>div:first-child{grid-column:1/-1}
+}
+@media (max-width:860px){
+  nav{display:none}
+  header .btn{padding:10px 16px;font-size:13px}
+  .rail,.hint{display:none}
+  .c1,.c2,.c3,.c4,.c5{left:var(--g);right:var(--g);text-align:left;max-width:none;top:auto;bottom:90px}
+  .c1 p{margin-left:0}
+  .c0{bottom:80px;right:var(--g)}
+  .c0 h1{white-space:normal}
+  .corner.tl,.corner.tr{top:80px}
+  .tc .bar{width:90px}
+  .models,.pillars,.steps,.why,.ind,.faq,.cta .grid2{grid-template-columns:1fr}
+  .models{margin-top:50px}
+  .fleet{grid-template-columns:1fr}
+  .unit.big{grid-row:auto;min-height:560px}
+  .unit{min-height:460px}
+  .app .body{grid-template-columns:1fr}
+  .app .map{min-height:340px}
+  .app .feed{border-left:0;border-top:1px solid var(--mist)}
+  .steps .line{display:none}
+  .step h3{margin-top:22px}
+  .ind{gap:30px}.ind .pic{min-height:300px}
+  .faq{gap:30px}
+  .inside{min-height:auto;padding:90px 0 120px;display:block}
+  .inside::after{background:linear-gradient(180deg,rgba(6,14,28,.85),rgba(6,14,28,.55))}
+  .alert{position:relative;left:auto!important;top:auto!important;right:auto!important;margin:14px var(--g) 0;width:max-content;max-width:calc(100% - 2*var(--g))}
+  .inside .illus{right:auto;left:var(--g);bottom:40px}
+  form{grid-template-columns:1fr;padding:22px}
+  footer .top{grid-template-columns:1fr 1fr}
+  footer .top>div:first-child{grid-column:1/-1}
+  .qa .a p{padding-right:0}
+  .ask{margin-top:30px}
+  .sample-row{flex-direction:column;align-items:flex-start}
+  .c0::before{left:-20vw;right:-20vw;top:-12vh;bottom:-12vh;background:linear-gradient(180deg,transparent,rgba(3,8,18,.7) 30%,rgba(3,8,18,.8))}
+}
+
+/* ---------- Founders' copy layout (30 Oct) ---------- */
+.ch .k2{margin-top:18px;font:400 clamp(18px,1.6vw,24px) Sora,sans-serif;letter-spacing:-.02em;color:rgba(255,255,255,.9);opacity:0;transform:translateY(14px);transition:opacity .8s .2s,transform .8s .2s}
+.ch.on .k2{opacity:1;transform:none}
+.statement{background:transparent;padding:clamp(70px,8vw,110px) 0;border-bottom:1px solid var(--line)}
+.st-lead{font:500 clamp(30px,3.6vw,58px)/1.08 Sora,sans-serif;letter-spacing:-.035em;max-width:1200px}
+.st-body{margin-top:36px;font-size:clamp(17px,1.4vw,22px);line-height:1.6;color:var(--dim);max-width:820px}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:70px}
+.vbig{font:400 clamp(22px,2vw,30px)/1.35 Sora,sans-serif;letter-spacing:-.02em;color:var(--navy)}
+.vcol p{color:var(--slate);line-height:1.65;font-size:17px}.vcol p+p{margin-top:16px}.vcol b{color:var(--navy);font-weight:500}
+.pull{margin-top:60px;padding-top:40px;border-top:1px solid rgba(16,43,78,.14);font:500 clamp(30px,3.4vw,54px)/1.08 Sora,sans-serif;letter-spacing:-.035em;color:var(--navy);max-width:1100px}
+.trows{margin-top:56px;display:grid;gap:clamp(44px,5vw,80px)}
+.trow{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(36px,5vw,80px);align-items:center}
+.trow:nth-child(even) .tpic{order:2}
+.tpic{position:relative;border-radius:var(--r);overflow:hidden;min-height:440px;background:var(--deep);isolation:isolate}
+.tpic img{position:absolute;inset:0;width:100%;height:115%;object-fit:cover;z-index:-1}
+.tpic .bracket{position:absolute;top:22px;left:22px;right:22px;display:flex;justify-content:space-between;color:#fff}
+.tpic .bracket span{background:rgba(6,14,28,.62);backdrop-filter:blur(8px);border:1px solid rgba(0,205,217,.45);border-radius:999px;padding:6px 11px}
+.tpic.draw{display:grid;place-items:center;background:radial-gradient(70% 70% at 50% 50%,rgba(36,95,255,.18),transparent 70%),var(--deep);border:1px solid var(--line)}
+.net{width:min(86%,520px);height:auto}
+.net .ln path{stroke:rgba(255,255,255,.16);stroke-width:1.2;fill:none}
+.net .pulse path{stroke:var(--cyan);stroke-width:2;fill:none;stroke-dasharray:14 400;animation:netp 3.2s linear infinite}
+.net .pulse path:nth-child(2){animation-delay:1.1s}.net .pulse path:nth-child(3){animation-delay:2.1s}
+@keyframes netp{from{stroke-dashoffset:414}to{stroke-dashoffset:0}}
+.net .hub{fill:var(--night);stroke:url(#none);stroke:var(--blue);stroke-width:2}
+.net .hl{font:600 9px "JetBrains Mono",monospace;letter-spacing:.14em;fill:#fff;text-anchor:middle}
+.net .nd circle{fill:var(--night);stroke:var(--cyan);stroke-width:2}
+.net .lb text{font:500 10px "JetBrains Mono",monospace;letter-spacing:.14em;fill:rgba(255,255,255,.62);text-anchor:middle}
+.ttxt h3{font-size:clamp(32px,3.2vw,52px);margin:16px 0 20px}
+.ttxt p{color:var(--dim);line-height:1.65;font-size:16px;max-width:560px}.ttxt p+p{margin-top:12px}.ttxt p b{color:#fff;font-weight:500}
+.ttxt .caps{display:block;margin-top:28px;color:var(--lblue)}
+.ttxt .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ttxt .chips span{border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:7px 12px;color:#fff}
+.pillars.six{grid-template-columns:repeat(3,1fr);row-gap:56px}
+.pillars.six h3{font-size:24px}
+.steps.six{grid-template-columns:repeat(6,1fr)}
+.steps.six .step h3{font-size:24px}.steps.six .step p{font-size:15px}
+.closer{margin-top:56px;font:500 clamp(24px,2.4vw,38px)/1.15 Sora,sans-serif;letter-spacing:-.03em;max-width:900px}
+.cgrid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(40px,6vw,100px);margin-top:70px;align-items:start}
+.cside{position:sticky;top:110px}
+.cside p{color:var(--slate);line-height:1.65;font-size:16px;margin-top:16px}
+.cpic{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;margin-bottom:28px}
+.cpic img{width:100%;height:100%;object-fit:cover}
+.ctag{position:absolute;background:rgba(6,14,28,.7);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(0,205,217,.55);border-radius:999px;padding:7px 12px}
+.clist{list-style:none;border-top:1px solid rgba(16,43,78,.14)}
+.clist li{display:grid;grid-template-columns:56px 1fr;padding:28px 0;border-bottom:1px solid rgba(16,43,78,.14)}
+.clist .mono{color:var(--blue);padding-top:6px}
+.clist h3{font-size:clamp(22px,1.9vw,28px);letter-spacing:-.03em;color:var(--navy)}
+.clist p{margin-top:10px;color:var(--slate);line-height:1.65}
+.cline{margin-top:60px;font:500 clamp(28px,3vw,48px)/1.1 Sora,sans-serif;letter-spacing:-.035em;color:var(--navy);max-width:1100px}
+.why.list.six{grid-template-columns:repeat(3,1fr);row-gap:56px}
+.agrid{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(40px,6vw,100px);align-items:end}
+.agrid .vcol{margin-top:22px}
+.mv{display:grid;gap:18px}
+.mvc{background:#fff;border:1px solid var(--mist);border-radius:var(--r);padding:32px}
+.mvc .mono{color:var(--blue)}
+.mvc p{margin-top:16px;font:500 clamp(20px,1.7vw,26px)/1.3 Sora,sans-serif;letter-spacing:-.02em;color:var(--navy)}
+.mvc.dark{background:var(--night);border-color:var(--night)}.mvc.dark .mono{color:var(--lblue)}.mvc.dark p{color:#fff}
+.k3{margin-top:22px;font:400 clamp(20px,1.8vw,28px) Sora,sans-serif;letter-spacing:-.02em;color:#fff}
+.sign{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);color:var(--dim);font-style:italic;max-width:520px}
+.ftitle{grid-column:1/-1;font:500 22px Sora,sans-serif;letter-spacing:-.02em;margin-bottom:4px}
+.ftop{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+.ftop img{height:56px;width:auto}.ftop p{margin-top:20px;color:var(--dim)}
+.flinks{display:flex;gap:28px;flex-wrap:wrap;font-size:15px}
+.flinks a{text-decoration:none;color:rgba(255,255,255,.82)}.flinks a:hover{color:var(--cyan)}
+@media (max-width:1200px){.steps.six{grid-template-columns:repeat(3,1fr);row-gap:48px}.steps.six .line{display:none}}
+@media (max-width:860px){
+  .vgrid,.trow,.cgrid,.agrid,.pillars.six,.why.list.six,.steps.six{grid-template-columns:1fr}
+  .vgrid{gap:28px;margin-top:40px}.trows{margin-top:50px}
+  .trow:nth-child(even) .tpic{order:0}.tpic{min-height:340px}
+  .cside{position:static}.pull,.cline,.closer{margin-top:56px}
+  .flinks{gap:18px}
+}
+/* ---------- Loader: a drone flies the ribbon, drawing the N ---------- */
+#loader{position:fixed;inset:0;z-index:100;background:var(--night);display:grid;place-items:center;overflow:hidden}
+#loader::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,205,217,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,205,217,.07) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(55% 55% at 50% 50%,#000,transparent);mask-image:radial-gradient(55% 55% at 50% 50%,#000,transparent);animation:gridpan 6s linear infinite}
+@keyframes gridpan{to{background-position:64px 64px}}
+#loader::after{content:"";position:absolute;width:70vmin;height:70vmin;border-radius:50%;background:radial-gradient(circle,rgba(36,95,255,.22),transparent 65%);pointer-events:none}
+.ld-c{position:absolute;width:30px;height:30px;border:0 solid rgba(0,205,217,.7)}
+.ld-c.a{top:var(--g);left:var(--g);border-width:2px 0 0 2px}.ld-c.b{top:var(--g);right:var(--g);border-width:2px 2px 0 0}
+.ld-c.c{bottom:var(--g);left:var(--g);border-width:0 0 2px 2px}.ld-c.d{bottom:var(--g);right:var(--g);border-width:0 2px 2px 0}
+.ld-top{position:absolute;top:calc(var(--g) + 4px);left:calc(var(--g) + 46px);right:calc(var(--g) + 46px);display:flex;justify-content:space-between;color:rgba(255,255,255,.5)}
+.ld-top i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--red);margin-right:8px;animation:rec 1.4s infinite}
+.ld-core{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:34px}
+#ldSvg{width:min(64vw,440px);height:auto;overflow:visible}
+#ldTrace{fill:none;stroke:url(#ld-flow);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(0,156,244,.8))}
+#ldGhost{fill:none;stroke:rgba(255,255,255,.16);stroke-width:1.5;stroke-dasharray:4 7}
+#ldFill{opacity:0}
+.prop{transform-box:fill-box;transform-origin:center;animation:spin .12s linear infinite}
+.prop.r{animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ld-read{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.55)}
+.ld-pct{font:500 clamp(30px,3.4vw,44px) Sora,sans-serif;letter-spacing:-.03em;color:#fff;min-width:3.4ch;text-align:right;font-variant-numeric:tabular-nums}
+.ld-bar{width:min(46vw,280px);height:2px;border-radius:2px;background:rgba(255,255,255,.1);overflow:hidden}
+.ld-bar i{display:block;height:100%;width:0;background:var(--flight)}
+.ld-checks{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;color:rgba(255,255,255,.32)}
+.ld-checks span{display:flex;align-items:center;gap:8px;transition:color .4s}
+.ld-checks span::before{content:"";width:7px;height:7px;border-radius:50%;border:1px solid currentColor;transition:all .4s}
+.ld-checks span.ok{color:#fff}
+.ld-checks span.ok::before{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+html.snap #loader{display:none}
+html.snap *,html.snap *::before,html.snap *::after{transition:none!important}
+html.snap .rv,html.snap .issue,html.snap .alert{opacity:1!important;transform:none!important}
+html.snap .pin{transform:scale(1)!important}
+html.snap .app .map .layer{clip-path:none!important}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+[data-theme="light"] :focus-visible,.light :focus-visible,header.lt :focus-visible{outline-color:var(--blue)}
+.qa button:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){.grain,.hint span,.tc .dot,.ticker .track,.pin::after{animation:none}}
+
+/* ---------- Persistent cinematic layer (Ashutosh audit, 2 Nov) ---------- */
+.bgfilm{position:fixed;inset:0;z-index:0;background:var(--night);overflow:hidden;pointer-events:none}
+.bgfilm video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease;will-change:opacity,transform}
+.bgfilm video.on{opacity:1;animation:bgbreathe 26s ease-in-out infinite alternate}
+@keyframes bgbreathe{from{transform:scale(1.02)}to{transform:scale(1.09)}}
+.bgscrim{position:absolute;inset:0;background:radial-gradient(70% 90% at 18% 50%,rgba(6,14,28,.86),rgba(6,14,28,.45) 60%,rgba(6,14,28,.3) 100%),linear-gradient(180deg,rgba(6,14,28,.9),rgba(6,14,28,.5) 30%,rgba(6,14,28,.5) 70%,rgba(6,14,28,.92))}
+.bggrid{position:absolute;inset:0;opacity:0;transition:opacity 1s;background-image:linear-gradient(rgba(0,205,217,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(0,205,217,.16) 1px,transparent 1px);background-size:72px 72px;mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 35%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent,#000 35%,#000 70%,transparent)}
+.bggrid::after{content:"";position:absolute;left:0;right:0;height:2px;top:0;background:linear-gradient(90deg,transparent,var(--cyan) 30%,var(--blue) 70%,transparent);box-shadow:0 0 30px 6px rgba(0,205,217,.35);animation:bgsweep 9s ease-in-out infinite alternate}
+@keyframes bgsweep{from{top:30%}to{top:72%}}
+.bgfilm.grid .bggrid{opacity:.9}
+.ticker,section,footer{position:relative;z-index:1}
+.ticker{background:rgba(6,14,28,.55);backdrop-filter:blur(10px)}
+.light,.white{background:transparent;color:#fff}
+.light .lead .soft,.white .lead .soft{color:rgba(255,255,255,.4)}
+.light .sub,.white .sub{color:var(--dim)}
+.light .eyebrow{color:var(--lblue)}
+.vbig,.pull,.cline,.clist h3,.mvc p,.ind .txt h3{color:#fff}
+.vcol p,.cside p,.pillar p,.clist p,.ind .txt>p{color:var(--dim)}
+.vcol b{color:#fff}
+.pull,.pillar,.clist,.clist li,.ind ul,.ind li{border-color:var(--line)}
+.pillar .mono,.clist .mono,.mvc .mono,.ind li b{color:var(--lblue)}
+.ind li .mono{color:rgba(255,255,255,.5)}
+.tabs button{border-color:rgba(255,255,255,.24);color:#fff}
+.tabs button.on{background:#fff;color:var(--navy);border-color:#fff}
+.mvc{background:rgba(255,255,255,.05);border-color:var(--line);backdrop-filter:blur(10px)}
+.mvc.dark{background:rgba(255,255,255,.05);border-color:rgba(0,205,217,.35)}
+.dl-link{color:#fff;border-color:rgba(255,255,255,.26)}
+.dl-link:hover{border-color:var(--cyan);background:rgba(255,255,255,.06)}
+.dl-link em{color:rgba(255,255,255,.55)}
+.illus{color:rgba(255,255,255,.5)}
+.cta{background:transparent}
+.cta .bg{opacity:.7}
+footer{background:rgba(6,14,28,.85);backdrop-filter:blur(10px)}
+.bgfilm:not(.show) video{opacity:0}
+
+/* ---------- Site view: real interactions ---------- */
+.app .side button{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;font:400 14px Inter,sans-serif;color:var(--navy);background:transparent;border:0;cursor:pointer;text-align:left;width:100%;transition:background .25s}
+.app .side button:hover{background:rgba(16,43,78,.05)}
+.app .side button.on{background:var(--cloud);font-weight:500}
+.app .side button i{width:8px;height:8px;border-radius:50%;background:var(--mist);flex:none}
+.app .side button.on i{background:var(--flight)}
+.app .side button:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+.app .map img{transition:filter .6s,transform .9s cubic-bezier(.16,1,.3,1),opacity .4s}
+.app .map.v3d img{filter:grayscale(1) brightness(.7) contrast(1.4) sepia(1) hue-rotate(172deg) saturate(2.4);transform:perspective(900px) rotateX(14deg) scale(1.18)}
+.app .map.v3d .layer{clip-path:none!important;opacity:1;background-size:40px 40px}
+.app .map .cmpimg{display:none;filter:brightness(1.12) saturate(.45) contrast(.95);clip-path:inset(0 calc(100% - var(--cmp,50%)) 0 0)}
+.app .map.cmp .cmpimg{display:block}
+.app .map .cmpline{display:none;position:absolute;top:0;bottom:0;left:var(--cmp,50%);width:2px;background:var(--cyan);box-shadow:0 0 18px 3px rgba(0,205,217,.5);transform:translateX(-1px);pointer-events:none}
+.app .map.cmp .cmpline{display:block}
+.app .map .cmpline span{position:absolute;top:16px;background:rgba(6,14,28,.7);backdrop-filter:blur(8px);color:#fff;border-radius:999px;padding:6px 10px;white-space:nowrap}
+.app .map .cmpline span:first-child{right:12px}.app .map .cmpline span:last-child{left:12px}
+.app .map input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:5}
+.app .map input[type=range][hidden]{display:none}
+.pin{cursor:pointer;pointer-events:auto;transition:transform .3s,box-shadow .3s;z-index:3}
+.pin.sel{transform:scale(1.25)!important;box-shadow:0 0 0 8px rgba(255,255,255,.35)}
+.app.live .pin{transform:scale(1)}
+.app.live .issue{opacity:1;transform:none}
+.issue{cursor:pointer;transition:border-color .3s,background .3s,transform .3s,opacity .3s}
+.issue:hover{border-color:rgba(16,43,78,.35)}
+.issue.sel{border-color:var(--blue);background:rgba(36,95,255,.05)}
+.issue:focus-visible{outline:2px solid var(--blue)}
+.pop{position:absolute;z-index:6;max-width:240px;background:rgba(6,14,28,.86);backdrop-filter:blur(10px);color:#fff;border:1px solid rgba(0,205,217,.45);border-radius:12px;padding:12px 14px;text-transform:none;letter-spacing:0;font:400 13px Inter,sans-serif;line-height:1.45;transform:translate(-50%,calc(-100% - 22px));pointer-events:none}
+.pop b{display:block;font-weight:500;margin-bottom:4px}
+.pop small{display:block;margin-top:6px;color:rgba(255,255,255,.55);font:500 10px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+.pop[hidden]{display:none}
+.rep{border:1px solid var(--mist);border-radius:var(--r);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;text-decoration:none;color:var(--navy);transition:border-color .3s}
+.rep:hover{border-color:var(--blue)}
+.rep h4{font:500 15px Inter,sans-serif;letter-spacing:0}
+.rep p{margin-top:4px;color:var(--slate);font-size:13px}
+.rep svg{width:16px;height:16px;color:var(--blue);flex:none}
+.feed .hintline{color:var(--slate);font-size:12px;margin-top:4px}
+@media (max-width:1080px){.app .side{display:flex;flex-direction:row;flex-wrap:wrap;gap:6px;border-right:0;border-bottom:1px solid var(--mist);padding:14px 16px}.app .side .mono{width:100%;padding:0 0 6px}.app .side button{width:auto;padding:8px 12px;border:1px solid var(--mist);border-radius:999px}.app .side div{display:contents}.app .body{grid-template-columns:1fr 300px}}
+@media (max-width:860px){.app .body{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.bgfilm video.on,.bggrid::after{animation:none}}
+html.snap .bgfilm video.on{opacity:1}
+
+/* ---------- UI pass (2 Nov): hierarchy, rhythm, quotes, schematic, progress ---------- */
+.prog{position:fixed;top:0;left:0;width:100%;height:2px;z-index:70;background:var(--flight);transform:scaleX(0);transform-origin:left;pointer-events:none;opacity:0;transition:opacity .4s}
+.prog.show{opacity:1}
+/* Two headline tiers: major sections keep the display size + gradient, minor sections step down */
+.sec.minor{padding-top:0}
+.sec.minor>.wrap{border-top:1px solid var(--line);padding-top:clamp(60px,6.5vw,96px)}
+.sec.minor .lead{font-size:clamp(34px,4.2vw,66px);max-width:980px}
+.sec.minor .lead .gr{background:none;-webkit-text-fill-color:#7FD0FF;color:#7FD0FF;padding-right:0}
+/* Opening statement reads as a lede, not a second hero */
+.statement{padding:clamp(64px,7vw,96px) 0}
+.st-lead{font-size:clamp(26px,3vw,46px);line-height:1.12;max-width:1040px;position:relative;padding-top:26px}
+.st-lead::before{content:"";position:absolute;left:0;top:0;width:48px;height:2px;border-radius:2px;background:var(--flight)}
+.st-body{margin-top:26px;font-size:clamp(16px,1.25vw,19px);max-width:720px}
+.st-body .gr{background:none;-webkit-text-fill-color:#fff;color:#fff;font-weight:500;padding-right:0}
+/* Pull lines become quotes with a side rule instead of a second headline */
+.pull,.cline{position:relative;margin-top:56px;padding:6px 0 6px 28px;border-top:0;font:400 clamp(22px,2.1vw,32px)/1.3 Sora,sans-serif;letter-spacing:-.025em;color:rgba(255,255,255,.92);max-width:820px}
+.pull::before,.cline::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;border-radius:2px;background:var(--flight)}
+.pull .gr,.cline .gr{background:none;-webkit-text-fill-color:#7FD0FF;color:#7FD0FF;padding-right:0}
+/* Platform capability grid: same rule-and-accent system as the Why grid */
+.pillar{position:relative;border-top:1px solid var(--line);padding-top:26px}
+.pillar::after{content:"";position:absolute;left:0;top:-1px;width:48px;height:2px;border-radius:2px;background:var(--flight)}
+.pillars.six h3{font-size:22px;line-height:1.15;margin:16px 0 10px}
+.pillar p{font-size:15px}
+/* Coordination layer: findings connected to an orchestration hub */
+.inside{min-height:72vh}
+.inside .net2{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.inside .net2 path{fill:none;stroke:rgba(255,255,255,.22);stroke-width:1;vector-effect:non-scaling-stroke}
+.inside .net2 path.p{stroke:var(--cyan);stroke-width:1.5;stroke-dasharray:14 600;animation:netp2 3.4s linear infinite}
+.inside .net2 path.p:nth-of-type(5){animation-delay:1.1s}.inside .net2 path.p:nth-of-type(6){animation-delay:2.3s}
+@keyframes netp2{from{stroke-dashoffset:614}to{stroke-dashoffset:0}}
+.inside .hub{position:absolute;z-index:3;left:47%;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:var(--night);border:2px solid var(--blue);box-shadow:0 0 0 6px rgba(36,95,255,.18)}
+.inside .hub::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(0,205,217,.45);animation:hubring 2.6s ease-out infinite}
+.inside .hub span{position:absolute;top:22px;left:50%;transform:translateX(-50%);white-space:nowrap;color:rgba(255,255,255,.62)}
+@keyframes hubring{from{transform:scale(.6);opacity:1}to{transform:scale(1.6);opacity:0}}
+@media (max-width:1180px){.inside .net2,.inside .hub{display:none}}
+@media (max-width:860px){.sec.minor .lead{font-size:34px}.pull,.cline{font-size:20px;padding-left:20px}}
+
+/* ---------- Responsive pass (2 Nov) ---------- */
+header .btn{white-space:nowrap}
+@media (max-width:380px){header{padding:14px var(--g)}header .btn{padding:9px 12px;font-size:12px}header .btn svg{display:none}header .logo{width:104px;height:30px}header .logo img{height:30px}}
+@media (max-width:420px){.app .bar span{display:none}.app .bar em{margin-left:auto;font-size:10px;padding:4px 8px;white-space:nowrap}}
+@media (min-width:600px) and (max-width:860px){.steps.six,.pillars.six,.why.list.six{grid-template-columns:1fr 1fr}.trow{grid-template-columns:1fr}}
+@media (max-width:860px){.sec.minor>.wrap{padding-top:56px}}
+</style></head><body>
+
+<div id="loader" aria-hidden="true">
+  <i class="ld-c a"></i><i class="ld-c b"></i><i class="ld-c c"></i><i class="ld-c d"></i>
+  <div class="ld-top mono"><span><i></i>Northstar · Pre-flight</span><span id="ldTc">T-00:00</span></div>
+  <div class="ld-core">
+    <svg id="ldSvg" viewBox="110 255 580 370">
+      <defs>
+        <linearGradient id="ld-flow" gradientUnits="userSpaceOnUse" x1="140" y1="560" x2="660" y2="290"><stop offset="0" stop-color="#00CDD9"/><stop offset=".35" stop-color="#009CF4"/><stop offset=".7" stop-color="#245FFF"/><stop offset="1" stop-color="#9471FF"/></linearGradient>
+        <linearGradient id="ld-f1" gradientUnits="userSpaceOnUse" x1="220" y1="390" x2="575" y2="500"><stop offset="0" stop-color="#00CDD9"/><stop offset=".32" stop-color="#009CF4"/><stop offset=".7" stop-color="#245FFF"/><stop offset="1" stop-color="#3BA7FF"/></linearGradient>
+        <linearGradient id="ld-f2" gradientUnits="userSpaceOnUse" x1="189" y1="579" x2="302" y2="429"><stop offset="0" stop-color="#00D4D8"/><stop offset="1" stop-color="#007CEF"/></linearGradient>
+        <linearGradient id="ld-f3" gradientUnits="userSpaceOnUse" x1="521" y1="476" x2="592" y2="293"><stop offset="0" stop-color="#284BDE"/><stop offset=".55" stop-color="#625CEB"/><stop offset="1" stop-color="#9471FF"/></linearGradient>
+      </defs>
+      <path id="ldGhost" d="M146 587 C183 545 219 460 255 380 C273 340 301 325 334 325 C357 325 374 332.727 393 350 L481 430 L509 352 C520.2 320.8 548 305 654 285 L558 524 C544 558.854 520 570 494 570 C471 570 452 559.22 434 543 L343 461 L307 523 C287 557.444 248 579 146 587Z"/>
+      <g id="ldFill"><path fill="url(#ld-f1)" d="M146 587 C183 545 219 460 255 380 C273 340 301 325 334 325 C357 325 374 332.727 393 350 L481 430 L509 352 C520.2 320.8 548 305 654 285 L558 524 C544 558.854 520 570 494 570 C471 570 452 559.22 434 543 L343 461 L307 523 C287 557.444 248 579 146 587Z"/><path fill="url(#ld-f2)" d="M146 587 C168.94 560.96 191.4956 518.3908 213.905128 470.732144 C241 420 292 420 343 461 L307 523 C287 557.444 248 579 146 587Z"/><path fill="url(#ld-f3)" d="M481 430 L509 352 C520.2 320.8 548 305 654 285 L588.72 447.52 C572.72 487.353333 542 485.454545 514 460 L481 430Z"/></g>
+      <path id="ldTrace" d="M146 587 C183 545 219 460 255 380 C273 340 301 325 334 325 C357 325 374 332.727 393 350 L481 430 L509 352 C520.2 320.8 548 305 654 285 L558 524 C544 558.854 520 570 494 570 C471 570 452 559.22 434 543 L343 461 L307 523 C287 557.444 248 579 146 587Z" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+      <g id="ldFly"><g id="ldDrone"><g id="ldDroneInner" transform="scale(1.15)">
+        <g stroke="#fff" stroke-width="3.2" stroke-linecap="round"><path d="M-15 -15 L15 15 M15 -15 L-15 15"/></g>
+        <g fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.55)" stroke-width="1"><circle cx="-17" cy="-17" r="10"/><circle cx="17" cy="-17" r="10"/><circle cx="-17" cy="17" r="10"/><circle cx="17" cy="17" r="10"/></g>
+        <g fill="#fff"><rect class="prop" x="-26" y="-18.2" width="18" height="2.4" rx="1.2"/><rect class="prop r" x="8" y="-18.2" width="18" height="2.4" rx="1.2"/><rect class="prop r" x="-26" y="15.8" width="18" height="2.4" rx="1.2"/><rect class="prop" x="8" y="15.8" width="18" height="2.4" rx="1.2"/></g>
+        <rect x="-8" y="-11" width="16" height="22" rx="6" fill="#E9EEF6"/><rect x="-4.5" y="-9" width="9" height="5" rx="2.5" fill="#102B4E"/>
+        <circle cx="0" cy="8" r="2" fill="#00CDD9"/>
+      </g></g></g>
+    </svg>
+    <div class="ld-read"><span class="ld-pct" id="ldPct">0%</span><div><div class="mono" style="margin-bottom:10px">Loading flight footage</div><div class="ld-bar"><i id="ldBar"></i></div></div></div>
+    <div class="ld-checks mono" id="ldChecks"><span>Rotors</span><span>GPS lock</span><span>Camera</span><span>Data link</span><span>Clear to fly</span></div>
+  </div>
+</div>
+
+<header id="hdr">
+  <a class="logo" href="#top" aria-label="Northstar home"><img class="wt" src="brand/northstar-flight-ribbon-compact-white.svg" alt="Northstar"><img class="dk" src="brand/northstar-flight-ribbon-compact.svg" alt=""></a>
+  <nav><a href="#platform">Platform</a><a href="#technology">Technology</a><a href="#construction">Solutions</a><a href="#industries">Industries</a><a href="#about">About Us</a><a href="#contact">Contact</a></nav>
+  <a class="btn" href="#contact">Talk to our team <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+</header>
+<i class="prog" id="prog"></i>
+
+<div class="bgfilm" id="bgfilm" aria-hidden="true">
+  <video data-bg="quad" muted playsinline loop preload="none" poster="media/bg-quad.jpg"></video>
+  <video data-bg="air" muted playsinline loop preload="none" poster="media/bg-air.jpg"></video>
+  <video data-bg="wide" muted playsinline loop preload="none" poster="media/bg-wide.jpg"></video>
+  <video data-bg="human" muted playsinline loop preload="none" poster="media/bg-human.jpg"></video>
+  <video data-bg="corridor" muted playsinline loop preload="none" poster="media/bg-corridor.jpg"></video>
+  <div class="bgscrim"></div><div class="bggrid"></div><div class="grain"></div>
+</div>
+
+<section class="film" id="top">
+  <div class="stage" id="stage">
+    <video id="film" muted playsinline preload="auto"></video>
+    <video id="loop" src="media/hero-loop-b.mp4" muted playsinline loop autoplay preload="auto" poster="media/poster-b.jpg"></video>
+    <div class="grade"></div><div class="grain"></div>
+    <div class="hud" id="hud">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="gridfx" id="gridfx"></div>
+      <div class="scanline" id="scan"></div>
+      <div class="target" id="tgt" data-l="HUMANOID · PATROL"></div>
+    </div>
+
+    <div class="ch c0" data-from="-1" data-to="0.035">
+      <div class="k eyebrow mono">Physical AI · Autonomous Robotics · Industrial Intelligence</div>
+      <h1 data-split>Intelligence that moves beyond the <span class="gr">screen.</span></h1>
+      <p class="k2">Physical AI for the real world.</p>
+      <div class="row"><a class="btn" href="#platform">Explore our platform <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="ghost" href="#contact">Talk to our team</a></div>
+    </div>
+    <div class="ch c1" data-from="0.06" data-to="0.2">
+      <div class="k eyebrow mono">01 · Autonomous drones</div>
+      <h2 data-split>Intelligence from <span class="gr">above.</span></h2>
+      <p>Capture, map, monitor, and inspect complex environments from the air.</p>
+    </div>
+    <div class="ch c2" data-from="0.23" data-to="0.37">
+      <div class="k eyebrow mono">02 · Reality capture</div>
+      <h2 data-split>Autonomous <span class="gr">inspection.</span></h2>
+      <div class="tags mono"><span class="tag">Photogrammetry</span><span class="tag">LiDAR</span><span class="tag">Thermal</span><span class="tag">3D reconstruction</span></div>
+    </div>
+    <div class="ch c3" data-from="0.41" data-to="0.54">
+      <div class="k eyebrow mono">03 · Continuous intelligence</div>
+      <h2 data-split>Verified <span class="gr">reality.</span></h2>
+    </div>
+    <div class="ch c4" data-from="0.57" data-to="0.79">
+      <div class="k eyebrow mono">04 · Humanoid robotics</div>
+      <h2 data-split>Intelligence that works alongside <span class="gr">people.</span></h2>
+      <p>Humanoid robotics represents the next evolution of embodied intelligence, bringing AI-assisted perception and manipulation into human-designed environments.</p>
+    </div>
+    <div class="ch c5" data-from="0.84" data-to="2">
+      <div class="k eyebrow mono">05 · Quadruped robotics</div>
+      <h2 data-split>Intelligence on the <span class="gr">ground.</span></h2>
+      <p>Four-legged robotic platforms extend inspection capabilities into complex industrial and construction environments.</p>
+    </div>
+    <div class="rail" id="rail"><div class="mono">Aerial<b></b></div><div class="mono">Capture<b></b></div><div class="mono">Inside<b></b></div><div class="mono">Humanoid<b></b></div><div class="mono">Quadruped<b></b></div></div>
+    <div class="tc mono"><i class="dot"></i><span id="tc">00:00:00</span><div class="bar"><i id="tcbar"></i></div><span>Scroll</span></div>
+    <div class="hint mono" id="hint">Scroll<span></span></div>
+    <div class="bars t" id="barT"></div><div class="bars b" id="barB"></div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="track">
+  <span>Autonomous inspection</span><span>Continuous intelligence</span><span>Verified reality</span><span>Aerial reality capture</span><span>Autonomous patrols</span><span>Thermal monitoring</span><span>Digital twin</span><span>AI-powered QA</span>
+  <span>Autonomous inspection</span><span>Continuous intelligence</span><span>Verified reality</span><span>Aerial reality capture</span><span>Autonomous patrols</span><span>Thermal monitoring</span><span>Digital twin</span><span>AI-powered QA</span>
+</div></div>
+
+<!-- Statement -->
+<section class="statement" id="statement" data-bg="quad">
+  <div class="wrap">
+    <p class="st-lead rv">We bring intelligence into the physical world through autonomous drones, quadruped robots, humanoid robotics, and connected industrial systems.</p>
+    <p class="st-body rv">Powered by our agentic AI platform, Northstar transforms how enterprises observe, inspect, verify, and understand their physical environments — connecting autonomous machines with intelligent decision-making to make industrial operations <span class="gr">safer, smarter, and more predictable.</span></p>
+  </div>
+</section>
+
+<!-- 02 Vision -->
+<section class="sec" id="vision" data-bg="air">
+  <div class="wrap">
+    <span class="eyebrow mono">The Northstar vision</span>
+    <h2 class="lead rv">The physical world is ready for <span class="gr">intelligence.</span></h2>
+    <div class="vgrid">
+      <p class="vbig rv">For decades, enterprise technology has focused on digitizing information. The next frontier is enabling intelligence to interact with the physical world.</p>
+      <div class="vcol rv">
+        <p><b>Northstar is building the intelligence layer between AI and the real world.</b></p>
+        <p>By combining embodied AI, autonomous robotics, computer vision, spatial intelligence, and IoT, we enable machines to capture real-world conditions, understand complex environments, and execute coordinated inspection and verification workflows.</p>
+        <p>From construction sites and industrial facilities to energy infrastructure and critical assets, our vision is to turn physical operations into continuously observable, verifiable, and increasingly autonomous systems.</p>
+      </div>
+    </div>
+    <blockquote class="pull rv">We don't just capture the physical world. <span class="gr">We enable AI to understand it.</span></blockquote>
+  </div>
+</section>
+
+<!-- 03 Technology -->
+<section class="sec" id="technology" data-bg="air">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow mono">Our technology · Autonomous systems</span><h2 class="lead rv">Intelligence in every <span class="gr">dimension.</span></h2></div>
+      <p class="sub rv"><b style="color:#fff;font-weight:500">A connected ecosystem of intelligent machines.</b> Northstar brings aerial robotics, ground robotics, humanoid systems, and distributed sensors together through one intelligent orchestration platform.</p>
+    </div>
+    <div class="trows">
+      <article class="trow rv" data-bg="air">
+        <div class="tpic"><img src="media/s-aerial.jpg" alt="Survey drone flying over a construction site at dawn" loading="lazy" data-par><div class="bracket mono"><span>Air</span><span>01</span></div></div>
+        <div class="ttxt"><span class="eyebrow mono">Autonomous drones</span><h3>Intelligence from above.</h3><p>Capture, map, monitor, and inspect complex environments from the air.</p><p>Our drone-enabled workflows support aerial surveying, photogrammetry, LiDAR scanning, thermal imaging, infrastructure inspection, volumetric analysis, and construction progress monitoring.</p><p>From large construction developments to remote industrial infrastructure, aerial intelligence helps teams understand changing site conditions without relying exclusively on manual inspections.</p><span class="caps mono">Capabilities</span><div class="chips mono"><span>Aerial reality capture</span><span>Mapping &amp; 3D reconstruction</span><span>Progress monitoring</span><span>Thermal inspection</span><span>Asset verification</span></div></div>
+      </article>
+      <article class="trow rv" data-bg="quad">
+        <div class="tpic"><img src="media/s-dog.jpg" alt="Four-legged robot climbing a concrete stairwell" loading="lazy" data-par><div class="bracket mono"><span>Ground</span><span>02</span></div></div>
+        <div class="ttxt"><span class="eyebrow mono">Quadruped robotics</span><h3>Intelligence on the ground.</h3><p>Four-legged robotic platforms extend inspection capabilities into complex industrial and construction environments.</p><p>Equipped with visual cameras, depth sensors, thermal imaging, and spatial navigation capabilities, quadruped robots can support repeatable inspection missions, indoor reality capture, equipment monitoring, and remote site observation.</p><p>They enable consistent data collection across large facilities, plant rooms, corridors, and other challenging operational environments.</p><span class="caps mono">Capabilities</span><div class="chips mono"><span>Autonomous patrols</span><span>Ground reality capture</span><span>Thermal monitoring</span><span>Equipment inspection</span><span>Remote observation</span></div></div>
+      </article>
+      <article class="trow rv" data-bg="human">
+        <div class="tpic"><img src="media/s-humanoid.jpg" alt="Humanoid robot walking through a plant room" loading="lazy" data-par><div class="bracket mono"><span>Indoor</span><span>03</span></div></div>
+        <div class="ttxt"><span class="eyebrow mono">Humanoid robotics</span><h3>Intelligence that works alongside people.</h3><p>Humanoid robotics represents the next evolution of embodied intelligence, bringing AI-assisted perception and manipulation into human-designed environments.</p><p>Northstar is developing workflows for humanoid systems to support supervised visual inspections, equipment interaction, inspection checklist execution, material identification, and physical task assistance.</p><p>Our approach combines visual reasoning, task planning, robotic control, and human oversight to progressively extend the role of autonomous systems in industrial operations.</p><span class="caps mono">Focus areas</span><div class="chips mono"><span>Embodied AI</span><span>Visual inspection</span><span>Human-robot collaboration</span><span>Task planning</span><span>Physical workflow assistance</span></div></div>
+      </article>
+      <article class="trow rv" data-bg="corridor">
+        <div class="tpic draw"><svg viewBox="0 0 520 420" class="net" aria-hidden="true">
+<g class="ln"><path d="M260 210L110 90M260 210L420 80M260 210L90 300M260 210L430 320M260 210L260 370M110 90L90 300M420 80L430 320"/></g>
+<g class="pulse"><path d="M260 210L110 90"/><path d="M260 210L430 320"/><path d="M260 210L260 370"/></g>
+<circle class="hub" cx="260" cy="210" r="38"/><text class="hl" x="260" y="214">NORTHSTAR</text>
+<g class="nd"><circle cx="110" cy="90" r="9"/><circle cx="420" cy="80" r="9"/><circle cx="90" cy="300" r="9"/><circle cx="430" cy="320" r="9"/><circle cx="260" cy="370" r="9"/></g>
+<g class="lb"><text x="110" y="66">SENSORS</text><text x="420" y="56">CAMERAS</text><text x="90" y="334">EDGE DEVICES</text><text x="430" y="354">ROBOTS</text><text x="260" y="404">OPERATIONAL SYSTEMS</text></g></svg><div class="bracket mono"><span>Connected</span><span>04</span></div></div>
+        <div class="ttxt"><span class="eyebrow mono">Industrial IoT &amp; edge intelligence</span><h3>Intelligence from every connected asset.</h3><p><b>Not every inspection requires a moving robot.</b></p><p>Northstar connects industrial sensors, cameras, edge devices, and operational systems to create a continuous flow of physical-world intelligence.</p><p>By bringing together machine telemetry, environmental measurements, asset conditions, and robotic observations, we establish a unified operational view of facilities and infrastructure.</p><span class="caps mono">Capabilities</span><div class="chips mono"><span>Sensor integration</span><span>Edge AI</span><span>Condition monitoring</span><span>Anomaly detection</span><span>Equipment telemetry</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Platform -->
+<section class="sec" id="platform" data-bg="air" data-fx="grid">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow mono">The Northstar platform</span><h2 class="lead rv">One intelligence platform. <span class="gr">Every physical system.</span></h2></div>
+      <p class="sub rv"><b style="color:#fff;font-weight:500">Meet Northstar Physical AI Platform.</b> An agentic intelligence and robotics orchestration platform designed to connect physical-world observations with autonomous workflows, intelligent analysis, and operational decision-making.</p>
+    </div>
+    <div class="app rv" id="app">
+      <div class="bar"><i></i><i></i><i></i><span class="mono">Northstar · Site view</span><em class="mono">Illustrative</em></div>
+      <div class="body">
+        <div class="side">
+          <span class="mono">Sites</span>
+          <div id="siteList" role="tablist" aria-label="Sites"></div>
+          <span class="mono" style="margin-top:22px">Views</span>
+          <div id="viewList" role="tablist" aria-label="Views"></div>
+        </div>
+        <div class="map" id="map">
+          <img id="mapImg" src="media/s-site.jpg" alt="Aerial capture of a construction site" loading="lazy">
+          <img id="mapImgB" class="cmpimg" src="media/s-site.jpg" alt="" aria-hidden="true">
+          <div class="layer" id="mlayer"></div>
+          <div class="cmpline mono"><span>Last week</span><span>Today</span></div>
+          <input type="range" id="cmp" min="2" max="98" value="50" aria-label="Drag to compare last week with today" hidden>
+          <div id="pins"></div>
+          <div class="pop" id="pop" hidden></div>
+          <div class="maptag mono" id="maptag"><span>Today's capture</span><span>vs last week</span></div>
+        </div>
+        <div class="feed" id="feed">
+          <span class="mono" id="feedTitle">Flagged</span>
+          <div id="issues" style="display:flex;flex-direction:column;gap:12px"></div>
+          <p class="hintline" id="feedHint">Click a finding or a map marker to see where it is. Sample data.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="sample-row"><a class="dl-link" href="media/northstar-sample-report.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v9M4 7l4 4 4-4M3 14h10"/></svg><span>Download a sample report <em class="mono">PDF · sample data</em></span></a><p class="illus mono">Illustrative interface · sample data</p></div>
+    <div class="pillars six">
+      <div class="pillar rv"><span class="mono">01</span><h3>Autonomous mission orchestration</h3><p>Plan, assign, and coordinate inspection missions across supported drones, ground robots, and connected systems. Manage recurring capture activities and mission execution through centralized workflows.</p></div>
+      <div class="pillar rv"><span class="mono">02</span><h3>Multimodal perception &amp; spatial intelligence</h3><p>Combine imagery, video, LiDAR, point clouds, thermal data, and sensor telemetry to build contextual understanding of sites, structures, equipment, and physical environments.</p></div>
+      <div class="pillar rv"><span class="mono">03</span><h3>Agentic AI &amp; intelligent reasoning</h3><p>AI agents interpret observations against inspection requirements, drawings, asset records, operating procedures, and historical evidence to identify anomalies, prioritize issues, and recommend follow-up actions.</p></div>
+      <div class="pillar rv"><span class="mono">04</span><h3>AI-powered QA &amp; verification</h3><p>Compare observed site conditions with defined specifications, BIM models, inspection checklists, and quality requirements. Generate evidence-linked findings, identify possible deviations, and support verification workflows.</p></div>
+      <div class="pillar rv"><span class="mono">05</span><h3>Digital twin &amp; reality intelligence</h3><p>Connect captured site conditions with spatial models and digital asset records to maintain a contextual view of the physical environment and its changes over time.</p></div>
+      <div class="pillar rv"><span class="mono">06</span><h3>Enterprise integration &amp; human oversight</h3><p>Connect intelligence with construction, asset management, maintenance, and enterprise systems. Keep humans in control of safety-critical decisions, corrective actions, and formal approvals.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Perceive / Reason / Orchestrate / Verify -->
+<section class="inside" id="inside" data-bg="corridor">
+  <div class="copy">
+    <span class="eyebrow mono">The coordination layer</span>
+    <h2 class="rv">Perceive. Reason. <span class="gr">Orchestrate. Verify.</span></h2>
+    <p class="sub rv">Northstar serves as the coordination layer between machines, sensors, enterprise information, and the people responsible for operating physical assets.</p>
+  </div>
+  <svg class="net2" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M47 50 L58 32.6"/><path d="M47 50 L66 50.6"/><path d="M47 50 L54 68.6"/><path class="p" d="M47 50 L58 32.6"/><path class="p" d="M47 50 L66 50.6"/><path class="p" d="M47 50 L54 68.6"/></svg>
+  <div class="hub"><span class="mono">Orchestration</span></div>
+  <div class="alert mono" style="left:58%;top:30%"><i></i>Anomaly · Pump 3 thermal</div>
+  <div class="alert mono b" style="left:66%;top:48%"><i></i>Verified · Valve 12 checklist</div>
+  <div class="alert mono" style="left:54%;top:66%"><i></i>Deviation · Level B2 vs BIM</div>
+  <span class="illus mono">Illustrative findings</span>
+</section>
+
+<!-- 05 How -->
+<section class="sec" id="how" data-bg="wide">
+  <div class="wrap">
+    <span class="eyebrow mono">How Northstar works</span>
+    <h2 class="lead rv">From physical observation to <span class="gr">intelligent action.</span></h2>
+    <p class="sub rv" style="margin-top:22px">A continuous intelligence loop connecting the real and digital worlds.</p>
+    <div class="steps six" id="steps">
+      <div class="line"><i id="stepline"></i></div>
+      <div class="step rv"><div class="dot">01</div><h3>Plan</h3><p>Define inspection objectives, target assets, operating constraints, schedules, and verification requirements.</p></div>
+      <div class="step rv"><div class="dot">02</div><h3>Deploy</h3><p>Assign approved missions to drones, robotic systems, or connected sensors, with the appropriate autonomy and human supervision.</p></div>
+      <div class="step rv"><div class="dot">03</div><h3>Capture</h3><p>Collect spatially referenced visual, thermal, geometric, and operational data from the physical environment.</p></div>
+      <div class="step rv"><div class="dot">04</div><h3>Understand</h3><p>Use multimodal AI, computer vision, and contextual reasoning to identify conditions, anomalies, changes, and potential deviations.</p></div>
+      <div class="step rv"><div class="dot">05</div><h3>Verify</h3><p>Compare findings against drawings, BIM models, specifications, previous inspections, and defined acceptance criteria.</p></div>
+      <div class="step rv"><div class="dot">06</div><h3>Act &amp; learn</h3><p>Create actionable findings, initiate review workflows, generate reports, and use verified outcomes to improve future inspection processes.</p></div>
+    </div>
+    <p class="closer rv">From data capture to evidence-based decisions — <span class="gr">connected by intelligence.</span></p>
+  </div>
+</section>
+
+<!-- 06 Construction -->
+<section class="sec minor" id="construction" data-bg="wide">
+  <div class="wrap">
+    <span class="eyebrow mono">Featured solution · Construction intelligence</span>
+    <h2 class="lead rv">Every site. Every stage. <span class="gr">Verified.</span></h2>
+    <p class="sub rv" style="margin-top:22px;color:var(--slate)">AI-powered construction quality assurance and progress intelligence.</p>
+    <div class="cgrid">
+      <div class="cside">
+        <div class="cpic"><img src="media/s-site.jpg" alt="Aerial capture of a construction site" loading="lazy"><span class="ctag mono" style="left:44%;top:26%">Build vs design</span><span class="ctag mono b" style="left:18%;top:62%">Work in place</span></div>
+        <p>Construction environments are dynamic, complex, and constantly changing. Traditional inspections are periodic, heavily manual, and often fragmented across teams and systems.</p>
+        <p>Northstar combines aerial reality capture, ground robotics, computer vision, and agentic AI to support more consistent, evidence-driven construction monitoring and quality assurance.</p>
+        <p>Our goal is to provide contractors, developers, engineers, and project owners with a clearer understanding of what has been built, how work is progressing, and where intervention may be required.</p>
+      </div>
+      <ol class="clist">
+        <li class="rv"><span class="mono">01</span><div><h3>Construction progress intelligence</h3><p>Monitor site changes over time using aerial and ground-level observations. Compare captured progress with project schedules, work packages, and planned construction activities.</p></div></li>
+        <li class="rv"><span class="mono">02</span><div><h3>Build-versus-design verification</h3><p>Use reality capture and spatial analysis to compare observed construction conditions with BIM models, approved drawings, and design specifications, identifying potential discrepancies for engineering review.</p></div></li>
+        <li class="rv"><span class="mono">03</span><div><h3>Automated QA/QC inspections</h3><p>Support inspection checklists, workmanship observations, installation verification, defect identification, and evidence-based quality reporting throughout the construction lifecycle.</p></div></li>
+        <li class="rv"><span class="mono">04</span><div><h3>Safety observation &amp; risk intelligence</h3><p>Identify visible safety concerns and potential site hazards through AI-assisted observations, helping safety teams prioritize investigations and corrective measures.</p></div></li>
+        <li class="rv"><span class="mono">05</span><div><h3>Quantity &amp; work-in-place verification</h3><p>Support earthwork volume measurements, installation progress assessment, and verification of work-in-place quantities where capture accuracy and measurement methods meet project requirements.</p></div></li>
+        <li class="rv"><span class="mono">06</span><div><h3>Digital as-built documentation</h3><p>Build a chronological, spatially referenced record of site conditions, supporting handover documentation, issue resolution, project coordination, and future asset management.</p></div></li>
+        <li class="rv"><span class="mono">07</span><div><h3>Inspection evidence &amp; traceability</h3><p>Maintain georeferenced, time-stamped observations with associated images, inspection findings, responsible parties, verification status, and supporting documentation.</p></div></li>
+      </ol>
+    </div>
+    <p class="cline rv">See what is happening. Understand what has changed. <span class="gr">Verify what has been delivered.</span></p>
+  </div>
+</section>
+
+<!-- 07 Industries -->
+<section class="sec minor" id="industries" data-bg="corridor">
+  <div class="wrap">
+    <span class="eyebrow mono">Beyond construction · Industrial applications</span>
+    <h2 class="lead rv">Built for environments where <span class="gr">precision matters.</span></h2>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Industries"></div>
+    <div class="ind" id="ind">
+      <div class="pic"><img id="indImg" src="media/s-plant.jpg" alt=""></div>
+      <div class="txt" id="indTxt"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Why -->
+<section class="sec minor" id="why" style="overflow:hidden" data-bg="quad">
+  <img class="watermark" src="brand/northstar-flight-ribbon-icon.svg" alt="">
+  <div class="wrap" style="position:relative">
+    <span class="eyebrow mono">Why Northstar</span>
+    <h2 class="lead rv">Beyond automation. <span class="soft">Towards physical intelligence.</span></h2>
+    <div class="why list six">
+      <div class="card rv"><span class="mono">01</span><h3>One platform, multiple robotic systems</h3><p>Bring diverse robots, drones, sensors, and inspection data into a coordinated intelligence environment.</p></div>
+      <div class="card rv"><span class="mono">02</span><h3>Designed for real-world complexity</h3><p>Combine spatial perception, contextual understanding, and adaptive workflows for dynamic physical environments.</p></div>
+      <div class="card rv"><span class="mono">03</span><h3>Evidence before assumptions</h3><p>Ground inspection findings in captured observations, relevant specifications, timestamps, and traceable verification records.</p></div>
+      <div class="card rv"><span class="mono">04</span><h3>Autonomy with accountability</h3><p>Balance automated missions and AI reasoning with safety controls, human supervision, and defined approval processes.</p></div>
+      <div class="card rv"><span class="mono">05</span><h3>From individual assets to enterprise scale</h3><p>Apply consistent inspection and intelligence workflows across assets, facilities, projects, and distributed operations.</p></div>
+      <div class="card rv"><span class="mono">06</span><h3>Intelligence that connects to enterprise workflows</h3><p>Move beyond dashboards by linking physical observations to quality, maintenance, asset, and operational management processes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 About -->
+<section class="sec minor" id="about" data-bg="wide">
+  <div class="wrap agrid">
+    <div>
+      <span class="eyebrow mono">About Northstar</span>
+      <h2 class="lead rv">Engineering the future of <span class="gr">physical AI.</span></h2>
+      <p class="vbig rv" style="margin-top:36px">Northstar is a physical AI and autonomous systems company focused on connecting machine intelligence with real-world operations.</p>
+      <div class="vcol rv"><p>We are bringing together agentic AI, robotics, computer vision, spatial computing, and industrial connectivity to reimagine how enterprises inspect, verify, and manage physical environments.</p>
+      <p>Our vision is a future where intelligent systems continuously understand the world around them, collaborate with human teams, and help enterprises make better decisions through reliable physical-world evidence.</p></div>
+    </div>
+    <div class="mv">
+      <div class="mvc rv"><span class="mono">Our mission</span><p>To make physical environments more observable, intelligent, and verifiable through autonomous systems and AI.</p></div>
+      <div class="mvc dark rv"><span class="mono">Our vision</span><p>A world where intelligence moves seamlessly between digital systems and physical reality.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 Contact -->
+<section class="sec cta" id="contact" data-bg="corridor">
+  <div class="bg"></div>
+  <div class="wrap grid2">
+    <div>
+      <span class="eyebrow mono">Contact</span>
+      <h2 class="rv" style="margin-top:24px">The future of intelligence is <span class="gr">physical.</span></h2>
+      <p class="k3 rv">Bring autonomous intelligence into your operations.</p>
+      <p class="sub rv" style="margin-top:18px">From construction quality assurance to industrial inspection and intelligent asset monitoring, Northstar is building the next generation of physical AI solutions.</p>
+      <div class="row rv" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px"><a class="btn" href="#platform">Explore Northstar <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="ghost" href="#demoForm" id="partnerBtn">Partner with us</a></div>
+      <p class="sign rv">Let's build a world where machines don't just operate — they understand.</p>
+    </div>
+    <form id="demoForm" class="rv" novalidate>
+      <p class="ftitle">Talk to our team</p>
+      <label>Name<input name="name" autocomplete="name" required></label>
+      <label>Work email<input name="email" type="email" autocomplete="email" required></label>
+      <label>Company<input name="company" autocomplete="organization"></label>
+      <label>Industry<select name="industry"><option>Construction</option><option>Industrial assets &amp; manufacturing</option><option>Energy &amp; utilities</option><option>Oil, gas &amp; process facilities</option><option>Infrastructure &amp; civil engineering</option><option>Warehouses &amp; logistics</option><option>Other</option></select></label>
+      <label class="full">How can we help?<textarea name="msg" placeholder="Your sites, assets or partnership idea…"></textarea></label>
+      <button class="btn" type="submit">Talk to our team <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button>
+      <p class="formnote mono" id="formNote"></p>
+      <p class="privacy">We only use these details to reply to your request.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div><img src="brand/northstar-flight-ribbon-white.svg" alt="Northstar"><p>Physical AI. Autonomous Systems. Real-World Intelligence.</p></div>
+      <nav class="flinks" aria-label="Footer"><a href="#platform">Platform</a><a href="#technology">Technology</a><a href="#construction">Construction</a><a href="#industries">Industries</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    </div>
+    <div class="bot mono"><span>© Northstar - A HuntGlobal Venture. All rights reserved.</span><span>Intelligence Beyond the Digital World.</span></div>
+  </div>
+</footer>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const film = $('#film'), loop = $('#loop');
+const mobile = matchMedia('(max-width: 860px)').matches;
+film.src = mobile ? 'media/film-960-c.mp4' : 'media/film-1600-c.mp4';
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Where demo requests go. Empty until the founders give us an inbox.
+const CONTACT_EMAIL = '';
+
+// Split headlines into masked words (highlighted spans stay whole)
+$$('[data-split]').forEach(h => {
+  let i = 0;
+  const wrapEl = el => { const w = document.createElement('span'); w.className = 'w'; const s = document.createElement('span'); s.style.setProperty('--i', i++); el.replaceWith(w); s.append(el); w.append(s); };
+  [...h.childNodes].forEach(n => {
+    if (n.nodeType === 3) {
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(part => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.append(' '); return; }
+        const w = document.createElement('span'); w.className = 'w';
+        const s = document.createElement('span'); s.textContent = part; s.style.setProperty('--i', i++);
+        w.append(s); frag.append(w);
+      });
+      n.replaceWith(frag);
+    } else if (n.nodeType === 1) wrapEl(n);
+  });
+});
+
+gsap.registerPlugin(ScrollTrigger);
+let lenis = null;
+if (!reduce && window.Lenis) {
+  lenis = new Lenis({ lerp: 0.085, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = a.getAttribute('href'); if (t.length > 1 && $(t)) { e.preventDefault(); lenis.scrollTo(t, { offset: t === '#top' ? 0 : -($('#hdr').offsetHeight + 6) }); } }));
+}
+
+// Intro: ribbon draws in, letterbox opens, header + hero words arrive
+const chapters = $$('.ch');
+const intro = gsap.timeline({ paused: true });
+intro.fromTo('#stage', { scale: 1.08, opacity: 0.6 }, { scale: 1, opacity: 1, duration: 1.6, ease: 'expo.out' })
+  .add(() => chapters[0].classList.add('on'), '-=1.1')
+  .to('#hdr', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=1.0');
+
+// Loader: progress is real (hero loop ready + the start of the film buffered), shown smoothly,
+// with a minimum on-screen time so the flight reads and a cap so slow networks still get in
+const L = { shown: 0, done: false, t0: performance.now() };
+const trace = $('#ldTrace'), drone = $('#ldDrone'), ghost = $('#ldGhost');
+const pathLen = ghost.getTotalLength();
+const checks = $$('#ldChecks span');
+if (lenis) lenis.stop();
+document.documentElement.style.overflow = 'hidden';
+function realProgress() {
+  const loopOk = loop.readyState >= 3 ? 1 : loop.readyState / 3;
+  let filmOk = 0;
+  if (film.duration && film.buffered.length) filmOk = Math.min(1, film.buffered.end(0) / (film.duration * 0.3));
+  else if (film.readyState >= 2) filmOk = 0.3;
+  return loopOk * 0.45 + filmOk * 0.55;
+}
+function placeDrone(p) {
+  const at = Math.min(0.999, p) * pathLen;
+  const a = ghost.getPointAtLength(at), b = ghost.getPointAtLength(Math.min(pathLen, at + 2));
+  const ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI + 90;
+  drone.setAttribute('transform', `translate(${a.x} ${a.y}) rotate(${ang})`);
+}
+function loaderTick() {
+  if (L.done) return;
+  const el = (performance.now() - L.t0) / 1000;
+  const minT = reduce ? 0.6 : 2.6, maxT = 9;
+  let target = Math.min(realProgress(), el / minT);
+  if (el > maxT) target = 1;
+  L.shown += (target - L.shown) * 0.06 + (target > L.shown ? 0.0015 : 0);
+  if (L.shown > target) L.shown = target;
+  const p = L.shown;
+  trace.setAttribute('stroke-dashoffset', 1 - p);
+  placeDrone(p);
+  $('#ldPct').textContent = Math.round(p * 100) + '%';
+  $('#ldBar').style.width = p * 100 + '%';
+  $('#ldTc').textContent = 'T-00:' + String(Math.max(0, Math.ceil((1 - p) * 9))).padStart(2, '0');
+  checks.forEach((c, i) => c.classList.toggle('ok', p >= (i + 1) / checks.length - 0.02));
+  if (p >= 0.999) { L.done = true; takeOff(); return; }
+  requestAnimationFrame(loaderTick);
+}
+function takeOff() {
+  const tl = gsap.timeline({ onComplete: () => { $('#loader').remove(); } });
+  tl.to('#ldFill', { opacity: 1, duration: 0.6, ease: 'power2.out' })
+    .to('#ldTrace', { opacity: 0, duration: 0.5 }, '<')
+    .to('#ldDroneInner', { attr: { transform: 'scale(1.6)' }, duration: 0.5, ease: 'power2.out' }, '<')
+    .to('#ldFly', { x: 260, y: -420, duration: 0.9, ease: 'power3.in' }, '-=0.1')
+    .to('#ldDroneInner', { opacity: 0, duration: 0.3 }, '-=0.3')
+    .to('.ld-read, .ld-checks, .ld-top, .ld-c', { opacity: 0, y: -10, duration: 0.4, stagger: 0.03 }, '-=0.8')
+    .to('#ldSvg', { scale: 0.55, opacity: 0, duration: 0.7, ease: 'power3.in' }, '-=0.35')
+    .add(() => {
+      document.documentElement.style.overflow = '';
+      if (lenis) lenis.start();
+      intro.play();
+    }, '-=0.55')
+    .to('#loader', { opacity: 0, duration: 0.9, ease: 'power2.inOut' }, '-=0.35');
+}
+requestAnimationFrame(loaderTick);
+
+// Film: scroll progress drives the video time and overlays
+const sec = $('#top');
+const S = { target: 0, cur: 0 };
+ScrollTrigger.create({ trigger: sec, start: 'top top', end: 'bottom bottom', onUpdate: s => { S.target = s.progress; } });
+const railItems = $$('.rail div');
+const scan = $('#scan'), gridfx = $('#gridfx'), hud = $('#hud'), tgt = $('#tgt');
+const fmt = t => { const s = Math.floor(t), f = Math.floor((t - s) * 24); return `00:${String(s).padStart(2, '0')}:${String(f).padStart(2, '0')}`; };
+const band = (p, a, b) => Math.min(1, Math.max(0, (p - a) / (b - a)));
+let lastSeek = -1, filmVisible = true;
+ScrollTrigger.create({ trigger: sec, start: 'top bottom', end: 'bottom top', onToggle: s => { filmVisible = s.isActive; } });
+function frame() {
+  requestAnimationFrame(frame);
+  if (!filmVisible) return;
+  S.cur += (S.target - S.cur) * 0.12;
+  const p = S.cur, dur = film.duration || 30.25;
+  loop.style.opacity = p > 0.004 ? 0 : 1;
+  if (p > 0.004 && !loop.paused) loop.pause();
+  if (p <= 0.004 && loop.paused) loop.play().catch(() => {});
+  const t = Math.min(dur - 0.05, p * dur);
+  if (film.readyState >= 2 && !film.seeking && Math.abs(t - lastSeek) > 1 / 48) { film.currentTime = t; lastSeek = t; }
+  chapters.forEach((c, i) => {
+    if (i === 0 && !c.classList.contains('on') && p < 0.01) return;
+    const on = p >= +c.dataset.from && p < +c.dataset.to;
+    c.classList.toggle('on', on);
+    c.classList.toggle('out', !on && p >= +c.dataset.to);
+  });
+  $('#rail').classList.toggle('show', p > 0.05);
+  const idx = p < 0.2 ? 0 : p < 0.41 ? 1 : p < 0.57 ? 2 : p < 0.83 ? 3 : 4;
+  railItems.forEach((el, k) => el.classList.toggle('on', k === idx));
+  $('#tc').textContent = fmt(t);
+  $('#tcbar').style.width = (p * 100) + '%';
+  $('#hint').style.opacity = p > 0.02 ? 0 : 1;
+  hud.classList.toggle('on', p > 0.23 && p < 0.97);
+  const sc = band(p, 0.23, 0.41);
+  scan.style.opacity = sc > 0 && sc < 1 ? 1 : 0;
+  scan.style.transform = `translateY(${(sc * 1.15 - 0.05) * innerHeight}px)`;
+  gridfx.style.opacity = (sc > 0 && sc < 1 ? Math.sin(sc * Math.PI) : 0) * 0.9;
+  // humanoid tracking box. HK = [film second, left%, top%, right%, bottom%] measured on the footage frames
+  const box = humBox(t);
+  if (box) {
+    const mx = 2.4, my = 1.6;
+    const [x0, y0] = fmap(box[0] - mx, box[1] - my), [x1, y1] = fmap(box[2] + mx, box[3] + my);
+    tgt.style.left = x0 + 'px'; tgt.style.top = y0 + 'px'; tgt.style.width = (x1 - x0) + 'px'; tgt.style.height = (y1 - y0) + 'px';
+    tgt.style.opacity = 1;
+  } else tgt.style.opacity = 0;
+  // the persistent layer wakes up as the opening film ends
+  if (p > 0.85 && !BG.primed) { BG.primed = true; bgAttach(BG.vids.quad); }
+}
+const HK = [[16.2, 52, 42, 56, 56], [16.6, 53, 41, 57.5, 60], [17.0, 54, 40, 59, 63], [17.5, 55, 39.5, 61, 65], [18.0, 55.6, 39.1, 61.6, 66.6], [18.5, 56.1, 39.1, 62.5, 67.7], [19.0, 56.1, 36.8, 63.0, 68.3], [19.5, 55.9, 35.4, 64.0, 70.3], [20.0, 55.6, 34.1, 63.6, 72.6], [20.5, 54.2, 31.3, 63.6, 73.3], [21.0, 54.6, 29.6, 65.1, 75.7], [21.5, 54.1, 28.3, 64.0, 78.8], [22.0, 52.8, 25.4, 65.1, 81.1], [22.5, 53.2, 20.0, 66.3, 83.3], [23.0, 49.3, 13.2, 66.3, 86.6], [23.5, 50.1, 4.3, 69.6, 96.3], [24.0, 46.3, 0.1, 70.0, 99.9], [24.15, 44, 0, 71, 100]];
+function humBox(t) {
+  if (t < HK[0][0] || t > HK[HK.length - 1][0]) return null;
+  let i = 0; while (i < HK.length - 2 && HK[i + 1][0] <= t) i++;
+  const a = HK[i], b = HK[i + 1], u = (t - a[0]) / (b[0] - a[0]);
+  return [1, 2, 3, 4].map(k => a[k] + (b[k] - a[k]) * u);
+}
+function fmap(px, py) {
+  const W = innerWidth, H = $('#stage').clientHeight, sc = Math.max(W / 16, H / 9), dw = 16 * sc, dh = 9 * sc;
+  return [(W - dw) / 2 + px / 100 * dw, (H - dh) / 2 + py / 100 * dh];
+}
+
+// ---------- Persistent cinematic layer: one chapter per section, crossfaded by scroll ----------
+const BG = { el: $('#bgfilm'), vids: Object.fromEntries($$('#bgfilm video').map(v => [v.dataset.bg, v])), cur: null, primed: false };
+const bgSize = mobile ? 960 : 1600;
+function bgAttach(v) { if (v.dataset.ready) return; v.dataset.ready = 1; v.src = `media/bg-${v.dataset.bg}-${bgSize}.mp4`; v.load(); }
+function setBg(name, fx) {
+  BG.el.classList.toggle('grid', fx === 'grid');
+  if (BG.cur === name) return;
+  BG.cur = name;
+  for (const k in BG.vids) {
+    const v = BG.vids[k], on = k === name;
+    v.classList.toggle('on', on);
+    if (on) { bgAttach(v); if (!reduce) { const pr = v.play(); if (pr) pr.catch(() => {}); } }
+    else setTimeout(() => { if (!v.classList.contains('on') && !v.paused) v.pause(); }, 1200);
+  }
+}
+$$('[data-bg]').forEach(el => {
+  if (el.tagName === 'VIDEO') return;
+  ScrollTrigger.create({ trigger: el, start: 'top 60%', end: 'bottom 60%', onToggle: st => { if (st.isActive) setBg(el.dataset.bg, el.dataset.fx); } });
+});
+ScrollTrigger.create({ trigger: sec, start: 'bottom 110%', onEnter: () => BG.el.classList.add('show'), onLeaveBack: () => { BG.el.classList.remove('show'); } });
+requestAnimationFrame(frame);
+addEventListener('touchstart', () => { film.play().then(() => film.pause()).catch(() => {}); }, { once: true, passive: true });
+
+// Header: solid once past the film, navy logo over light sections
+const hdr = $('#hdr');
+const lightSecs = [];
+function headerState() {
+  const y = 40;
+  hdr.classList.toggle('solid', scrollY > sec.offsetHeight - innerHeight - 10);
+  const pr = $('#prog'), max = document.documentElement.scrollHeight - innerHeight; if (pr) { pr.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`; pr.classList.toggle('show', scrollY > 40); }
+  hdr.classList.toggle('lt', lightSecs.some(s => { const r = s.getBoundingClientRect(); return r.top <= y && r.bottom >= y; }));
+}
+addEventListener('scroll', headerState, { passive: true }); headerState();
+
+// Reveals
+$$('.rv').forEach(el => gsap.to(el, { y: 0, opacity: 1, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%' } }));
+// Parallax on photos
+$$('[data-par]').forEach(img => gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
+// ---------- Northstar Site view: a working illustrative product preview ----------
+const SITES = [
+  { n: 'Riverside Tower', img: 's-site.jpg', alt: 'Aerial capture of a construction site', tag: ["Today's capture", 'vs last week'], f: [
+    { x: 46, y: 31, s: 'h', l: 'HIGH', t: 'Guardrail missing', d: 'Level 7 · east edge · drone pass', m: 'Edge protection absent along 6 m of the east slab edge. Flagged for the safety team.' },
+    { x: 80, y: 82, s: 'm', l: 'MEDIUM', t: 'Standing water', d: 'Basement B2 · quadruped patrol', m: 'Pooling near the sump pit, larger than last patrol. Check the pump and drainage.' },
+    { x: 24, y: 62, s: 'o', l: 'ON PLAN', t: 'Slab poured as planned', d: 'Block C · compared to schedule', m: 'Level 4 slab complete and matches the planned pour for this week.' },
+    { x: 62, y: 52, s: 'm', l: 'REVIEW', t: 'Valve reading changed', d: 'Plant room · humanoid round', m: 'Gauge on riser 2 reads outside its usual band. Needs an engineer to confirm.' } ] },
+  { n: 'North Depot', img: 's-aerial.jpg', alt: 'Aerial view of a depot and yards at dawn', tag: ['Aerial survey', 'vs last week'], f: [
+    { x: 34, y: 40, s: 'h', l: 'HIGH', t: 'Fence breach suspected', d: 'North perimeter · drone pass', m: 'A gap in the perimeter fence line that was not present last week.' },
+    { x: 58, y: 58, s: 'm', l: 'MEDIUM', t: 'Stockpile volume changed', d: 'Yard A · volumetric survey', m: 'Aggregate stockpile measured lower than the delivery records suggest.' },
+    { x: 76, y: 30, s: 'o', l: 'ON PLAN', t: 'Loading bay clear', d: 'Bay 3 · scheduled check', m: 'Access and turning area clear of obstructions.' },
+    { x: 20, y: 72, s: 'm', l: 'REVIEW', t: 'Roof panel lifted', d: 'Warehouse 2 · drone pass', m: 'One roof sheet appears displaced at the ridge. Review before the next storm.' } ] },
+  { n: 'Solar Field East', img: 's-scan.jpg', alt: 'Site survey with scan overlay', tag: ['Thermal pass', 'vs last month'], f: [
+    { x: 40, y: 36, s: 'h', l: 'HIGH', t: 'Hot cell · string 14', d: 'Array B · thermal inspection', m: 'One module running well above its neighbours. Likely a bypass diode fault.' },
+    { x: 66, y: 64, s: 'm', l: 'MEDIUM', t: 'Vegetation encroachment', d: 'South rows · aerial imaging', m: 'Growth is beginning to shade the lower row edge in the afternoon.' },
+    { x: 24, y: 70, s: 'o', l: 'ON PLAN', t: 'Inverter 3 nominal', d: 'Inverter yard · sensor feed', m: 'Output and temperature within the expected range.' },
+    { x: 80, y: 28, s: 'm', l: 'REVIEW', t: 'Access track flooded', d: 'East gate · drone pass', m: 'Water across the maintenance track after rain. May delay the next ground visit.' } ] },
+  { n: 'Plant Room B', img: 's-plant.jpg', alt: 'Inside a plant room lined with pipes and valves', tag: ['Ground patrol', 'vs yesterday'], f: [
+    { x: 58, y: 30, s: 'h', l: 'HIGH', t: 'Pump 3 thermal anomaly', d: 'Thermal · quadruped patrol', m: 'Bearing housing warmer than the other pumps on the same duty.' },
+    { x: 66, y: 50, s: 'o', l: 'ON PLAN', t: 'Valve 12 checklist verified', d: 'Humanoid round', m: 'Position and tag match the checklist. Photo evidence attached.' },
+    { x: 36, y: 60, s: 'm', l: 'MEDIUM', t: 'Gauge out of range', d: 'Riser 2 · humanoid round', m: 'Pressure reading sits above the marked band. Needs confirmation.' },
+    { x: 50, y: 78, s: 'h', l: 'HIGH', t: 'Exit route blocked', d: 'Level B2 · quadruped patrol', m: 'Stored material across the escape route. Clear before the next shift.' } ] },
+];
+const VIEWS = [{ k: 'map', n: 'Map' }, { k: 'v3d', n: '3D model' }, { k: 'cmp', n: 'Compare' }, { k: 'rep', n: 'Reports' }];
+const SV = { site: 0, view: 'map', sel: -1 };
+const svList = $('#siteList'), svViews = $('#viewList'), svMap = $('#map'), svImg = $('#mapImg'), svImgB = $('#mapImgB'), svPins = $('#pins'), svIssues = $('#issues'), svPop = $('#pop'), svTag = $('#maptag'), svCmp = $('#cmp'), svFeedTitle = $('#feedTitle'), svHint = $('#feedHint');
+function svButton(label, on, fn) { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab'); b.innerHTML = '<i></i>' + label; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); b.addEventListener('click', fn); return b; }
+function svRenderSide() {
+  svList.innerHTML = ''; SITES.forEach((st, i) => svList.append(svButton(st.n, i === SV.site, () => svSite(i))));
+  svViews.innerHTML = ''; VIEWS.filter(v => v.k !== 'map').forEach(v => svViews.append(svButton(v.n, SV.view === v.k, () => svView(SV.view === v.k ? 'map' : v.k))));
+}
+function svSite(i) {
+  SV.site = i; SV.sel = -1; svPop.hidden = true;
+  const st = SITES[i];
+  svImg.style.opacity = 0; svImgB.style.opacity = 0;
+  setTimeout(() => { svImg.src = 'media/' + st.img; svImgB.src = 'media/' + st.img; svImg.alt = st.alt; svImg.onload = () => { svImg.style.opacity = 1; svImgB.style.opacity = 1; }; }, 180);
+  svPins.innerHTML = ''; svIssues.innerHTML = '';
+  st.f.forEach((f, k) => {
+    const pin = document.createElement('button'); pin.type = 'button'; pin.className = 'pin ' + (f.s === 'h' ? 'hi' : f.s === 'o' ? 'ok' : ''); pin.style.left = f.x + '%'; pin.style.top = f.y + '%'; pin.textContent = k + 1; pin.setAttribute('aria-label', f.t); pin.addEventListener('click', () => svSelect(k)); svPins.append(pin);
+    const is = document.createElement('div'); is.className = 'issue'; is.tabIndex = 0; is.setAttribute('role', 'button'); is.innerHTML = `<div class="t"><h4>${k + 1}. ${f.t}</h4><span class="sev ${f.s}">${f.l}</span></div><p>${f.d}</p>`; is.addEventListener('click', () => svSelect(k)); is.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); svSelect(k); } }); svIssues.append(is);
+  });
+  svTag.innerHTML = `<span>${st.tag[0]}</span><span>${st.tag[1]}</span>`;
+  svRenderSide(); svApplyView();
+  if ($('#app').classList.contains('live')) { gsap.fromTo('#pins .pin', { scale: 0 }, { scale: 1, duration: .5, ease: 'back.out(2)', stagger: .08, clearProps: 'transform' }); gsap.fromTo('#issues .issue', { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: .5, ease: 'expo.out', stagger: .08, clearProps: 'all' }); }
+}
+function svSelect(k) {
+  SV.sel = SV.sel === k ? -1 : k;
+  [...svPins.children].forEach((p, i) => p.classList.toggle('sel', i === SV.sel));
+  [...svIssues.children].forEach((p, i) => p.classList.toggle('sel', i === SV.sel));
+  if (SV.sel < 0) { svPop.hidden = true; return; }
+  const f = SITES[SV.site].f[SV.sel];
+  svPop.innerHTML = `<b>${f.t}</b>${f.m}<small>${f.l} · ${f.d} · sample finding</small>`;
+  svPop.style.left = f.x + '%'; svPop.style.top = f.y + '%'; svPop.hidden = false;
+  if (f.y < 34) { svPop.style.transform = 'translate(-50%, 24px)'; } else { svPop.style.transform = 'translate(-50%, calc(-100% - 22px))'; }
+  if (SV.view === 'rep') svView('map');
+}
+function svView(k) { SV.view = k; svRenderSide(); svApplyView(); }
+function svApplyView() {
+  const st = SITES[SV.site];
+  svMap.classList.toggle('v3d', SV.view === 'v3d'); svMap.classList.toggle('cmp', SV.view === 'cmp');
+  svCmp.hidden = SV.view !== 'cmp'; svPins.style.opacity = SV.view === 'cmp' ? .35 : 1;
+  if (SV.view === 'cmp') svMap.style.setProperty('--cmp', svCmp.value + '%');
+  if (SV.view === 'v3d') svTag.innerHTML = '<span>3D model · point cloud</span><span>Sample</span>';
+  else if (SV.view === 'cmp') svTag.innerHTML = '<span>Drag to compare</span><span>Last week · Today</span>';
+  else svTag.innerHTML = `<span>${st.tag[0]}</span><span>${st.tag[1]}</span>`;
+  if (SV.view === 'rep') {
+    svFeedTitle.textContent = 'Reports'; svHint.textContent = 'Sample reports built from the same findings.';
+    svIssues.innerHTML = [['Weekly progress report', st.n + ' · PDF · sample'], ['Safety observations', 'This week · PDF · sample'], ['Inspection evidence log', 'Georeferenced findings · PDF · sample']].map(r => `<a class="rep" href="media/northstar-sample-report.pdf" target="_blank" rel="noopener"><div><h4>${r[0]}</h4><p>${r[1]}</p></div><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v9M4 7l4 4 4-4M3 14h10"/></svg></a>`).join('');
+  } else if (svFeedTitle.textContent !== 'Flagged') { svFeedTitle.textContent = 'Flagged'; svHint.textContent = 'Click a finding or a map marker to see where it is. Sample data.'; svSite(SV.site); }
+}
+svCmp.addEventListener('input', () => svMap.style.setProperty('--cmp', svCmp.value + '%'));
+svSite(0);
+
+// Platform: grid sweeps across the map, pins drop, issues slide in
+const appTl = gsap.timeline({ scrollTrigger: { trigger: '#app', start: 'top 70%' }, onComplete: () => $('#app').classList.add('live') });
+appTl.to('#mlayer', { clipPath: 'inset(0 0% 0 0)', duration: 1.6, ease: 'power2.inOut' })
+  .to('.pin', { scale: 1, duration: 0.6, ease: 'back.out(2)', stagger: 0.18 }, '-=0.6')
+  .to('.issue', { opacity: 1, x: 0, duration: 0.7, ease: 'expo.out', stagger: 0.15 }, '-=0.5');
+$('#app').addEventListener('click', e => { if (!e.target.closest('.pin') && !e.target.closest('.issue') && SV.sel >= 0) svSelect(SV.sel); });
+// Inside: alerts pop in one by one
+gsap.to('.alert', { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'expo.out', stagger: 0.35, scrollTrigger: { trigger: '#inside', start: 'top 45%' } });
+// Steps: the connecting line fills as you scroll
+gsap.to('#stepline', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '#steps', start: 'top 75%', end: 'bottom 55%', scrub: true } });
+
+// Industries tabs
+const IND = [
+  { n: 'Manufacturing', h: 'Industrial assets &amp; manufacturing', img: 's-plant.jpg', p: 'Support equipment condition monitoring, visual quality inspections, thermal anomaly detection, production-facility walkthroughs, and asset documentation.', u: ['Equipment condition monitoring', 'Visual quality inspections', 'Thermal anomaly detection', 'Production-facility walkthroughs', 'Asset documentation'] },
+  { n: 'Energy &amp; utilities', h: 'Energy &amp; utilities', img: 's-scan.jpg', p: 'Inspect selected energy infrastructure, solar installations, substations, and utility assets through aerial imaging, thermal analysis, connected sensors, and robotic observation.', u: ['Solar installations', 'Substations', 'Utility assets', 'Thermal analysis'] },
+  { n: 'Oil, gas &amp; process', h: 'Oil, gas &amp; process facilities', img: 's-humanoid2.jpg', p: 'Support remote visual inspection, equipment condition assessment, thermal observations, and routine monitoring in suitable industrial operating environments.', u: ['Remote visual inspection', 'Equipment condition assessment', 'Thermal observations', 'Routine monitoring'] },
+  { n: 'Infrastructure', h: 'Infrastructure &amp; civil engineering', img: 's-dog.jpg', p: 'Monitor roads, bridges, rail corridors, tunnels, and large-scale civil assets through reality capture, structural-condition observations, and change detection.', u: ['Roads and bridges', 'Rail corridors and tunnels', 'Structural-condition observations', 'Change detection'] },
+  { n: 'Warehouses &amp; logistics', h: 'Warehouses &amp; logistics facilities', img: 's-humanoid.jpg', p: 'Enable inventory-area observation, facility inspection, equipment monitoring, and spatial documentation through autonomous mobile platforms and connected intelligence.', u: ['Inventory-area observation', 'Facility inspection', 'Equipment monitoring', 'Spatial documentation'] }
+];
+const tabs = $('#tabs'), indImg = $('#indImg'), indTxt = $('#indTxt');
+function showInd(k) {
+  const d = IND[k];
+  [...tabs.children].forEach((b, j) => { b.classList.toggle('on', j === k); b.setAttribute('aria-selected', j === k); });
+  indImg.style.opacity = 0;
+  setTimeout(() => { indImg.src = 'media/' + d.img; indImg.alt = d.n; indImg.onload = () => (indImg.style.opacity = 1); }, 200);
+  indTxt.innerHTML = `<h3>${d.h}</h3><p>${d.p}</p><ul>${d.u.map((x, i) => `<li><span class="mono">0${i + 1}</span>${x}</li>`).join('')}</ul>`;
+  indTxt.classList.remove('fade'); void indTxt.offsetWidth; indTxt.classList.add('fade');
+}
+IND.forEach((d, k) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab'); b.innerHTML = d.n; b.onclick = () => showInd(k); tabs.append(b); });
+showInd(0);
+
+// Nav: mark the section in view
+{
+  const links = [...document.querySelectorAll('nav a')];
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  links.forEach(a => { const t = document.querySelector(a.getAttribute('href')); t && io.observe(t); });
+  const off = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && links.forEach(a => a.classList.remove('on'))), { rootMargin: '-45% 0px -50% 0px' });
+  ['#top', '#statement', '#vision', '#inside', '#how', '#why'].forEach(id => { const t = document.querySelector(id); t && off.observe(t); });
+}
+
+// Partner with us: jump to the form and focus it
+$('#partnerBtn').addEventListener('click', e => { e.preventDefault(); const f = $('#demoForm'); f.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => f.querySelector('input').focus({ preventScroll: true }), 600); });
+
+// FAQ accordion
+$$('.qa button').forEach(b => {
+  b.setAttribute('aria-expanded', b.parentElement.classList.contains('open'));
+  b.addEventListener('click', () => b.setAttribute('aria-expanded', b.parentElement.classList.toggle('open')));
+});
+
+// Demo form: opens the visitor's email app once an inbox is set; until then it says so honestly
+$('#demoForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target), note = $('#formNote');
+  if (!f.get('name') || !f.get('email')) { note.textContent = 'Please add your name and work email.'; return; }
+  if (!CONTACT_EMAIL) { note.textContent = 'Demo booking opens soon. This preview is not taking requests yet.'; return; }
+  const body = `Name: ${f.get('name')}\nEmail: ${f.get('email')}\nCompany: ${f.get('company')}\nIndustry: ${f.get('industry')}\n\n${f.get('msg')}`;
+  location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Northstar demo request')}&body=${encodeURIComponent(body)}`;
+});
+
+// Frozen-state hook for screenshots: ?p=0..1 jumps the film there
+const forced = new URLSearchParams(location.search).get('p');
+if (forced !== null) {
+  document.documentElement.classList.add('snap');
+  L.done = true; document.documentElement.style.overflow = ''; if (lenis) lenis.start(); intro.progress(1); BG.el.classList.add('show');
+  const go = () => { S.target = S.cur = +forced; };
+  film.addEventListener('loadeddata', go); go();
+  const jump = new URLSearchParams(location.search).get('s');
+  if (jump && $('#' + jump)) addEventListener('load', () => { const y = $('#' + jump).offsetTop; lenis ? lenis.scrollTo(y, { immediate: true }) : scrollTo(0, y); ScrollTrigger.refresh(); headerState(); });
+}
+setTimeout(() => (window.__ready = true), 1500);
+</script>
+</body></html>

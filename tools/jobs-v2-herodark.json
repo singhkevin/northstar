@@ -1,0 +1,28 @@
+[
+ {
+  "id": "hero-dark-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v2/stills/hero-dark-1.png",
+  "input": {
+   "prompt": "Keep the exact same drone as the reference image: identical graphite-grey carbon body, arm shape, four spinning motion-blurred propellers and the gimbal camera underneath. New lighting and composition: deep twilight twenty minutes before sunrise, a dark steel-blue sky, the drone hovering in the right half of the frame seen from a three-quarter front angle slightly from below with its nose dipped a few degrees, lit by a thin cool rim light from the sky and the first faint warm glow on the horizon, small red and green navigation lights glowing on its arms. Far below and out of focus, a vast construction site with tower cranes and a few work lights still on, thin mist. The left half of the frame is dark open sky. Photorealistic, cinematic, 50mm lens, shallow depth of field, subtle film grain, no text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v2/stills/hero-3.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "hero-dark-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v2/stills/hero-dark-2.png",
+  "input": {
+   "prompt": "Keep the exact same drone as the reference image: identical graphite-grey carbon body, arm shape, four spinning motion-blurred propellers and the gimbal camera underneath. New lighting and composition: deep twilight twenty minutes before sunrise, a dark steel-blue sky, the drone hovering in the right half of the frame seen from a three-quarter front angle slightly from below with its nose dipped a few degrees, lit by a thin cool rim light from the sky and the first faint warm glow on the horizon, small red and green navigation lights glowing on its arms. Far below and out of focus, a vast construction site with tower cranes and a few work lights still on, thin mist. The left half of the frame is dark open sky. Photorealistic, cinematic, 50mm lens, shallow depth of field, subtle film grain, no text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v2/stills/hero-3.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ }
+]

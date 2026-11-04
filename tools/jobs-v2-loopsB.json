@@ -1,0 +1,50 @@
+[
+ {
+  "id": "aerial",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v2/video/aerial.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v2/stills/aerial-2.png",
+   "last_frame_url": "@file:assets/v2/stills/aerial-2.png",
+   "prompt": "The drone flies slowly forward over the misty construction site at dawn, propellers spinning as blurred discs, navigation lights glowing, the camera tracking alongside it so the drone stays in the same place in frame while the site drifts gently beneath, mist moving slowly, cranes passing far below. Seamless loop: the final frame matches the first frame exactly. Photorealistic, natural physics, steady professional camera, one continuous shot with no cuts, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "night",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v2/video/night.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v2/stills/night-2.png",
+   "last_frame_url": "@file:assets/v2/stills/night-2.png",
+   "prompt": "The drone hovers at night holding position, propellers spinning as blurred discs, red and green navigation lights pulsing softly, mist drifting slowly through the work lights of the construction site far below, crane beacons blinking. Static camera with a barely perceptible drift. Seamless loop: the final frame matches the first frame exactly. Photorealistic, natural physics, steady professional camera, one continuous shot with no cuts, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "bridge-a",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v2/video/bridge-a.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v2/stills/hero-dark-1.png",
+   "last_frame_url": "@file:assets/v2/stills/aerial-2.png",
+   "prompt": "The drone tilts its nose down and accelerates away from the camera; the camera rises and swings up behind and above it as it flies out over the vast construction site while dawn breaks and the sky brightens from deep twilight to the first warm light, mist below, cranes passing beneath. Smooth chase shot. Photorealistic, natural physics, steady professional camera, one continuous shot with no cuts, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "bridge-b",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v2/video/bridge-b.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v2/stills/aerial-2.png",
+   "last_frame_url": "@file:assets/v2/stills/quad-2.png",
+   "prompt": "The camera leaves the drone and dives down toward the site, plunging through a wide skylight into a large industrial plant room full of pipes and steam, levelling out to reveal a four-legged inspection robot standing on a steel walkway. Fast smooth dive that decelerates into a steady shot. Photorealistic, natural physics, steady professional camera, one continuous shot with no cuts, no text, no logos, no people.",
+   "duration": 5
+  }
+ }
+]

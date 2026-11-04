@@ -1,0 +1,15 @@
+[
+ {
+  "id": "twin-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v2/stills/twin-1.png",
+  "input": {
+   "prompt": "Keep the exact same scene, lighting and style as the reference image, but remove the drone completely: a high oblique aerial view of the vast misty construction site at dawn, concrete cores with rebar, tower cranes, site roads curving through, thin mist in the low ground, cool steel-blue shadows and a soft warm glow on the horizon. No drone, no aircraft, no text, no logos, no people. Photorealistic, cinematic, 35mm lens, subtle film grain.",
+   "image_urls": [
+    "@file:assets/v2/stills/aerial-2.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ }
+]

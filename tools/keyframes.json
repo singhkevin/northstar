@@ -1,0 +1,122 @@
+[
+ {
+  "id": "s1-hero-grok1",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "Eye-level close-up of a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding, hovering in mid-air in the centre of frame, sun rising directly behind it creating a rim light and soft lens flare; behind it, out of focus, a vast construction megaproject with tower cranes and concrete high-rise cores in morning mist. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s1-hero-grok2",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "Eye-level close-up of a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding, hovering in mid-air in the centre of frame, sun rising directly behind it creating a rim light and soft lens flare; behind it, out of focus, a vast construction megaproject with tower cranes and concrete high-rise cores in morning mist. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s1-hero-qwen1",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "Eye-level close-up of a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding, hovering in mid-air in the centre of frame, sun rising directly behind it creating a rim light and soft lens flare; behind it, out of focus, a vast construction megaproject with tower cranes and concrete high-rise cores in morning mist. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s1-hero-qwen2",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "Eye-level close-up of a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding, hovering in mid-air in the centre of frame, sun rising directly behind it creating a rim light and soft lens flare; behind it, out of focus, a vast construction megaproject with tower cranes and concrete high-rise cores in morning mist. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s2-takeoff-grok1",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "View from slightly behind and above a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding as it banks and climbs away from camera over a vast construction site at sunrise, long shadows, tower cranes, steel frames and earthworks spreading below, mist in the valley. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s2-takeoff-grok2",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "View from slightly behind and above a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding as it banks and climbs away from camera over a vast construction site at sunrise, long shadows, tower cranes, steel frames and earthworks spreading below, mist in the valley. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s2-takeoff-qwen1",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "View from slightly behind and above a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding as it banks and climbs away from camera over a vast construction site at sunrise, long shadows, tower cranes, steel frames and earthworks spreading below, mist in the valley. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s2-takeoff-qwen2",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "View from slightly behind and above a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding as it banks and climbs away from camera over a vast construction site at sunrise, long shadows, tower cranes, steel frames and earthworks spreading below, mist in the valley. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s3-scan-grok1",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "High aerial oblique view looking down on a vast construction site at sunrise: concrete building cores, rebar, cranes, excavated earthworks and site roads with long golden shadows; a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding small in the lower foreground flying over it. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s3-scan-grok2",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "High aerial oblique view looking down on a vast construction site at sunrise: concrete building cores, rebar, cranes, excavated earthworks and site roads with long golden shadows; a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding small in the lower foreground flying over it. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s3-scan-qwen1",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "High aerial oblique view looking down on a vast construction site at sunrise: concrete building cores, rebar, cranes, excavated earthworks and site roads with long golden shadows; a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding small in the lower foreground flying over it. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s3-scan-qwen2",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "High aerial oblique view looking down on a vast construction site at sunrise: concrete building cores, rebar, cranes, excavated earthworks and site roads with long golden shadows; a sleek industrial inspection drone, matte graphite and white composite body, four arms with large carbon propellers spinning with motion blur, a gimbal sensor pod with a LiDAR unit and camera underneath, a small amber status light, no branding small in the lower foreground flying over it. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s4-plant-grok1",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "Interior of a vast industrial mechanical plant room inside a new building: large insulated pipes, steel valves, pumps and cable trays, polished concrete floor, dusty shafts of dawn sunlight cutting through high windows, deep perspective toward the far end. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s4-plant-grok2",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "Interior of a vast industrial mechanical plant room inside a new building: large insulated pipes, steel valves, pumps and cable trays, polished concrete floor, dusty shafts of dawn sunlight cutting through high windows, deep perspective toward the far end. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s4-plant-qwen1",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "Interior of a vast industrial mechanical plant room inside a new building: large insulated pipes, steel valves, pumps and cable trays, polished concrete floor, dusty shafts of dawn sunlight cutting through high windows, deep perspective toward the far end. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s4-plant-qwen2",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "Interior of a vast industrial mechanical plant room inside a new building: large insulated pipes, steel valves, pumps and cable trays, polished concrete floor, dusty shafts of dawn sunlight cutting through high windows, deep perspective toward the far end. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s5-humanoid-grok1",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "Inside a vast industrial plant room with large pipes, valves and dusty shafts of dawn light, a sleek industrial humanoid robot with matte white and graphite panels, exposed precision joints, a smooth faceless dark visor head with a thin amber light strip, no branding walks toward the camera down the central aisle, mid-stride, slightly low camera angle, heroic but documentary feel. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s5-humanoid-grok2",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "Inside a vast industrial plant room with large pipes, valves and dusty shafts of dawn light, a sleek industrial humanoid robot with matte white and graphite panels, exposed precision joints, a smooth faceless dark visor head with a thin amber light strip, no branding walks toward the camera down the central aisle, mid-stride, slightly low camera angle, heroic but documentary feel. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s5-humanoid-qwen1",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "Inside a vast industrial plant room with large pipes, valves and dusty shafts of dawn light, a sleek industrial humanoid robot with matte white and graphite panels, exposed precision joints, a smooth faceless dark visor head with a thin amber light strip, no branding walks toward the camera down the central aisle, mid-stride, slightly low camera angle, heroic but documentary feel. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s5-humanoid-qwen2",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "Inside a vast industrial plant room with large pipes, valves and dusty shafts of dawn light, a sleek industrial humanoid robot with matte white and graphite panels, exposed precision joints, a smooth faceless dark visor head with a thin amber light strip, no branding walks toward the camera down the central aisle, mid-stride, slightly low camera angle, heroic but documentary feel. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s6-dog-grok1",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "Inside a raw concrete stairwell of an industrial building under construction, an industrial quadruped robot dog with graphite and white armour panels, a LiDAR sensor head, strong articulated legs, small amber status lights, no branding climbing the stairs toward the camera, dramatic shafts of dawn light, dust in the air, low camera angle. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s6-dog-grok2",
+  "model": "xai/grok-imagine-image-2.0",
+  "prompt": "Inside a raw concrete stairwell of an industrial building under construction, an industrial quadruped robot dog with graphite and white armour panels, a LiDAR sensor head, strong articulated legs, small amber status lights, no branding climbing the stairs toward the camera, dramatic shafts of dawn light, dust in the air, low camera angle. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s6-dog-qwen1",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "Inside a raw concrete stairwell of an industrial building under construction, an industrial quadruped robot dog with graphite and white armour panels, a LiDAR sensor head, strong articulated legs, small amber status lights, no branding climbing the stairs toward the camera, dramatic shafts of dawn light, dust in the air, low camera angle. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ },
+ {
+  "id": "s6-dog-qwen2",
+  "model": "alibaba/qwen-image-3/text-to-image",
+  "prompt": "Inside a raw concrete stairwell of an industrial building under construction, an industrial quadruped robot dog with graphite and white armour panels, a LiDAR sensor head, strong articulated legs, small amber status lights, no branding climbing the stairs toward the camera, dramatic shafts of dawn light, dust in the air, low camera angle. Photorealistic cinematic film still, shot on ARRI Alexa 65 with anamorphic lens, natural golden-hour dawn light, subtle haze, rich but restrained colour grade with warm amber highlights and cool shadows, shallow depth of field, fine film grain, ultra detailed, real materials. No text, no logos, no letters, no watermarks, no people."
+ }
+]

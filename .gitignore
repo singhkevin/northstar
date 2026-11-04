@@ -1,0 +1,9 @@
+# keys and machine settings: never commit
+.env
+.env.*
+.vercel/
+.DS_Store
+node_modules/
+# temporary working files that can be rebuilt
+assets/v5/tmp/
+assets/audit/tmp/

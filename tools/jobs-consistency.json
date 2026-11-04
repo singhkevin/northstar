@@ -1,0 +1,30 @@
+[
+ {
+  "id": "s2-consistent",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/keyframes/s2-takeoff-final.png",
+  "input": {
+   "prompt": "Replace the drone with the exact drone from the first reference image (same graphite and white body shape, arms, propellers and gimbal camera), keeping its design identical. Composition from the second reference image: the drone banks and climbs over a vast misty construction site at sunrise seen from slightly behind and above, a road curving through the site, tower cranes. Keep the exact same photorealistic cinematic style: golden-hour dawn, haze, warm amber highlights, cool shadows, film grain. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/keyframes/s1-hero-grok2.png",
+    "@file:assets/keyframes/s2-takeoff-grok1.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "s3-consistent",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/keyframes/s3-scan-final.png",
+  "input": {
+   "prompt": "Replace the drone with the exact drone from the first reference image (same graphite and white body shape, arms, propellers and gimbal camera), keeping its design identical. Composition from the second reference image: high aerial oblique view of a vast construction site at sunrise with concrete cores, rebar and cranes, the drone flying in the foreground. Keep the exact same photorealistic cinematic style: golden-hour dawn, haze, warm amber highlights, cool shadows, film grain. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/keyframes/s1-hero-grok2.png",
+    "@file:assets/keyframes/s3-scan-grok2.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ }
+]

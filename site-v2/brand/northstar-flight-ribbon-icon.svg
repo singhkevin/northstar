@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="454" viewBox="70 209 660 454" role="img" aria-labelledby="logo-title logo-desc">
+  <title id="logo-title">NORTHSTAR — Ribbon Symbol</title>
+  <desc id="logo-desc">Standalone gradient N ribbon symbol. Three smooth vector shapes, 21 anchors. Transparent background.</desc>
+  <defs>
+  <linearGradient id="ribbon-flow" gradientUnits="userSpaceOnUse" x1="220" y1="390" x2="575" y2="500">
+    <stop offset="0" stop-color="#00CDD9"/>
+    <stop offset=".32" stop-color="#009CF4"/>
+    <stop offset=".7" stop-color="#245FFF"/>
+    <stop offset="1" stop-color="#3BA7FF"/>
+  </linearGradient>
+  <linearGradient id="ribbon-left-fold" gradientUnits="userSpaceOnUse" x1="189" y1="579" x2="302" y2="429">
+    <stop offset="0" stop-color="#00D4D8"/>
+    <stop offset="1" stop-color="#007CEF"/>
+  </linearGradient>
+  <linearGradient id="ribbon-right-fold" gradientUnits="userSpaceOnUse" x1="521" y1="476" x2="592" y2="293">
+    <stop offset="0" stop-color="#284BDE"/>
+    <stop offset=".55" stop-color="#625CEB"/>
+    <stop offset="1" stop-color="#9471FF"/>
+  </linearGradient>
+</defs>
+  <g id="northstar-ribbon">
+  <path id="ribbon-silhouette" fill="url(#ribbon-flow)" d="M146 587
+C183 545 219 460 255 380
+C273 340 301 325 334 325
+C357 325 374 332.727 393 350
+L481 430
+L509 352
+C520.2 320.8 548 305 654 285
+L558 524
+C544 558.854 520 570 494 570
+C471 570 452 559.22 434 543
+L343 461
+L307 523
+C287 557.444 248 579 146 587Z"/>
+  <path id="ribbon-left-return" fill="url(#ribbon-left-fold)" d="M146 587
+C168.94 560.96 191.4956 518.3908 213.905128 470.732144
+C241 420 292 420 343 461
+L307 523
+C287 557.444 248 579 146 587Z"/>
+  <path id="ribbon-right-return" fill="url(#ribbon-right-fold)" d="M481 430
+L509 352
+C520.2 320.8 548 305 654 285
+L588.72 447.52
+C572.72 487.353333 542 485.454545 514 460
+L481 430Z"/>
+</g>
+</svg>

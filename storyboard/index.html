@@ -1,0 +1,388 @@
+<title>Northstar One-Shot Storyboard</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a vertical filmstrip. One scene per row: the frame on the left with a drawn overlay, the shot notes on the right. Dark-first by choice: this is a film, graded Night. */
+:root{
+  --night:#060E1C; --deep:#0B1B33; --navy:#102B4E; --line:rgba(255,255,255,.12);
+  --fg:#F3F6FB; --fg2:#AEBAD0; --mute:#6F7F9B;
+  --cyan:#00CDD9; --sky:#009CF4; --violet:#9471FF; --red:#FF4D5E;
+  --flight:linear-gradient(100deg,#00CDD9 0%,#009CF4 32%,#245FFF 70%,#9471FF 100%);
+  --display:"Sora",ui-sans-serif,system-ui,sans-serif;
+  --body:"Inter",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--night);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding-block:48px 96px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+.eyebrow{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg2);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--flight);border-radius:2px}
+h1{font:600 clamp(34px,6vw,64px)/1.02 var(--display);letter-spacing:-.04em;margin:18px 0 18px;text-wrap:balance}
+h1 em{font-style:normal;background:var(--flight);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:18px;color:var(--fg2);max-width:62ch;margin:0}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:40px 0 64px}
+.rules div{background:var(--deep);padding:18px 20px}
+.rules b{display:block;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
+.rules p{margin:0;color:var(--fg2);font-size:15px}
+
+.strip{position:relative;display:grid;gap:0}
+.scene{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:28px;padding:40px 0;border-top:1px solid var(--line);align-items:start}
+.scene:last-of-type{border-bottom:1px solid var(--line)}
+.frame{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:14px;overflow:hidden;background:#000;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.frame img{display:block;width:100%;height:100%;object-fit:cover}
+.frame svg{position:absolute;inset:0;width:100%;height:100%}
+.frame .tc{position:absolute;left:14px;top:12px;font:500 11px/1 var(--mono);letter-spacing:.12em;color:#fff;background:rgba(6,14,28,.55);backdrop-filter:blur(6px);padding:7px 9px;border-radius:6px}
+.frame .mode{position:absolute;right:14px;top:12px;font:500 11px/1 var(--mono);letter-spacing:.12em;color:#fff;background:rgba(6,14,28,.55);backdrop-filter:blur(6px);padding:7px 9px;border-radius:6px;display:flex;gap:8px;align-items:center}
+.frame .mode i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:blink 1.6s infinite}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:48px 18px 16px;background:linear-gradient(180deg,rgba(6,14,28,0),rgba(6,14,28,.85));pointer-events:none}
+.cap h3{margin:0;font:600 clamp(20px,2.4vw,30px)/1.05 var(--display);letter-spacing:-.03em;text-wrap:balance}
+.cap h3 em{font-style:normal;background:var(--flight);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cap small{display:block;margin-top:6px;color:var(--fg2);font-size:13px}
+
+.notes{min-width:0;display:grid;gap:14px;align-content:start}
+.num{font:600 13px/1 var(--mono);color:var(--mute);letter-spacing:.1em;display:flex;justify-content:space-between;align-items:baseline}
+.num span{color:var(--fg2);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.notes h2{margin:0;font:600 clamp(24px,3vw,34px)/1.05 var(--display);letter-spacing:-.035em;text-wrap:balance}
+.beat{display:grid;grid-template-columns:92px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:15px;color:var(--fg2)}
+.beat b{font:500 11px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg)}
+.beat.idle b{color:var(--cyan)}
+.beat.scroll b{color:var(--violet)}
+.beat p{margin:0}
+.beat .q{display:inline-block;margin-top:6px;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:5px 9px}
+.have{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.have span{font:500 11px/1 var(--mono);letter-spacing:.08em;padding:6px 9px;border-radius:999px;border:1px solid var(--line);color:var(--fg2)}
+.have span.ok{border-color:rgba(0,205,217,.4);color:var(--cyan)}
+.have span.new{border-color:rgba(148,113,255,.45);color:var(--violet)}
+
+.prog{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:14px;align-items:center;padding:10px 0 12px;background:linear-gradient(var(--night) 70%,rgba(6,14,28,0));font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.prog .bar{flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.prog .bar i{display:block;height:100%;width:0;background:var(--flight);transition:width .2s linear}
+
+section.after{margin-top:72px}
+section.after h2{font:600 clamp(26px,3.4vw,40px)/1.05 var(--display);letter-spacing:-.035em;margin:14px 0 20px;text-wrap:balance}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+.cols h4{margin:0 0 8px;font:600 17px/1.2 var(--display);letter-spacing:-.02em}
+.cols p,.cols li{color:var(--fg2);font-size:15px;margin:0}
+.cols ul{padding-left:18px;margin:0;display:grid;gap:6px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin-top:8px}
+th,td{text-align:left;padding:10px 10px 10px 0;border-top:1px solid var(--line);vertical-align:top;color:var(--fg2)}
+th{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg);border-top:0}
+td:first-child{color:var(--fg)}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tw{overflow-x:auto}
+.ask{margin-top:56px;padding:26px 28px;border-radius:14px;background:var(--deep);border:1px solid var(--line)}
+.ask h3{margin:0 0 10px;font:600 20px/1.2 var(--display);letter-spacing:-.02em}
+.ask ol{margin:0;padding-left:20px;color:var(--fg2);display:grid;gap:8px}
+.foot{margin-top:40px;color:var(--mute);font-size:13px}
+
+/* drawn overlays */
+.path{fill:none;stroke:#fff;stroke-width:2.2;stroke-dasharray:9 9;opacity:.9;animation:dash 2.4s linear infinite}
+.path.v{stroke:var(--violet)}
+.path.c{stroke:var(--cyan)}
+.ghost{fill:none;stroke:#fff;stroke-width:1.6;opacity:.55;stroke-dasharray:4 6}
+.hud{fill:none;stroke:var(--cyan);stroke-width:2}
+.tag{font:500 13px var(--mono);letter-spacing:.1em;fill:#fff}
+.tag.c{fill:var(--cyan)}
+.tagbg{fill:rgba(6,14,28,.72)}
+.dot{fill:var(--violet)}
+.scanband{fill:url(#sg);animation:sweep 6s ease-in-out infinite alternate}
+.grid{stroke:var(--cyan);stroke-width:1;opacity:.45}
+.ring{fill:none;stroke:var(--cyan);stroke-width:2;animation:pulse 2.2s ease-out infinite}
+@keyframes dash{to{stroke-dashoffset:-36}}
+@keyframes blink{0%,45%{opacity:1}50%,100%{opacity:.25}}
+@keyframes sweep{from{transform:translateY(-40px)}to{transform:translateY(120px)}}
+@keyframes pulse{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.35)}}
+@media (prefers-reduced-motion:reduce){.path,.frame .mode i,.scanband,.ring{animation:none}}
+@media (max-width:860px){
+  .scene{grid-template-columns:1fr;gap:18px;padding:28px 0}
+  .beat{grid-template-columns:80px minmax(0,1fr)}
+  .rules{margin:28px 0 40px}
+}
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Northstar · website storyboard · draft 1 · 2 Nov 2026</div>
+  <h1>One drone. One shot. <em>Top to bottom.</em></h1>
+  <p class="lede">The page is a single cinematic take. The same drone is on screen from the first frame to the last. When you stop scrolling it never freezes: the rotors keep spinning, the nav lights blink and the camera keeps drifting. When you scroll, the drone flies to the next scene and does its job there. Eight scenes, read top to bottom.</p>
+
+  <div class="rules">
+    <div><b>Rule 1 · Never still</b><p>Every scene has an idle loop: rotors spin, lights blink, the camera slowly drifts or pushes in, fog moves. Nothing on the page is ever a frozen picture.</p></div>
+    <div><b>Rule 2 · One drone</b><p>The drone is its own layer, separate from the backgrounds, so it can fly from scene to scene without a cut. Same aircraft, same lights, every scene.</p></div>
+    <div><b>Rule 3 · Scroll is the camera</b><p>Scrolling plays the flight. Stop anywhere and the drone hovers where it is. Scroll back and it flies back.</p></div>
+    <div><b>Rule 4 · Real looking</b><p>Backgrounds are the graded footage we already have. Text, scan lines and tracking boxes are drawn in code on top, never baked into the footage. No invented numbers.</p></div>
+  </div>
+
+  <div class="prog" aria-hidden="true"><span id="pl">Scene 01 · Arrival</span><div class="bar"><i id="pb"></i></div><span id="pp">0%</span></div>
+
+  <div class="strip">
+
+  <!-- 01 -->
+  <article class="scene" data-name="Scene 01 · Arrival">
+    <div class="frame">
+      <img src="frames/01-arrival.jpg" alt="The drone hovers large in frame at dawn over a foggy construction site" width="1280" height="720">
+      <svg viewBox="0 0 1280 720" aria-hidden="true">
+        <ellipse class="ghost" cx="860" cy="330" rx="420" ry="150"/>
+        <path class="path" d="M440 330 C 470 460, 1250 460, 1280 330" />
+        <path class="path v" d="M860 180 L 860 40" /><path class="path v" d="M846 60 L 860 36 L 874 60"/>
+        <rect class="tagbg" x="36" y="560" width="300" height="30" rx="6"/><text class="tag c" x="48" y="580">CAMERA DRIFTS · 24 s ORBIT · NEVER STOPS</text>
+        <rect class="tagbg" x="880" y="56" width="250" height="30" rx="6"/><text class="tag" x="892" y="76">ON SCROLL · CLIMBS OUT OF FRAME</text>
+      </svg>
+      <span class="tc">0% · 00:00</span><span class="mode"><i></i>IDLE LOOP</span>
+      <div class="cap"><h3>Physical AI for the <em>real world.</em></h3><small>Northstar · Robotics &amp; Drones</small></div>
+    </div>
+    <div class="notes">
+      <div class="num">01 / 08 <span>Dawn · site in fog</span></div>
+      <h2>Arrival</h2>
+      <div class="beat idle"><b>Idle</b><p>The drone hangs big in the frame, nose to camera. Rotors are a constant blur, the red and green nav lights blink, the body bobs a few pixels with the hover. The camera makes one slow orbit around it every 24 seconds, so the cranes behind slide past and the shot never looks like a photo. Fog drifts on the horizon.</p></div>
+      <div class="beat scroll"><b>On scroll</b><p>The headline letters lift and thin out like vapour. The drone tips its nose down, the rotors pitch, and it climbs out of the top of the frame. The camera tilts up to follow and finds the whole site below.</p></div>
+      <div class="beat"><b>Text</b><p>“Physical AI for the real world.” (the founders’ current line) with a small “Scroll to fly” cue at the bottom.</p></div>
+      <div class="beat"><b>Sound</b><p>Optional, off until tapped: a low rotor hum that rises in pitch as it climbs.</p></div>
+      <div class="beat"><b>Footage</b><div class="have"><span class="ok">hero loop · have</span><span class="ok">drone cutout · have</span></div></div>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="scene" data-name="Scene 02 · Lift">
+    <div class="frame">
+      <img src="frames/02-lift.jpg" alt="The drone banks over the full construction site seen from above" width="1280" height="720">
+      <svg viewBox="0 0 1280 720" aria-hidden="true">
+        <path class="path v" d="M120 760 C 300 560, 420 380, 600 215 S 980 110, 1200 80"/>
+        <circle class="dot" cx="120" cy="700" r="6"/><circle class="dot" cx="1200" cy="80" r="6"/>
+        <rect class="tagbg" x="36" y="560" width="330" height="30" rx="6"/><text class="tag c" x="48" y="580">CAMERA PULLS BACK · SITE OPENS UP BELOW</text>
+        <rect class="tagbg" x="820" y="120" width="300" height="30" rx="6"/><text class="tag" x="832" y="140">ON SCROLL · DRONE CROSSES THE SITE</text>
+      </svg>
+      <span class="tc">12% · 00:06</span><span class="mode"><i></i>IDLE LOOP</span>
+      <div class="cap"><h3>Intelligence from <em>above.</em></h3><small>Capture, map, monitor and inspect from the air</small></div>
+    </div>
+    <div class="notes">
+      <div class="num">02 / 08 <span>High over the site</span></div>
+      <h2>Lift</h2>
+      <div class="beat idle"><b>Idle</b><p>The drone hovers mid-frame, banked a few degrees, rotors spinning. The site below drifts slowly as the camera keeps pulling back a touch, then eases forward again. Crane lights blink in the fog.</p></div>
+      <div class="beat scroll"><b>On scroll</b><p>The drone enters from the bottom-left (where it left Scene 01) and flies a long diagonal across the whole site to the top-right. The further you scroll, the further it travels. The headline lands when it reaches the middle.</p></div>
+      <div class="beat"><b>Text</b><p>“Intelligence from above.” Capture, map, monitor and inspect complex environments from the air.</p></div>
+      <div class="beat"><b>Footage</b><div class="have"><span class="ok">aerial twin plate (no drone) · have</span><span class="ok">aerial loop · have</span></div></div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="scene" data-name="Scene 03 · Scan">
+    <div class="frame">
+      <img src="frames/03-scan.jpg" alt="The drone holds high above the site while a cyan scan band sweeps the ground" width="1280" height="720">
+      <svg viewBox="0 0 1280 720" aria-hidden="true">
+        <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00CDD9" stop-opacity="0"/><stop offset=".5" stop-color="#00CDD9" stop-opacity=".35"/><stop offset="1" stop-color="#00CDD9" stop-opacity="0"/></linearGradient></defs>
+        <g class="grid"><path d="M0 420 L1280 380 M0 480 L1280 430 M0 560 L1280 500 M0 660 L1280 590 M200 720 L520 300 M520 720 L700 300 M900 720 L880 300 M1240 720 L1040 300"/></g>
+        <rect class="scanband" x="0" y="300" width="1280" height="120"/>
+        <path class="path c" d="M640 190 L 420 420 M640 190 L 860 420"/>
+        <rect class="hud" x="300" y="300" width="680" height="300"/>
+        <rect class="tagbg" x="300" y="266" width="270" height="28" rx="6"/><text class="tag c" x="310" y="285">SURVEY-GRADE MAPPING</text>
+        <rect class="tagbg" x="36" y="620" width="420" height="30" rx="6"/><text class="tag" x="48" y="640">SCROLL DRIVES THE SWEEP · DRONE HOLDS POSITION</text>
+        <rect class="tagbg" x="990" y="560" width="250" height="28" rx="6"/><text class="tag c" x="1000" y="579">LiDAR + RGB + THERMAL</text>
+      </svg>
+      <span class="tc">25% · 00:12</span><span class="mode"><i></i>IDLE LOOP</span>
+      <div class="cap"><h3>Measured, <em>not estimated.</em></h3><small>Suggested connecting line · can change</small></div>
+    </div>
+    <div class="notes">
+      <div class="num">03 / 08 <span>The site becomes data</span></div>
+      <h2>Scan</h2>
+      <div class="beat idle"><b>Idle</b><p>The drone holds at the top of the frame, rotors spinning, gimbal pointed down. A cyan scan band slowly sweeps back and forth across the ground beneath it. Where it has passed, a thin wireframe grid stays on the site, like the real thing being traced into a 3D model.</p></div>
+      <div class="beat scroll"><b>On scroll</b><p>Scrolling pushes the scan band down the site. Capability tags appear one by one beside the grid: survey-grade mapping, LiDAR + RGB + thermal, repeatable flight paths. No numbers until the founders give real ones.</p></div>
+      <div class="beat"><b>Text</b><p>“Measured, not estimated.” <span class="q">suggested</span></p></div>
+      <div class="beat"><b>Footage</b><div class="have"><span class="ok">aerial twin plate · have</span><span class="ok">scan drawn in code · free</span></div></div>
+    </div>
+  </article>
+
+  <!-- 04 -->
+  <article class="scene" data-name="Scene 04 · Inside">
+    <div class="frame">
+      <img src="frames/04-corridor.jpg" alt="The drone flies down a long plant-room corridor toward the light at the far end" width="1280" height="720">
+      <svg viewBox="0 0 1280 720" aria-hidden="true">
+        <ellipse class="ghost" cx="648" cy="340" rx="80" ry="22"/><ellipse class="ghost" cx="652" cy="337" rx="44" ry="12"/><ellipse class="ghost" cx="655" cy="335" rx="20" ry="6"/>
+        <path class="path v" d="M640 400 L 655 345"/>
+        <rect class="tagbg" x="36" y="560" width="470" height="30" rx="6"/><text class="tag" x="48" y="580">ON SCROLL · FLIES AWAY FROM CAMERA, SHRINKS INTO THE LIGHT</text>
+        <rect class="tagbg" x="36" y="600" width="330" height="30" rx="6"/><text class="tag c" x="48" y="620">CAMERA FOLLOWS · SLOW DOLLY FORWARD</text>
+      </svg>
+      <span class="tc">38% · 00:18</span><span class="mode"><i></i>IDLE LOOP</span>
+      <div class="cap"><h3>Some places need a <em>closer look.</em></h3><small>Suggested connecting line · can change</small></div>
+    </div>
+    <div class="notes">
+      <div class="num">04 / 08 <span>Transition · dive and fly-through</span></div>
+      <h2>Inside</h2>
+      <div class="beat scroll"><b>Transition</b><p>Coming out of Scene 03 the drone banks hard and dives toward a building. The camera chases it, the frame fills with the dark doorway, and we come out inside the plant corridor. This is the one real “cut” in the film, hidden in darkness.</p></div>
+      <div class="beat idle"><b>Idle</b><p>The drone hovers in the corridor, a little closer than mid-frame, rotor wash stirring the floor mist. Indicator lights on the wall panels blink. The camera drifts forward very slowly, as if walking.</p></div>
+      <div class="beat scroll"><b>On scroll</b><p>The drone flies away from us down the corridor, getting smaller until it reaches the bright opening at the far end. The camera follows at a distance. Scroll back and it returns to us.</p></div>
+      <div class="beat"><b>Text</b><p>“Some places need a closer look.” <span class="q">suggested</span></p></div>
+      <div class="beat"><b>Footage</b><div class="have"><span class="ok">corridor loop · have</span><span class="new">dive-to-doorway clip · new, about $0.60</span></div></div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="scene" data-name="Scene 05 · Handoff">
+    <div class="frame">
+      <img src="frames/05-handoff.jpg" alt="The drone hovers above a four-legged robot in a wet industrial plant" width="1280" height="720">
+      <svg viewBox="0 0 1280 720" aria-hidden="true">
+        <path class="path v" d="M330 -10 L 330 110"/>
+        <path class="hud" d="M430 170 h40 M430 170 v40 M830 170 h-40 M830 170 v40 M430 690 h40 M430 690 v-40 M830 690 h-40 M830 690 v-40"/>
+        <rect class="tagbg" x="430" y="134" width="300" height="28" rx="6"/><text class="tag c" x="440" y="153">GROUND UNIT · PATROL · TRACKED</text>
+        <path class="path c" d="M400 180 L 470 240"/>
+        <rect class="tagbg" x="36" y="560" width="340" height="30" rx="6"/><text class="tag" x="48" y="580">ON SCROLL · DRONE DROPS IN, HANDS OVER</text>
+      </svg>
+      <span class="tc">52% · 00:25</span><span class="mode"><i></i>IDLE LOOP</span>
+      <div class="cap"><h3>Intelligence on the <em>ground.</em></h3><small>Four-legged platforms extend inspection into complex environments</small></div>
+    </div>
+    <div class="notes">
+      <div class="num">05 / 08 <span>Plant floor · the robot dog</span></div>
+      <h2>Handoff</h2>
+      <div class="beat idle"><b>Idle</b><p>The quadruped’s loop plays: it shifts its weight, its sensor head turns. The drone hovers top-left, rotors spinning, its gimbal camera aimed at the dog. A thin cyan tracking bracket sits around the dog and follows it. Wet floor reflections shimmer.</p></div>
+      <div class="beat scroll"><b>On scroll</b><p>The drone drops in from the top of the frame (coming out of the corridor light) and settles into its hover. As it does, the tracking bracket “hands over” from the drone to the dog, and the dog walks forward toward us.</p></div>
+      <div class="beat"><b>Text</b><p>“Intelligence on the ground.” Four-legged robotic platforms extend inspection capabilities into complex industrial and construction environments.</p></div>
+      <div class="beat"><b>Footage</b><div class="have"><span class="ok">quadruped loop · have</span><span class="ok">drone cutout · have</span></div></div>
+    </div>
+  </article>
+
+  <!-- 06 -->
+  <article class="scene" data-name="Scene 06 · Alongside">
+    <div class="frame">
+      <img src="frames/06-alongside.jpg" alt="A humanoid robot works at a control panel while the drone watches from the back of the hall" width="1280" height="720">
+      <svg viewBox="0 0 1280 720" aria-hidden="true">
+        <path class="hud" d="M860 250 h36 M860 250 v36 M1250 250 h-36 M1250 250 v36 M860 560 h36 M860 560 v-36 M1250 560 h-36 M1250 560 v-36"/>
+        <rect class="tagbg" x="860" y="214" width="280" height="28" rx="6"/><text class="tag c" x="870" y="233">MANIPULATION · GAUGE CHECK</text>
+        <path class="path c" d="M290 200 C 500 160, 700 190, 860 260"/>
+        <rect class="tagbg" x="36" y="560" width="400" height="30" rx="6"/><text class="tag" x="48" y="580">ON SCROLL · DRONE PARKS HIGH, WATCHES THE WORK</text>
+      </svg>
+      <span class="tc">65% · 00:31</span><span class="mode"><i></i>IDLE LOOP</span>
+      <div class="cap"><h3>Intelligence that works <em>alongside people.</em></h3><small>Humanoid robotics in human-designed environments</small></div>
+    </div>
+    <div class="notes">
+      <div class="num">06 / 08 <span>Control room · the humanoid</span></div>
+      <h2>Alongside</h2>
+      <div class="beat idle"><b>Idle</b><p>The humanoid loop plays: its hand hovers over the gauges, steam drifts past the windows. The drone is small now, parked high in the back of the hall, rotors still turning, a tiny red light blinking. Its line of sight to the panel is drawn as a thin cyan thread.</p></div>
+      <div class="beat scroll"><b>On scroll</b><p>The drone glides in from the left and rises to its perch. The tracking bracket draws itself around the panel where the humanoid is working, with a short label that names the task, not a made-up number.</p></div>
+      <div class="beat"><b>Text</b><p>“Intelligence that works alongside people.” Humanoid robotics brings AI-assisted perception and manipulation into human-designed environments.</p></div>
+      <div class="beat"><b>Footage</b><div class="have"><span class="ok">humanoid loop · have</span><span class="ok">drone cutout · have</span></div></div>
+    </div>
+  </article>
+
+  <!-- 07 -->
+  <article class="scene" data-name="Scene 07 · Night watch">
+    <div class="frame">
+      <img src="frames/07-nightwatch.jpg" alt="The drone over the lit construction site at night" width="1280" height="720">
+      <svg viewBox="0 0 1280 720" aria-hidden="true">
+        <path class="path c" d="M420 480 L 760 330"/><path class="path c" d="M740 560 L 790 345"/><path class="path c" d="M1020 530 L 820 345"/><path class="path c" d="M250 600 L 740 350"/>
+        <circle class="dot" cx="420" cy="480" r="5"/><circle class="dot" cx="740" cy="560" r="5"/><circle class="dot" cx="1020" cy="530" r="5"/><circle class="dot" cx="250" cy="600" r="5"/>
+        <rect class="tagbg" x="36" y="560" width="400" height="30" rx="6"/><text class="tag" x="48" y="580">ON SCROLL · EVERYTHING IT SAW FLOWS TO ONE PLACE</text>
+        <rect class="tagbg" x="880" y="120" width="300" height="30" rx="6"/><text class="tag c" x="892" y="140">CAMERA · SLOW RISE WITH THE DRONE</text>
+      </svg>
+      <span class="tc">78% · 00:37</span><span class="mode"><i></i>IDLE LOOP</span>
+      <div class="cap"><h3>Autonomous inspection. Continuous intelligence. <em>Verified reality.</em></h3><small>The agentic AI platform</small></div>
+    </div>
+    <div class="notes">
+      <div class="num">07 / 08 <span>Night · the platform</span></div>
+      <h2>Night watch</h2>
+      <div class="beat idle"><b>Idle</b><p>Back outside, hours later. The site is lit from below, the drone hovers above it with its lights blinking, and the camera rises very slowly with it. Fog rolls between the towers.</p></div>
+      <div class="beat scroll"><b>On scroll</b><p>Thin lines of light rise from points on the site (the places the drone and robots have been) up into the drone. This is the platform moment: everything they saw, in one place. The founders’ platform statement types in word by word as the lines arrive.</p></div>
+      <div class="beat"><b>Text</b><p>“Autonomous inspection. Continuous intelligence. Verified reality.” Powered by our agentic AI platform, Northstar transforms how enterprises observe, inspect, verify and understand their physical environments.</p></div>
+      <div class="beat"><b>Footage</b><div class="have"><span class="ok">night loop · have</span></div></div>
+    </div>
+  </article>
+
+  <!-- 08 -->
+  <article class="scene" data-name="Scene 08 · Landing">
+    <div class="frame">
+      <img src="frames/08-landing.jpg" alt="The drone descends to land at the edge of the site at dusk" width="1280" height="720">
+      <svg viewBox="0 0 1280 720" aria-hidden="true">
+        <g style="transform-origin:640px 600px"><ellipse class="ring" cx="640" cy="600" rx="190" ry="40"/></g>
+        <ellipse class="hud" cx="640" cy="600" rx="120" ry="26"/>
+        <path class="path v" d="M640 -10 L 640 380"/>
+        <rect class="tagbg" x="36" y="560" width="360" height="30" rx="6"/><text class="tag" x="48" y="580">ON SCROLL · DESCENDS · ROTORS SLOW · STOP</text>
+        <rect class="tagbg" x="880" y="120" width="260" height="30" rx="6"/><text class="tag c" x="892" y="140">LIGHTS GO STEADY · SHOT HOLDS</text>
+      </svg>
+      <span class="tc">100% · 00:45</span><span class="mode"><i></i>IDLE LOOP</span>
+      <div class="cap"><h3>Point us at your <em>hardest site.</em></h3><small>Book a demo · the only button on the page</small></div>
+    </div>
+    <div class="notes">
+      <div class="num">08 / 08 <span>Dusk · the landing</span></div>
+      <h2>Landing</h2>
+      <div class="beat scroll"><b>On scroll</b><p>The drone comes down from the top of the frame toward the camera and settles onto a landing ring drawn on the ground. As it touches down the rotors wind down and stop. This is the only time in the whole film they stop. The blinking lights go steady.</p></div>
+      <div class="beat idle"><b>Idle</b><p>The landed drone sits in the foreground, lights steady, the site working behind it: cranes turn slowly, puddles ripple. The camera keeps a very slow push-in so even the ending breathes.</p></div>
+      <div class="beat"><b>Text</b><p>“Point us at your hardest site.” One button: Book a demo. Then the footer: Northstar, autonomous site intelligence.</p></div>
+      <div class="beat"><b>Footage</b><div class="have"><span class="ok">site plate · have</span><span class="new">landing clip · new, about $0.60 (optional)</span></div></div>
+    </div>
+  </article>
+
+  </div><!-- /strip -->
+
+  <section class="after">
+    <div class="eyebrow">How it would be built</div>
+    <h2>The drone becomes its own layer</h2>
+    <div class="cols">
+      <div>
+        <h4>Why the current page can’t do this</h4>
+        <p>In the current /v2 page the drone is baked into each video clip. A clip can loop, but the drone cannot leave it and fly into the next one. To travel between scenes it has to be a separate object sitting on top of the backgrounds.</p>
+      </div>
+      <div>
+        <h4>Recommended: a real 3D drone in the browser</h4>
+        <p>A photoreal 3D model of the drone is rendered live over our graded footage plates. The rotors spin for as long as the page is open, the camera can orbit it when you are idle, and scrolling moves it along the flight path above. Same drone in every scene, no seams, and it reacts to the mouse as a bonus. We need one licensed 3D drone model (free to about $60 on a 3D marketplace; no real brand marks).</p>
+      </div>
+      <div>
+        <h4>Fallback: pre-rendered drone frames</h4>
+        <p>If the 3D route looks wrong, the drone can be generated as a frame sequence instead and scrubbed with the scroll. Cheaper to start, but the rotors and lighting are harder to control and it will never match every background perfectly.</p>
+      </div>
+    </div>
+
+    <div class="tw">
+    <table>
+      <tr><th>Scene</th><th>Background</th><th>Status</th><th class="n">New cost</th></tr>
+      <tr><td>01 Arrival</td><td>Hero dawn loop</td><td>Have</td><td class="n">$0</td></tr>
+      <tr><td>02 Lift · 03 Scan</td><td>Aerial twin plate (no drone) + aerial loop</td><td>Have</td><td class="n">$0</td></tr>
+      <tr><td>04 Inside</td><td>Corridor loop; dive-to-doorway bridge</td><td>Corridor have · bridge new</td><td class="n">about $0.60</td></tr>
+      <tr><td>05 Handoff</td><td>Quadruped loop</td><td>Have</td><td class="n">$0</td></tr>
+      <tr><td>06 Alongside</td><td>Humanoid loop</td><td>Have</td><td class="n">$0</td></tr>
+      <tr><td>07 Night watch</td><td>Night loop</td><td>Have</td><td class="n">$0</td></tr>
+      <tr><td>08 Landing</td><td>Site plate; optional landing clip</td><td>Plate have · clip optional</td><td class="n">about $0.60</td></tr>
+      <tr><td>Drone</td><td>Licensed 3D model</td><td>To source</td><td class="n">$0 to about $60</td></tr>
+    </table>
+    </div>
+    <p class="foot">Prices are Higgsfield’s current per-clip estimates for 5-second 1080p clips. Nothing is generated or bought until you say yes to each line. Every paid line is logged in SPEND.md for client reimbursement.</p>
+
+    <div class="cols" style="margin-top:36px">
+      <div>
+        <h4>On a phone</h4>
+        <p>Same film, portrait. The plates are cropped to the drone’s path and the path is recomputed for a tall screen, so the drone still crosses every scene. Idle loops stay on; scroll still drives the flight.</p>
+      </div>
+      <div>
+        <h4>Loading</h4>
+        <p>Scene 01 is on screen within about two seconds; the rest of the plates load behind it while you watch the drone orbit. No percentage loader.</p>
+      </div>
+      <div>
+        <h4>What stays from /v2</h4>
+        <p>The founders’ Physical AI copy, the industries row, the how-it-works steps and the contact form all stay, placed between or after the scenes. The film is the spine; the information hangs off it.</p>
+      </div>
+    </div>
+
+    <div class="ask">
+      <h3>What I need from you before building</h3>
+      <ol>
+        <li>Is this the shape you had in mind? Say which scenes to cut, swap or reorder.</li>
+        <li>By “flapping wings” I have assumed you mean the rotors always spinning. Tell me if you pictured something else.</li>
+        <li>OK to source one 3D drone model (free to about $60) and generate the two optional bridge clips (about $1.20 total)? Nothing is spent until you say yes.</li>
+      </ol>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var scenes=[].slice.call(document.querySelectorAll('.scene'));
+  var pl=document.getElementById('pl'),pb=document.getElementById('pb'),pp=document.getElementById('pp');
+  function tick(){
+    var doc=document.documentElement; var max=doc.scrollHeight-innerHeight; var p=max>0?Math.min(1,Math.max(0,scrollY/max)):0;
+    pb.style.width=(p*100).toFixed(1)+'%'; pp.textContent=Math.round(p*100)+'%';
+    var mid=innerHeight*0.45, cur=scenes[0];
+    for(var i=0;i<scenes.length;i++){ if(scenes[i].getBoundingClientRect().top<=mid) cur=scenes[i]; }
+    pl.textContent=cur.getAttribute('data-name');
+  }
+  addEventListener('scroll',tick,{passive:true}); addEventListener('resize',tick); tick();
+})();
+</script>

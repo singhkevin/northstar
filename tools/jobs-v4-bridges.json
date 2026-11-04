@@ -1,0 +1,26 @@
+[
+ {
+  "id": "b1-tower-to-plantroom",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v4/out/b1-tower-to-plantroom.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v4/src/gapA-first.jpg",
+   "last_frame_url": "@file:assets/v4/src/gapA-last.jpg",
+   "prompt": "The camera glides forward toward the tall concrete tower on the construction site, passes through a large open industrial doorway in its base and continues smoothly into a long plant room lined with steel pipes and machines, the dawn haze giving way to cool window light inside. One continuous steady camera move, natural physics, photorealistic, no people, no robots, no drone, no text, no logos.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "b2-plantroom-to-bunker",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v4/out/b2-plantroom-to-bunker.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v4/src/gapB-first.jpg",
+   "last_frame_url": "@file:assets/v4/src/gapB-last.jpg",
+   "prompt": "The white robot torso filling the frame moves aside to the left and clears the view; the camera continues forward through a short concrete corridor into a raw concrete room with a staircase and construction debris, where a white and black four-legged robot walks in from the right and stops facing the camera. One continuous steady camera move, same cool industrial lighting throughout, photorealistic, no people, no text, no logos.",
+   "duration": 5
+  }
+ }
+]

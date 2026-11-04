@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Northstar logo concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bone:#F2F1EC;--ink:#0E1013;--mute:#7C8088;--signal:#FF5B22}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bone);color:var(--ink);font-family:"Inter Tight",sans-serif;padding:56px 64px;width:1440px}
+h1{font-weight:300;font-size:44px;letter-spacing:-.02em}
+.sub{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--mute);letter-spacing:.08em;text-transform:uppercase;margin:10px 0 40px}
+.row{display:grid;grid-template-columns:120px 1fr 1fr 220px;gap:20px;align-items:stretch;margin-bottom:20px}
+.tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:8px;line-height:1.7}
+.tag b{display:block;color:var(--ink);font-weight:400;font-size:13px}
+.tile{height:220px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:22px}
+.light{background:#fff;border:1px solid #E2E0D8}
+.dark{background:var(--ink);color:var(--bone)}
+.word{font-size:40px;letter-spacing:.32em;font-weight:500;margin-right:-.32em}
+.word.b{font-family:"Inter Tight";font-weight:600;letter-spacing:-.03em;font-size:48px;margin-right:0}
+.word.c{font-family:"Space Grotesk";font-weight:400;letter-spacing:.06em;font-size:44px;margin-right:0}
+.icons{display:flex;flex-direction:column;gap:12px}
+.icons div{flex:1;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:18px}
+svg{display:block}
+.accent{color:var(--signal)}
+.note{font-size:14px;color:#41444A;line-height:1.5;max-width:900px;margin:-6px 0 34px 140px}
+</style></head><body>
+<h1>Northstar: logo concepts</h1>
+<div class="sub">Draft 1 · 28 Oct 2026 · three directions, each shown on light, on dark, and as an app icon</div>
+
+<!-- A -->
+<div class="row">
+  <div class="tag"><b>A · Polaris</b>The north star itself</div>
+  <div class="tile light">
+    <svg width="54" height="54" viewBox="0 0 100 100"><path fill="currentColor" d="M50 0 C52.6 36 57 45.5 86 52 C57 58.5 52.6 64 50 92 C47.4 64 43 58.5 14 52 C43 45.5 47.4 36 50 0Z"/></svg>
+    <span class="word">NORTHSTAR</span></div>
+  <div class="tile dark">
+    <svg class="accent" width="54" height="54" viewBox="0 0 100 100"><path fill="currentColor" d="M50 0 C52.6 36 57 45.5 86 52 C57 58.5 52.6 64 50 92 C47.4 64 43 58.5 14 52 C43 45.5 47.4 36 50 0Z"/></svg>
+    <span class="word">NORTHSTAR</span></div>
+  <div class="icons"><div class="dark"><svg class="accent" width="64" height="64" viewBox="0 0 100 100"><path fill="currentColor" d="M50 0 C52.6 36 57 45.5 86 52 C57 58.5 52.6 64 50 92 C47.4 64 43 58.5 14 52 C43 45.5 47.4 36 50 0Z"/></svg></div></div>
+</div>
+<p class="note">A four-point star with a longer top ray, so it always points north. Simple, works at favicon size, and doubles as the site's scroll-progress marker. Wide-spaced capitals feel calm and premium.</p>
+
+<!-- B -->
+<div class="row">
+  <div class="tag"><b>B · Flight path</b>An N flown by a drone</div>
+  <div class="tile light">
+    <svg width="58" height="58" viewBox="0 0 100 100"><path fill="none" stroke="currentColor" stroke-width="11" d="M18 92 V30 L66 84 V48"/><path class="accent" fill="#FF5B22" d="M66 6 C67.4 22 69.6 26 84 28 C69.6 30 67.4 34 66 50 C64.6 34 62.4 30 48 28 C62.4 26 64.6 22 66 6Z"/></svg>
+    <span class="word b">northstar</span></div>
+  <div class="tile dark">
+    <svg width="58" height="58" viewBox="0 0 100 100"><path fill="none" stroke="currentColor" stroke-width="11" d="M18 92 V30 L66 84 V48"/><path fill="#FF5B22" d="M66 6 C67.4 22 69.6 26 84 28 C69.6 30 67.4 34 66 50 C64.6 34 62.4 30 48 28 C62.4 26 64.6 22 66 6Z"/></svg>
+    <span class="word b">northstar</span></div>
+  <div class="icons"><div class="dark"><svg width="70" height="70" viewBox="0 0 100 100"><path fill="none" stroke="currentColor" stroke-width="11" d="M18 92 V30 L66 84 V48"/><path fill="#FF5B22" d="M66 6 C67.4 22 69.6 26 84 28 C69.6 30 67.4 34 66 50 C64.6 34 62.4 30 48 28 C62.4 26 64.6 22 66 6Z"/></svg></div></div>
+</div>
+<p class="note">The letter N drawn as one continuous route, take-off to waypoint, ending at a star. It tells the "autonomous missions" story and gives a strong single-letter app icon. Lowercase bold wordmark feels more tech-startup.</p>
+
+<!-- C -->
+<div class="row">
+  <div class="tag"><b>C · Waypoint</b>Star inside a camera reticle</div>
+  <div class="tile light">
+    <svg width="58" height="58" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="5"><path d="M62.6 14.5 A38 38 0 0 1 85.5 37.4"/><path d="M85.5 62.6 A38 38 0 0 1 62.6 85.5"/><path d="M37.4 85.5 A38 38 0 0 1 14.5 62.6"/><path d="M14.5 37.4 A38 38 0 0 1 37.4 14.5"/></g><path fill="#FF5B22" d="M50 0 C51.8 38 54 46 74 50 C54 54 51.8 62 50 80 C48.2 62 46 54 26 50 C46 46 48.2 38 50 0Z"/></svg>
+    <span class="word c">Northstar</span></div>
+  <div class="tile dark">
+    <svg width="58" height="58" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="5"><path d="M62.6 14.5 A38 38 0 0 1 85.5 37.4"/><path d="M85.5 62.6 A38 38 0 0 1 62.6 85.5"/><path d="M37.4 85.5 A38 38 0 0 1 14.5 62.6"/><path d="M14.5 37.4 A38 38 0 0 1 37.4 14.5"/></g><path fill="#FF5B22" d="M50 0 C51.8 38 54 46 74 50 C54 54 51.8 62 50 80 C48.2 62 46 54 26 50 C46 46 48.2 38 50 0Z"/></svg>
+    <span class="word c">Northstar</span></div>
+  <div class="icons"><div class="dark"><svg width="70" height="70" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="5"><path d="M62.6 14.5 A38 38 0 0 1 85.5 37.4"/><path d="M85.5 62.6 A38 38 0 0 1 62.6 85.5"/><path d="M37.4 85.5 A38 38 0 0 1 14.5 62.6"/><path d="M14.5 37.4 A38 38 0 0 1 37.4 14.5"/></g><path fill="#FF5B22" d="M50 0 C51.8 38 54 46 74 50 C54 54 51.8 62 50 80 C48.2 62 46 54 26 50 C46 46 48.2 38 50 0Z"/></svg></div></div>
+</div>
+<p class="note">A camera/targeting reticle (what a drone or robot "sees") with the north star breaking out of the top. Speaks directly to inspection and vision, and reads as more industrial and technical.</p>
+</body></html>

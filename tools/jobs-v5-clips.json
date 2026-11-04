@@ -1,0 +1,206 @@
+[
+ {
+  "id": "c01",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c01.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k01c.png",
+   "last_frame_url": "@file:assets/v5/kf/k02a.png",
+   "prompt": "The survey drone flies in over the construction site towards the camera, decelerating progressively and easing into a stable hover. The camera glides gently down to meet it. Propellers spin as blurred discs. The drone always stays fully inside the frame, all four propellers visible. The second half of the shot is slow and it ends almost motionless. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c02",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c02.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k02a.png",
+   "last_frame_url": "@file:assets/v5/kf/k02a.png",
+   "prompt": "The drone hovers in place, holding position almost perfectly still with only the tiniest natural drift, propellers spinning as fast blurred discs, navigation lights glowing softly, thin mist drifting slowly over the site below. The camera stays locked and the drone stays fully inside the frame. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c03",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c03.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k02a.png",
+   "last_frame_url": "@file:assets/v5/kf/k03a.png",
+   "prompt": "The hovering drone gently tilts forward and flies away from the camera towards a large industrial plant building, starting slowly and picking up speed, while the camera follows behind it, descending and moving over the edge of the construction site. The drone stays fully in frame and gets smaller. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c04",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c04.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k03a.png",
+   "last_frame_url": "@file:assets/v5/kf/k04b.png",
+   "prompt": "The drone flies on and disappears naturally around the far corner of the huge industrial building, while the camera keeps travelling forward and lower along the site road, turning to face the tall open entrance of the building. Dust and mist drift across the road. After the first second there is no drone. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c05",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c05.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k04b.png",
+   "last_frame_url": "@file:assets/v5/kf/k05a.png",
+   "prompt": "The camera keeps travelling forward without stopping, passes under the raised roller door through the tall entrance into the building, and the long plant room aisle opens up ahead. A white humanoid robot becomes visible far away walking down the aisle. Exterior haze gives way to cool window light. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c06",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c06.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k05a.png",
+   "last_frame_url": "@file:assets/v5/kf/k06a.png",
+   "prompt": "The white humanoid robot walks down the aisle towards the camera with a natural confident gait while the camera dollies forward, passing the door frame. The robot's steps get slower and shorter and it comes to a complete stop, standing upright. Full body in frame from helmet to feet at all times. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c07",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c07.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k06a.png",
+   "last_frame_url": "@file:assets/v5/kf/k06a.png",
+   "prompt": "The humanoid robot stands still in the aisle in a stable relaxed pose, full body in frame, with only subtle natural motion: a slight weight shift and a small head turn, then back. The camera stays almost still, dust drifting through the window light, machines quietly running in the background. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c08",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c08.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k06a.png",
+   "last_frame_url": "@file:assets/v5/kf/k07a.png",
+   "prompt": "The humanoid robot turns around smoothly on the spot and walks away from the camera along the aisle with a natural gait, towards the bright passage at the far end. The camera follows behind it at a steady distance. Full body in frame at all times, never close to the camera. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c09",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c09.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k07a.png",
+   "last_frame_url": "@file:assets/v5/kf/k08a.png",
+   "prompt": "The camera keeps following the humanoid robot along the aisle. The robot walks off to the side behind the machines and leaves the shot, while the camera carries on forward into a square concrete passage, a thick steel column and pipe sliding past close in the foreground. Same cool light, continuous forward movement. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c10",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c10.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k08a.png",
+   "last_frame_url": "@file:assets/v5/kf/k09a.png",
+   "prompt": "The camera travels forward through the concrete passage and out of its far end into a huge raw concrete hall which opens up all around. Far off on the floor a white four-legged robot becomes visible walking. Continuous forward movement, gently slowing as the hall is revealed. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c11",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c11.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k09a.png",
+   "last_frame_url": "@file:assets/v5/kf/k10a.png",
+   "prompt": "The white four-legged robot walks across the concrete hall with a natural stable gait, all four legs always fully visible, while the camera tracks with it and slowly moves closer. Its steps get slower and it comes to a complete stop, standing still. The whole robot stays inside the frame with plenty of floor around it. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c12",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c12.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k10a.png",
+   "last_frame_url": "@file:assets/v5/kf/k10a.png",
+   "prompt": "The four-legged robot stands still on the concrete floor, complete in frame, with only subtle natural motion: its sensor head slowly turns a little and turns back, and its body settles slightly. The camera stays almost still, mist and dust drift through the shafts of window light. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "c13",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/c13.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/k10a.png",
+   "last_frame_url": "@file:assets/v5/kf/k11d.png",
+   "prompt": "The four-legged robot turns and walks away from the camera with a natural gait across the hall towards a huge open bay, and the camera follows at a distance. The misty construction site at dawn comes into view through the bay. All four legs stay visible and the robot gets gradually smaller. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "v01",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/v01.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/v00a.png",
+   "last_frame_url": "@file:assets/v5/kf/v01b.png",
+   "prompt": "A slow sweeping aerial camera move rises away from the apron and glides over the industrial campus and construction site at dawn towards a survey drone, which comes into frame hovering and surveying the ground, propellers spinning. Smooth continuous movement, the drone stays complete in frame. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "v02",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/v02.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/v01b.png",
+   "last_frame_url": "@file:assets/v5/kf/v02a.png",
+   "prompt": "The camera keeps gliding forward past the drone, descends through the morning mist towards the plant building and flows inside through a large opening into the plant room, where a white humanoid robot stands working at a control panel with one hand on a gauge. Smooth uninterrupted camera flow, mist carrying across the move. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "v03",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/v03.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/v02a.png",
+   "last_frame_url": "@file:assets/v5/kf/v03a.png",
+   "prompt": "The camera drifts sideways along the aisle past the humanoid robot and its control panel, behind a large pipe, and on to reveal a white four-legged robot inspecting a pump with its sensor head. Smooth continuous lateral tracking move, same room, same light. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "v04",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v5/out/v04.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v5/kf/v03a.png",
+   "last_frame_url": "@file:assets/v5/kf/v04a.png",
+   "prompt": "The camera rises and pulls back away from the four-legged robot, up and out through the high windows of the plant, and keeps climbing backward to reveal the whole industrial campus and construction site at sunrise, with robots on the apron and a drone high above. One smooth epic pull-back, mist carrying across the move. One continuous smooth shot with no cuts. Photorealistic, natural physics, steady professional cinematic camera, consistent lighting, believable proportions, no text, no logos, no people.",
+   "duration": 5
+  }
+ }
+]

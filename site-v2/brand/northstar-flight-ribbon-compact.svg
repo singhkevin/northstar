@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1634" height="454" viewBox="70 209 1634 454" role="img" aria-labelledby="logo-title logo-desc">
+  <title id="logo-title">NORTHSTAR — Compact Lockup</title>
+  <desc id="logo-desc">NORTHSTAR without the descriptor, for smaller applications. Wordmark vertically centred on the ribbon. Transparent background.</desc>
+  <defs>
+  <linearGradient id="ribbon-flow" gradientUnits="userSpaceOnUse" x1="220" y1="390" x2="575" y2="500">
+    <stop offset="0" stop-color="#00CDD9"/>
+    <stop offset=".32" stop-color="#009CF4"/>
+    <stop offset=".7" stop-color="#245FFF"/>
+    <stop offset="1" stop-color="#3BA7FF"/>
+  </linearGradient>
+  <linearGradient id="ribbon-left-fold" gradientUnits="userSpaceOnUse" x1="189" y1="579" x2="302" y2="429">
+    <stop offset="0" stop-color="#00D4D8"/>
+    <stop offset="1" stop-color="#007CEF"/>
+  </linearGradient>
+  <linearGradient id="ribbon-right-fold" gradientUnits="userSpaceOnUse" x1="521" y1="476" x2="592" y2="293">
+    <stop offset="0" stop-color="#284BDE"/>
+    <stop offset=".55" stop-color="#625CEB"/>
+    <stop offset="1" stop-color="#9471FF"/>
+  </linearGradient>
+</defs>
+  <g id="northstar-ribbon">
+  <path id="ribbon-silhouette" fill="url(#ribbon-flow)" d="M146 587
+C183 545 219 460 255 380
+C273 340 301 325 334 325
+C357 325 374 332.727 393 350
+L481 430
+L509 352
+C520.2 320.8 548 305 654 285
+L558 524
+C544 558.854 520 570 494 570
+C471 570 452 559.22 434 543
+L343 461
+L307 523
+C287 557.444 248 579 146 587Z"/>
+  <path id="ribbon-left-return" fill="url(#ribbon-left-fold)" d="M146 587
+C168.94 560.96 191.4956 518.3908 213.905128 470.732144
+C241 420 292 420 343 461
+L307 523
+C287 557.444 248 579 146 587Z"/>
+  <path id="ribbon-right-return" fill="url(#ribbon-right-fold)" d="M481 430
+L509 352
+C520.2 320.8 548 305 654 285
+L588.72 447.52
+C572.72 487.353333 542 485.454545 514 460
+L481 430Z"/>
+</g><g id="northstar-wordmark" transform="translate(0 27)" fill="#102B4E" fill-rule="evenodd">
+  <path id="letter-n" d="M678 487 V424 C678 393 701 373 735 373 C769 373 792 393 792 424 V487 H765 V425 C765 409 754 399 735 399 C716 399 705 409 705 425 V487 Z"/>
+  <path id="letter-o" d="M869 373 C905 373 931 397 931 431 C931 465 905 489 869 489 C833 489 807 465 807 431 C807 397 833 373 869 373 Z M869 399 C889 399 904 412 904 431 C904 451 889 464 869 464 C849 464 834 451 834 431 C834 412 849 399 869 399 Z"/>
+  <path id="letter-r-1" d="M945 487 V424 C945 392 965 373 999 373 H1012 V399 H999 C982 399 972 408 972 425 V487 Z"/>
+  <path id="letter-t-1" d="M1032 343 H1059 V374 H1092 V399 H1059 V443 C1059 456 1065 462 1079 462 H1092 V487 H1078 C1048 487 1032 476 1032 448 V399 H1025 V374 H1032 Z"/>
+  <path id="letter-h" d="M1109 487 V329 H1136 V386 C1146 377 1157 373 1170 373 C1202 373 1222 393 1222 424 V487 H1195 V425 C1195 409 1184 399 1166 399 C1148 399 1136 409 1136 425 V487 Z"/>
+  <path id="letter-s" d="M1330 374 H1277 C1252 374 1237 386 1237 408 C1237 430 1251 442 1277 442 H1297 C1306 442 1311 446 1311 453 C1311 460 1307 462 1300 462 H1239 V487 H1300 C1324 487 1338 475 1338 452 C1338 429 1321 418 1299 418 H1277 C1268 418 1264 414 1264 408 C1264 402 1268 399 1277 399 H1330 Z"/>
+  <path id="letter-t-2" transform="translate(323 0)" d="M1032 343 H1059 V374 H1092 V399 H1059 V443 C1059 456 1065 462 1079 462 H1092 V487 H1078 C1048 487 1032 476 1032 448 V399 H1025 V374 H1032 Z"/>
+  <path id="letter-a" d="M1438 374 H1490 C1523 374 1544 393 1544 425 V446 C1544 472 1528 487 1501 487 H1464 C1441 487 1427 474 1427 453 C1427 431 1443 418 1466 418 H1517 C1517 406 1506 399 1490 399 H1438 Z M1517 442 H1467 C1458 442 1453 446 1453 453 C1453 460 1458 463 1467 463 H1494 C1508 463 1517 455 1517 442 Z"/>
+  <path id="letter-r-2" transform="translate(616 0)" d="M945 487 V424 C945 392 965 373 999 373 H1012 V399 H999 C982 399 972 408 972 425 V487 Z"/>
+</g>
+</svg>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Northstar · Frame A · Daylight</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+<style>
+:root{--bone:#EEEDE8;--ink:#0E1013;--mute:#868A92;--line:#D9D7CF;--signal:#FFBA00}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden}
+body{background:radial-gradient(120% 90% at 50% 40%,#FAFAF7 0%,var(--bone) 60%,#E3E1DA 100%);color:var(--ink);font-family:"Inter Tight",sans-serif}
+canvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:2}
+.mark{position:fixed;left:0;right:0;top:20vh;text-align:center;font-size:16.5vw;font-weight:300;letter-spacing:-.04em;line-height:1;color:transparent;-webkit-text-stroke:1.2px #CFCDC5;z-index:1;user-select:none}
+header{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:26px 44px;z-index:5;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:12px;font-weight:500;letter-spacing:.32em;font-size:14px}
+nav{display:flex;gap:34px;font-size:14px;color:#3B3E44}
+.btn{background:var(--ink);color:#fff;border-radius:999px;padding:11px 20px;font-size:13px;font-weight:500}
+.mono{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.hero{position:fixed;left:44px;bottom:48px;z-index:5;max-width:560px}
+.hero h1{font-weight:300;font-size:76px;letter-spacing:-.035em;line-height:.98}
+.hero p{margin-top:18px;font-size:18px;line-height:1.45;color:#3B3E44;max-width:470px}
+.hero p b{color:var(--ink);font-weight:500}
+.ctas{display:flex;gap:12px;margin-top:26px}
+.ghost{border:1px solid #BEBCB4;border-radius:999px;padding:11px 20px;font-size:13px}
+.side{position:fixed;right:44px;bottom:52px;z-index:5;text-align:right;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.side .tick{display:flex;gap:10px;align-items:center}
+.side .bar{width:120px;height:1px;background:var(--line);position:relative}
+.side .bar i{position:absolute;left:0;top:-1px;height:3px;width:12%;background:var(--signal)}
+.tags{position:fixed;top:118px;left:44px;right:44px;display:flex;justify-content:space-between;z-index:5}
+</style></head><body>
+<div class="mark">NORTHSTAR</div>
+<header>
+  <img class="logo" src="../brand/northstar-compact.svg" alt="Northstar" style="height:24px;width:auto">
+  <nav><span>Drones</span><span>Robotics</span><span>Platform</span><span>Industries</span><span>Company</span></nav>
+  <span class="btn">Book a demo</span>
+</header>
+<div class="tags"><span class="mono">[ 01 ] Aerial · Ground · AI</span><span class="mono">Autonomous site intelligence</span></div>
+<canvas id="c"></canvas>
+<div class="hero">
+  <h1>Eyes on<br>every site.</h1>
+  <p><b>Drones in the air, robots on the ground</b> and AI that turns what they see into decisions, run end to end by one team.</p>
+  <div class="ctas"><span class="btn">Book a demo</span><span class="ghost">See how it works ↓</span></div>
+</div>
+<div class="side"><span class="mono">Scroll to fly</span><div class="tick"><span class="mono">01 / 12</span><div class="bar"><i></i></div></div></div>
+<script type="module">
+import * as THREE from 'three';
+import { buildDrone, makeRenderer, studioEnv, animate } from './drone.js';
+const renderer = makeRenderer(document.getElementById('c'), { exposure: 1.05 });
+const scene = new THREE.Scene();
+studioEnv(renderer, scene, 0.9);
+const camera = new THREE.PerspectiveCamera(30, innerWidth / innerHeight, 0.1, 100);
+camera.position.set(0, 3.4, 11.5); camera.lookAt(0, 0.1, 0);
+const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(4, 9, 6); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 8; Object.assign(key.shadow.camera, { left: -6, right: 6, top: 6, bottom: -6 });
+scene.add(key, new THREE.HemisphereLight(0xffffff, 0xd8d4c8, 0.6));
+const drone = buildDrone({ shell: 0xf2f2ef, dark: 0x23262b });
+drone.position.set(1.3, 0.9, 0); drone.rotation.set(0.04, -0.62, 0);
+scene.add(drone);
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: 0.08 }));
+ground.rotation.x = -Math.PI / 2; ground.position.y = -2.6; ground.receiveShadow = true; scene.add(ground);
+animate(renderer, scene, camera, drone);
+</script>
+</body></html>
