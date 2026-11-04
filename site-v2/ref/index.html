@@ -78,6 +78,8 @@ header.lt .btn{background:var(--navy);color:#fff}
 .stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #loop{z-index:2;transition:opacity .9s ease}
 #film{z-index:1}
+/* story-v3: the scrubbed film already carries the drone; never stack the overlay drone on it */
+#heroDrone{display:none!important}
 .grade{position:absolute;inset:0;z-index:3;pointer-events:none;will-change:opacity,background;
   background:radial-gradient(120% 90% at 50% 45%,transparent 45%,rgba(3,8,18,.6) 100%),linear-gradient(180deg,rgba(3,8,18,.5) 0%,transparent 22%,transparent 60%,rgba(3,8,18,.8) 100%)}
 .grain{position:absolute;inset:-50%;z-index:4;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
