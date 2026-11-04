@@ -1,0 +1,8 @@
+<!doctype html><video id=v muted playsinline preload=auto></video><script>
+async function run(src){ const v=document.getElementById('v'); v.src=src; await Promise.race([new Promise(r=>v.addEventListener('canplaythrough',r,{once:true})),new Promise(r=>setTimeout(r,8000))]); await new Promise(r=>setTimeout(r,500));
+ const out=[],step=[],jump=[]; let x=12345; const rnd=()=>{x=(x*1103515245+12345)%2147483648; return x/2147483648;};
+ for(let i=0;i<120;i++){ const t= i%2? rnd()*19.5 : ((out.length? v.currentTime:0)+0.125)%19.5; const s=performance.now();
+   await new Promise(r=>{ v.addEventListener('seeked',r,{once:true}); v.currentTime=t; }); 
+   await Promise.race([new Promise(r=>v.requestVideoFrameCallback(()=>r())),new Promise(r=>setTimeout(r,1500))]); const d=performance.now()-s; out.push(d); (i%2?jump:step).push(d); }
+ const q=(a,p)=>{a.sort((x,y)=>x-y); return Math.round(a[Math.min(a.length-1,Math.floor(p*a.length))]);}; return {step_p50:q(step,.5),step_p95:q(step,.95),jump_p50:q(jump,.5),jump_p95:q(jump,.95)}; }
+</script>
