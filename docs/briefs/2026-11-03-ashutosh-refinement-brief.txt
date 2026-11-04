@@ -1,0 +1,1190 @@
+Hi,
+
+I've reviewed the latest implementation. The website has improved
+considerably, and the current direction is much closer to the intended
+cinematic experience.
+
+However, several issues remain in the product sequences, camera framing,
+scene transitions and overall storytelling. These need to be corrected
+before we consider the website ready.
+
+For this iteration, I do not want another redesign or a complete
+rebuild. *Retain
+the current V4 implementation and visual direction, and focus on correcting
+the specific issues and completing the remaining refinements outlined
+below.*
+
+Please treat this email as a direct implementation brief for Claude. Every
+requirement below is mandatory.
+1. OVERALL IMPLEMENTATION DIRECTION
+
+The current visual architecture is a good foundation. Retain the following
+elements without redesigning them:
+
+   -
+
+   Existing Northstar N logo and pre-loader animation.
+   -
+
+   Dark cinematic visual identity.
+   -
+
+   Existing top navigation and overall typography.
+   -
+
+   Product-specific information panels.
+   -
+
+   Connecting-line and visual-indicator system.
+   -
+
+   Humanoid robot tracking-box design.
+   -
+
+   Northstar Platform interface.
+   -
+
+   Current Contact section composition.
+   -
+
+   Existing chapter-based scrolling experience.
+
+Do not introduce a new design language, replace working components or
+unnecessarily restructure the website.
+
+The objective is to refine the existing experience so that the entire
+website feels like one continuous, professionally directed cinematic
+journey.
+
+The main focus must be on:
+
+   1.
+
+   Natural product movements and stopping points.
+   2.
+
+   Correct camera framing and product visibility.
+   3.
+
+   Seamless transitions between the products.
+   4.
+
+   Proper synchronization of product movements and information reveals.
+   5.
+
+   A stronger transition into the Northstar Platform.
+   6.
+
+   A more meaningful Vision chapter.
+   7.
+
+   Final interaction and responsive testing.
+
+2. DRONE SEQUENCE – REQUIRED CORRECTIONS
+
+*Current sequence: Approximately 00:12–00:29*
+
+The existing drone information panel and connecting-line animation are
+good. Retain their design and positioning.
+
+However, the actual drone footage and its presentation need refinement.
+A. Correct the camera framing
+
+The drone becomes excessively large in the frame during the information
+reveal. Around the 00:24 mark, part of its left propeller is cut off.
+
+Implement the following:
+
+   -
+
+   Replace or reframe the excessively close shot.
+   -
+
+   Maintain the complete drone within the viewport, including all four
+   propellers.
+   -
+
+   Use a wide establishing shot when introducing the drone.
+   -
+
+   Transition into a medium shot when it reaches its information-reveal
+   position.
+   -
+
+   Maintain sufficient space around the drone.
+   -
+
+   Do not allow the drone to touch or extend beyond the screen boundaries.
+
+The drone must remain visually identifiable throughout the sequence.
+B. Make the hovering and information reveal more deliberate
+
+Currently, the information appears without a sufficiently clear stopping
+moment.
+
+Implement this exact sequence:
+
+   1.
+
+   The drone enters the construction-site environment.
+   2.
+
+   It flies naturally through the scene.
+   3.
+
+   It gradually reduces its speed.
+   4.
+
+   It reaches a clearly visible hovering position.
+   5.
+
+   Its movement stabilizes.
+   6.
+
+   A small visual indicator appears near the drone.
+   7.
+
+   The connecting line extends towards the information panel.
+   8.
+
+   The information panel fades into view.
+   9.
+
+   The cinematic holds this composition while the visitor reads.
+   10.
+
+   The panel disappears.
+   11.
+
+   The connecting line retracts.
+   12.
+
+   The drone resumes its flight.
+
+Do not display the information panel while the drone is still moving
+rapidly.
+C. Retain and refine the information panel
+
+The existing Autonomous Inspection information panel is good.
+
+Retain:
+
+   -
+
+   The product identification.
+   -
+
+   The primary headline.
+   -
+
+   The supporting description.
+   -
+
+   The existing capability labels.
+   -
+
+   The connecting-line treatment.
+
+Ensure that Photogrammetry, LiDAR, Thermal Imaging and 3D Reconstruction
+are displayed only as approved capabilities.
+
+The panel should remain compact and must not overlap the drone.
+D. Correct the drone-to-humanoid transition
+
+The drone currently exits the construction-site sequence, but the
+transition into the humanoid environment is still not sufficiently
+established.
+
+Implement this specific progression:
+
+   1.
+
+   After the final drone information reveal, the drone resumes flying.
+   2.
+
+   The camera follows it towards an industrial building.
+   3.
+
+   The drone flies behind the building or through a visible entrance.
+   4.
+
+   The drone disappears naturally behind the structure.
+   5.
+
+   The camera continues its movement towards the industrial entrance.
+   6.
+
+   The entrance and interior environment become visible.
+   7.
+
+   The humanoid robot is revealed inside that environment.
+   8.
+
+   The camera gradually transfers its focus to the humanoid.
+
+Do not end the construction footage and immediately start an unrelated
+factory clip.
+
+The camera movement must visually connect the two scenes.
+3. HUMANOID ROBOT SEQUENCE – REQUIRED CORRECTIONS
+
+*Current sequence: Approximately 00:32–00:45*
+
+The humanoid introduction, tracking box and information-panel styling have
+improved significantly.
+
+Retain these elements.
+
+However, the robot currently continues walking while its information panel
+is displayed. It also becomes excessively close to the camera towards the
+end of the sequence.
+A. Implement a proper stopping point
+
+Replace the current information-reveal behaviour with the following exact
+sequence:
+
+   1.
+
+   The humanoid emerges from the industrial environment.
+   2.
+
+   It walks through the factory.
+   3.
+
+   The camera tracks its movement.
+   4.
+
+   The robot reaches a clearly designated stopping position.
+   5.
+
+   It gradually stops walking.
+   6.
+
+   It maintains a stable standing position.
+   7.
+
+   The tracking box appears around the complete robot.
+   8.
+
+   The connecting line extends towards the information panel.
+   9.
+
+   The information panel appears.
+   10.
+
+   The scene holds while the visitor reads.
+   11.
+
+   The information panel disappears.
+   12.
+
+   The tracking indicator transitions out.
+   13.
+
+   The robot resumes walking.
+
+The robot must visibly stop before the information is presented.
+B. Correct the camera zoom and framing
+
+This is a significant issue in the current implementation.
+
+Around the 00:44–00:45 mark, the humanoid approaches the camera so closely
+that its head and portions of its body become cropped.
+
+This must be corrected.
+
+Implement the following:
+
+   -
+
+   Maintain a full-body composition during the primary walking sequence.
+   -
+
+   Use wide and medium shots as the default.
+   -
+
+   Do not allow the robot's head, feet or limbs to extend outside the
+   viewport.
+   -
+
+   Avoid aggressive camera zooms towards the end of the sequence.
+   -
+
+   Maintain sufficient visibility of the surrounding industrial environment.
+   -
+
+   Keep the robot's proportions consistent.
+
+Close-up shots should only be used as brief supplementary footage, not as
+the main product presentation.
+C. Correct the tracking box
+
+Retain the existing tracking-box implementation but refine its boundaries.
+
+Requirements:
+
+   -
+
+   Capture the complete humanoid robot.
+   -
+
+   Maintain approximately 8% clearance around the subject wherever framing
+   permits.
+   -
+
+   Ensure the box stays within the viewport.
+   -
+
+   Resize it proportionately as the robot moves.
+   -
+
+   Keep the box synchronized with the subject.
+   -
+
+   Prevent it from shifting independently or extending beyond the screen.
+
+D. Retain the existing information presentation
+
+Keep the current humanoid information panel and its connecting-line design.
+
+Maintain its right-side positioning and existing visual language.
+
+Only adjust its appearance and positioning where necessary to ensure it
+does not overlap the robot or obstruct the cinematic composition.
+4. HUMANOID-TO-QUADRUPED TRANSITION – COMPLETE REWORK REQUIRED
+
+*Current sequence: Approximately 00:44–00:46*
+
+This is still the weakest transition in the website and needs to be
+reworked.
+
+Currently, the humanoid approaches the camera and becomes an extremely
+close foreground subject. The next scene immediately introduces the
+quadruped in a completely different concrete environment.
+
+The result feels like two unrelated videos placed next to each other.
+
+Implement the following exact sequence:
+
+   1.
+
+   The humanoid completes its information reveal.
+   2.
+
+   It resumes walking through the industrial environment.
+   3.
+
+   It approaches a visible industrial passage or entrance.
+   4.
+
+   The camera follows the humanoid towards the passage.
+   5.
+
+   The humanoid moves out of the camera's immediate field of view.
+   6.
+
+   The camera continues moving through the passage.
+   7.
+
+   A foreground structural element provides a natural visual transition.
+   8.
+
+   The camera reveals the next industrial environment.
+   9.
+
+   The quadruped robot becomes visible in the distance.
+   10.
+
+   The camera gradually establishes the quadruped as the new primary
+   subject.
+
+The transition must feel like the camera has travelled from one part of the
+industrial environment to another.
+
+*Do not use a direct cut between the humanoid and quadruped clips. Do not
+use a black fade to conceal the transition.*
+
+If the existing footage cannot support this sequence, replace the relevant
+clips with footage specifically created for this transition.
+5. QUADRUPED ROBOT SEQUENCE – REQUIRED CORRECTIONS
+
+*Current sequence: Approximately 00:46–00:55*
+
+The connecting-line animation and information presentation have been
+implemented. Retain their existing design.
+
+The primary problem is camera framing.
+
+The quadruped currently becomes too large in the frame, especially around
+00:47–00:52. Some portions of its legs and body become cropped, making it
+difficult to understand the complete robot and its surroundings.
+A. Correct the introduction
+
+Implement:
+
+   1.
+
+   A wide establishing shot of the industrial environment.
+   2.
+
+   The quadruped entering the frame.
+   3.
+
+   The complete robot becoming visible.
+   4.
+
+   The camera following its walking movement.
+   5.
+
+   A gradual transition into a medium shot as it approaches the designated
+   location.
+
+The robot must remain fully visible.
+
+All four legs, its body and its overall structure must be identifiable
+throughout the primary sequence.
+B. Implement a proper information stop
+
+The information panel should not simply appear while the robot is moving.
+
+Implement this exact sequence:
+
+   1.
+
+   The quadruped walks through the environment.
+   2.
+
+   It reaches its designated stopping position.
+   3.
+
+   It gradually comes to a complete stop.
+   4.
+
+   It holds its position.
+   5.
+
+   A visual indicator appears near the robot.
+   6.
+
+   The connecting line extends towards the information panel.
+   7.
+
+   The existing intelligence/inspection information panel appears.
+   8.
+
+   The cinematic holds while the visitor reads.
+   9.
+
+   The panel fades out.
+   10.
+
+   The connecting line retracts.
+   11.
+
+   The quadruped resumes walking.
+
+C. Correct the camera distance
+
+   -
+
+   Keep the complete quadruped within the viewport.
+   -
+
+   Avoid extreme close-ups.
+   -
+
+   Do not crop its legs or body.
+   -
+
+   Maintain enough environmental context to communicate where it is
+   operating.
+   -
+
+   Use a wider composition for the information-reveal position.
+
+Retain the current information-panel styling and existing visual identity.
+D. Correct the departure
+
+After completing its final information reveal, the quadruped must resume
+its movement.
+
+Its departure must lead naturally into the scanning and data-transition
+sequence that introduces the Northstar Platform.
+
+Do not abruptly end the quadruped footage and display the platform.
+6. NORTHSTAR PLATFORM – RETAIN AND COMPLETE
+
+*Current sequence: Approximately 00:55–01:01*
+
+The current implementation is a substantial improvement.
+
+The scanning-line transition, grid effect and foreground dashboard
+presentation are working well visually.
+
+*Do not redesign the Northstar Platform interface. Retain its existing
+layout, colour palette, typography and positioning.*
+
+Only complete and refine the following requirements.
+A. Improve the robotics-to-platform transition
+
+Implement this exact sequence:
+
+   1.
+
+   The quadruped completes its movement.
+   2.
+
+   A subtle scanning effect becomes visible.
+   3.
+
+   The scanning effect travels across the environment.
+   4.
+
+   Small visual indicators representing captured information appear.
+   5.
+
+   These indicators transition into the Northstar Platform's map and data
+   interface.
+   6.
+
+   The platform interface expands into its existing foreground position.
+   7.
+
+   The cinematic background settles into a stable composition.
+
+The visitor should understand the relationship:
+
+*Physical Inspection → Data Capture → Intelligence → Northstar Platform.*
+
+Retain the current scanning-line visual language.
+B. Verify all platform interactions
+
+The following interactions must be implemented and tested:
+Element Required behaviour
+Riverside Tower Selects the site and updates the map and associated
+information.
+North Depot Loads the corresponding site representation and information.
+Solar Field East Loads the corresponding site representation and
+information.
+Plant Room B Loads the corresponding site representation and information.
+3D Model Switches the main display to the 3D representation.
+Compare Opens the comparison view.
+Reports Opens the reports interface.
+Map markers Opens the corresponding inspection information.
+Flagged issues Highlights the location and displays the relevant details.
+
+Every visible interactive element must perform its advertised action.
+
+Also verify:
+
+   -
+
+   Active states.
+   -
+
+   Hover states.
+   -
+
+   Click feedback.
+   -
+
+   Site-selection persistence while switching tabs.
+   -
+
+   Correct information updates when a different site is selected.
+
+Do not use page-anchor redirects for site-selection controls.
+C. Platform holding behaviour
+
+When the visitor reaches the Northstar Platform chapter:
+
+   -
+
+   The cinematic must stop progressing.
+   -
+
+   The background must remain visually stable.
+   -
+
+   The dashboard must remain fully interactive.
+   -
+
+   The visitor must be able to operate the dashboard without interference
+   from scroll animations.
+   -
+
+   Scrolling must remain possible.
+   -
+
+   After the visitor continues beyond the platform chapter, the cinematic
+   must resume naturally.
+
+Retain the existing platform presentation and verify the actual mouse,
+keyboard and touch interactions.
+7. VISION CHAPTER – REWORK THE CLOSING STORY
+
+*Current sequence: Approximately 01:02–01:07*
+
+The Vision chapter is now separated from Contact, which is correct.
+However, its presentation needs improvement.
+
+Currently, the section relies heavily on an oversized four-line headline
+and repeats the construction-site aerial environment already shown in the
+drone sequence.
+
+The final chapter should communicate the entire Northstar ecosystem, not
+just return to the drone environment.
+A. Replace the repeated background footage
+
+Use the following exact cinematic progression:
+
+*Shot 1 – Ecosystem establishing shot*
+
+A wide industrial environment showing the scale of the robotics ecosystem.
+
+*Shot 2 – Drone*
+
+Show the drone operating or surveying the environment.
+
+*Shot 3 – Humanoid*
+
+Show the humanoid robot performing its industrial operations.
+
+*Shot 4 – Quadruped*
+
+Show the quadruped performing its inspection activity.
+
+*Shot 5 – Connected intelligence*
+
+Show the Northstar Platform receiving and presenting the information
+generated by the robotics ecosystem.
+
+*Shot 6 – Final wide composition*
+
+Return to a wide cinematic environment that visually represents all the
+technologies working together.
+
+These shots must be connected through consistent colour grading, camera
+movement and visual language. Do not present them as separate product cards
+or a static four-panel grid.
+B. Correct the typography
+
+The current headline occupies too much of the screen.
+
+Replace the oversized paragraph-style headline with:
+
+   -
+
+   One strong brand headline, maximum two to three lines.
+   -
+
+   One concise supporting paragraph.
+   -
+
+   Appropriate spacing around the text.
+
+Use the existing approved Northstar mission and vision copy. Preserve the
+intended meaning, but remove unnecessary repetition.
+
+The products and industrial environments must remain the primary visual
+focus.
+
+The text must complement the cinematic rather than dominate it.
+C. Preserve the transition into Contact
+
+The Vision chapter should naturally transition into the existing Contact
+chapter.
+
+Do not introduce another static section or additional information cards
+between these chapters.
+8. CONTACT CHAPTER – RETAIN THE CURRENT IMPLEMENTATION
+
+*Current sequence: Approximately 01:08 onwards*
+
+The current Contact composition is good and should remain substantially
+unchanged.
+
+Retain:
+
+   -
+
+   Left-side contact headline.
+   -
+
+   Supporting message.
+   -
+
+   Right-side contact form.
+   -
+
+   Cinematic industrial background.
+   -
+
+   Dark overlay.
+   -
+
+   Existing typography and visual styling.
+   -
+
+   Compact footer.
+
+Only perform functional and quality checks:
+
+   1.
+
+   Verify all required fields.
+   2.
+
+   Verify form validation.
+   3.
+
+   Verify input focus states.
+   4.
+
+   Verify successful form submission.
+   5.
+
+   Verify error messages.
+   6.
+
+   Verify the primary CTA.
+   7.
+
+   Verify email/contact delivery.
+   8.
+
+   Verify the legal links and footer navigation.
+
+Do not redesign this section or introduce a conventional footer below it.
+9. GLOBAL VISUAL AND INTERFACE CORRECTIONS
+
+Apply the following changes across the complete website.
+A. Remove the bottom timecode
+
+The current video-style timecode, such as 00:22:00, should not be visible
+to visitors.
+
+Remove it from the visitor-facing interface.
+
+Retain the chapter progress indicator.
+B. Improve chapter progress visibility
+
+Retain the seven chapter labels:
+
+   1.
+
+   Brand
+   2.
+
+   Drone
+   3.
+
+   Humanoid
+   4.
+
+   Quadruped
+   5.
+
+   Platform
+   6.
+
+   Vision
+   7.
+
+   Contact
+
+Apply the following:
+
+   -
+
+   Increase the readability of the inactive chapter labels slightly.
+   -
+
+   Maintain a clearly visible active state.
+   -
+
+   Keep the horizontal progress line clean and minimal.
+   -
+
+   Update the active chapter smoothly as the visitor scrolls.
+   -
+
+   Keep clickable navigation to the respective chapters functional.
+   -
+
+   Ensure backward navigation updates the active chapter correctly.
+
+Do not make the progress indicator excessively large.
+C. Preserve panel consistency
+
+All three product information panels must use the same visual system.
+
+Retain:
+
+   -
+
+   Small product identifier.
+   -
+
+   Primary headline.
+   -
+
+   Concise description.
+   -
+
+   Compact capability labels.
+   -
+
+   Fine connecting line.
+   -
+
+   Small subject indicator.
+   -
+
+   Dark translucent panel.
+
+Do not introduce different card designs for individual products.
+
+Maintain the established positioning:
+Product Information-panel position
+Drone Lower-left
+Humanoid Right side
+Quadruped Lower-left
+
+For smaller screens, reposition the panels without covering the complete
+product.
+D. Typography and readability
+
+   -
+
+   Ensure all primary headlines remain within their designated text-safe
+   areas.
+   -
+
+   Do not cover the drone or robots.
+   -
+
+   Avoid oversized supporting text.
+   -
+
+   Maintain sufficient contrast against the background footage.
+   -
+
+   Keep supporting information concise.
+   -
+
+   Use consistent typography throughout the experience.
+
+10. VIDEO AND CINEMATIC QUALITY REQUIREMENTS
+
+The remaining problems are partly related to the footage itself, not just
+frontend implementation.
+
+Please inspect the existing assets and replace unsuitable shots wherever
+necessary.
+
+The following replacement footage is required:
+Product/transition Required replacement footage
+Drone hover A stable, wide-to-medium shot showing the complete drone
+hovering naturally.
+Drone departure Drone approaching and disappearing behind a visible
+industrial building.
+Humanoid stopping point Full-body humanoid standing naturally in the
+industrial environment.
+Humanoid departure Humanoid walking towards a visible industrial passage,
+maintaining full-body framing.
+Humanoid-to-quadruped transition A continuous industrial camera movement
+through a passage that reveals the quadruped in the next environment.
+Quadruped introduction Wide shot of the quadruped entering the environment.
+Quadruped stopping point Full-body quadruped standing naturally, with
+sufficient surroundings visible.
+Quadruped departure Quadruped resuming movement towards the environment
+used for the data-transition scene.
+Vision chapter Connected cinematic sequence representing drone, humanoid,
+quadruped and Northstar Platform.
+
+All replacement footage must:
+
+   -
+
+   Maintain consistent cinematic colour grading.
+   -
+
+   Have believable product proportions.
+   -
+
+   Preserve the industrial visual identity.
+   -
+
+   Use consistent lighting and camera perspectives.
+   -
+
+   Avoid sudden changes in architecture.
+   -
+
+   Keep important subjects within the frame.
+
+Do not try to fix fundamentally defective footage using excessive zooming,
+CSS transformations or artificial frontend transitions.
+
+Where new footage is required, replace the relevant asset directly.
+11. SCROLL, ANIMATION AND PERFORMANCE TESTING
+
+Retain the current scroll-driven cinematic architecture.
+
+The following behaviour must be verified:
+
+*Forward scrolling*
+
+   -
+
+   Product movement progresses naturally.
+   -
+
+   Information appears only at the designated stopping points.
+   -
+
+   Products hold their positions while information is displayed.
+   -
+
+   Products resume movement after the information is dismissed.
+   -
+
+   Transitions lead into the next product.
+   -
+
+   The platform holds while being explored.
+   -
+
+   Vision and Contact appear as the final chapters.
+
+*Backward scrolling*
+
+   -
+
+   Previous scenes return correctly.
+   -
+
+   Information panels reappear at their original positions.
+   -
+
+   Product movement reverses correctly wherever the video timeline supports
+   it.
+   -
+
+   The cinematic does not reset unnecessarily.
+   -
+
+   Videos do not repeatedly reload.
+
+*Performance*
+
+   -
+
+   Preload the immediate next cinematic asset.
+   -
+
+   Do not load every video during initial page load.
+   -
+
+   Prevent black frames between video chapters.
+   -
+
+   Avoid unnecessary simultaneous video decoding.
+   -
+
+   Maintain stable playback during scrolling.
+   -
+
+   Ensure the video and foreground animations remain synchronized.
+
+*Responsive testing*
+
+   -
+
+   Desktop: Full-body product framing and complete visual experience.
+   -
+
+   Tablet: Correct video cropping and information-panel positioning.
+   -
+
+   Mobile: Proper subject framing, readable panels and touch-friendly
+   controls.
+
+The same narrative order must be maintained across devices.
+12. EXECUTION ORDER
+
+Please implement the changes in the following order:
+Step Implementation task Priority
+1 Correct drone framing and hover sequence. Critical
+2 Improve drone-to-humanoid transition. Critical
+3 Implement humanoid stopping point and correct camera zoom. Critical
+4 Completely rework humanoid-to-quadruped transition. Critical
+5 Correct quadruped framing and information stopping point. Critical
+6 Complete quadruped-to-platform data transition. High
+7 Test and complete Northstar Platform functionality. High
+8 Rework the Vision cinematic and typography. High
+9 Refine the chapter indicator and remove the timecode. Medium
+10 Complete Contact form and navigation testing. High
+11 Complete performance and responsive QA. High
+
+Do not redesign already approved components while performing these tasks.
+13. FINAL ACCEPTANCE CHECKLIST
+
+The next build will be considered complete only after the following have
+been verified.
+
+*Drone*
+
+Complete drone visible at all primary camera positions.
+
+Natural flight movement.
+
+Clear hovering and stopping moment.
+
+Information appears only after the drone stabilizes.
+
+Information disappears before the drone resumes movement.
+
+Drone exits naturally towards the industrial building.
+
+*Humanoid*
+
+Natural introduction.
+
+Full-body camera framing.
+
+Complete and properly aligned tracking box.
+
+Robot visibly stops before the information appears.
+
+Information panel is correctly positioned.
+
+Robot resumes walking after the information reveal.
+
+No extreme close-up or cropping at the end.
+
+*Quadruped*
+
+Natural introduction.
+
+Complete four-legged robot visible.
+
+Correct camera distance.
+
+Robot visibly stops before the information appears.
+
+Information panel remains readable.
+
+Robot resumes movement afterwards.
+
+*Transitions*
+
+Drone-to-humanoid transition establishes the industrial building.
+
+Humanoid-to-quadruped transition uses continuous camera movement.
+
+Quadruped-to-platform transition communicates data capture and intelligence.
+
+No abrupt or unexplained scene changes.
+
+*Platform*
+
+Existing interface retained.
+
+All site selectors functional.
+
+All tabs functional.
+
+Map markers and flagged issues functional.
+
+Cinematic holds during interaction.
+
+Scrolling resumes the experience correctly.
+
+*Vision and Contact*
+
+Vision uses an ecosystem-wide cinematic sequence.
+
+Repeated construction-site footage is replaced.
+
+Headline is reduced to two or three lines.
+
+Supporting copy is concise.
+
+Contact composition is retained.
+
+Contact form works correctly.
+
+*Final website*
+
+Bottom timecode removed.
+
+Chapter indicator updated.
+
+Forward and backward scrolling work.
+
+No black frames or broken transitions.
+
+Desktop, tablet and mobile tested.
+
+Performance remains stable throughout the experience.
+14. COMPLETION REPORT
+
+After implementation, provide a report containing:
+
+   1.
+
+   Files and components modified.
+   2.
+
+   Cinematic sequences corrected.
+   3.
+
+   Video assets replaced or reused.
+   4.
+
+   Platform interactions tested.
+   5.
+
+   Vision and Contact changes completed.
+   6.
+
+   Forward and backward scrolling test results.
+   7.
+
+   Desktop, tablet and mobile test results.
+   8.
+
+   Any remaining asset dependencies or technical issues.
+
+Do not mark an item as complete merely because its visual appearance has
+changed. Verify the actual behaviour.
+
+Where a replacement video is necessary, identify the exact missing footage
+and its requirements. Do not conceal an unresolved video issue with a
+placeholder transition.
+FINAL DIRECTION
+
+The current V4 implementation is the foundation for the next version.
+Preserve its overall visual identity and existing improvements.
+
+The remaining work is to make the storytelling more convincing, correct the
+product framing, ensure that every information reveal happens at the right
+moment and make the transitions between all chapters feel natural.
+
+The final experience must follow this journey:
+
+*NORTHSTAR BRAND → DRONE → DRONE CAPABILITIES → HUMANOID → HUMANOID
+CAPABILITIES → QUADRUPED → QUADRUPED CAPABILITIES → NORTHSTAR PLATFORM →
+NORTHSTAR VISION → CONTACT.*
+
+I do not want another round of superficial changes. I want the specific
+corrections above implemented and tested in the actual website.
+
+Please proceed with this refinement pass while preserving everything that
+is already working.
+
+Thanks.
+
+>
