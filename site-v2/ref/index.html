@@ -127,17 +127,53 @@ header.lt .btn{background:var(--navy);color:#fff}
 .drone-hud .hud-tag{color:var(--cyan);font-weight:600}
 .drone-hud .hud-val{color:rgba(255,255,255,.75)}
 
-/* Persistent Story Guide (Post-Hero to Final CTA) */
-.persistent-guide{position:fixed;inset:0;pointer-events:none;z-index:45;opacity:0;display:none}
-.persistent-guide.active{display:block}
-.flight-ribbon-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.flight-ribbon-svg path{stroke:url(#guideRibbonGrad);stroke-width:2.5;stroke-linecap:round;filter:drop-shadow(0 0 10px rgba(0,205,217,.7));fill:none}
-.guide-drone{position:absolute;left:0;top:0;width:180px;margin-left:-90px;margin-top:-40px;transform-origin:50% 50%;will-change:transform;pointer-events:none}
-.guide-beam{position:absolute;left:50%;top:62%;width:1px;height:140px;background:linear-gradient(180deg,rgba(0,205,217,.7),transparent);transform-origin:top center;pointer-events:none;opacity:.75}
-.guide-telemetry{position:absolute;left:104%;top:8%;background:rgba(6,14,28,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,205,217,.38);padding:7px 13px;border-radius:8px;color:#fff;font-size:10px;letter-spacing:.12em;white-space:nowrap;display:flex;flex-direction:column;gap:2px;box-shadow:0 10px 30px rgba(0,0,0,.65)}
-.guide-telemetry .tele-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);position:absolute;left:-3px;top:50%;transform:translateY(-50%);box-shadow:0 0 8px var(--cyan)}
-.guide-telemetry .tele-sys{color:var(--cyan);font-weight:600}
-.guide-telemetry .tele-sec{color:rgba(255,255,255,.75)}
+/* ---------- Tripartite Character Relay (Variant B: DRONE -> HUMANOID -> QUADRUPED) ---------- */
+.relay-stage{position:fixed;inset:0;pointer-events:none;z-index:45;opacity:0;display:none;transition:opacity .35s ease}
+.relay-stage.active{display:block}
+.relay-char{position:absolute;left:0;top:0;pointer-events:none;will-change:transform,opacity;opacity:0;transform-origin:50% 50%}
+
+/* 01. The Drone Character */
+.char-drone{width:320px;margin-left:-160px;margin-top:-70px}
+.char-drone-inner{position:relative;width:100%;will-change:transform}
+.char-beam{position:absolute;left:50%;top:64%;width:2px;height:180px;background:linear-gradient(180deg,rgba(0,205,217,.8),transparent);transform-origin:top center;pointer-events:none;opacity:0;transition:opacity .4s ease}
+
+/* 02. The Humanoid Character (Scroll-Scrubbed Walk Sequence) */
+.char-humanoid{width:340px;height:440px;margin-left:-170px;margin-top:-220px}
+.char-humanoid-inner{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.hum-img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 24px 40px rgba(0,0,0,.75));user-select:none;-webkit-user-drag:none;will-change:transform}
+.hum-hud{position:absolute;inset:12% 22%;border:1.5px solid rgba(0,205,217,.38);border-radius:4px;pointer-events:none;opacity:.85}
+.hum-scanline{position:absolute;left:0;right:0;top:0;height:1px;background:rgba(0,205,217,.7);box-shadow:0 0 10px rgba(0,205,217,.9);animation:humScan 2.4s linear infinite}
+@keyframes humScan{0%{top:0}50%{top:100%}100%{top:0}}
+.hum-bracket{position:absolute;width:12px;height:12px;border-color:var(--cyan);border-style:solid}
+.hum-bracket.top{top:-2px;left:-2px;border-width:2px 0 0 2px}
+.hum-bracket.bot{bottom:-2px;right:-2px;border-width:0 2px 2px 0}
+
+/* 03. The Robot Dog / Quadruped Platform */
+.char-quad{width:260px;height:160px;margin-left:-130px;margin-top:-80px}
+.char-quad-inner{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.quad-radar{position:relative;width:130px;height:130px;border-radius:50%;border:1px dashed rgba(0,205,217,.4);display:flex;align-items:center;justify-content:center}
+.quad-radar-ring{position:absolute;inset:18%;border-radius:50%;border:1px solid rgba(0,205,217,.25)}
+.quad-radar-sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(0,205,217,.35),transparent 60%);animation:quadSweep 2s linear infinite}
+@keyframes quadSweep{to{transform:rotate(360deg)}}
+.quad-hud{position:absolute;left:102%;top:28%;white-space:nowrap;background:rgba(6,14,28,.82);backdrop-filter:blur(8px);border:1px solid rgba(0,205,217,.35);padding:6px 12px;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+.quad-cross{position:absolute;left:-4px;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.quad-status-line{color:var(--cyan);font-size:9.5px;letter-spacing:.12em}
+
+/* Telemetry Readout */
+.relay-telemetry{position:absolute;left:102%;top:12%;background:rgba(6,14,28,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(0,205,217,.4);padding:8px 14px;border-radius:8px;color:#fff;font-size:10px;letter-spacing:.12em;white-space:nowrap;display:flex;flex-direction:column;gap:3px;box-shadow:0 12px 32px rgba(0,0,0,.7);pointer-events:none}
+.relay-telemetry .r-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);position:absolute;left:-3px;top:50%;transform:translateY(-50%);box-shadow:0 0 8px var(--cyan)}
+.relay-telemetry .r-lead{color:var(--cyan);font-weight:600}
+.relay-telemetry .r-sub{color:rgba(255,255,255,.78);font-size:9.5px}
+
+@media (max-width:860px){
+  .char-drone{width:190px;margin-left:-95px;margin-top:-45px}
+  .char-humanoid{width:180px;height:240px;margin-left:-90px;margin-top:-120px}
+  .char-quad{width:170px;height:110px;margin-left:-85px;margin-top:-55px}
+  .relay-telemetry{top:auto;bottom:104%;left:0;font-size:9px}
+}
+@media (prefers-reduced-motion:reduce){
+  .drone-rotor b,.quad-radar-sweep,.hum-scanline{animation:none!important}
+}
 
 /* ---------- Hero Chapters: Continuous Scroll-Driven Typography (NO CSS delays fighting scroll) ---------- */
 .ch{position:absolute;z-index:10;pointer-events:none;will-change:transform,opacity;opacity:0}
@@ -717,35 +753,53 @@ header .btn{white-space:nowrap}
   <video data-bg="corridor" muted playsinline loop preload="none" poster="../media/bg-corridor.jpg"></video>
   <div class="bgscrim"></div><div class="bggrid"></div><div class="grain"></div>
 </div>
-<!-- Persistent Story Character (Follows along from Hero through all sections to final CTA) -->
-<div class="persistent-guide" id="persistentGuide" aria-hidden="true">
-  <svg class="flight-ribbon-svg" id="guideRibbonSvg" viewBox="0 0 100 100" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="guideRibbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#00CDD9"/>
-        <stop offset="35%" stop-color="#009CF4"/>
-        <stop offset="70%" stop-color="#245FFF"/>
-        <stop offset="100%" stop-color="#9471FF"/>
-      </linearGradient>
-    </defs>
-    <path id="guideRibbonPath" d="" fill="none"/>
-  </svg>
-  <div class="guide-drone" id="guideDrone">
-    <div class="drone-inner" id="guideDroneInner">
+<!-- Unified Tripartite Character Relay (Variant B: DRONE -> HUMANOID -> QUADRUPED) -->
+<div class="relay-stage" id="relayStage" aria-hidden="true">
+  <!-- Character 1: Autonomous Drone -->
+  <div class="relay-char char-drone" id="charDrone">
+    <div class="char-drone-inner" id="charDroneInner">
       <div class="drone-rotor r1"><b></b></div>
       <div class="drone-rotor r2"><b></b></div>
       <div class="drone-rotor r3"><b></b></div>
-      <img class="drone-img" src="../media/drone-body-s.png" alt="" draggable="false">
+      <img class="drone-img" src="../media/drone-body-s.png" srcset="../media/drone-body-s.png 520w, ../media/drone-body.png 1016w" sizes="(max-width: 860px) 240px, 460px" alt="" draggable="false">
       <i class="drone-led red l1"></i>
       <i class="drone-led green l2"></i>
       <i class="drone-led cyan l3"></i>
-      <div class="guide-beam" id="guideBeam"></div>
+      <div class="char-beam" id="charDroneBeam"></div>
     </div>
-    <div class="guide-telemetry mono" id="guideTelemetry">
-      <span class="tele-dot"></span>
-      <span class="tele-sys" id="guideSys">NORTHSTAR // RECON</span>
-      <span class="tele-sec" id="guideSec">MISSION: ACTIVE</span>
+  </div>
+
+  <!-- Character 2: Humanoid Robot (Scroll-Scrubbed Walk Sequence) -->
+  <div class="relay-char char-humanoid" id="charHumanoid">
+    <div class="char-humanoid-inner" id="charHumanoidInner">
+      <img class="hum-img" id="humImg" src="../media/hum-cut/20.0.png" alt="" draggable="false">
+      <div class="hum-hud">
+        <span class="hum-scanline"></span>
+        <span class="hum-bracket top"></span>
+        <span class="hum-bracket bot"></span>
+      </div>
     </div>
+  </div>
+
+  <!-- Character 3: Robot Dog / Quadruped Platform -->
+  <div class="relay-char char-quad" id="charQuad">
+    <div class="char-quad-inner" id="charQuadInner">
+      <div class="quad-radar">
+        <div class="quad-radar-ring"></div>
+        <div class="quad-radar-sweep"></div>
+      </div>
+      <div class="quad-hud">
+        <span class="quad-cross"></span>
+        <span class="quad-status-line mono">GROUND PATROL // MESH ACTIVE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Single Focused Telemetry Readout -->
+  <div class="relay-telemetry mono" id="relayTelemetry">
+    <span class="r-dot" id="relayDot"></span>
+    <span class="r-lead" id="relayLead">LEAD: ROBOT DOG</span>
+    <span class="r-sub" id="relaySub">GROUND PATROL · SENSING</span>
   </div>
 </div>
 
@@ -1178,27 +1232,30 @@ const HERO_SPLINE = [
   { t: 1.04,  x: 84.0, y: 30.0, s: 0.148, r: -4.0, o: 1.0, tag: 'EMBODIED AI', alt: 'ONLINE' }
 ];
 
-// Persistent guide spline across the page (Statement to Contact)
-const PAGE_SPLINE = [
-  { t: 0.00, x: 84.0, y: 30.0, s: 0.28, r: -4.0, o: 1.0, mode: 'EMBODIED AI',      sec: 'STATEMENT' },
-  { t: 0.08, x: 76.0, y: 42.0, s: 0.28, r: -2.0, o: 1.0, mode: 'PHYSICAL AI',      sec: 'STATEMENT' },
-  { t: 0.16, x: 86.0, y: 32.0, s: 0.26, r: 3.0,  o: 1.0, mode: 'SPATIAL MESH',     sec: '02 VISION' },
-  { t: 0.24, x: 84.0, y: 46.0, s: 0.26, r: -3.0, o: 1.0, mode: 'AI REASONING',     sec: '02 VISION' },
-  { t: 0.30, x: 88.0, y: 36.0, s: 0.25, r: 4.0,  o: 1.0, mode: 'AUTONOMOUS DRONE', sec: '03 TECH · AIR' },
-  { t: 0.36, x: 82.0, y: 48.0, s: 0.25, r: -4.0, o: 1.0, mode: 'QUADRUPED PATROL', sec: '03 TECH · GROUND' },
-  { t: 0.42, x: 88.0, y: 38.0, s: 0.25, r: 3.0,  o: 1.0, mode: 'HUMANOID COLLAB',  sec: '03 TECH · INDOOR' },
-  { t: 0.48, x: 80.0, y: 44.0, s: 0.25, r: -3.0, o: 1.0, mode: 'EDGE TELEMETRY',   sec: '03 TECH · IOT' },
-  { t: 0.54, x: 50.0, y: 16.0, s: 0.24, r: 0.0,  o: 1.0, mode: 'DIGITAL TWIN',     sec: '04 PLATFORM' },
-  { t: 0.58, x: 50.0, y: 18.0, s: 0.24, r: 0.0,  o: 1.0, mode: 'REALITY INTEL',    sec: '04 PLATFORM' },
-  { t: 0.64, x: 47.0, y: 48.0, s: 0.25, r: 0.0,  o: 1.0, mode: 'ORCHESTRATION',    sec: 'COORDINATION' },
-  { t: 0.70, x: 80.0, y: 32.0, s: 0.25, r: -4.0, o: 1.0, mode: 'MISSION PLAN',     sec: '05 WORKFLOW' },
-  { t: 0.76, x: 84.0, y: 42.0, s: 0.25, r: 2.0,  o: 1.0, mode: 'VERIFY & ACT',     sec: '05 WORKFLOW' },
-  { t: 0.82, x: 26.0, y: 34.0, s: 0.26, r: 5.0,  o: 1.0, mode: 'BUILD VS DESIGN',  sec: '06 SOLUTIONS' },
-  { t: 0.88, x: 84.0, y: 28.0, s: 0.25, r: -3.0, o: 1.0, mode: 'SECTOR INTEL',     sec: '07 INDUSTRIES' },
-  { t: 0.92, x: 82.0, y: 36.0, s: 0.26, r: 2.0,  o: 1.0, mode: 'PHYSICAL INTEL',   sec: '08 WHY' },
-  { t: 0.95, x: 78.0, y: 38.0, s: 0.26, r: -1.0, o: 1.0, mode: 'CORE MISSION',     sec: '09 ABOUT' },
-  { t: 0.98, x: 50.0, y: 64.0, s: 0.32, r: 0.0,  o: 1.0, mode: 'DESCENT // DOCK',   sec: '10 CONTACT' },
-  { t: 1.00, x: 50.0, y: 72.0, s: 0.36, r: 0.0,  o: 1.0, mode: 'MISSION COMPLETE', sec: '10 CONTACT' }
+// -----------------------------------------------------------------------------
+// Tripartite Character Relay Schedule (Variant B: DRONE -> HUMANOID -> QUADRUPED)
+// -----------------------------------------------------------------------------
+const HUM_FRAMES = [
+  '../media/hum-cut/18.0.png', '../media/hum-cut/18.5.png', '../media/hum-cut/19.0.png',
+  '../media/hum-cut/19.5.png', '../media/hum-cut/20.0.png', '../media/hum-cut/20.5.png',
+  '../media/hum-cut/21.0.png', '../media/hum-cut/21.5.png', '../media/hum-cut/22.0.png',
+  '../media/hum-cut/22.5.png', '../media/hum-cut/23.0.png', '../media/hum-cut/23.5.png',
+  '../media/hum-cut/24.0.png', '../media/hum-cut/24.3.png'
+];
+const preloadedHum = HUM_FRAMES.map(src => { const img = new Image(); img.src = src; return img; });
+
+const RELAY_SECTIONS = [
+  { id: '#statement', char: 'quad', x: 82, y: 52, s: 0.95, r: 0, lead: 'LEAD: ROBOT DOG', sub: 'GROUND PATROL · TERRAIN SENSING', bg: 'quad' },
+  { id: '#vision', char: 'humanoid', x: 80, y: 46, s: 0.92, r: 0, lead: 'LEAD: HUMANOID ROBOT', sub: 'EMBODIED AI · REASONING', bg: 'human' },
+  { id: '#technology', char: 'tech', lead: 'LEAD: AUTONOMOUS ECOSYSTEM', sub: 'AIR · GROUND · INDOOR ROBOTICS', bg: 'air' },
+  { id: '#platform', char: 'drone', x: 50, y: 16, s: 0.65, r: 0, lead: 'LEAD: AUTONOMOUS DRONE', sub: 'DIGITAL TWIN · REALITY INTEL', bg: 'air', beam: true },
+  { id: '#inside', char: 'humanoid', x: 36, y: 54, s: 0.88, r: 0, lead: 'LEAD: HUMANOID ROBOT', sub: 'FACILITY COORDINATION · VERIFICATION', bg: 'corridor' },
+  { id: '#how', char: 'quad', x: 82, y: 40, s: 0.92, r: 0, lead: 'LEAD: ROBOT DOG', sub: 'MISSION DEPLOYMENT · VERIFY & ACT', bg: 'quad' },
+  { id: '#construction', char: 'drone', x: 28, y: 32, s: 0.68, r: 3, lead: 'LEAD: AUTONOMOUS DRONE', sub: 'BUILD VS DESIGN · AS-BUILT', bg: 'wide', beam: true },
+  { id: '#industries', char: 'humanoid', x: 82, y: 38, s: 0.88, r: 0, lead: 'LEAD: HUMANOID ROBOT', sub: 'INDUSTRIAL OPERATIONS · WALKTHROUGH', bg: 'corridor' },
+  { id: '#why', char: 'quad', x: 80, y: 42, s: 0.92, r: 0, lead: 'LEAD: ROBOT DOG', sub: 'PHYSICAL INTEL · TOUGH ENVIRONMENTS', bg: 'quad' },
+  { id: '#about', char: 'humanoid', x: 80, y: 40, s: 0.88, r: 0, lead: 'LEAD: HUMANOID ROBOT', sub: 'CORE MISSION · PHYSICAL AI', bg: 'wide' },
+  { id: '#contact', char: 'drone', x: 50, y: 70, s: 0.82, r: 0, lead: 'LEAD: AUTONOMOUS DRONE', sub: 'STATUS: MISSION VERIFIED · READY FOR DEPLOYMENT', bg: 'corridor', dock: true }
 ];
 
 // Continuous overlapping chapter ranges (no CSS transition delays)
@@ -1273,7 +1330,12 @@ function loaderTick() {
 function takeOff() {
   document.documentElement.style.overflow = '';
   if (lenis) lenis.start();
-  const tl = gsap.timeline({ onComplete: () => { const ld = $('#loader'); if (ld) ld.remove(); } });
+  const ld = $('#loader');
+  if (!ld) {
+    if (typeof intro !== 'undefined') intro.play();
+    return;
+  }
+  const tl = gsap.timeline({ onComplete: () => { const el = $('#loader'); if (el) el.remove(); } });
   tl.to('#ldFill', { opacity: 1, duration: 0.6, ease: 'power2.out' })
     .to('#ldTrace', { opacity: 0, duration: 0.5 }, '<')
     .to('#ldDroneInner', { attr: { transform: 'scale(1.6)' }, duration: 0.5, ease: 'power2.out' }, '<')
@@ -1325,8 +1387,11 @@ const scan = $('#scan'), gridfx = $('#gridfx'), hud = $('#hud'), tgt = $('#tgt')
 const heroDrone = $('#heroDrone'), heroDroneInner = $('#heroDroneInner');
 const heroHudTag = $('#heroHudTag'), heroHudVal = $('#heroHudVal'), heroDroneBeam = $('#heroDroneBeam');
 const heroGrade = $('#heroGrade'), stageCam = $('#stageCam');
-const persistentGuide = $('#persistentGuide'), guideDrone = $('#guideDrone');
-const guideSys = $('#guideSys'), guideSec = $('#guideSec'), guideRibbonPath = $('#guideRibbonPath');
+const relayStage = $('#relayStage');
+const charDrone = $('#charDrone'), charDroneInner = $('#charDroneInner'), charDroneBeam = $('#charDroneBeam');
+const charHumanoid = $('#charHumanoid'), humImg = $('#humImg');
+const charQuad = $('#charQuad');
+const relayLead = $('#relayLead'), relaySub = $('#relaySub'), relayDot = $('#relayDot');
 
 const fmt = t => {
   const s = Math.floor(t), f = Math.floor((t - s) * 24);
@@ -1337,10 +1402,6 @@ const band = (p, a, b) => Math.min(1, Math.max(0, (p - a) / (b - a)));
 
 let lastSeek = -1, filmVisible = true;
 ScrollTrigger.create({ trigger: sec, start: 'top bottom', end: 'bottom top', onToggle: s => { filmVisible = s.isActive; } });
-
-// Breadcrumb history for persistent flight ribbon trail
-const trailHistory = [];
-const MAX_TRAIL = 18;
 
 // -----------------------------------------------------------------------------
 // Continuous Mathematical Chapter Evaluation
@@ -1445,132 +1506,190 @@ function updateHeroStage(p) {
 }
 
 // -----------------------------------------------------------------------------
-// Persistent Story Character (Post-Hero to Final CTA)
+// Tripartite Character Relay Engine (Variant B: DRONE -> HUMANOID -> QUADRUPED)
 // -----------------------------------------------------------------------------
-function updatePersistentGuide(scrollY, now, p) {
-  if (!persistentGuide || !guideDrone) return;
+function updateRelayStory(scrollY, now, p) {
+  if (!relayStage) return;
 
   const topH = sec ? sec.offsetHeight : 7200;
-  const docH = document.documentElement.scrollHeight - window.innerHeight;
   const heroEnd = topH - window.innerHeight;
-  const handoffStart = heroEnd - 240;
+  const handoffStart = heroEnd - 220;
   const handoffEnd = heroEnd + 140;
 
-  // 1. Through the Hero (Chapters 01 - 05): Guide MUST be hidden completely
+  // 1. Through Hero (Chapters 01 - 05): Relay stage is strictly hidden
+  // The video film alone carries the lead characters without overlay duplicates:
+  // 0 - 14.5s: Drone leads
+  // 14.5s - 24.3s: Humanoid walks forward
+  // 24.3s - 30.25s: Quadruped patrols
   if (scrollY < handoffStart) {
-    persistentGuide.style.display = 'none';
-    persistentGuide.style.opacity = '0';
-    guideDrone.style.opacity = '0';
-    persistentGuide.classList.remove('active');
-    trailHistory.length = 0;
-    if (guideRibbonPath) guideRibbonPath.setAttribute('d', '');
-
-    if (heroDrone) {
-      heroDrone.style.display = 'block';
-      const d = evalSpline(HERO_SPLINE, p);
-      heroDrone.style.opacity = d.o.toFixed(3);
-    }
+    relayStage.style.display = 'none';
+    relayStage.style.opacity = '0';
+    if (charDrone) charDrone.style.opacity = '0';
+    if (charHumanoid) charHumanoid.style.opacity = '0';
+    if (charQuad) charQuad.style.opacity = '0';
     return;
   }
 
-  // 2. Continuous Handoff Zone (Hero Exit into Guide):
-  // Hero drone shrinks & banks into guide coordinates, fading out as guide fades in
-  const handoff = clamp01((scrollY - handoffStart) / (handoffEnd - handoffStart));
+  // 2. Continuous Handoff Zone (Hero Exit into Statement):
+  // Quadruped robot dog smoothly emerges into Statement as the hero unpins
+  relayStage.style.display = 'block';
+  const stageFade = scrollY < handoffEnd ? clamp01((scrollY - handoffStart) / (handoffEnd - handoffStart)) : 1.0;
+  relayStage.style.opacity = stageFade.toFixed(3);
 
-  if (handoff < 1.0) {
-    const fadeHero = 1.0 - handoff;
-    const fadeGuide = handoff;
-
-    if (heroDrone) {
-      heroDrone.style.display = 'block';
-      const d = evalSpline(HERO_SPLINE, p);
-      heroDrone.style.opacity = (fadeHero * d.o).toFixed(3);
-    }
-
-    persistentGuide.style.display = 'block';
-    persistentGuide.style.opacity = fadeGuide.toFixed(3);
-    persistentGuide.classList.add('active');
-    guideDrone.style.opacity = '1';
-
-    // Guide drone is positioned at initial page waypoint (PAGE_SPLINE[0])
-    const state0 = evalSpline(PAGE_SPLINE, 0);
-    const time = now / 1000;
-    const bank = Math.max(-14, Math.min(14, state0.dx * 10));
-    const bob = Math.sin(time * 1.8) * 3;
-    const tilt = Math.sin(time * 0.8) * 1.2;
-
-    const posX = mobile ? Math.min(88, Math.max(68, state0.x)) : state0.x;
-    const posY = mobile ? Math.min(22, state0.y * 0.5) : state0.y;
-    const sc = mobile ? state0.s * 0.68 : state0.s;
-
-    const px = (posX / 100) * window.innerWidth;
-    const py = (posY / 100) * window.innerHeight + bob;
-
-    guideDrone.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0) scale(${sc.toFixed(3)}) rotate(${(state0.r + bank + tilt).toFixed(2)}deg)`;
-    if (guideSys) guideSys.textContent = 'NORTHSTAR // EMBODIED AI';
-    if (guideSec) guideSec.textContent = 'MISSION: STATEMENT';
-    return;
-  }
-
-  // 3. Post-Hero: Hero drone fully faded out to 0 (display: none), persistent guide takes over
-  if (heroDrone) {
-    heroDrone.style.display = 'none';
-    heroDrone.style.opacity = '0';
-  }
-
-  persistentGuide.style.display = 'block';
-  persistentGuide.style.opacity = '1';
-  persistentGuide.classList.add('active');
-
-  const postScroll = scrollY - heroEnd;
-  const maxPost = docH - heroEnd;
-  const uSite = maxPost > 0 ? clamp01(postScroll / maxPost) : 0;
-  const state = evalSpline(PAGE_SPLINE, uSite);
+  // Time & organic kinematics
   const time = now / 1000;
-
-  // Aerodynamic banking & micro-bob
-  const bank = Math.max(-14, Math.min(14, state.dx * 10));
   const bob = Math.sin(time * 1.8) * 3;
-  const tilt = Math.sin(time * 0.8) * 1.2;
+  const tilt = Math.sin(time * 0.8) * 1.5;
+  const W = window.innerWidth, H = window.innerHeight;
+  const isMob = mobile || W < 860;
 
-  // Responsive positioning: on mobile keep in right safe gutter
-  const posX = mobile ? Math.min(88, Math.max(68, state.x)) : state.x;
-  const posY = mobile ? Math.min(22, state.y * 0.5) : state.y;
-  const sc = mobile ? state.s * 0.68 : state.s;
+  // Find active section and transition state
+  const vpTarget = H * 0.45;
+  let activeSec = RELAY_SECTIONS[0];
+  let activeU = 0;
+  let handoffPair = null; // { from: wp, to: wp, u: 0..1 }
 
-  const px = (posX / 100) * window.innerWidth;
-  const py = (posY / 100) * window.innerHeight + bob;
+  // Check technology rows specifically if in #technology
+  const techEl = $('#technology');
+  const techRect = techEl ? techEl.getBoundingClientRect() : null;
+  const inTech = techRect && techRect.top < H && techRect.bottom > 0;
 
-  guideDrone.style.opacity = state.o.toFixed(3);
-  guideDrone.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0) scale(${sc.toFixed(3)}) rotate(${(state.r + bank + tilt).toFixed(2)}deg)`;
-
-  // Update telemetry badge
-  if (guideSys) guideSys.textContent = state.mode ? `NORTHSTAR // ${state.mode}` : 'NORTHSTAR // AUTONOMOUS';
-  if (guideSec) guideSec.textContent = state.sec ? `MISSION: ${state.sec}` : 'MISSION: RECON';
-
-  // Landing sequence at Contact CTA (uSite > 0.96)
-  if (uSite > 0.96) {
-    guideDrone.style.setProperty('--spin-rate', '0.45s');
-    if (guideSys) guideSys.textContent = 'STATUS: MISSION VERIFIED';
-    if (guideSec) guideSec.textContent = 'READY FOR DEPLOYMENT';
-  } else {
-    guideDrone.style.setProperty('--spin-rate', '0.085s');
-  }
-
-  // Draw continuous Flight Ribbon SVG trail
-  if (guideRibbonPath) {
-    trailHistory.push({ x: (px / window.innerWidth) * 100, y: (py / window.innerHeight) * 100 });
-    if (trailHistory.length > MAX_TRAIL) trailHistory.shift();
-    if (trailHistory.length > 2) {
-      let dStr = `M ${trailHistory[0].x.toFixed(1)} ${trailHistory[0].y.toFixed(1)}`;
-      for (let i = 1; i < trailHistory.length; i++) {
-        const prev = trailHistory[i - 1], cur = trailHistory[i];
-        const mx = (prev.x + cur.x) / 2, my = (prev.y + cur.y) / 2;
-        dStr += ` Q ${prev.x.toFixed(1)} ${prev.y.toFixed(1)}, ${mx.toFixed(1)} ${my.toFixed(1)}`;
+  for (let i = 0; i < RELAY_SECTIONS.length; i++) {
+    const sDef = RELAY_SECTIONS[i];
+    const el = $(sDef.id);
+    if (!el) continue;
+    const r = el.getBoundingClientRect();
+    if (r.top <= vpTarget && r.bottom > vpTarget) {
+      activeSec = sDef;
+      activeU = clamp01((vpTarget - r.top) / r.height);
+      // Check transition to next section
+      if (i < RELAY_SECTIONS.length - 1 && r.bottom - vpTarget < 240) {
+        const nextDef = RELAY_SECTIONS[i + 1];
+        const uTrans = clamp01(1 - (r.bottom - vpTarget) / 240);
+        handoffPair = { from: sDef, to: nextDef, u: uTrans };
       }
-      guideRibbonPath.setAttribute('d', dStr);
+      break;
     }
   }
+
+  // Determine active character, target waypoint, and telemetry
+  let activeChar = activeSec.char;
+  let targetX = activeSec.x || 80, targetY = activeSec.y || 45;
+  let targetScale = activeSec.s || 1.0, targetRot = activeSec.r || 0;
+  let leadText = activeSec.lead, subText = activeSec.sub;
+  let isBeam = !!activeSec.beam, isDock = !!activeSec.dock;
+
+  if (activeSec.id === '#technology' && inTech) {
+    // Dynamic relay across the technology rows:
+    // Row 0: Autonomous drones -> DRONE
+    // Row 1: Quadruped robotics -> QUADRUPED
+    // Row 2: Humanoid robotics -> HUMANOID
+    // Row 3: Industrial IoT -> DRONE (Platform relay)
+    const trows = $$('.trow');
+    let subIdx = 0;
+    trows.forEach((tr, k) => {
+      const rr = tr.getBoundingClientRect();
+      if (rr.top < vpTarget) subIdx = k;
+    });
+    if (subIdx === 0) {
+      activeChar = 'drone';
+      targetX = 82; targetY = 32; targetScale = 0.65; targetRot = -3;
+      leadText = 'LEAD: AUTONOMOUS DRONE';
+      subText = 'AERIAL SURVEY // CAPABILITIES: 5';
+      isBeam = true;
+    } else if (subIdx === 1) {
+      activeChar = 'quad';
+      targetX = 82; targetY = 44; targetScale = 0.95; targetRot = 0;
+      leadText = 'LEAD: ROBOT DOG';
+      subText = 'GROUND PATROL // REPEATABLE MISSIONS';
+    } else if (subIdx === 2) {
+      activeChar = 'humanoid';
+      targetX = 80; targetY = 42; targetScale = 0.9; targetRot = 0;
+      leadText = 'LEAD: HUMANOID ROBOT';
+      subText = 'HUMAN-ROBOT COLLAB // EMBODIED AI';
+      const trRect = trows[2].getBoundingClientRect();
+      activeU = clamp01((vpTarget - trRect.top) / trRect.height);
+    } else {
+      activeChar = 'drone';
+      targetX = 64; targetY = 26; targetScale = 0.65; targetRot = 0;
+      leadText = 'LEAD: AUTONOMOUS DRONE';
+      subText = 'CONNECTED ASSETS // SENSORS & ROBOTS';
+    }
+  }
+
+  // Handle character crossfades (Only ONE lead character in focus at a time)
+  let opDrone = 0, opHumanoid = 0, opQuad = 0;
+  if (handoffPair) {
+    const charA = handoffPair.from.char === 'tech' ? 'drone' : handoffPair.from.char;
+    const charB = handoffPair.to.char === 'tech' ? 'drone' : handoffPair.to.char;
+    const u = handoffPair.u;
+    const opA = 1 - u, opB = u;
+    if (charA === 'drone') opDrone += opA;
+    if (charA === 'humanoid') opHumanoid += opA;
+    if (charA === 'quad') opQuad += opA;
+    if (charB === 'drone') opDrone += opB;
+    if (charB === 'humanoid') opHumanoid += opB;
+    if (charB === 'quad') opQuad += opB;
+
+    // Interpolate waypoints
+    const xA = handoffPair.from.x || 80, xB = handoffPair.to.x || 80;
+    const yA = handoffPair.from.y || 45, yB = handoffPair.to.y || 45;
+    targetX = xA + (xB - xA) * u;
+    targetY = yA + (yB - yA) * u;
+    if (u > 0.5) {
+      leadText = handoffPair.to.lead;
+      subText = handoffPair.to.sub;
+    }
+  } else {
+    if (activeChar === 'drone') opDrone = 1;
+    else if (activeChar === 'humanoid') opHumanoid = 1;
+    else if (activeChar === 'quad') opQuad = 1;
+  }
+
+  // Mobile safe gutter clamping
+  if (isMob) {
+    targetX = Math.min(88, Math.max(72, targetX));
+    targetY = Math.min(22, targetY * 0.55);
+    targetScale *= 0.68;
+  }
+
+  const px = (targetX / 100) * W;
+  const py = (targetY / 100) * H + bob;
+
+  // 1. Render Drone
+  if (charDrone) {
+    charDrone.style.opacity = (opDrone * stageFade).toFixed(3);
+    charDrone.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0) scale(${targetScale.toFixed(3)}) rotate(${(targetRot + tilt).toFixed(2)}deg)`;
+    if (charDroneBeam) charDroneBeam.style.opacity = isBeam && opDrone > 0.5 ? '0.85' : '0';
+    if (isDock) {
+      charDrone.style.setProperty('--spin-rate', '0.45s');
+      if (relaySub) relaySub.textContent = 'STATUS: MISSION VERIFIED · READY FOR DEPLOYMENT';
+    } else {
+      charDrone.style.setProperty('--spin-rate', '0.085s');
+    }
+  }
+
+  // 2. Render Humanoid (with scroll-scrubbed walk frames)
+  if (charHumanoid) {
+    charHumanoid.style.opacity = (opHumanoid * stageFade).toFixed(3);
+    charHumanoid.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0) scale(${targetScale.toFixed(3)})`;
+    if (humImg && preloadedHum.length > 0) {
+      const frameIdx = Math.min(preloadedHum.length - 1, Math.max(0, Math.floor(activeU * (preloadedHum.length - 1))));
+      if (preloadedHum[frameIdx] && humImg.src !== preloadedHum[frameIdx].src) {
+        humImg.src = preloadedHum[frameIdx].src;
+      }
+    }
+  }
+
+  // 3. Render Quadruped (with ground scanner radar)
+  if (charQuad) {
+    charQuad.style.opacity = (opQuad * stageFade).toFixed(3);
+    charQuad.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0) scale(${targetScale.toFixed(3)})`;
+  }
+
+  // 4. Update Telemetry Readout
+  if (relayLead) relayLead.textContent = leadText;
+  if (relaySub && !isDock) relaySub.textContent = subText;
 }
 
 // -----------------------------------------------------------------------------
@@ -1639,8 +1758,8 @@ function frame(now) {
     }
   }
 
-  // Update persistent guide character and handoff through every section
-  updatePersistentGuide(curY, now, p);
+  // Update Tripartite Character Relay through every section
+  updateRelayStory(curY, now, p);
 }
 
 // Humanoid keyframe points
