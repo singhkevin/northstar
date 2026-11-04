@@ -71,13 +71,14 @@ header.lt nav{color:var(--navy)}
 header.lt .logo .wt{opacity:0}header.lt .logo .dk{opacity:1}
 header.lt .btn{background:var(--navy);color:#fff}
 
-/* ---------- Film ---------- */
+/* ---------- Film & Stage ---------- */
 .film{position:relative;height:900vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000}
+.stage-camera{position:absolute;inset:0;width:100%;height:100%;will-change:transform}
 .stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #loop{z-index:2;transition:opacity .9s ease}
 #film{z-index:1}
-.grade{position:absolute;inset:0;z-index:3;pointer-events:none;
+.grade{position:absolute;inset:0;z-index:3;pointer-events:none;will-change:opacity,background;
   background:radial-gradient(120% 90% at 50% 45%,transparent 45%,rgba(3,8,18,.6) 100%),linear-gradient(180deg,rgba(3,8,18,.5) 0%,transparent 22%,transparent 60%,rgba(3,8,18,.8) 100%)}
 .grain{position:absolute;inset:-50%;z-index:4;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -91,28 +92,63 @@ header.lt .btn{background:var(--navy);color:#fff}
 .corner.tl{top:96px;left:var(--g);border-width:2px 0 0 2px}.corner.tr{top:96px;right:var(--g);border-width:2px 2px 0 0}
 .corner.bl{bottom:var(--g);left:var(--g);border-width:0 0 2px 2px}.corner.br{bottom:var(--g);right:var(--g);border-width:0 2px 2px 0}
 .hud.on .corner{opacity:1}
-.scanline{position:absolute;left:0;right:0;height:2px;top:0;opacity:0;background:linear-gradient(90deg,transparent,var(--cyan) 20%,var(--blue) 60%,var(--violet) 80%,transparent);box-shadow:0 0 24px 4px rgba(0,205,217,.4)}
+.scanline{position:absolute;left:0;right:0;height:2px;top:0;opacity:0;background:linear-gradient(90deg,transparent,var(--cyan) 20%,var(--blue) 60%,var(--violet) 80%,transparent);box-shadow:0 0 24px 4px rgba(0,205,217,.4);will-change:transform,opacity}
 .scanline::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:140px;background:linear-gradient(0deg,rgba(0,156,244,.16),transparent)}
-.gridfx{position:absolute;inset:0;opacity:0;background-image:linear-gradient(rgba(0,205,217,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(0,205,217,.1) 1px,transparent 1px);background-size:80px 80px;
+.gridfx{position:absolute;inset:0;opacity:0;background-image:linear-gradient(rgba(0,205,217,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(0,205,217,.1) 1px,transparent 1px);background-size:80px 80px;will-change:opacity;
   -webkit-mask-image:radial-gradient(60% 55% at 50% 60%,#000,transparent);mask-image:radial-gradient(60% 55% at 50% 60%,#000,transparent)}
-.target{position:absolute;opacity:0;border:1.5px solid var(--cyan);border-radius:2px;transition:opacity .4s}
+.target{position:absolute;opacity:0;border:1.5px solid var(--cyan);border-radius:2px;will-change:transform,opacity,left,top,width,height}
 .target::before{content:attr(data-l);position:absolute;left:-1.5px;top:-26px;background:var(--flight);color:#fff;font:500 10px "JetBrains Mono",monospace;letter-spacing:.12em;padding:5px 8px;border-radius:2px;white-space:nowrap}
 
-.ch{position:absolute;z-index:10;pointer-events:none}
-.ch .k{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.5);margin-bottom:20px;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}
+/* ---------- Drone Character (Hero & Persistent Story) ---------- */
+.drone-character{position:absolute;left:0;top:0;pointer-events:none;will-change:transform,opacity;transform-origin:50% 50%;z-index:8;width:340px;margin-left:-170px;margin-top:-75px}
+.drone-inner{position:relative;width:100%;will-change:transform}
+.drone-img{position:relative;z-index:2;width:100%;height:auto;filter:drop-shadow(0 20px 32px rgba(0,0,0,.65));display:block;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.drone-rotor{position:absolute;z-index:1;width:48%;aspect-ratio:50/9.5;border-radius:50%;transform:translate(-50%,-50%);overflow:hidden;
+  background:radial-gradient(ellipse at center,rgba(26,32,44,.65),rgba(26,32,44,.3) 58%,rgba(26,32,44,0) 72%)}
+.drone-rotor b{position:absolute;inset:-60%;background:conic-gradient(from 0deg,transparent 0 44%,rgba(240,244,250,.24) 48%,transparent 52%,transparent 94%,rgba(240,244,250,.24) 98%,transparent);animation:rotorSpin var(--spin-rate,.085s) linear infinite;animation-play-state:var(--spin-state,running)}
+.drone-rotor.r2 b{animation-direction:reverse}
+@keyframes rotorSpin{to{transform:rotate(360deg)}}
+.drone-rotor.r1{left:5.2%;top:45.2%}
+.drone-rotor.r2{left:61.8%;top:3.1%}
+.drone-rotor.r3{left:94.8%;top:40.8%}
+.drone-led{position:absolute;z-index:3;width:10px;height:10px;border-radius:50%;transform:translate(-50%,-50%);animation:navBlink 1.4s infinite}
+.drone-led.red{background:#ff4d5e;box-shadow:0 0 14px 3px rgba(255,77,94,.9)}
+.drone-led.green{background:#00e5a3;box-shadow:0 0 14px 3px rgba(0,229,163,.9)}
+.drone-led.cyan{background:#00cdd9;box-shadow:0 0 14px 3px rgba(0,205,217,.95)}
+.drone-led.amber{background:#ffba00;box-shadow:0 0 14px 3px rgba(255,186,0,.95)}
+.drone-led.l1{left:63.1%;top:27.7%}
+.drone-led.l2{left:1.6%;top:65%;animation-delay:.22s}
+.drone-led.l3{left:98.6%;top:63.4%;animation-delay:.55s}
+@keyframes navBlink{0%,40%{opacity:1}48%,100%{opacity:.2}}
+.drone-beam{position:absolute;left:50%;top:68%;width:2px;height:160px;background:linear-gradient(180deg,rgba(0,205,217,.85),transparent);transform-origin:top center;pointer-events:none;opacity:0;transition:opacity .4s}
+.drone-hud{position:absolute;left:102%;top:16%;display:flex;flex-direction:column;gap:3px;background:rgba(6,14,28,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,205,217,.4);padding:6px 12px;border-radius:6px;color:#fff;font-size:10px;letter-spacing:.12em;white-space:nowrap;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.55)}
+.drone-hud .hud-tag{color:var(--cyan);font-weight:600}
+.drone-hud .hud-val{color:rgba(255,255,255,.75)}
+
+/* Persistent Story Guide (Post-Hero to Final CTA) */
+.persistent-guide{position:fixed;inset:0;pointer-events:none;z-index:45;opacity:0;display:none}
+.persistent-guide.active{display:block}
+.flight-ribbon-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.flight-ribbon-svg path{stroke:url(#guideRibbonGrad);stroke-width:2.5;stroke-linecap:round;filter:drop-shadow(0 0 10px rgba(0,205,217,.7));fill:none}
+.guide-drone{position:absolute;left:0;top:0;width:180px;margin-left:-90px;margin-top:-40px;transform-origin:50% 50%;will-change:transform;pointer-events:none}
+.guide-beam{position:absolute;left:50%;top:62%;width:1px;height:140px;background:linear-gradient(180deg,rgba(0,205,217,.7),transparent);transform-origin:top center;pointer-events:none;opacity:.75}
+.guide-telemetry{position:absolute;left:104%;top:8%;background:rgba(6,14,28,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,205,217,.38);padding:7px 13px;border-radius:8px;color:#fff;font-size:10px;letter-spacing:.12em;white-space:nowrap;display:flex;flex-direction:column;gap:2px;box-shadow:0 10px 30px rgba(0,0,0,.65)}
+.guide-telemetry .tele-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);position:absolute;left:-3px;top:50%;transform:translateY(-50%);box-shadow:0 0 8px var(--cyan)}
+.guide-telemetry .tele-sys{color:var(--cyan);font-weight:600}
+.guide-telemetry .tele-sec{color:rgba(255,255,255,.75)}
+
+/* ---------- Hero Chapters: Continuous Scroll-Driven Typography (NO CSS delays fighting scroll) ---------- */
+.ch{position:absolute;z-index:10;pointer-events:none;will-change:transform,opacity;opacity:0}
+.ch .k{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.5);margin-bottom:20px}
 .ch h1,.ch h2{text-shadow:0 2px 40px rgba(0,0,0,.35)}
 .ch h1{font-size:clamp(52px,8.6vw,146px);font-weight:500}
 .ch h2{font-size:clamp(42px,6vw,100px)}
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
-.w>span{display:inline-block;transform:translateY(125%);transition:transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i) * 55ms)}
-.ch p{margin-top:24px;font-size:clamp(16px,1.2vw,19px);line-height:1.55;color:rgba(255,255,255,.82);max-width:450px;opacity:0;transform:translateY(14px);transition:opacity .8s .25s,transform .8s .25s}
-.ch .row{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;opacity:0;transform:translateY(14px);transition:opacity .8s .35s,transform .8s .35s;pointer-events:auto}
-.ch .tags{display:flex;gap:8px;margin-top:26px;flex-wrap:wrap;opacity:0;transition:opacity .8s .3s}
+.w>span{display:inline-block;will-change:transform}
+.ch p{margin-top:24px;font-size:clamp(16px,1.2vw,19px);line-height:1.55;color:rgba(255,255,255,.82);max-width:450px}
+.ch .row{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;pointer-events:auto}
+.ch .tags{display:flex;gap:8px;margin-top:26px;flex-wrap:wrap}
 .tag{border:1px solid rgba(0,205,217,.5);color:#fff;background:rgba(6,14,28,.35);backdrop-filter:blur(6px);padding:8px 12px;border-radius:999px}
-.ch.on .k,.ch.on p,.ch.on .row{opacity:1;transform:none}
-.ch.on .tags{opacity:1}
-.ch.on .w>span{transform:none}
-.ch.out .w>span{transform:translateY(-125%);transition-duration:.6s;transition-delay:calc(var(--i) * 25ms)}
 .c0{left:var(--g);bottom:var(--g);max-width:900px}
 .c0 h1{font-size:clamp(38px,min(4.1vw,6.8vh),68px);max-width:13.2em}
 .c0 p{max-width:560px}
@@ -127,7 +163,7 @@ header.lt .btn{background:var(--navy);color:#fff}
 
 .rail{position:absolute;right:calc(var(--g) + 40px);bottom:calc(var(--g) + 4px);z-index:12;display:flex;gap:22px;opacity:0;transition:opacity .6s}
 .rail.show{opacity:1}
-.rail div{display:flex;flex-direction:column;gap:10px;color:rgba(255,255,255,.4);transition:color .4s}
+.rail div{display:flex;flex-direction:column;gap:10px;color:rgba(255,255,255,.4);transition:color .4s;cursor:pointer}
 .rail div b{width:18px;height:2px;border-radius:2px;background:currentColor;transition:width .4s;order:-1}
 .rail div.on{color:#fff}
 .rail div.on b{width:42px;background:var(--flight)}
@@ -502,8 +538,9 @@ html.snap .app .map .layer{clip-path:none!important}
 .bgfilm{position:fixed;inset:0;z-index:0;background:var(--night);overflow:hidden;pointer-events:none}
 .bgfilm video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease;will-change:opacity,transform}
 .bgfilm video.on{opacity:1;animation:bgbreathe 26s ease-in-out infinite alternate}
+.bgfilm video[data-bg="air"].on{opacity:.12}
 @keyframes bgbreathe{from{transform:scale(1.02)}to{transform:scale(1.09)}}
-.bgscrim{position:absolute;inset:0;background:radial-gradient(70% 90% at 18% 50%,rgba(6,14,28,.86),rgba(6,14,28,.45) 60%,rgba(6,14,28,.3) 100%),linear-gradient(180deg,rgba(6,14,28,.9),rgba(6,14,28,.5) 30%,rgba(6,14,28,.5) 70%,rgba(6,14,28,.92))}
+.bgscrim{position:absolute;inset:0;background:radial-gradient(70% 90% at 18% 50%,rgba(6,14,28,.92),rgba(6,14,28,.65) 60%,rgba(6,14,28,.45) 100%),linear-gradient(180deg,rgba(6,14,28,.95),rgba(6,14,28,.65) 30%,rgba(6,14,28,.65) 70%,rgba(6,14,28,.95))}
 .bggrid{position:absolute;inset:0;opacity:0;transition:opacity 1s;background-image:linear-gradient(rgba(0,205,217,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(0,205,217,.16) 1px,transparent 1px);background-size:72px 72px;mix-blend-mode:screen;
   -webkit-mask-image:linear-gradient(180deg,transparent,#000 35%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent,#000 35%,#000 70%,transparent)}
 .bggrid::after{content:"";position:absolute;left:0;right:0;height:2px;top:0;background:linear-gradient(90deg,transparent,var(--cyan) 30%,var(--blue) 70%,transparent);box-shadow:0 0 30px 6px rgba(0,205,217,.35);animation:bgsweep 9s ease-in-out infinite alternate}
@@ -618,6 +655,22 @@ header .btn{white-space:nowrap}
 @media (max-width:420px){.app .bar span{display:none}.app .bar em{margin-left:auto;font-size:10px;padding:4px 8px;white-space:nowrap}}
 @media (min-width:600px) and (max-width:860px){.steps.six,.pillars.six,.why.list.six{grid-template-columns:1fr 1fr}.trow{grid-template-columns:1fr}}
 @media (max-width:860px){.sec.minor>.wrap{padding-top:56px}}
+
+/* Responsive & motion preferences for story-v3 */
+@media (max-width:860px){
+  .drone-character{width:210px;margin-left:-105px;margin-top:-46px}
+  .guide-drone{width:120px;margin-left:-60px;margin-top:-27px}
+  .drone-hud{display:none}
+  .guide-telemetry{font-size:9px;padding:5px 9px;left:auto;right:0;top:105%}
+  .ch.c1, .ch.c3{text-align:left;right:auto;left:var(--g)}
+  .ch.c1 p, .ch.c3 p{margin-left:0}
+}
+@media (prefers-reduced-motion: reduce){
+  .drone-character, .persistent-guide{display:none!important}
+  .w>span{transform:none!important}
+  .ch{opacity:1!important;transform:none!important;display:block!important}
+  .rv{opacity:1!important;transform:none!important}
+}
 </style></head><body>
 
 <div id="loader" aria-hidden="true">
@@ -662,17 +715,70 @@ header .btn{white-space:nowrap}
   <video data-bg="corridor" muted playsinline loop preload="none" poster="../media/bg-corridor.jpg"></video>
   <div class="bgscrim"></div><div class="bggrid"></div><div class="grain"></div>
 </div>
+<!-- Persistent Story Character (Follows along from Hero through all sections to final CTA) -->
+<div class="persistent-guide" id="persistentGuide" aria-hidden="true">
+  <svg class="flight-ribbon-svg" id="guideRibbonSvg" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="guideRibbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00CDD9"/>
+        <stop offset="35%" stop-color="#009CF4"/>
+        <stop offset="70%" stop-color="#245FFF"/>
+        <stop offset="100%" stop-color="#9471FF"/>
+      </linearGradient>
+    </defs>
+    <path id="guideRibbonPath" d="" fill="none"/>
+  </svg>
+  <div class="guide-drone" id="guideDrone">
+    <div class="drone-inner" id="guideDroneInner">
+      <div class="drone-rotor r1"><b></b></div>
+      <div class="drone-rotor r2"><b></b></div>
+      <div class="drone-rotor r3"><b></b></div>
+      <img class="drone-img" src="../media/drone-body-s.png" alt="" draggable="false">
+      <i class="drone-led red l1"></i>
+      <i class="drone-led green l2"></i>
+      <i class="drone-led cyan l3"></i>
+      <div class="guide-beam" id="guideBeam"></div>
+    </div>
+    <div class="guide-telemetry mono" id="guideTelemetry">
+      <span class="tele-dot"></span>
+      <span class="tele-sys" id="guideSys">NORTHSTAR // RECON</span>
+      <span class="tele-sec" id="guideSec">MISSION: ACTIVE</span>
+    </div>
+  </div>
+</div>
+
 
 <section class="film" id="top">
   <div class="stage" id="stage">
-    <video id="film" muted playsinline preload="auto"></video>
-    <video id="loop" src="../media/hero-loop-b.mp4" muted playsinline loop autoplay preload="auto" poster="../media/poster-b.jpg"></video>
-    <div class="grade"></div><div class="grain"></div>
+    <div class="stage-camera" id="stageCam">
+      <video id="film" muted playsinline preload="auto"></video>
+      <video id="loop" src="../media/hero-loop-b.mp4" muted playsinline loop autoplay preload="auto" poster="../media/poster-b.jpg"></video>
+      <div class="grade" id="heroGrade"></div>
+      <div class="grain"></div>
+    </div>
     <div class="hud" id="hud">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="gridfx" id="gridfx"></div>
       <div class="scanline" id="scan"></div>
       <div class="target" id="tgt" data-l="HUMANOID · PATROL"></div>
+    </div>
+
+    <!-- Drone Character (Hero) -->
+    <div class="drone-character" id="heroDrone" aria-hidden="true">
+      <div class="drone-inner" id="heroDroneInner">
+        <div class="drone-rotor r1"><b></b></div>
+        <div class="drone-rotor r2"><b></b></div>
+        <div class="drone-rotor r3"><b></b></div>
+        <img class="drone-img" src="../media/drone-body-s.png" srcset="../media/drone-body-s.png 520w, ../media/drone-body.png 1016w" sizes="(max-width: 860px) 240px, 460px" alt="" draggable="false">
+        <i class="drone-led red l1"></i>
+        <i class="drone-led green l2"></i>
+        <i class="drone-led cyan l3"></i>
+        <div class="drone-beam" id="heroDroneBeam"></div>
+      </div>
+      <div class="drone-hud mono" id="heroDroneHud">
+        <span class="hud-tag" id="heroHudTag">AIR · RECON</span>
+        <span class="hud-val" id="heroHudVal">ALT: 42m</span>
+      </div>
     </div>
 
     <div class="ch c0" data-from="-1" data-to="0.035">
@@ -978,7 +1084,11 @@ const CONTACT_EMAIL = '';
 // Split headlines into masked words (highlighted spans stay whole)
 $$('[data-split]').forEach(h => {
   let i = 0;
-  const wrapEl = el => { const w = document.createElement('span'); w.className = 'w'; const s = document.createElement('span'); s.style.setProperty('--i', i++); el.replaceWith(w); s.append(el); w.append(s); };
+  const wrapEl = el => {
+    const w = document.createElement('span'); w.className = 'w';
+    const s = document.createElement('span'); s.style.setProperty('--i', i++);
+    el.replaceWith(w); s.append(el); w.append(s);
+  };
   [...h.childNodes].forEach(n => {
     if (n.nodeType === 3) {
       const frag = document.createDocumentFragment();
@@ -999,25 +1109,132 @@ let lenis = null;
 if (!reduce && window.Lenis) {
   lenis = new Lenis({ lerp: 0.085, smoothWheel: true });
   lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
-  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = a.getAttribute('href'); if (t.length > 1 && $(t)) { e.preventDefault(); lenis.scrollTo(t, { offset: t === '#top' ? 0 : -($('#hdr').offsetHeight + 6) }); } }));
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+
 }
 
-// Intro: ribbon draws in, letterbox opens, header + hero words arrive
+// -----------------------------------------------------------------------------
+// Catmull-Rom Spline Interpolator
+// -----------------------------------------------------------------------------
+function catmullRom(p0, p1, p2, p3, u) {
+  const u2 = u * u, u3 = u2 * u;
+  return 0.5 * ((2 * p1) + (-p0 + p2) * u + (2 * p0 - 5 * p1 + 4 * p2 - p3) * u2 + (-p0 + 3 * p1 - 3 * p2 + p3) * u3);
+}
+function catmullRomDeriv(p0, p1, p2, p3, u) {
+  const u2 = u * u;
+  return 0.5 * ((-p0 + p2) + 2 * (2 * p0 - 5 * p1 + 4 * p2 - p3) * u + 3 * (-p0 + 3 * p1 - 3 * p2 + p3) * u2);
+}
+function evalSpline(points, t) {
+  if (t <= points[0].t) return { ...points[0], dx: 0, dy: 0 };
+  const last = points[points.length - 1];
+  if (t >= last.t) return { ...last, dx: 0, dy: 0 };
+  let i = 0;
+  while (i < points.length - 1 && points[i + 1].t <= t) i++;
+  const p1 = points[i], p2 = points[Math.min(i + 1, points.length - 1)];
+  const p0 = points[Math.max(i - 1, 0)], p3 = points[Math.min(i + 2, points.length - 1)];
+  const dt = p2.t - p1.t;
+  const u = dt === 0 ? 0 : (t - p1.t) / dt;
+  return {
+    x: catmullRom(p0.x, p1.x, p2.x, p3.x, u),
+    y: catmullRom(p0.y, p1.y, p2.y, p3.y, u),
+    s: catmullRom(p0.s, p1.s, p2.s, p3.s, u),
+    r: catmullRom(p0.r, p1.r, p2.r, p3.r, u),
+    o: Math.max(0, Math.min(1, catmullRom(p0.o, p1.o, p2.o, p3.o, u))),
+    dx: catmullRomDeriv(p0.x, p1.x, p2.x, p3.x, u),
+    dy: catmullRomDeriv(p0.y, p1.y, p2.y, p3.y, u),
+    tag: p1.tag || 'AIR · RECON',
+    alt: p1.alt || 'ALT: 42m',
+    mode: p1.mode || '',
+    sec: p1.sec || ''
+  };
+}
+
+// -----------------------------------------------------------------------------
+// Spline Control Points
+// -----------------------------------------------------------------------------
+// Hero spline: smooth flight path through the 5 beats
+const HERO_SPLINE = [
+  { t: -0.05, x: 50.0, y: 56.0, s: 0.74, r: 0.0,  o: 0.0, tag: 'PRE-FLIGHT', alt: 'HOLD' },
+  { t: 0.00,  x: 50.0, y: 52.0, s: 0.70, r: 0.0,  o: 1.0, tag: 'AIR · HOVER', alt: 'ALT: 12m' },
+  { t: 0.04,  x: 51.0, y: 49.0, s: 0.67, r: -1.0, o: 1.0, tag: 'AIR · CLIMB', alt: 'ALT: 24m' },
+  { t: 0.10,  x: 58.0, y: 38.0, s: 0.56, r: -5.0, o: 1.0, tag: '01 · AERIAL', alt: 'ALT: 48m' },
+  { t: 0.16,  x: 68.0, y: 26.0, s: 0.44, r: -8.0, o: 1.0, tag: '01 · AERIAL', alt: 'ALT: 65m' },
+  { t: 0.22,  x: 62.0, y: 20.0, s: 0.38, r: -4.0, o: 1.0, tag: '02 · CAPTURE', alt: 'LiDAR ON' },
+  { t: 0.28,  x: 48.0, y: 17.0, s: 0.32, r: 4.0,  o: 1.0, tag: '02 · SCAN', alt: 'RGB + THERM' },
+  { t: 0.35,  x: 36.0, y: 22.0, s: 0.34, r: 8.0,  o: 1.0, tag: '02 · MAPPING', alt: '3D TWIN' },
+  { t: 0.42,  x: 42.0, y: 34.0, s: 0.40, r: 5.0,  o: 1.0, tag: '03 · INSIDE', alt: 'DESCENT' },
+  { t: 0.48,  x: 52.0, y: 50.0, s: 0.44, r: 0.0,  o: 1.0, tag: '03 · FACILITY', alt: 'CORRIDOR' },
+  { t: 0.54,  x: 46.0, y: 44.0, s: 0.38, r: -3.0, o: 1.0, tag: '03 · VERIFIED', alt: 'LINKED' },
+  { t: 0.62,  x: 26.0, y: 24.0, s: 0.25, r: -4.0, o: 1.0, tag: '04 · HUMANOID', alt: 'TRACKING' },
+  { t: 0.70,  x: 28.0, y: 26.0, s: 0.26, r: 0.0,  o: 1.0, tag: '04 · WORKFLOW', alt: 'INSPECT' },
+  { t: 0.78,  x: 36.0, y: 36.0, s: 0.28, r: 3.0,  o: 1.0, tag: '05 · QUADRUPED', alt: 'GROUND' },
+  { t: 0.88,  x: 32.0, y: 32.0, s: 0.30, r: 2.0,  o: 1.0, tag: '05 · PATROL', alt: 'AUTONOMOUS' },
+  { t: 0.94,  x: 56.0, y: 30.8, s: 0.22, r: -2.0, o: 1.0, tag: 'HANDOFF', alt: 'CLIMB' },
+  { t: 0.98,  x: 76.0, y: 30.2, s: 0.17, r: -3.5, o: 1.0, tag: 'CONTINUOUS', alt: 'SCOUT LINK' },
+  { t: 1.00,  x: 84.0, y: 30.0, s: 0.148, r: -4.0, o: 1.0, tag: 'EMBODIED AI', alt: 'ONLINE' },
+  { t: 1.04,  x: 84.0, y: 30.0, s: 0.148, r: -4.0, o: 1.0, tag: 'EMBODIED AI', alt: 'ONLINE' }
+];
+
+// Persistent guide spline across the page (Statement to Contact)
+const PAGE_SPLINE = [
+  { t: 0.00, x: 84.0, y: 30.0, s: 0.28, r: -4.0, o: 1.0, mode: 'EMBODIED AI',      sec: 'STATEMENT' },
+  { t: 0.08, x: 76.0, y: 42.0, s: 0.28, r: -2.0, o: 1.0, mode: 'PHYSICAL AI',      sec: 'STATEMENT' },
+  { t: 0.16, x: 86.0, y: 32.0, s: 0.26, r: 3.0,  o: 1.0, mode: 'SPATIAL MESH',     sec: '02 VISION' },
+  { t: 0.24, x: 84.0, y: 46.0, s: 0.26, r: -3.0, o: 1.0, mode: 'AI REASONING',     sec: '02 VISION' },
+  { t: 0.30, x: 88.0, y: 36.0, s: 0.25, r: 4.0,  o: 1.0, mode: 'AUTONOMOUS DRONE', sec: '03 TECH · AIR' },
+  { t: 0.36, x: 82.0, y: 48.0, s: 0.25, r: -4.0, o: 1.0, mode: 'QUADRUPED PATROL', sec: '03 TECH · GROUND' },
+  { t: 0.42, x: 88.0, y: 38.0, s: 0.25, r: 3.0,  o: 1.0, mode: 'HUMANOID COLLAB',  sec: '03 TECH · INDOOR' },
+  { t: 0.48, x: 80.0, y: 44.0, s: 0.25, r: -3.0, o: 1.0, mode: 'EDGE TELEMETRY',   sec: '03 TECH · IOT' },
+  { t: 0.54, x: 50.0, y: 16.0, s: 0.24, r: 0.0,  o: 1.0, mode: 'DIGITAL TWIN',     sec: '04 PLATFORM' },
+  { t: 0.58, x: 50.0, y: 18.0, s: 0.24, r: 0.0,  o: 1.0, mode: 'REALITY INTEL',    sec: '04 PLATFORM' },
+  { t: 0.64, x: 47.0, y: 48.0, s: 0.25, r: 0.0,  o: 1.0, mode: 'ORCHESTRATION',    sec: 'COORDINATION' },
+  { t: 0.70, x: 80.0, y: 32.0, s: 0.25, r: -4.0, o: 1.0, mode: 'MISSION PLAN',     sec: '05 WORKFLOW' },
+  { t: 0.76, x: 84.0, y: 42.0, s: 0.25, r: 2.0,  o: 1.0, mode: 'VERIFY & ACT',     sec: '05 WORKFLOW' },
+  { t: 0.82, x: 26.0, y: 34.0, s: 0.26, r: 5.0,  o: 1.0, mode: 'BUILD VS DESIGN',  sec: '06 SOLUTIONS' },
+  { t: 0.88, x: 84.0, y: 28.0, s: 0.25, r: -3.0, o: 1.0, mode: 'SECTOR INTEL',     sec: '07 INDUSTRIES' },
+  { t: 0.92, x: 82.0, y: 36.0, s: 0.26, r: 2.0,  o: 1.0, mode: 'PHYSICAL INTEL',   sec: '08 WHY' },
+  { t: 0.95, x: 78.0, y: 38.0, s: 0.26, r: -1.0, o: 1.0, mode: 'CORE MISSION',     sec: '09 ABOUT' },
+  { t: 0.98, x: 50.0, y: 64.0, s: 0.32, r: 0.0,  o: 1.0, mode: 'DESCENT // DOCK',   sec: '10 CONTACT' },
+  { t: 1.00, x: 50.0, y: 72.0, s: 0.36, r: 0.0,  o: 1.0, mode: 'MISSION COMPLETE', sec: '10 CONTACT' }
+];
+
+// Continuous overlapping chapter ranges (no CSS transition delays)
+const CHAPTER_RANGES = [
+  { in0: -0.05, in1: 0.00, out0: 0.035, out1: 0.08 }, // c0 Intro
+  { in0: 0.05,  in1: 0.10, out0: 0.20,  out1: 0.25 }, // c1 Aerial
+  { in0: 0.21,  in1: 0.26, out0: 0.38,  out1: 0.43 }, // c2 Capture
+  { in0: 0.39,  in1: 0.44, out0: 0.55,  out1: 0.60 }, // c3 Inside
+  { in0: 0.56,  in1: 0.61, out0: 0.75,  out1: 0.80 }, // c4 Humanoid
+  { in0: 0.76,  in1: 0.82, out0: 0.98,  out1: 1.05 }  // c5 Quadruped
+];
+
+// Intro animation
 const chapters = $$('.ch');
 const intro = gsap.timeline({ paused: true });
-intro.fromTo('#stage', { scale: 1.08, opacity: 0.6 }, { scale: 1, opacity: 1, duration: 1.6, ease: 'expo.out' })
-  .add(() => chapters[0].classList.add('on'), '-=1.1')
-  .to('#hdr', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=1.0');
+intro.fromTo('#stage', { scale: 1.06, opacity: 0.6 }, { scale: 1, opacity: 1, duration: 1.4, ease: 'expo.out' })
+  .to('#hdr', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.9');
 
-// Loader: progress is real (hero loop ready + the start of the film buffered), shown smoothly,
-// with a minimum on-screen time so the flight reads and a cap so slow networks still get in
+// Loader state
 const L = { shown: 0, done: false, t0: performance.now() };
-const trace = $('#ldTrace'), drone = $('#ldDrone'), ghost = $('#ldGhost');
-const pathLen = ghost.getTotalLength();
+const trace = $('#ldTrace'), ldDrone = $('#ldDrone'), ghost = $('#ldGhost');
+const pathLen = ghost ? ghost.getTotalLength() : 1;
 const checks = $$('#ldChecks span');
-if (lenis) lenis.stop();
-document.documentElement.style.overflow = 'hidden';
+
+// Mid-page reload check: If user reloaded mid-page or with an anchor, skip loader instantly
+const isMidPage = window.scrollY > 80;
+if (isMidPage) {
+  L.done = true;
+  const ld = $('#loader');
+  if (ld) ld.remove();
+  document.documentElement.style.overflow = '';
+  if (lenis) lenis.start();
+  intro.progress(1);
+} else {
+  if (lenis) lenis.stop();
+  document.documentElement.style.overflow = 'hidden';
+}
+
 function realProgress() {
   const loopOk = loop.readyState >= 3 ? 1 : loop.readyState / 3;
   let filmOk = 0;
@@ -1026,31 +1243,35 @@ function realProgress() {
   return loopOk * 0.45 + filmOk * 0.55;
 }
 function placeDrone(p) {
+  if (!ghost || !ldDrone) return;
   const at = Math.min(0.999, p) * pathLen;
   const a = ghost.getPointAtLength(at), b = ghost.getPointAtLength(Math.min(pathLen, at + 2));
   const ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI + 90;
-  drone.setAttribute('transform', `translate(${a.x} ${a.y}) rotate(${ang})`);
+  ldDrone.setAttribute('transform', `translate(${a.x} ${a.y}) rotate(${ang})`);
 }
 function loaderTick() {
   if (L.done) return;
   const el = (performance.now() - L.t0) / 1000;
-  const minT = reduce ? 0.6 : 2.6, maxT = 9;
+  const minT = reduce ? 0.6 : 2.4, maxT = 8.5;
   let target = Math.min(realProgress(), el / minT);
   if (el > maxT) target = 1;
   L.shown += (target - L.shown) * 0.06 + (target > L.shown ? 0.0015 : 0);
   if (L.shown > target) L.shown = target;
   const p = L.shown;
-  trace.setAttribute('stroke-dashoffset', 1 - p);
+  if (trace) trace.setAttribute('stroke-dashoffset', 1 - p);
   placeDrone(p);
-  $('#ldPct').textContent = Math.round(p * 100) + '%';
-  $('#ldBar').style.width = p * 100 + '%';
-  $('#ldTc').textContent = 'T-00:' + String(Math.max(0, Math.ceil((1 - p) * 9))).padStart(2, '0');
+  const ldPct = $('#ldPct'), ldBar = $('#ldBar'), ldTc = $('#ldTc');
+  if (ldPct) ldPct.textContent = Math.round(p * 100) + '%';
+  if (ldBar) ldBar.style.width = p * 100 + '%';
+  if (ldTc) ldTc.textContent = 'T-00:' + String(Math.max(0, Math.ceil((1 - p) * 9))).padStart(2, '0');
   checks.forEach((c, i) => c.classList.toggle('ok', p >= (i + 1) / checks.length - 0.02));
   if (p >= 0.999) { L.done = true; takeOff(); return; }
   requestAnimationFrame(loaderTick);
 }
 function takeOff() {
-  const tl = gsap.timeline({ onComplete: () => { $('#loader').remove(); } });
+  document.documentElement.style.overflow = '';
+  if (lenis) lenis.start();
+  const tl = gsap.timeline({ onComplete: () => { const ld = $('#loader'); if (ld) ld.remove(); } });
   tl.to('#ldFill', { opacity: 1, duration: 0.6, ease: 'power2.out' })
     .to('#ldTrace', { opacity: 0, duration: 0.5 }, '<')
     .to('#ldDroneInner', { attr: { transform: 'scale(1.6)' }, duration: 0.5, ease: 'power2.out' }, '<')
@@ -1063,58 +1284,364 @@ function takeOff() {
       if (lenis) lenis.start();
       intro.play();
     }, '-=0.55')
-    .to('#loader', { opacity: 0, duration: 0.9, ease: 'power2.inOut' }, '-=0.35');
+    .to('#loader', { opacity: 0, duration: 0.8, ease: 'power2.inOut' }, '-=0.35');
 }
-requestAnimationFrame(loaderTick);
+if (!isMidPage) requestAnimationFrame(loaderTick);
 
-// Film: scroll progress drives the video time and overlays
+function scrollToAnchor(targetSelector) {
+  const ld = $('#loader');
+  if (ld) ld.remove();
+  document.documentElement.style.overflow = '';
+  if (lenis) lenis.start();
+  if (typeof intro !== 'undefined') intro.progress(1);
+  const targetEl = $(targetSelector);
+  if (!targetEl) return;
+  const offset = targetSelector === '#top' ? 0 : -($('#hdr').offsetHeight + 6);
+  if (lenis) {
+    lenis.scrollTo(targetSelector, { offset });
+  } else {
+    const y = targetEl.getBoundingClientRect().top + window.scrollY + offset;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+  }
+}
+$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = a.getAttribute('href');
+  if (t && t.length > 1 && $(t)) {
+    e.preventDefault();
+    scrollToAnchor(t);
+  }
+}));
+
+// -----------------------------------------------------------------------------
+// Hero Scroll and Story Pipeline
+// -----------------------------------------------------------------------------
 const sec = $('#top');
 const S = { target: 0, cur: 0 };
 ScrollTrigger.create({ trigger: sec, start: 'top top', end: 'bottom bottom', onUpdate: s => { S.target = s.progress; } });
 const railItems = $$('.rail div');
 const scan = $('#scan'), gridfx = $('#gridfx'), hud = $('#hud'), tgt = $('#tgt');
-const fmt = t => { const s = Math.floor(t), f = Math.floor((t - s) * 24); return `00:${String(s).padStart(2, '0')}:${String(f).padStart(2, '0')}`; };
+const heroDrone = $('#heroDrone'), heroDroneInner = $('#heroDroneInner');
+const heroHudTag = $('#heroHudTag'), heroHudVal = $('#heroHudVal'), heroDroneBeam = $('#heroDroneBeam');
+const heroGrade = $('#heroGrade'), stageCam = $('#stageCam');
+const persistentGuide = $('#persistentGuide'), guideDrone = $('#guideDrone');
+const guideSys = $('#guideSys'), guideSec = $('#guideSec'), guideRibbonPath = $('#guideRibbonPath');
+
+const fmt = t => {
+  const s = Math.floor(t), f = Math.floor((t - s) * 24);
+  return `00:${String(s).padStart(2, '0')}:${String(f).padStart(2, '0')}`;
+};
+const clamp01 = x => Math.max(0, Math.min(1, x));
 const band = (p, a, b) => Math.min(1, Math.max(0, (p - a) / (b - a)));
+
 let lastSeek = -1, filmVisible = true;
 ScrollTrigger.create({ trigger: sec, start: 'top bottom', end: 'bottom top', onToggle: s => { filmVisible = s.isActive; } });
-function frame() {
-  requestAnimationFrame(frame);
-  if (!filmVisible) return;
-  S.cur += (S.target - S.cur) * 0.12;
-  const p = S.cur, dur = film.duration || 30.25;
-  loop.style.opacity = p > 0.004 ? 0 : 1;
-  if (p > 0.004 && !loop.paused) loop.pause();
-  if (p <= 0.004 && loop.paused) loop.play().catch(() => {});
-  const t = Math.min(dur - 0.05, p * dur);
-  if (film.readyState >= 2 && !film.seeking && Math.abs(t - lastSeek) > 1 / 48) { film.currentTime = t; lastSeek = t; }
-  chapters.forEach((c, i) => {
-    if (i === 0 && !c.classList.contains('on') && p < 0.01) return;
-    const on = p >= +c.dataset.from && p < +c.dataset.to;
-    c.classList.toggle('on', on);
-    c.classList.toggle('out', !on && p >= +c.dataset.to);
+
+// Breadcrumb history for persistent flight ribbon trail
+const trailHistory = [];
+const MAX_TRAIL = 18;
+
+// -----------------------------------------------------------------------------
+// Continuous Mathematical Chapter Evaluation
+// -----------------------------------------------------------------------------
+function updateHeroChapters(p) {
+  CHAPTER_RANGES.forEach((rng, k) => {
+    const c = chapters[k];
+    if (!c) return;
+    if (p < rng.in0 || p > rng.out1) {
+      c.style.opacity = '0';
+      c.style.transform = 'translate3d(0, 24px, 0)';
+      c.style.pointerEvents = 'none';
+      return;
+    }
+    let uIn = 1, uOut = 0;
+    if (p < rng.in1) {
+      uIn = clamp01((p - rng.in0) / (rng.in1 - rng.in0));
+    }
+    if (p > rng.out0) {
+      uOut = clamp01((p - rng.out0) / (rng.out1 - rng.out0));
+    }
+    // Smooth cubic hermite curve
+    const easeIn = uIn * uIn * (3 - 2 * uIn);
+    const easeOut = uOut * uOut * (3 - 2 * uOut);
+    const op = easeIn * (1 - easeOut);
+    const yOffset = (1 - easeIn) * 24 - easeOut * 24;
+
+    c.style.opacity = op.toFixed(3);
+    c.style.transform = `translate3d(0, ${yOffset.toFixed(1)}px, 0)`;
+    c.style.pointerEvents = op > 0.4 ? 'auto' : 'none';
+
+    // Stagger word spans smoothly tied to scroll
+    const words = c.querySelectorAll('.w>span');
+    words.forEach((w, idx) => {
+      const wProg = clamp01(uIn * 1.3 - idx * 0.04);
+      const wOut = clamp01(uOut * 1.3 - idx * 0.03);
+      const wY = (1 - wProg) * 115 - wOut * 115;
+      w.style.transform = `translateY(${wY.toFixed(1)}%)`;
+    });
   });
-  $('#rail').classList.toggle('show', p > 0.05);
-  const idx = p < 0.2 ? 0 : p < 0.41 ? 1 : p < 0.57 ? 2 : p < 0.83 ? 3 : 4;
-  railItems.forEach((el, k) => el.classList.toggle('on', k === idx));
-  $('#tc').textContent = fmt(t);
-  $('#tcbar').style.width = (p * 100) + '%';
-  $('#hint').style.opacity = p > 0.02 ? 0 : 1;
-  hud.classList.toggle('on', p > 0.23 && p < 0.97);
-  const sc = band(p, 0.23, 0.41);
-  scan.style.opacity = sc > 0 && sc < 1 ? 1 : 0;
-  scan.style.transform = `translateY(${(sc * 1.15 - 0.05) * innerHeight}px)`;
-  gridfx.style.opacity = (sc > 0 && sc < 1 ? Math.sin(sc * Math.PI) : 0) * 0.9;
-  // humanoid tracking box. HK = [film second, left%, top%, right%, bottom%] measured on the footage frames
-  const box = humBox(t);
-  if (box) {
-    const mx = 2.4, my = 1.6;
-    const [x0, y0] = fmap(box[0] - mx, box[1] - my), [x1, y1] = fmap(box[2] + mx, box[3] + my);
-    tgt.style.left = x0 + 'px'; tgt.style.top = y0 + 'px'; tgt.style.width = (x1 - x0) + 'px'; tgt.style.height = (y1 - y0) + 'px';
-    tgt.style.opacity = 1;
-  } else tgt.style.opacity = 0;
-  // the persistent layer wakes up as the opening film ends
-  if (p > 0.85 && !BG.primed) { BG.primed = true; bgAttach(BG.vids.quad); }
 }
+
+// -----------------------------------------------------------------------------
+// Continuous Drone & Camera Motion in Hero
+// -----------------------------------------------------------------------------
+function updateHeroDrone(p, now) {
+  if (!heroDrone) return;
+  const d = evalSpline(HERO_SPLINE, p);
+  const time = now / 1000;
+  
+  // Aerodynamic banking derived continuously from curve tangent
+  const bank = Math.max(-16, Math.min(16, d.dx * 12));
+  
+  // Subtle organic hover micro-bob (dampens during fast scroll)
+  const scrollSpeed = Math.min(1, Math.abs(S.target - S.cur) * 25);
+  const bob = Math.sin(time * 1.8) * 3.5 * (1 - scrollSpeed);
+  const tilt = Math.sin(time * 0.9) * 1.2 * (1 - scrollSpeed);
+
+  // Position drone across stage
+  const W = stageCam ? stageCam.clientWidth : window.innerWidth;
+  const H = stageCam ? stageCam.clientHeight : window.innerHeight;
+  const targetX = mobile && p > 0.88 ? Math.min(88, Math.max(68, d.x)) : d.x;
+  const targetY = mobile && p > 0.88 ? Math.min(22, d.y * 0.5) : d.y;
+  const posX = (targetX / 100) * W;
+  const posY = (targetY / 100) * H + bob;
+
+  // Responsive scale factor
+  const sc = mobile ? d.s * 0.72 : d.s;
+
+  heroDrone.style.opacity = d.o.toFixed(3);
+  heroDrone.style.transform = `translate3d(${posX.toFixed(1)}px, ${posY.toFixed(1)}px, 0) scale(${sc.toFixed(3)}) rotate(${(d.r + bank + tilt).toFixed(2)}deg)`;
+
+  // Update HUD readout
+  if (heroHudTag) heroHudTag.textContent = d.tag;
+  if (heroHudVal) heroHudVal.textContent = d.alt;
+
+  // LiDAR beam during scan beat (0.22 - 0.42)
+  if (heroDroneBeam) {
+    const isScanning = p >= 0.22 && p <= 0.42;
+    heroDroneBeam.style.opacity = isScanning ? '0.85' : '0';
+  }
+}
+
+// Continuous Camera Move and Lighting Grade
+function updateHeroStage(p) {
+  if (!stageCam) return;
+  // Shared camera dolly move
+  const camScale = 1.0 + Math.sin(p * Math.PI) * 0.032;
+  const d = evalSpline(HERO_SPLINE, p);
+  const camPanX = (d.x - 50) * -0.05;
+  const camPanY = (d.y - 50) * -0.04;
+  stageCam.style.transform = `translate3d(${camPanX.toFixed(2)}%, ${camPanY.toFixed(2)}%, 0) scale(${camScale.toFixed(4)})`;
+
+  // Continuous lighting grade shifts
+  if (heroGrade) {
+    // Dawn warm golden (0..0.38) -> Facility dusk/cool (0.38..0.72) -> Bunker amber (0.72..1.0)
+    const plantAmt = band(p, 0.36, 0.72);
+    const bunkerAmt = band(p, 0.72, 1.0);
+    const op = 0.52 + plantAmt * 0.24 + bunkerAmt * 0.15;
+    heroGrade.style.opacity = op.toFixed(3);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Persistent Story Character (Post-Hero to Final CTA)
+// -----------------------------------------------------------------------------
+function updatePersistentGuide(scrollY, now, p) {
+  if (!persistentGuide || !guideDrone) return;
+
+  const topH = sec ? sec.offsetHeight : 7200;
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  const heroEnd = topH - window.innerHeight;
+  const handoffStart = heroEnd - 240;
+  const handoffEnd = heroEnd + 140;
+
+  // 1. Through the Hero (Chapters 01 - 05): Guide MUST be hidden completely
+  if (scrollY < handoffStart) {
+    persistentGuide.style.display = 'none';
+    persistentGuide.style.opacity = '0';
+    guideDrone.style.opacity = '0';
+    persistentGuide.classList.remove('active');
+    trailHistory.length = 0;
+    if (guideRibbonPath) guideRibbonPath.setAttribute('d', '');
+
+    if (heroDrone) {
+      heroDrone.style.display = 'block';
+      const d = evalSpline(HERO_SPLINE, p);
+      heroDrone.style.opacity = d.o.toFixed(3);
+    }
+    return;
+  }
+
+  // 2. Continuous Handoff Zone (Hero Exit into Guide):
+  // Hero drone shrinks & banks into guide coordinates, fading out as guide fades in
+  const handoff = clamp01((scrollY - handoffStart) / (handoffEnd - handoffStart));
+
+  if (handoff < 1.0) {
+    const fadeHero = 1.0 - handoff;
+    const fadeGuide = handoff;
+
+    if (heroDrone) {
+      heroDrone.style.display = 'block';
+      const d = evalSpline(HERO_SPLINE, p);
+      heroDrone.style.opacity = (fadeHero * d.o).toFixed(3);
+    }
+
+    persistentGuide.style.display = 'block';
+    persistentGuide.style.opacity = fadeGuide.toFixed(3);
+    persistentGuide.classList.add('active');
+    guideDrone.style.opacity = '1';
+
+    // Guide drone is positioned at initial page waypoint (PAGE_SPLINE[0])
+    const state0 = evalSpline(PAGE_SPLINE, 0);
+    const time = now / 1000;
+    const bank = Math.max(-14, Math.min(14, state0.dx * 10));
+    const bob = Math.sin(time * 1.8) * 3;
+    const tilt = Math.sin(time * 0.8) * 1.2;
+
+    const posX = mobile ? Math.min(88, Math.max(68, state0.x)) : state0.x;
+    const posY = mobile ? Math.min(22, state0.y * 0.5) : state0.y;
+    const sc = mobile ? state0.s * 0.68 : state0.s;
+
+    const px = (posX / 100) * window.innerWidth;
+    const py = (posY / 100) * window.innerHeight + bob;
+
+    guideDrone.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0) scale(${sc.toFixed(3)}) rotate(${(state0.r + bank + tilt).toFixed(2)}deg)`;
+    if (guideSys) guideSys.textContent = 'NORTHSTAR // EMBODIED AI';
+    if (guideSec) guideSec.textContent = 'MISSION: STATEMENT';
+    return;
+  }
+
+  // 3. Post-Hero: Hero drone fully faded out to 0 (display: none), persistent guide takes over
+  if (heroDrone) {
+    heroDrone.style.display = 'none';
+    heroDrone.style.opacity = '0';
+  }
+
+  persistentGuide.style.display = 'block';
+  persistentGuide.style.opacity = '1';
+  persistentGuide.classList.add('active');
+
+  const postScroll = scrollY - heroEnd;
+  const maxPost = docH - heroEnd;
+  const uSite = maxPost > 0 ? clamp01(postScroll / maxPost) : 0;
+  const state = evalSpline(PAGE_SPLINE, uSite);
+  const time = now / 1000;
+
+  // Aerodynamic banking & micro-bob
+  const bank = Math.max(-14, Math.min(14, state.dx * 10));
+  const bob = Math.sin(time * 1.8) * 3;
+  const tilt = Math.sin(time * 0.8) * 1.2;
+
+  // Responsive positioning: on mobile keep in right safe gutter
+  const posX = mobile ? Math.min(88, Math.max(68, state.x)) : state.x;
+  const posY = mobile ? Math.min(22, state.y * 0.5) : state.y;
+  const sc = mobile ? state.s * 0.68 : state.s;
+
+  const px = (posX / 100) * window.innerWidth;
+  const py = (posY / 100) * window.innerHeight + bob;
+
+  guideDrone.style.opacity = state.o.toFixed(3);
+  guideDrone.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0) scale(${sc.toFixed(3)}) rotate(${(state.r + bank + tilt).toFixed(2)}deg)`;
+
+  // Update telemetry badge
+  if (guideSys) guideSys.textContent = state.mode ? `NORTHSTAR // ${state.mode}` : 'NORTHSTAR // AUTONOMOUS';
+  if (guideSec) guideSec.textContent = state.sec ? `MISSION: ${state.sec}` : 'MISSION: RECON';
+
+  // Landing sequence at Contact CTA (uSite > 0.96)
+  if (uSite > 0.96) {
+    guideDrone.style.setProperty('--spin-rate', '0.45s');
+    if (guideSys) guideSys.textContent = 'STATUS: MISSION VERIFIED';
+    if (guideSec) guideSec.textContent = 'READY FOR DEPLOYMENT';
+  } else {
+    guideDrone.style.setProperty('--spin-rate', '0.085s');
+  }
+
+  // Draw continuous Flight Ribbon SVG trail
+  if (guideRibbonPath) {
+    trailHistory.push({ x: (px / window.innerWidth) * 100, y: (py / window.innerHeight) * 100 });
+    if (trailHistory.length > MAX_TRAIL) trailHistory.shift();
+    if (trailHistory.length > 2) {
+      let dStr = `M ${trailHistory[0].x.toFixed(1)} ${trailHistory[0].y.toFixed(1)}`;
+      for (let i = 1; i < trailHistory.length; i++) {
+        const prev = trailHistory[i - 1], cur = trailHistory[i];
+        const mx = (prev.x + cur.x) / 2, my = (prev.y + cur.y) / 2;
+        dStr += ` Q ${prev.x.toFixed(1)} ${prev.y.toFixed(1)}, ${mx.toFixed(1)} ${my.toFixed(1)}`;
+      }
+      guideRibbonPath.setAttribute('d', dStr);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Main Animation Frame Loop (60fps Pure Scroll Function)
+// -----------------------------------------------------------------------------
+function frame(now) {
+  requestAnimationFrame(frame);
+  const curY = window.scrollY;
+
+  // Interpolate hero scroll progress
+  S.cur += (S.target - S.cur) * 0.12;
+  const p = S.cur;
+  const dur = film.duration || 30.25;
+
+  if (filmVisible) {
+    loop.style.opacity = p > 0.004 ? 0 : 1;
+    if (p > 0.004 && !loop.paused) loop.pause();
+    if (p <= 0.004 && loop.paused) loop.play().catch(() => {});
+
+    // Smooth video seek
+    const t = Math.min(dur - 0.05, p * dur);
+    if (film.readyState >= 2 && !film.seeking && Math.abs(t - lastSeek) > 1 / 30) {
+      film.currentTime = t;
+      lastSeek = t;
+    }
+
+    // Update continuous hero chapters
+    updateHeroChapters(p);
+
+    // Update hero drone and camera
+    updateHeroDrone(p, now);
+    updateHeroStage(p);
+
+    // Rail chapter indicator
+    $('#rail').classList.toggle('show', p > 0.04);
+    const idx = p < 0.22 ? 0 : p < 0.40 ? 1 : p < 0.58 ? 2 : p < 0.78 ? 3 : 4;
+    railItems.forEach((el, k) => el.classList.toggle('on', k === idx));
+
+    // Timecode & Bar
+    $('#tc').textContent = fmt(t);
+    $('#tcbar').style.width = (p * 100) + '%';
+    $('#hint').style.opacity = p > 0.02 ? 0 : 1;
+    hud.classList.toggle('on', p > 0.22 && p < 0.98);
+
+    // Scanline & Grid effects
+    const sc = band(p, 0.22, 0.42);
+    scan.style.opacity = sc > 0 && sc < 1 ? 1 : 0;
+    scan.style.transform = `translateY(${(sc * 1.15 - 0.05) * window.innerHeight}px)`;
+    gridfx.style.opacity = (sc > 0 && sc < 1 ? Math.sin(sc * Math.PI) : 0) * 0.9;
+
+    // Humanoid tracking box mapped through video cover
+    const box = humBox(t);
+    if (box) {
+      const mx = 2.4, my = 1.6;
+      const [x0, y0] = fmap(box[0] - mx, box[1] - my), [x1, y1] = fmap(box[2] + mx, box[3] + my);
+      tgt.style.left = x0 + 'px'; tgt.style.top = y0 + 'px'; tgt.style.width = (x1 - x0) + 'px'; tgt.style.height = (y1 - y0) + 'px';
+      tgt.style.opacity = 1;
+    } else {
+      tgt.style.opacity = 0;
+    }
+
+    // Wake up persistent layer as hero draws to a close
+    if (p > 0.82 && !BG.primed) {
+      BG.primed = true;
+      bgAttach(BG.vids.quad);
+    }
+  }
+
+  // Update persistent guide character and handoff through every section
+  updatePersistentGuide(curY, now, p);
+}
+
+// Humanoid keyframe points
 const HK = [[16.2, 52, 42, 56, 56], [16.6, 53, 41, 57.5, 60], [17.0, 54, 40, 59, 63], [17.5, 55, 39.5, 61, 65], [18.0, 55.6, 39.1, 61.6, 66.6], [18.5, 56.1, 39.1, 62.5, 67.7], [19.0, 56.1, 36.8, 63.0, 68.3], [19.5, 55.9, 35.4, 64.0, 70.3], [20.0, 55.6, 34.1, 63.6, 72.6], [20.5, 54.2, 31.3, 63.6, 73.3], [21.0, 54.6, 29.6, 65.1, 75.7], [21.5, 54.1, 28.3, 64.0, 78.8], [22.0, 52.8, 25.4, 65.1, 81.1], [22.5, 53.2, 20.0, 66.3, 83.3], [23.0, 49.3, 13.2, 66.3, 86.6], [23.5, 50.1, 4.3, 69.6, 96.3], [24.0, 46.3, 0.1, 70.0, 99.9], [24.15, 44, 0, 71, 100]];
 function humBox(t) {
   if (t < HK[0][0] || t > HK[HK.length - 1][0]) return null;
@@ -1123,11 +1650,13 @@ function humBox(t) {
   return [1, 2, 3, 4].map(k => a[k] + (b[k] - a[k]) * u);
 }
 function fmap(px, py) {
-  const W = innerWidth, H = $('#stage').clientHeight, sc = Math.max(W / 16, H / 9), dw = 16 * sc, dh = 9 * sc;
+  const W = window.innerWidth, H = $('#stage').clientHeight, sc = Math.max(W / 16, H / 9), dw = 16 * sc, dh = 9 * sc;
   return [(W - dw) / 2 + px / 100 * dw, (H - dh) / 2 + py / 100 * dh];
 }
 
-// ---------- Persistent cinematic layer: one chapter per section, crossfaded by scroll ----------
+// -----------------------------------------------------------------------------
+// Persistent Cinematic Video Layer & Backgrounds
+// -----------------------------------------------------------------------------
 const BG = { el: $('#bgfilm'), vids: Object.fromEntries($$('#bgfilm video').map(v => [v.dataset.bg, v])), cur: null, primed: false };
 const bgSize = mobile ? 960 : 1600;
 function bgAttach(v) { if (v.dataset.ready) return; v.dataset.ready = 1; v.src = `../media/bg-${v.dataset.bg}-${bgSize}.mp4`; v.load(); }
@@ -1147,25 +1676,45 @@ $$('[data-bg]').forEach(el => {
   ScrollTrigger.create({ trigger: el, start: 'top 60%', end: 'bottom 60%', onToggle: st => { if (st.isActive) setBg(el.dataset.bg, el.dataset.fx); } });
 });
 ScrollTrigger.create({ trigger: sec, start: 'bottom 110%', onEnter: () => BG.el.classList.add('show'), onLeaveBack: () => { BG.el.classList.remove('show'); } });
-requestAnimationFrame(frame);
-addEventListener('touchstart', () => { film.play().then(() => film.pause()).catch(() => {}); }, { once: true, passive: true });
 
-// Header: solid once past the film, navy logo over light sections
+// Header: solid once past film, progress line
 const hdr = $('#hdr');
-const lightSecs = [];
 function headerState() {
-  const y = 40;
-  hdr.classList.toggle('solid', scrollY > sec.offsetHeight - innerHeight - 10);
-  const pr = $('#prog'), max = document.documentElement.scrollHeight - innerHeight; if (pr) { pr.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`; pr.classList.toggle('show', scrollY > 40); }
-  hdr.classList.toggle('lt', lightSecs.some(s => { const r = s.getBoundingClientRect(); return r.top <= y && r.bottom >= y; }));
+  const y = window.scrollY;
+  hdr.classList.toggle('solid', y > sec.offsetHeight - window.innerHeight - 10);
+  const pr = $('#prog'), max = document.documentElement.scrollHeight - window.innerHeight;
+  if (pr) {
+    pr.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
+    pr.classList.toggle('show', y > 40);
+  }
 }
-addEventListener('scroll', headerState, { passive: true }); headerState();
+window.addEventListener('scroll', headerState, { passive: true });
+headerState();
 
-// Reveals
-$$('.rv').forEach(el => gsap.to(el, { y: 0, opacity: 1, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%' } }));
+// Scrub-based Section Reveals (Pure Function of Scroll Position)
+$$('.rv').forEach(el => {
+  gsap.fromTo(el,
+    { y: 26, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 95%',
+        end: 'top 78%',
+        scrub: true
+      }
+    }
+  );
+});
+
 // Parallax on photos
 $$('[data-par]').forEach(img => gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
-// ---------- Northstar Site view: a working illustrative product preview ----------
+
+// -----------------------------------------------------------------------------
+// Site View Interactive Component (Sample Data)
+// -----------------------------------------------------------------------------
 const SITES = [
   { n: 'Riverside Tower', img: 's-site.jpg', alt: 'Aerial capture of a construction site', tag: ["Today's capture", 'vs last week'], f: [
     { x: 46, y: 31, s: 'h', l: 'HIGH', t: 'Guardrail missing', d: 'Level 7 · east edge · drone pass', m: 'Edge protection absent along 6 m of the east slab edge. Flagged for the safety team.' },
@@ -1238,18 +1787,33 @@ function svApplyView() {
 svCmp.addEventListener('input', () => svMap.style.setProperty('--cmp', svCmp.value + '%'));
 svSite(0);
 
-// Platform: grid sweeps across the map, pins drop, issues slide in
+// Platform app reveal
 const appTl = gsap.timeline({ scrollTrigger: { trigger: '#app', start: 'top 70%' }, onComplete: () => $('#app').classList.add('live') });
 appTl.to('#mlayer', { clipPath: 'inset(0 0% 0 0)', duration: 1.6, ease: 'power2.inOut' })
   .to('.pin', { scale: 1, duration: 0.6, ease: 'back.out(2)', stagger: 0.18 }, '-=0.6')
   .to('.issue', { opacity: 1, x: 0, duration: 0.7, ease: 'expo.out', stagger: 0.15 }, '-=0.5');
 $('#app').addEventListener('click', e => { if (!e.target.closest('.pin') && !e.target.closest('.issue') && SV.sel >= 0) svSelect(SV.sel); });
-// Inside: alerts pop in one by one
-gsap.to('.alert', { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'expo.out', stagger: 0.35, scrollTrigger: { trigger: '#inside', start: 'top 45%' } });
-// Steps: the connecting line fills as you scroll
+
+// Coordination layer alerts (Scrub-based pure scroll function)
+const alertTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '#inside',
+    start: 'top 65%',
+    end: 'top 25%',
+    scrub: true
+  }
+});
+alertTl.fromTo('.alert',
+  { opacity: 0, y: 18, scale: 0.94 },
+  { opacity: 1, y: 0, scale: 1, ease: 'none', stagger: 0.25 }
+);
+
+// Steps connecting line
 gsap.to('#stepline', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '#steps', start: 'top 75%', end: 'bottom 55%', scrub: true } });
 
-// Industries tabs
+// -----------------------------------------------------------------------------
+// Industries Tabs
+// -----------------------------------------------------------------------------
 const IND = [
   { n: 'Manufacturing', h: 'Industrial assets &amp; manufacturing', img: 's-plant.jpg', p: 'Support equipment condition monitoring, visual quality inspections, thermal anomaly detection, production-facility walkthroughs, and asset documentation.', u: ['Equipment condition monitoring', 'Visual quality inspections', 'Thermal anomaly detection', 'Production-facility walkthroughs', 'Asset documentation'] },
   { n: 'Energy &amp; utilities', h: 'Energy &amp; utilities', img: 's-scan.jpg', p: 'Inspect selected energy infrastructure, solar installations, substations, and utility assets through aerial imaging, thermal analysis, connected sensors, and robotic observation.', u: ['Solar installations', 'Substations', 'Utility assets', 'Thermal analysis'] },
@@ -1269,20 +1833,35 @@ function showInd(k) {
 IND.forEach((d, k) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab'); b.innerHTML = d.n; b.onclick = () => showInd(k); tabs.append(b); });
 showInd(0);
 
-// Nav: mark the section in view
-{
-  const links = [...document.querySelectorAll('nav a')];
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (!e.isIntersecting) return;
-    links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
-  }), { rootMargin: '-45% 0px -50% 0px' });
-  links.forEach(a => { const t = document.querySelector(a.getAttribute('href')); t && io.observe(t); });
-  const off = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && links.forEach(a => a.classList.remove('on'))), { rootMargin: '-45% 0px -50% 0px' });
-  ['#top', '#statement', '#vision', '#inside', '#how', '#why'].forEach(id => { const t = document.querySelector(id); t && off.observe(t); });
+// -----------------------------------------------------------------------------
+// Navigation Highlighting (Pure Mathematical Function)
+// -----------------------------------------------------------------------------
+const navLinks = [...document.querySelectorAll('nav a')];
+const navSections = ['#platform', '#technology', '#construction', '#industries', '#about', '#contact'].map(id => $(id)).filter(Boolean);
+function updateNavHighlight() {
+  const scrollMid = window.scrollY + window.innerHeight * 0.45;
+  let activeId = null;
+  for (const secEl of navSections) {
+    const top = secEl.offsetTop;
+    const bot = top + secEl.offsetHeight;
+    if (scrollMid >= top && scrollMid < bot) {
+      activeId = secEl.id;
+      break;
+    }
+  }
+  navLinks.forEach(a => {
+    a.classList.toggle('on', activeId ? a.getAttribute('href') === '#' + activeId : false);
+  });
 }
+window.addEventListener('scroll', updateNavHighlight, { passive: true });
 
 // Partner with us: jump to the form and focus it
-$('#partnerBtn').addEventListener('click', e => { e.preventDefault(); const f = $('#demoForm'); f.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => f.querySelector('input').focus({ preventScroll: true }), 600); });
+$('#partnerBtn').addEventListener('click', e => {
+  e.preventDefault();
+  const f = $('#demoForm');
+  f.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => f.querySelector('input').focus({ preventScroll: true }), 600);
+});
 
 // FAQ accordion
 $$('.qa button').forEach(b => {
@@ -1290,7 +1869,7 @@ $$('.qa button').forEach(b => {
   b.addEventListener('click', () => b.setAttribute('aria-expanded', b.parentElement.classList.toggle('open')));
 });
 
-// Demo form: opens the visitor's email app once an inbox is set; until then it says so honestly
+// Demo form
 $('#demoForm').addEventListener('submit', e => {
   e.preventDefault();
   const f = new FormData(e.target), note = $('#formNote');
@@ -1310,6 +1889,9 @@ if (forced !== null) {
   const jump = new URLSearchParams(location.search).get('s');
   if (jump && $('#' + jump)) addEventListener('load', () => { const y = $('#' + jump).offsetTop; lenis ? lenis.scrollTo(y, { immediate: true }) : scrollTo(0, y); ScrollTrigger.refresh(); headerState(); });
 }
+
+// Start 60fps Animation Loop
+requestAnimationFrame(frame);
 setTimeout(() => (window.__ready = true), 1500);
 </script>
 </body></html>
