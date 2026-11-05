@@ -9,11 +9,11 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 import { DecalGeometry } from 'three/examples/jsm/geometries/DecalGeometry.js';
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, DEBUG = /[?&]dronedebug/.test(location.search);
-if (!reduce) start();
+start();
 
 function start() {
   let renderer;
-  try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' }); } catch (e) { return; }
+  try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' }); } catch (e) { window.droneFail && window.droneFail(); return; }
   const cv = renderer.domElement; cv.id = 'drone3d'; cv.setAttribute('aria-hidden', 'true'); document.body.appendChild(cv);
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -77,9 +77,9 @@ function start() {
     // the Northstar ribbon is printed on the top shell BEFORE the drone starts to move, so model space = world space
     logoImg.then(img => {
       if (img) { try { addLogo(g, c, img); } catch (e) { /* the drone is fine without it */ } }
-      ready = true; document.documentElement.classList.add('drone3d-on');
+      ready = true; document.documentElement.classList.add('drone3d-on'); setTimeout(() => window.droneDone && window.droneDone(), 250);
     });
-  }, undefined, () => { cv.remove(); });
+  }, e => { const b = document.getElementById('loaderBar'); if (b && e.total) b.style.width = Math.max(8, e.loaded / e.total * 100) + '%'; }, () => { cv.remove(); window.droneFail && window.droneFail(); });
 
 
   // A decal follows the shell's curve. It is built while the rig is at rest (model space = world space), then parented to the model.
@@ -123,12 +123,11 @@ function start() {
     return c.left - l.left < 320 ? null : { l: l.left, r: c.left - 28, t: m.bottom + 12, b: c.bottom, maxS: .3, side: -1 };
   }
   const STATIONS = {
-    hero() {
-      const hero = q('#hero'), b = box(q('#hero .box')), h2 = q('#hero2'), end = Math.max(1, hero.offsetHeight - innerHeight), u = Math.min(1, scrollY / end);
-      if (scrollY > end + innerHeight * .25) return null;
-      const under = u > .36 ? box(h2).top - 8 : b.bottom;   // makes room just before the panel fades in
-      const k = innerWidth < 768 ? .3 : 1;
-      return { l: b.left, r: b.right, t: b.top, b: under, maxS: (.46 - .1 * u) * (innerWidth < 768 ? 1.05 : 1), side: -1, pref: [(-18 * sm(u)) * k, -2 - 10 * sm(u)], pose: [24 + 8 * u, 30 - 6 * u, -3 - 4 * u] };
+    hero() {   // one steady place: right of the copy where there is room, otherwise between the lettering and the copy
+      const bx = q('#hero .box'), b = box(bx), h2 = q('#hero2'), mk = box(q('#hero .mark')), pose = [24, 30, -3];
+      const room = b.right - (b.left + h2.offsetLeft + h2.offsetWidth), wide = room >= (b.width >= 1200 ? 540 : 340);
+      return wide ? { l: b.right - room + 24, r: b.right - 12, t: b.top + 12, b: b.bottom - 12, maxS: .3, minW: 200, side: 1, pose }
+        : { l: b.left, r: b.right, t: mk.top + mk.height * .55, b: b.top + h2.offsetTop - 8, maxS: .46, minW: 110, side: -1, pose };
     },
     intro() {   // left side, above the statement
       const t = q('#intro .txt'), p = box(t.querySelector('p')), c = box(t);
@@ -136,10 +135,10 @@ function start() {
     },
     vision: () => leftCol('vision'),       // the open space below "Vision"
     ecosystem: () => leftCol('ecosystem'),
-    dial() {   // inside the arc, above the hub, only while the section is pinned. It turns with the blue dot.
-      const d = box(q('#dial')); if (d.top > 2 || d.bottom < innerHeight - 2) return null;
-      const a_ = box(q('#dial .arcw')), lb = box(q('#dialLbl')), df = box(q('#dialDef')), ph = innerWidth < 768, u = 1 - parseFloat(getComputedStyle(q('#arcOn')).strokeDashoffset || 1);
-      return { l: a_.left + a_.width * .1, r: a_.right - a_.width * .1, t: ph ? Math.max(df.bottom + 4, a_.top - 40) : a_.top + a_.height * .1, b: lb.top - 4, maxS: .24, minW: ph ? 120 : 170, side: -1, pose: [-34 + 68 * u, 22, 5 - 10 * u] };
+    dial() {   // in the middle of the ring. It turns with the ring.
+      const r = box(q('#dialRing')); if (!r.width) return null;
+      const rr = r.width / 2, cx = r.left + rr, cy = r.top + rr, n = q('.rnode'), half = rr - (n ? n.offsetWidth / 2 : 0) - 8, u = +(q('#dial').dataset.pos || 0) / 3;
+      return { l: cx - half, r: cx + half, t: cy - rr * .62, b: cy + rr * .62, maxS: .34, minW: 80, side: -1, sizePose: [0, 22, 0], pose: [-34 + 68 * u, 22, 5 - 10 * u] };
     },
     platform: () => leftCol('platform'),
     terrain() {   // over the survey terrain, clear of the pins
@@ -180,46 +179,60 @@ function start() {
   const hits = (l, t, r, b) => { let a = 0; for (const q_ of live) { const w = Math.min(r, q_[2]) - Math.max(l, q_[0]), h = Math.min(b, q_[3]) - Math.max(t, q_[1]); if (w > 0 && h > 0) a += w * h; } return a; };
   // the drone's size on screen for the pose it is in now, per unit of "s"
   const pv = new THREE.Vector3(); let boxW = 1950, boxH = 1000;
-  function measure() {
-    if (!localBox) return;
+  const sized = new Map();
+  function sizeFor(pose) {
+    const key = pose.map(v => Math.round(v)).join();
+    if (sized.has(key)) return sized.get(key);
+    if (!localBox) return [boxW, boxH];
+    cam.updateMatrixWorld();
     // measured in the station's resting pose, so leaning, hover and scroll speed cannot change the size it picks
     const S = .3, keepP = rig.position.clone(), keepS = rig.scale.clone(), keepR = rig.rotation.clone(), keepM = model.rotation.clone();
-    model.rotation.set(0, Math.PI / 2 + tgt.pose[0] * D2R, 0); rig.rotation.set(tgt.pose[1] * D2R, 0, -tgt.pose[2] * D2R, 'XYZ');
+    model.rotation.set(0, Math.PI / 2 + pose[0] * D2R, 0); rig.rotation.set(pose[1] * D2R, 0, -pose[2] * D2R, 'XYZ');
     rig.position.set(0, 0, 0); rig.scale.setScalar(S * viewW / (2 * R) * 2.1); rig.updateMatrixWorld(true);
     let l = 1e9, r = -1e9, t = 1e9, b = -1e9; const { min: a, max: z } = localBox;
     for (const x of [a.x, z.x]) for (const y of [a.y, z.y]) for (const k of [a.z, z.z]) {
       pv.set(x, y, k).applyMatrix4(model.matrixWorld).project(cam);
       const px = (pv.x + 1) / 2 * innerWidth, py = (1 - pv.y) / 2 * innerHeight; l = Math.min(l, px); r = Math.max(r, px); t = Math.min(t, py); b = Math.max(b, py);
     }
-    boxW = (r - l) / S; boxH = (b - t) / S;
+    const out = [(r - l) / S, (b - t) / S];
     rig.position.copy(keepP); rig.scale.copy(keepS); rig.rotation.copy(keepR); model.rotation.copy(keepM); rig.updateMatrixWorld(true);
+    if (sized.size > 400) sized.clear();
+    sized.set(key, out); return out;
   }
+  function measure() { [boxW, boxH] = sizeFor(tgt.pose); }
   const CUT = .84;   // the corners of the box are empty air between the arms
 
   // can this station hold the drone right now? returns where and how big
-  function fit(name) {
+  // A station is a fixed place on the page. To arrive, most of that place must be on screen and clear of words.
+  // Once there the drone travels with the page, and it only goes when that place has scrolled completely away.
+  function fit(name, staying) {
     const st = STATIONS[name](); if (!st) return null;
     const minW = st.minW || (innerWidth < 768 ? 130 : 260), W_ = st.r - st.l, H_ = st.b - st.t; if (W_ <= 0 || H_ <= 0) return null;
-    const s = Math.min(st.maxS, W_ / boxW, (H_ - 24) / boxH); if (s * boxW < minW) return null;
-    // what part of it is on screen?
-    const top = Math.max(st.t, HDR), bot = Math.min(st.b, innerHeight - 8), hh = boxH * s / 2, hw = boxW * s / 2;
-    if (bot - top < hh * 2 + 24) return null;
-    const pref = st.pref ? [(st.pref[0] / 100 + .5) * innerWidth, (st.pref[1] / 100 + .5) * innerHeight] : [(st.l + st.r) / 2, (top + bot) / 2];
-    const pad = 12, cx = Math.min(Math.max(pref[0], st.l + hw * .96), st.r - hw * .96), cy = Math.min(Math.max(pref[1], top + hh + pad), bot - hh - pad);   // pad: the rotor tips and the hover bob
-    const w = hw * CUT, h = hh * CUT; if (hits(cx - w, cy - h, cx + w, cy + h) / (4 * w * h) > .015) return null;
-    return { x: (cx / innerWidth - .5) * 100, y: (cy / innerHeight - .5) * 100, s, side: st.side, pose: st.pose || (st.side < 0 ? [32, 18, -6] : [-32, 18, 6]) };
+    const pose = st.pose || (st.side < 0 ? [32, 18, -6] : [-32, 18, 6]), [bw, bh] = sizeFor(st.sizePose || pose);
+    const s = Math.min(st.maxS, W_ / bw, (H_ - 24) / bh); if (s * bw < minW) return null;
+    const hh = bh * s / 2, hw = bw * s / 2, pad = 12;   // pad: the rotor tips and the hover bob
+    const pref = st.pref ? [(st.pref[0] / 100 + .5) * innerWidth, (st.pref[1] / 100 + .5) * innerHeight] : [(st.l + st.r) / 2, st.t + Math.min(H_ / 2, innerHeight * .42)];
+    const cx = Math.min(Math.max(pref[0], st.l + hw * .96), st.r - hw * .96), cy = Math.min(Math.max(pref[1], st.t + hh + pad), st.b - hh - pad);
+    if (staying) { if (cy + hh < 0 || cy - hh > innerHeight) return null; }
+    else {
+      const seen = Math.min(cy + hh, innerHeight) - Math.max(cy - hh, HDR); if (seen < hh * 2 * .7) return null;
+      const w = hw * CUT, h = hh * CUT; if (hits(cx - w, cy - h, cx + w, cy + h) / (4 * w * h) > .015) return null;
+    }
+    return { x: (cx / innerWidth - .5) * 100, y: (cy / innerHeight - .5) * 100, s, side: st.side, pose, seen: Math.max(0, Math.min(cy + hh, innerHeight) - Math.max(cy - hh, 0)) / (hh * 2) };
   }
   const NAMES = Object.keys(STATIONS);
   const tgt = { x: -80, y: -40, s: .46, on: false, side: -1, pose: [24, 30, -3] };
-  let here = null;
+  let here = null, placed = false;
   function steer() {
-    let f = here && fit(here), name = here;
-    if (!f) { name = null; for (const n of NAMES) { const c = fit(n); if (c) { f = c; name = n; break; } } }
-    const off = () => 56 + boxW * cur.s / innerWidth * 72, gone = Math.abs(cur.x) > off() - 1;   // far enough that no rotor tip shows
-    if (f && (gone || !here || name === here || f.side === tgt.side)) {
-      if (gone) { cur.x = f.side * off(); cur.y = f.y; cur.s = f.s; vel.x = vel.y = vel.s = 0; }   // comes in from its own side, over nothing
-      Object.assign(tgt, f, { on: true }); here = name;
-    } else { // nothing to do here, or the next station is across the page: leave by the nearest edge first
+    let f = here && fit(here, true), name = here;
+    // only a sliver left here and another place is ready on screen: that place takes it now
+    if (f && f.seen < .34) for (const n of NAMES) { if (n === here) continue; const c = fit(n); if (c) { f = c; name = n; break; } }
+    if (!f) { name = null; for (const n of NAMES) { const c = fit(n, !placed); if (c) { f = c; name = n; break; } } }
+    const off = () => 56 + boxW * cur.s / innerWidth * 72;
+    if (f) {
+      if (name !== here) { cur.x = f.x; cur.y = f.y; cur.s = f.s; [cur.yaw, cur.pitch, cur.roll] = f.pose; vel.x = vel.y = vel.s = 0; if (placed) fade = 0; anchorName = null; }   // appears in its new place, no flight across the page
+      placed = true; Object.assign(tgt, f, { on: true }); here = name;
+    } else { // no place on screen right now: it is already out of sight, or the layout changed under it
       tgt.on = false; tgt.x = (cur.x < 0 ? -1 : 1) * (off() + 8); here = null;
     }
   }
@@ -231,13 +244,13 @@ function start() {
   function loop(now) {
     requestAnimationFrame(loop);
     const dt = Math.min(.1, (now - last) / 1000); last = now;
-    rotors.forEach(r => { r.node.rotation.y += r.dir * 44 * Math.min(dt, .05); });   // never stops
+    if (!reduce) rotors.forEach(r => { r.node.rotation.y += r.dir * 44 * Math.min(dt, .05); });   // never stops
     if (!ready) { lastY = scrollY; return; }
     // it moves exactly with what it is parked beside, so a scroll can never push words into it. The spring only re-centres.
     const dy = scrollY - lastY; lastY = scrollY; scrollV += (dy / Math.max(dt, .001) - scrollV) * .3;
     let move = dy;
     if (here) { const st = STATIONS[here](); if (st) { move = anchorName === here ? anchor - st.t : 0; anchor = st.t; anchorName = here; } } else anchorName = null;
-    if (move) { const pct = move / innerHeight * 100; cur.y -= pct; if (!tgt.on) tgt.y -= pct; }
+    if (move) { const pct = move / innerHeight * 100; cur.y -= pct; tgt.y -= pct; }
     framesOdd = !framesOdd;
     if (dy && framesOdd) readText();                                                      // words are moving: read them often
     if (now - lastRead > 80) { lastRead = now; measure(); if (!dy) readText(); steer(); }
@@ -258,7 +271,7 @@ function start() {
     if (DEBUG) window.__drone = { here, on: tgt.on, tgt: { x: tgt.x, y: tgt.y, s: tgt.s }, cur: { x: cur.x, y: cur.y, s: cur.s }, fade, over, boxW, boxH, bbox: [cx - hw / CUT, cy - hh / CUT, cx + hw / CUT, cy + hh / CUT] };
     const n = now / 1000, scale = cur.s * viewW / (2 * R) * 2.1;
     if (!tgt.on && Math.abs(cur.x) > 54 + boxW * cur.s / innerWidth * 70) { renderer.clear(); return; }   // off screen: draw nothing
-    const bobY = Math.sin(n * 1.1) * .007 + Math.sin(n * .43) * .004, bobX = Math.sin(n * .7) * .004;
+    const bobY = reduce ? 0 : Math.sin(n * 1.1) * .007 + Math.sin(n * .43) * .004, bobX = reduce ? 0 : Math.sin(n * .7) * .004;
     rig.position.set(cur.x / 100 * viewW + bobX * viewW, -cur.y / 100 * viewH + bobY * viewH, 0);
     rig.scale.setScalar(scale);
     // facing: +90 deg turns the model to face the camera; yaw then swings the nose left (-) or right (+)
@@ -275,5 +288,5 @@ function start() {
   }
   requestAnimationFrame(loop);
 
-  addEventListener('resize', () => { size(); textEls = []; if (ready) { measure(); steer(); } });
+  addEventListener('resize', () => { size(); textEls = []; sized.clear(); if (ready) { measure(); steer(); } });
 }

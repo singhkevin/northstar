@@ -9,6 +9,15 @@
 <link rel="icon" href="../brand/northstar-flight-ribbon-icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="preload" href="media/drone.glb" as="fetch" crossorigin>
+<script>
+// a loading screen until the 3D drone is ready; if that takes long or fails, the page simply opens without it
+(() => { const root = document.documentElement;
+  root.classList.add('loading');
+  window.droneDone = window.droneFail = () => root.classList.remove('loading');
+  setTimeout(window.droneDone, 12000);
+})();
+</script>
 <style>
 /* Northstar /v3. Layout, type scale, spacing and motion follow a measured study of a minimal light editorial drone site
    (see plans/drone-riotters/04-build-spec.md). Brand, copy, images, drone and 3D are Northstar's own. */
@@ -47,7 +56,7 @@ img,video,canvas{display:block}
 
 /* header */
 header{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--hdr);background:var(--bg);border-bottom:1px solid var(--line);align-items:center;padding:0 var(--gx)}
-header .brand{grid-column:1/4;justify-self:start;display:flex;align-items:center;gap:10px;color:var(--mid);font-size:12px}
+header .brand{grid-column:1/4;justify-self:start;white-space:nowrap;display:flex;align-items:center;gap:10px;color:var(--mid);font-size:12px}
 header .brand img{height:52px;width:auto;margin:-6px 0 -6px -9px}
 @media (max-width:767px){header .brand img{height:44px;margin:-4px 0 -4px -7px}}
 @media (max-width:359px){header .brand img{height:36px;margin:0 0 0 -6px}}
@@ -55,16 +64,13 @@ header nav{grid-column:4/10;justify-self:center;display:flex;gap:28px;font-size:
 header nav a{white-space:nowrap;transition:color .3s var(--std)}header nav a:hover,header nav a.on{color:var(--ink)}
 header .cta{grid-column:10/13;justify-self:end}
 @media (max-width:1023px){header nav{display:none}header .brand{grid-column:1/9}header .cta{grid-column:9/13}}
-@media (max-width:767px){header .brand span{display:none}}
+@media (max-width:1180px){header .brand span{display:none}}
 
 /* hero */
 #hero{height:200svh;position:relative}
 #hero .stick{position:sticky;top:0;height:100svh;padding:var(--hdr) var(--gx) 0;display:flex;flex-direction:column}
 #hero .box{position:relative;flex:1;overflow:hidden;background:linear-gradient(180deg,var(--hero-a) 0%,#F1F4F8 46%,var(--bg) 100%)}
 #hero .mark{position:absolute;left:0;right:0;top:4%;text-align:center;font-family:var(--head);font-weight:400;font-size:min(19.5vw,36vh);line-height:.95;letter-spacing:-.06em;color:#EEF2F7;text-shadow:0 1px 0 #fff,0 -1px 0 rgba(16,43,78,.07),0 22px 50px rgba(16,43,78,.09);user-select:none;will-change:transform}
-#drone{position:absolute;left:50%;top:50%;width:min(52vw,74vh);aspect-ratio:1016/451;will-change:transform}
-#drone img{width:100%;height:auto;position:relative;z-index:2;filter:drop-shadow(0 30px 40px rgba(16,43,78,.16))}
-#drone .shadow{position:absolute;left:16%;right:16%;bottom:-34%;height:16%;border-radius:50%;background:radial-gradient(closest-side,rgba(16,43,78,.18),transparent);filter:blur(6px)}
 .rotor{position:absolute;z-index:3;width:30%;aspect-ratio:1/.22;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(30,40,55,.30),rgba(30,40,55,.12) 60%,transparent);overflow:hidden}
 .rotor::after{content:"";position:absolute;inset:-10% -2%;border-radius:50%;background:linear-gradient(90deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 66%);animation:sweep .12s linear infinite}
 .rotor.r2::after{animation-direction:reverse}
@@ -72,10 +78,7 @@ header .cta{grid-column:10/13;justify-self:end}
 .r1{left:5.2%;top:43%}.r2{left:61.8%;top:2%}.r3{left:94.8%;top:40%}
 
 /* drone flyer: a photoreal flight clip scrubbed by scroll; its white backdrop is multiplied away */
-#flyer{position:fixed;inset:0;z-index:40;width:100%;height:100%;object-fit:contain;pointer-events:none;mix-blend-mode:multiply;opacity:0;will-change:transform,opacity;transform-origin:50% 50%}
-.flyer-on #drone{visibility:hidden}
 #drone3d{position:fixed;inset:0;z-index:40;width:100%;height:100%;pointer-events:none}
-.drone3d-on #drone{visibility:hidden}.drone3d-on #flyer{display:none}
 #hero .foot{display:flex;justify-content:space-between;align-items:flex-end;padding:20px 0 22px}
 #hero .tag{font-size:15px;line-height:20px;letter-spacing:-.02em}#hero .tag span{display:block;color:var(--mid)}
 #hero .scroll{white-space:nowrap;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--mid)}
@@ -110,69 +113,11 @@ header .cta{grid-column:10/13;justify-self:end}
 @media (max-width:1023px){.lead{padding:32px 0 56px}.lead .mono{grid-column:1/13;margin-bottom:16px}.lead .copy{grid-column:1/13}}
 
 /* coordination dial */
-#dial{height:420svh;position:relative}
-#dial .stick{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--hdr) var(--gx) 0}
-#dial .intro{position:absolute;left:var(--gx);right:var(--gx);top:calc(var(--hdr) + 24px);display:flex;justify-content:space-between;gap:24px;color:var(--mid)}
-#dial .intro p{max-width:30em;text-align:right;font-size:15px;line-height:20px;letter-spacing:-.02em}
-#dial .arcw{position:relative;align-self:center;width:min(620px,86vw,max(280px,calc((100svh - var(--hdr) - min(24svh,190px) - 290px)*2)));aspect-ratio:2/1;margin-bottom:-1px}
-#dial svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-#dial .hub{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);width:56px;height:56px;border-radius:50%;background:var(--paper);border:1px solid var(--line2);display:grid;place-items:center;z-index:2}
-#dial .hub i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--ink);transition:transform .7s var(--out)}
-#dial .lbl{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);color:var(--mid);white-space:nowrap}
-#dial .def{align-self:center;width:min(520px,86vw);text-align:center;font-size:16px;line-height:24px;letter-spacing:-.02em;color:var(--mid);min-height:120px;margin-bottom:64px}
-@media (min-width:768px) and (max-height:780px){#dial .intro{top:calc(var(--hdr) + 8px)}#dial .intro p{max-width:24em;font-size:13px;line-height:17px}#dial .def{width:min(420px,calc(100vw - 2*(312px + var(--gx) + 16px)));min-height:96px;margin-bottom:20px;font-size:14px;line-height:19px}#dial .arcw{width:min(620px,86vw,max(280px,calc((100svh - var(--hdr) - min(24svh,190px) - 170px)*2)))}}
-@media (min-width:768px) and (max-width:1000px) and (max-height:780px){#dial .intro p{display:none}#dial .def{width:min(420px,70vw)}}
-#dial .strip{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);grid-template-columns:repeat(4,1fr);height:min(24svh,190px)}
-#dial .cell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);transition:color .5s var(--std)}
-#dial .cell+.cell{border-left:1px solid var(--line2)}
-#dial .cell .mono{color:var(--muted);transition:color .5s var(--std);text-align:center;padding:0 10px}
-#dial .cell.on{color:var(--ink)}#dial .cell.on .mono{color:var(--mid)}
-@media (max-width:767px){#dial .strip{grid-template-columns:repeat(2,1fr);height:auto}#dial .cell{padding:22px 0}#dial .cell:nth-child(3){border-left:0}#dial .cell:nth-child(n+3){border-top:1px solid var(--line2)}#dial .intro p{display:none}#dial .def{min-height:150px;margin-bottom:32px;font-size:15px;line-height:22px}}
 
 /* industries (tabs) */
 #industries{background:var(--paper)}
-.tabs{display:flex;flex-wrap:wrap;gap:8px 28px;padding:40px 0 0}
-.tabs button{font-weight:300;font-size:clamp(22px,1.95vw,28px);line-height:32px;letter-spacing:-.028em;color:var(--muted);padding-bottom:10px;border-bottom:1px solid transparent;transition:color .3s var(--std),border-color .3s var(--std)}
-.tabs button:hover{color:var(--mid)}.tabs button[aria-selected=true]{color:var(--ink);border-color:var(--ink)}
-.ind{border-top:1px solid var(--line2);margin-top:-1px;padding:32px 0 80px;align-items:start}
-.ind .t{grid-column:1/6;padding-right:32px}
-.ind .t p{font-size:16px;line-height:24px;color:var(--text)}
-.ind .t ul{list-style:none;margin-top:28px;border-top:1px solid var(--line)}
-.ind .t li{padding:10px 0;border-bottom:1px solid var(--line);color:var(--mid);font-size:14px}
-.ind .img{grid-column:7/13;position:relative;aspect-ratio:16/10;overflow:hidden;background:#0B1B33}
-.ind .img img,.ind .img video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.03);transition:opacity .5s var(--out),transform 1.2s var(--out)}
-.ind .img img.on,.ind .img video.on{opacity:1;transform:none}
-.ind .fade{transition:opacity .3s var(--std)}
-@media (max-width:1023px){.ind .t{grid-column:1/13;padding:0 0 28px}.ind .img{grid-column:1/13}}
 
 /* technology (pinned) */
-#technology{height:520svh;background:var(--paper);position:relative}
-#technology .stick{position:sticky;top:var(--hdr);height:calc(100svh - var(--hdr));display:flex;flex-direction:column;padding:0 var(--gx) 16px}
-#technology .body{flex:1;border-top:1px solid var(--line2);margin-top:20px;min-height:0;position:relative}
-#technology .list{grid-column:1/3;display:flex;flex-direction:column;justify-content:center;gap:6px}
-#technology .list button{text-align:left;color:var(--muted);transition:color .5s var(--std)}#technology .list button.on{color:var(--ink)}
-#technology .pic{grid-column:3/9;align-self:center;aspect-ratio:16/9;position:relative;overflow:hidden;background:#0B1B33}
-#technology .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .6s var(--out),transform 1.2s var(--out)}
-#technology .pic img.on{opacity:1;transform:none}
-#technology .info{grid-column:9/13;display:flex;flex-direction:column;justify-content:center;padding-left:32px;position:relative}
-#technology .card{position:absolute;left:32px;right:0;opacity:0;transform:translateY(14px);transition:opacity .5s var(--out),transform .5s var(--out);pointer-events:none}
-#technology .card.on{opacity:1;transform:none;pointer-events:auto}
-#technology .card h3{color:var(--ink);margin-bottom:14px}
-#technology .card p{font-size:15px;line-height:20px;letter-spacing:-.02em;color:var(--text)}
-#technology .card p+p{margin-top:10px;color:var(--mid)}
-#technology .card .caps{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:18px;color:var(--mid)}
-#technology .corner{position:absolute;bottom:0;color:var(--mid)}#technology .corner.l{left:0}#technology .corner.r{right:0}
-#technology .body>.grid{height:100%}
-@media (max-width:1023px){
-  #technology{height:auto}
-  #technology .stick{position:static;height:auto;padding-bottom:40px}
-  #technology .body{border-top:0;margin-top:0}
-  #technology .body>.grid{height:auto;row-gap:0}
-  #technology .list,#technology .corner{display:none}
-  #technology .pic,#technology .info{display:contents}
-  #technology .pic img{position:static;grid-column:1/13;order:calc(var(--k)*2);height:auto;aspect-ratio:16/9;opacity:1;transform:none;background:#0B1B33;margin-top:32px}
-  #technology .card{position:static;grid-column:1/13;order:calc(var(--k)*2 + 1);opacity:1;transform:none;pointer-events:auto;padding-top:20px}
-}
 
 /* platform */
 #platform{background:var(--paper)}
@@ -224,13 +169,6 @@ footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
 #vision .band{margin-bottom:96px}
 .band img,.band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .sec>.band+.mods{margin-top:32px}
-.strip4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-bottom:96px}
-.strip4 figure{margin:0}.strip4 img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#0B1B33}
-.strip4 figcaption{margin-top:10px;color:var(--mid)}
-@media (max-width:1199px){.strip4{display:flex;gap:12px;overflow-x:hidden;margin:0 calc(var(--gx)*-1);padding:0 var(--gx) 72px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.strip4::-webkit-scrollbar{display:none}.strip4 figure{flex:0 0 min(82vw,620px)}}
-#dial .dbg{position:absolute;inset:var(--hdr) var(--gx) 0;z-index:-1;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 52%,#000 22%,transparent 80%);mask-image:radial-gradient(ellipse 72% 62% at 50% 52%,#000 22%,transparent 80%)}
-#dial .dbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s var(--out)}
-#dial .dbg img.on{opacity:.26}
 .sec>.mods:last-child{margin-bottom:96px}
 .closing{color:var(--ink);padding:56px 0 96px;max-width:30em}
 .cons{align-items:start;padding-bottom:24px}
@@ -244,31 +182,23 @@ footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
 .mv{grid-template-columns:1fr 1fr;border-top:1px solid var(--line2);margin:56px 0 clamp(48px,8vw,96px)}
 .mv>div{padding:28px 32px 0 0}.mv>div+div{padding-left:32px;border-left:1px solid var(--line2)}
 .mv .mono{color:var(--mid);display:block;margin-bottom:16px}
-#technology .card p{font-size:14px;line-height:19px}
 @media (max-width:1023px){
   .cpic{grid-column:1/13;position:relative;top:0;aspect-ratio:16/10;margin-bottom:24px}.clist{grid-column:1/13}.crow{min-height:0}.crow>img,.crow>video{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#0B1B33;margin-bottom:20px}
   .band{aspect-ratio:16/9}
   .mv{grid-template-columns:1fr}.mv>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line2);margin-top:28px}
-  .hero2{width:100%;left:0;bottom:16px}.hero2 .txt{font-size:14px;line-height:20px}
+  .hero2{width:calc(100% - 16px);left:8px;bottom:8px}.hero2 .txt{font-size:14px;line-height:20px}
 }
 
-@media (prefers-reduced-motion:reduce) and (max-width:1199px){.strip4{overflow-x:auto}}
 @media (prefers-reduced-motion:reduce){.rotor::after,#hero .scroll i b{animation:none}.letters span{opacity:1;transform:none;transition:none}*{transition-duration:.01ms!important}}
 /* design pass, 5 Nov: type system, spacing, alignment (found by measured audit) */
-.band,.strip4 img,.cpic,.crow>img,.crow>video,.ind .img,#technology .pic,#technology .pic img,#intro .frame,#terrain{border-radius:var(--r);overflow:hidden}
+.band,.cpic,.crow>img,.crow>video,.tslide img,#intro .frame,#terrain{border-radius:var(--r);overflow:hidden}
 .disp,.disp.sm{font-size:clamp(38px,11.6vw,176px);line-height:1;letter-spacing:-.04em;margin-left:-.025em}
 #platform .disp,#industries .disp,#how .disp{margin-left:-.1em}#construction .disp{margin-left:-.05em}
-@media (min-width:1024px) and (max-height:760px),(min-width:1024px) and (max-width:1300px) and (max-height:820px){#technology .disp{font-size:min(11.6vw,13svh)}}
 .h20,.mono,figcaption{text-wrap:balance}p,li{text-wrap:pretty}
-.flight{background:var(--flight);-webkit-background-clip:text;background-clip:text;color:transparent}
+.flight{font-style:normal;background:var(--flight);-webkit-background-clip:text;background-clip:text;color:transparent}
+.letters span.flight{padding:0 .06em .2em 0;margin:0 -.06em -.2em 0}
 .dot{display:flex;align-items:flex-start}.dot::before{flex:none;margin-top:7px}
-.mod p,.crow p,.ind .t li,.ctop .quote{font-size:16px;line-height:1.55;letter-spacing:0}
-#technology .card p{letter-spacing:0}
-@media (min-width:1024px) and (min-height:820px){#technology .card p{font-size:15px;line-height:1.4}}
-.ind .t p.mono{font-size:11.5px;line-height:16px;letter-spacing:.14em}
-.tabs button{font-family:var(--head);font-weight:500;font-size:clamp(20px,1.8vw,26px);line-height:32px;letter-spacing:-.03em}
-.tabs button:hover{color:var(--ink)}
-.tabs button[aria-selected=true]{border-image:var(--flight) 1}
+.mod p,.crow p,.ctop .quote{font-size:16px;line-height:1.55;letter-spacing:0}
 #hero .tag{font:500 clamp(22px,2.4vw,34px)/1.15 var(--head);letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
 #hero .tag span{display:block;font:400 16px/1.55 var(--sans);letter-spacing:0;margin-top:6px;color:var(--mid)}
 #hero .mark{font-weight:500;letter-spacing:-.04em;color:#D5DFEB;text-shadow:none}
@@ -278,24 +208,108 @@ footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
 .hero2 .mono+.mono{font:500 16px/1.4 var(--sans);letter-spacing:0;text-transform:none}
 .hero2 .mono+.mono::before,.hero2 .mono+.mono::after{content:none}
 @media (max-width:767px){#hero .scroll{display:none}}
-@media (max-height:620px){.hero2 .mono:first-child{display:none}}
-#dial .cell .h32{color:var(--muted);transition:color .5s var(--std)}
-#dial .cell.on .h32,#dial .cell.on .mono{color:var(--ink)}
 header .cta{background:var(--ink);color:#fff}
 .pill:hover,.btn:not(.ghost):hover{background:linear-gradient(100deg,#245FFF,#284BDE);color:#fff}
 .num{font:500 11px/1 var(--mono);letter-spacing:.04em}
 .cmeta,.tmeta{gap:16px}
 @media (max-width:767px){.cmeta,.tmeta{flex-direction:column;gap:4px}.pin .pc{left:-110px;bottom:108px}.pin.open{z-index:3}}
 #how,#why{background:#F3F6FB;--muted:#5A6B85}
+/* industries: a film strip. Scrolling opens one panel at a time, and the words for it sit in one row below */
+#indPin{height:calc(100svh - var(--hdr) + 4*62svh);margin-top:24px}
+.istick{position:sticky;top:var(--hdr);height:calc(100svh - var(--hdr));display:flex;flex-direction:column;justify-content:center;gap:24px}
+.ipanels{display:flex;gap:8px;height:min(36vw,calc(100svh - var(--hdr) - 228px));--aw:calc((100vw - 2*var(--gx) - 32px)*8/12)}
+.ipanel{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border-radius:var(--r);background:#0B1B33;text-align:left;transition:flex-grow .8s var(--out)}
+.ipanel.on{flex-grow:8}
+.ipanel video{position:absolute;top:0;left:50%;height:100%;width:var(--aw);max-width:none;transform:translateX(-50%);object-fit:cover}
+.ipanel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,14,28,.82),rgba(6,14,28,.34) 70%,rgba(6,14,28,.6));transition:opacity .6s var(--out)}
+.ipanel:hover::after{opacity:.7}.ipanel.on::after{opacity:0}
+.ipanel .n{position:absolute;left:0;right:0;top:16px;z-index:1;text-align:center;color:#fff;letter-spacing:.04em;transition:opacity .4s var(--out)}
+.ipanel .v{position:absolute;left:50%;bottom:18px;z-index:1;writing-mode:vertical-rl;transform:translateX(-50%) rotate(180deg);white-space:nowrap;color:#fff;font:500 clamp(15px,1.25vw,19px)/1 var(--head);letter-spacing:-.01em;transition:opacity .4s var(--out)}
+.ipanel.on .n,.ipanel.on .v{opacity:0}
+.idetail{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:start;padding-top:18px;border-top:1px solid var(--line2);min-height:176px;transition:opacity .25s var(--std)}
+.idetail::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:calc(var(--k,1)*20%);background:var(--flight);transition:width .6s var(--out)}
+.idetail .a{grid-column:1/5;padding-right:32px}.idetail .a .mono{display:block;color:var(--mid);margin-bottom:8px}
+.idetail .b{grid-column:5/9;padding-right:40px;font-size:16px;line-height:1.5;color:var(--text)}
+.idetail ul{grid-column:9/13;list-style:none}
+.idetail li{padding:5px 0;border-bottom:1px solid var(--line);color:var(--mid);font-size:14px;line-height:20px}.idetail li:first-child{padding-top:0}.idetail li:last-child{border-bottom:0}
+@media (max-width:1023px){
+  #indPin{height:auto}.istick{position:static;height:auto;display:block}
+  .ipanels{display:block;height:auto}.idetail{display:none}
+  .icard{padding-bottom:40px}.icard video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r);background:#0B1B33;margin-bottom:18px}
+  .icard .mono{display:block;color:var(--mid);margin-bottom:8px}.icard h3{margin-bottom:10px}.icard p{color:var(--text)}
+  .icard ul{list-style:none;margin-top:14px;border-top:1px solid var(--line)}.icard li{padding:9px 0;border-bottom:1px solid var(--line);color:var(--mid);font-size:15px;line-height:22px}
+}
+/* technology: the four systems once, large, moved sideways by the page scroll */
+#techPin{height:calc(100svh - var(--hdr) + 3*130svh);margin-top:12px}
+.tstick{position:sticky;top:var(--hdr);height:calc(100svh - var(--hdr));display:flex;flex-direction:column;overflow:clip;margin-inline:calc(var(--gx)*-1);padding-block:12px 20px}
+.tnav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 var(--gx) 12px;color:var(--mid);border-bottom:1px solid var(--line2);margin-inline:var(--gx);padding-inline:0}
+.tnav .list{display:flex;gap:6px 28px;flex-wrap:wrap}
+.tnav .list button{font-family:var(--head);font-weight:500;font-size:clamp(17px,1.6vw,23px);line-height:1.3;letter-spacing:-.025em;color:var(--muted);position:relative;padding:4px 0;transition:color .4s var(--std)}
+.tnav .list button:hover,.tnav .list button.on{color:var(--ink)}
+.tnav .mono{white-space:nowrap}
+@media (max-width:767px){.tnav .list{gap:2px 14px}.tnav .list button{font-size:15px}.tnav .list button.on::after{bottom:0}}
+.tnav .list button.on::after{content:"";position:absolute;left:0;right:0;bottom:-13px;height:2px;background:var(--flight)}
+.ttrack{flex:1;min-height:0;display:flex;gap:40px;padding-inline:var(--gx);width:max-content;will-change:transform}
+.tslide{width:calc(100vw - 2*var(--gx) - 56px);height:100%;display:grid;grid-template-columns:minmax(0,2.15fr) minmax(0,1fr);gap:clamp(24px,3vw,48px);align-items:center}
+.tslide figure{margin:0}
+.tslide img{display:block;width:100%;aspect-ratio:16/9;max-height:calc(100svh - var(--hdr) - 100px);object-fit:cover;background:#0B1B33}
+.tslide figcaption{margin-top:10px;color:var(--mid)}
+.tslide h3{margin-bottom:14px}
+.tslide p{font-size:clamp(14px,1.1vw,16px);line-height:1.5;color:var(--text)}.tslide p+p{margin-top:10px;color:var(--mid)}
+.tslide .caps{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:18px;color:var(--mid)}
+@media (max-width:1023px){
+  .tslide{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px}
+  .tslide p{font-size:14px;line-height:19px}.tslide .h32{font-size:21px}.tslide .caps{margin-top:12px;gap:4px 10px}
+}
+@media (max-width:1023px) and (orientation:portrait){
+  .tslide{width:calc(100vw - 2*var(--gx) - 24px);grid-template-columns:minmax(0,1fr);align-content:start;gap:14px;padding-top:16px;align-items:start}.ttrack{gap:16px}
+}
+@media (max-width:767px) and (max-height:699px){
+  #techPin{height:auto}.tstick{position:static;height:auto;overflow:visible}.tnav{display:none}
+  .ttrack{display:block;width:auto;transform:none!important}.tslide{width:auto;height:auto;padding-bottom:36px}
+}
+/* hero: lettering from the logo over a working site */
+.hero2{left:16px;bottom:16px;width:min(620px,calc(100% - 32px));padding:18px 20px 20px;border-radius:var(--r);background:rgba(253,253,254,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+@media (max-width:767px){.hero2{left:8px;bottom:8px;width:calc(100% - 16px);padding:12px 14px 14px}}
+@media (min-width:768px) and (max-width:1199px){.hero2{width:400px;padding:12px 14px}.hero2 .txt{font-size:14px;line-height:1.4;margin-top:8px}.hero2 .row{margin-top:10px}}
+@media (max-width:767px) and (max-height:700px){.hero2 .mono:first-child{display:none}.hero2 .txt{font-size:13px;line-height:18px;margin-top:8px}.hero2 .row{margin-top:10px;flex-wrap:nowrap}.hero2 .btn{height:36px;padding:0 14px;font-size:13px;white-space:nowrap}#hero .tag{font-size:19px}#hero .tag span{display:none}}
+.hbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;filter:brightness(.7) saturate(.92);-webkit-mask-image:linear-gradient(#000 0,#000 40%,transparent 88%);mask-image:linear-gradient(#000 0,#000 40%,transparent 88%)}
+#hero .mark{position:absolute;left:6%;right:auto;width:88%;top:7%;height:auto;opacity:1;transform:none;filter:none}
+/* loading screen, until the 3D drone is ready */
+#loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--bg);opacity:0;visibility:hidden;transition:opacity .6s var(--std),visibility .6s}
+.loading #loader{opacity:1;visibility:visible}
+#loader>div{display:grid;justify-items:center;gap:18px}#loader img{height:64px;width:auto}
+#loader i{display:block;width:180px;height:2px;border-radius:2px;background:var(--line);overflow:hidden}
+#loader b{display:block;height:100%;width:8%;background:var(--flight);transition:width .3s var(--std)}
+#about .band{aspect-ratio:2/1}#about .band video{object-position:50% 58%}
+/* coordination layer: a ring that turns with the scroll, the open step beside its words, the drone in the middle */
+#dial{height:420svh;position:relative;background:#F3F6FB}
+#dial .stick{position:sticky;top:0;height:100svh;overflow:hidden}
+.rtext{position:absolute;left:var(--gx);top:calc(var(--hdr) + 28px);bottom:36px;width:var(--tw,430px);display:flex;flex-direction:column;gap:24px}
+.rtop .mono{color:var(--mid)}.rtop p{margin-top:12px;font-size:15px;line-height:1.5;color:var(--mid)}
+.rstep{margin-block:auto;transition:opacity .25s var(--std)}
+.rstep .mono{display:block;color:var(--blue);margin-bottom:12px}
+.rstep .disp{font-size:clamp(38px,4.8vw,72px);line-height:1;letter-spacing:-.04em;margin:0 0 18px}
+.rstep p{font-size:clamp(16px,1.3vw,19px);line-height:1.55;color:var(--mid);min-height:7.8em}
+.ring{position:absolute;left:0;top:0;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line2);pointer-events:none}
+.ring .r-in{position:absolute;inset:14%;border-radius:50%;border:1px dashed var(--line2)}
+.ring .r-on{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from var(--from,225deg),#00CDD9 0deg,#009CF4 30deg,#245FFF 62deg,#9471FF 90deg,transparent 90deg);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 3px))}
+.rnode{position:absolute;left:0;top:0;transform-origin:50% 50%;border-radius:var(--r);overflow:hidden;background:#0B1B33;will-change:transform;box-shadow:0 0 0 1px var(--line2)}
+.rnode.on{box-shadow:0 0 0 2px var(--blue)}
+.rnode video{display:block;width:100%;height:100%;object-fit:cover}
+.rnode::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,14,28,.72),rgba(6,14,28,0) 55%)}
+.rnode span{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:.6em .8em;color:#fff;text-align:left;font:500 calc(15px/var(--s,1))/1.2 var(--head);letter-spacing:-.02em}
+#dial.narrow .rtext{bottom:auto;right:var(--gx);width:auto;gap:12px}#dial.narrow .rstep{margin:0}#dial.narrow .rstep .disp{font-size:clamp(34px,6.4vw,52px);margin-bottom:8px}#dial.narrow .rstep .mono{margin-bottom:6px}
+#dial.narrow .rstep p{font-size:15px;line-height:1.45;min-height:0}#dial.narrow .rtop p{font-size:14px;margin-top:8px}
+#dial.short .rtop p{display:none}#dial.short .rstep p{font-size:14px}
+#dial.narrow .rnode span{font-size:calc(12px/var(--s,1));padding:.4em .6em}
+@media (max-width:767px){#dial.narrow .rnode:not(.on) span{display:none}}
 /* construction */
 .crow p{max-width:32em}
-@media (min-width:1024px){.clist{padding-left:48px}.crow{min-height:0;padding:32px 0 56px}}
+@media (min-width:1024px){.cpic{--ch:min(calc((100vw - 2*var(--gx))*.3125),calc(100svh - var(--hdr) - 48px));top:calc(var(--hdr) + (100svh - var(--hdr) - var(--ch))/2)}}
+@media (min-width:1024px){.clist{padding-left:48px;padding-bottom:32svh}.crow{min-height:0;padding:32px 0 56px}}
 /* card rows share baselines */
 @media (min-width:1024px){.mod{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0}}
-/* technology text starts level with the picture on roomy screens */
-@media (min-width:1366px) and (min-height:760px){#technology .info{align-self:center;height:calc((100vw - 2*var(--gx))*.28125);justify-content:flex-start}#technology .card{top:0}}
-/* industries: list ends level with the picture */
-@media (min-width:1024px){.ind{align-items:stretch}.ind .img{align-self:start}.ind .t{display:flex;flex-direction:column}.ind .t p:not(.mono){margin-bottom:28px}.ind .t ul{margin-top:auto}}
 /* big statements */
 @media (min-width:1024px){#intro .h32{font-size:clamp(24px,2.4vw,46px)}.lead .mono{grid-column:1/6}}
 .ctop .l h2{font-size:clamp(30px,3.2vw,46px);line-height:1.1;letter-spacing:-.04em}
@@ -309,28 +323,24 @@ header .cta{background:var(--ink);color:#fff}
 .fdark footer .cols h4{font:500 11.5px/16px var(--mono);letter-spacing:.14em}
 .fdark .legal{border-color:rgba(255,255,255,.12)}
 /* intro caption and small-screen dial labels */
-@media (max-width:1023px){#intro .stick{padding-bottom:20px}#dial .cell .mono{min-height:32px;text-wrap:balance}}
-@media (pointer:coarse){.fdark footer .cols a{padding:10px 0}#technology .list button{min-height:44px}.pin button::after{content:"";position:absolute;inset:-6px}}
+@media (max-width:1023px){#intro .stick{padding-bottom:20px}}
+@media (pointer:coarse){.fdark footer .cols a{padding:10px 0}.pin button::after{content:"";position:absolute;inset:-6px}}
 </style>
 </head>
 <body>
+<div id="loader" aria-hidden="true"><div><img src="../brand/northstar-flight-ribbon-compact.svg" alt=""><i><b id="loaderBar"></b></i></div></div>
 <header class="grid">
   <a class="brand" href="#top" aria-label="Northstar, back to top"><img src="../brand/northstar-flight-ribbon-compact.svg" alt="Northstar"><span>·</span><span>Physical AI</span></a>
   <nav aria-label="Sections"><a href="#platform">Platform</a><a href="#technology">Technology</a><a href="#construction">Solutions</a><a href="#industries">Industries</a><a href="#about">About us</a></nav>
   <a class="pill cta" href="#contact">Talk to our team</a>
 </header>
 
-<video id="flyer" muted playsinline preload="auto" aria-hidden="true" tabindex="-1" data-src="media/drone-fly-1280.mp4" data-src-s="media/drone-fly-854.mp4"></video>
 <main id="top">
 <section id="hero" aria-label="Introduction">
   <div class="stick">
     <div class="box">
-      <div class="mark" aria-hidden="true">northstar</div>
-      <div id="drone" role="img" aria-label="A Northstar survey drone in flight">
-        <div class="shadow"></div>
-        <img src="media/drone-body.png" srcset="media/drone-body-s.png 520w, media/drone-body.png 1016w" sizes="52vw" alt="">
-        <i class="rotor r1"></i><i class="rotor r2"></i><i class="rotor r3"></i>
-      </div>
+      <video class="hbg" muted playsinline autoplay loop preload="auto" poster="media/hero-bg.jpg" data-src="media/hero-bg.mp4" data-src-s="media/hero-bg-s.mp4" aria-hidden="true"></video>
+      <img class="mark" src="media/hero-wordmark.svg" alt="" aria-hidden="true">
       <div class="hero2" id="hero2">
         <p class="mono br">Physical AI | Autonomous Robotics | Industrial Intelligence</p>
         <p class="mono br">Autonomous Inspection. Continuous Intelligence. Verified Reality.</p>
@@ -339,7 +349,7 @@ header .cta{background:var(--ink);color:#fff}
       </div>
     </div>
     <div class="foot">
-      <h1 class="tag">Intelligence that moves beyond the screen.<span>Physical AI for the real world.</span></h1>
+      <h1 class="tag">Intelligence that moves beyond the <em class="flight">screen.</em><span>Physical AI for the real world.</span></h1>
       <p class="scroll">Scroll down <i aria-hidden="true"><b></b><b></b><b></b></i></p>
     </div>
   </div>
@@ -351,8 +361,8 @@ header .cta{background:var(--ink);color:#fff}
       <div class="vid">
         <div class="frame">
           <video data-src="media/loop-air.mp4" data-src-s="media/loop-air-s.mp4" muted playsinline loop preload="none" poster="../media/bg-air.jpg"></video>
-          <video data-src="media/loop-human.mp4" data-src-s="media/loop-human-s.mp4" muted playsinline loop preload="none" poster="../media/bg-human.jpg"></video>
-          <video data-src="media/loop-quad.mp4" data-src-s="media/loop-quad-s.mp4" muted playsinline loop preload="none" poster="../media/bg-quad.jpg"></video>
+          <video data-src="media/loop-human.mp4" data-src-s="media/loop-human-s.mp4" muted playsinline loop preload="none" poster="media/loop-human.jpg"></video>
+          <video data-src="media/loop-quad.mp4" data-src-s="media/loop-quad-s.mp4" muted playsinline loop preload="none" poster="media/loop-quad.jpg"></video>
         </div>
         <div class="cap mono"><span class="lbl br"><span class="on">Aerial</span><span>Humanoid</span><span>Ground</span></span><span class="br" id="introN">01 / 03</span></div>
       </div>
@@ -380,47 +390,22 @@ header .cta{background:var(--ink);color:#fff}
       <p class="h24 reveal" data-scrub="self">Northstar brings aerial robotics, ground robotics, humanoid systems, and distributed sensors together through one intelligent orchestration platform.</p>
     </div>
   </div>
-  <div class="strip4">
-    <figure><img src="media/fleet-drone.jpg" alt="" loading="lazy"><figcaption class="mono br">Autonomous drones</figcaption></figure>
-    <figure><img src="media/fleet-quad.jpg" alt="" loading="lazy"><figcaption class="mono br">Quadruped robotics</figcaption></figure>
-    <figure><img src="media/fleet-humanoid.jpg" alt="" loading="lazy"><figcaption class="mono br">Humanoid robotics</figcaption></figure>
-    <figure><img src="media/strip-iot.jpg" alt="" loading="lazy"><figcaption class="mono br">Industrial IoT &amp; edge intelligence</figcaption></figure>
-  </div>
 </section>
-<section id="technology" aria-label="Technology">
-  <div class="stick">
-    <div class="shead"><h2 class="disp letters" aria-label="Technology">Technology</h2><span class="num">02</span></div>
-    <div class="body">
-      <div class="grid">
-        <div class="list" role="tablist" aria-label="Systems"></div>
-        <div class="pic" id="techPic"></div>
-        <div class="info" id="techInfo"></div>
-      </div>
-      <span class="corner l mono br">Intelligence in every dimension</span><span class="corner r mono br" id="techN">01 / 04</span>
-    </div>
-  </div>
+<section id="technology" class="sec wrap">
+  <div class="shead"><h2 class="disp letters" aria-label="Technology">Technology</h2><span class="num">02</span></div>
+  <div id="techPin"><div class="tstick">
+    <div class="tnav"><div class="list" role="tablist" aria-label="Systems"></div><span class="mono br" id="techN">01 / 04</span></div>
+    <div class="ttrack" id="techTrack"></div>
+  </div></div>
 </section>
 <section id="dial" aria-label="The coordination layer">
   <div class="stick">
-    <div class="dbg" aria-hidden="true"><img src="media/dial-perceive.jpg" alt="" loading="lazy" class="on"><img src="media/dial-reason.jpg" alt="" loading="lazy"><img src="media/dial-orchestrate.jpg" alt="" loading="lazy"><img src="media/dial-verify.jpg" alt="" loading="lazy"></div>
-    <div class="intro"><span class="mono br">The coordination layer</span><p>Northstar serves as the coordination layer between machines, sensors, enterprise information, and the people responsible for operating physical assets.</p></div>
-    <p class="def" id="dialDef"></p>
-    <div class="arcw">
-      <svg viewBox="0 0 600 300" aria-hidden="true">
-        <path d="M 6 300 A 294 294 0 0 1 594 300" fill="none" stroke="rgba(16,43,78,.18)" stroke-width="1"/>
-        <path id="arcOn" d="M 6 300 A 294 294 0 0 1 594 300" fill="none" stroke="#102B4E" stroke-width="1" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
-        <g id="ticks"></g>
-        <circle id="arcDot" r="4" fill="#245FFF"/>
-      </svg>
-      <span class="lbl mono br" id="dialLbl">Perceive</span>
-      <div class="hub" id="hub" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="rtext" id="dialText">
+      <div class="rtop"><span class="mono dot">The coordination layer</span><p>Northstar serves as the coordination layer between machines, sensors, enterprise information, and the people responsible for operating physical assets.</p></div>
+      <div class="rstep" id="dialStep" aria-live="polite"><span class="mono" id="dialTag"></span><h3 class="disp" id="dialWord"></h3><p id="dialDef"></p></div>
     </div>
-    <div class="strip grid" role="list">
-      <div class="cell on" role="listitem"><span class="h32">Perceive.</span><span class="mono br">Multimodal perception</span></div>
-      <div class="cell" role="listitem"><span class="h32">Reason.</span><span class="mono br">Agentic AI</span></div>
-      <div class="cell" role="listitem"><span class="h32">Orchestrate.</span><span class="mono br">Mission orchestration</span></div>
-      <div class="cell" role="listitem"><span class="h32">Verify.</span><span class="mono br">QA &amp; verification</span></div>
-    </div>
+    <div class="ring" id="dialRing" aria-hidden="true"><i class="r-in"></i><i class="r-on"></i></div>
+    <div class="rnodes" id="dialNodes"></div>
   </div>
 </section>
 <section id="platform" class="sec wrap">
@@ -440,7 +425,7 @@ header .cta{background:var(--ink);color:#fff}
   <div class="mods grid" id="mods"></div>
 </section>
 <section id="how" class="sec wrap">
-  <div class="shead"><h2 class="disp sm letters" aria-label="How it works">How it works</h2><span class="num">04</span></div>
+  <div class="shead"><h2 class="disp sm letters" data-flight="works" aria-label="How it works">How it works</h2><span class="num">04</span></div>
   <div class="grid lead">
     <p class="mono dot">How Northstar works</p>
     <div class="copy">
@@ -464,7 +449,7 @@ header .cta{background:var(--ink);color:#fff}
   <div class="grid lead">
     <p class="mono dot">Featured solution — Construction intelligence</p>
     <div class="copy">
-      <p class="h24 reveal" data-scrub="self">Every site. Every stage. Verified.</p>
+      <p class="h24" style="font:500 clamp(24px,2.22vw,32px)/1.25 var(--head);letter-spacing:-.03em">Every site. Every stage. <span class="flight">Verified.</span></p>
       <p class="h24" style="color:var(--mid)">AI-powered construction quality assurance and progress intelligence.</p>
       <p class="h24 reveal" data-scrub="self">Construction environments are dynamic, complex, and constantly changing. Traditional inspections are periodic, heavily manual, and often fragmented across teams and systems.</p>
       <p class="h24 reveal" data-scrub="self">Northstar combines aerial reality capture, ground robotics, computer vision, and agentic AI to support more consistent, evidence-driven construction monitoring and quality assurance.</p>
@@ -488,19 +473,18 @@ header .cta{background:var(--ink);color:#fff}
 <section id="industries" class="sec wrap">
   <div class="shead"><h2 class="disp letters" aria-label="Industries">Industries</h2><span class="num">06</span></div>
   <p class="h24" style="margin-top:28px;color:var(--mid);max-width:24em">Built for environments where precision matters.</p>
-  <div class="tabs" role="tablist" aria-label="Industries"></div>
-  <div class="grid ind">
-    <div class="t fade" id="indTxt" role="tabpanel"></div>
-    <div class="img" id="indImg"></div>
-  </div>
+  <div id="indPin"><div class="istick">
+    <div class="ipanels" id="indPanels" role="tablist" aria-label="Industries"></div>
+    <div class="idetail" id="indTxt" role="tabpanel" aria-live="polite"></div>
+  </div></div>
 </section>
 <section id="why" class="sec wrap">
-  <div class="shead"><h2 class="disp sm letters" aria-label="Why Northstar">Why Northstar</h2><span class="num">07</span></div>
+  <div class="shead"><h2 class="disp sm letters" data-flight="Northstar" aria-label="Why Northstar">Why Northstar</h2><span class="num">07</span></div>
   <div class="grid lead">
     <p class="mono dot">Why Northstar</p>
     <div class="copy"><p class="h24 reveal" data-scrub="self">Beyond automation. Towards physical intelligence.</p></div>
   </div>
-  <figure class="band"><video class="lazy" muted playsinline loop preload="none" poster="../media/bg-human.jpg" data-src="media/loop-human.mp4" data-src-s="media/loop-human-s.mp4" aria-hidden="true"></video></figure>
+  <figure class="band"><video class="lazy" muted playsinline loop preload="none" poster="media/loop-human.jpg" data-src="media/loop-human.mp4" data-src-s="media/loop-human-s.mp4" aria-hidden="true"></video></figure>
   <div class="mods grid">
 <div class="mod"><span class="mono">01</span><h3 class="h20">One platform, multiple robotic systems</h3><p>Bring diverse robots, drones, sensors, and inspection data into a coordinated intelligence environment.</p></div>
 <div class="mod"><span class="mono">02</span><h3 class="h20">Designed for real-world complexity</h3><p>Combine spatial perception, contextual understanding, and adaptive workflows for dynamic physical environments.</p></div>
@@ -520,7 +504,7 @@ header .cta{background:var(--ink);color:#fff}
       <p class="h24 reveal" data-scrub="self">We are bringing together agentic AI, robotics, computer vision, spatial computing, and industrial connectivity to reimagine how enterprises inspect, verify, and manage physical environments. Our vision is a future where intelligent systems continuously understand the world around them, collaborate with human teams, and help enterprises make better decisions through reliable physical-world evidence.</p>
     </div>
   </div>
-  <figure class="band"><img src="../media/s-aerial.jpg" alt="" loading="lazy"></figure>
+  <figure class="band"><video class="lazy" muted playsinline loop preload="none" poster="media/about-loop.jpg" data-src="media/about-loop.mp4" data-src-s="media/about-loop-s.mp4" aria-hidden="true"></video></figure>
   <div class="mv grid">
     <div><span class="mono br">Our mission</span><p class="h24">To make physical environments more observable, intelligent, and verifiable through autonomous systems and AI.</p></div>
     <div><span class="mono br">Our vision</span><p class="h24">A world where intelligence moves seamlessly between digital systems and physical reality.</p></div>
@@ -568,10 +552,10 @@ const IND = [
   { n: 'Logistics', img: 'ind-logistics', vid: 'ind-logistics-v', h: 'Warehouses &amp; logistics facilities', p: 'Enable inventory-area observation, facility inspection, equipment monitoring, and spatial documentation through autonomous mobile platforms and connected intelligence.', u: ['Inventory-area observation', 'Facility inspection', 'Equipment monitoring', 'Spatial documentation'] },
 ];
 const TECH = [
-  { n: 'Drones', img: 'fleet-drone', alt: 'A Northstar drone hovering over a construction site', h: 'Intelligence from above.', p: ['Capture, map, monitor, and inspect complex environments from the air.', 'Our drone-enabled workflows support aerial surveying, photogrammetry, LiDAR scanning, thermal imaging, infrastructure inspection, volumetric analysis, and construction progress monitoring.'], c: ['Aerial reality capture', 'Mapping & 3D reconstruction', 'Progress monitoring', 'Thermal inspection', 'Asset verification'] },
-  { n: 'Quadruped', img: 'fleet-quad', alt: 'A four-legged inspection robot in an industrial hall', h: 'Intelligence on the ground.', p: ['Four-legged robotic platforms extend inspection capabilities into complex industrial and construction environments.', 'They enable consistent data collection across large facilities, plant rooms, corridors, and other challenging operational environments.'], c: ['Autonomous patrols', 'Ground reality capture', 'Thermal monitoring', 'Equipment inspection', 'Remote observation'] },
-  { n: 'Humanoid', img: 'tech-humanoid', alt: 'A humanoid robot at a plant valve beside a worker holding a tablet', h: 'Intelligence that works alongside people.', p: ['Humanoid robotics represents the next evolution of embodied intelligence, bringing AI-assisted perception and manipulation into human-designed environments.', 'Our approach combines visual reasoning, task planning, robotic control, and human oversight to progressively extend the role of autonomous systems in industrial operations.'], c: ['Embodied AI', 'Visual inspection', 'Human-robot collaboration', 'Task planning', 'Physical workflow assistance'] },
-  { n: 'IoT &amp; edge', img: 'fleet-iot', alt: 'Connected industrial sensors in a facility', h: 'Intelligence from every connected asset.', p: ['Not every inspection requires a moving robot.', 'Northstar connects industrial sensors, cameras, edge devices, and operational systems to create a continuous flow of physical-world intelligence.'], c: ['Sensor integration', 'Edge AI', 'Condition monitoring', 'Anomaly detection', 'Equipment telemetry'] },
+  { n: 'Drones', cap: 'Autonomous drones', img: 'fleet-drone', alt: 'A Northstar drone hovering over a construction site', h: 'Intelligence from above.', p: ['Capture, map, monitor, and inspect complex environments from the air.', 'Our drone-enabled workflows support aerial surveying, photogrammetry, LiDAR scanning, thermal imaging, infrastructure inspection, volumetric analysis, and construction progress monitoring.'], c: ['Aerial reality capture', 'Mapping & 3D reconstruction', 'Progress monitoring', 'Thermal inspection', 'Asset verification'] },
+  { n: 'Quadruped', cap: 'Quadruped robotics', img: 'fleet-quad', alt: 'A four-legged inspection robot in an industrial hall', h: 'Intelligence on the ground.', p: ['Four-legged robotic platforms extend inspection capabilities into complex industrial and construction environments.', 'They enable consistent data collection across large facilities, plant rooms, corridors, and other challenging operational environments.'], c: ['Autonomous patrols', 'Ground reality capture', 'Thermal monitoring', 'Equipment inspection', 'Remote observation'] },
+  { n: 'Humanoid', cap: 'Humanoid robotics', img: 'tech-humanoid', alt: 'A humanoid robot at a plant valve beside a worker holding a tablet', h: 'Intelligence that works alongside people.', p: ['Humanoid robotics represents the next evolution of embodied intelligence, bringing AI-assisted perception and manipulation into human-designed environments.', 'Our approach combines visual reasoning, task planning, robotic control, and human oversight to progressively extend the role of autonomous systems in industrial operations.'], c: ['Embodied AI', 'Visual inspection', 'Human-robot collaboration', 'Task planning', 'Physical workflow assistance'] },
+  { n: 'IoT &amp; edge', cap: 'Industrial IoT &amp; edge intelligence', img: 'strip-iot', alt: 'An industrial sensor and edge gateway on a plant pipe, with a small camera beside it', h: 'Intelligence from every connected asset.', p: ['Not every inspection requires a moving robot.', 'Northstar connects industrial sensors, cameras, edge devices, and operational systems to create a continuous flow of physical-world intelligence.'], c: ['Sensor integration', 'Edge AI', 'Condition monitoring', 'Anomaly detection', 'Equipment telemetry'] },
 ];
 TECH[0].p.push("From large construction developments to remote industrial infrastructure, aerial intelligence helps teams understand changing site conditions without relying exclusively on manual inspections.");
 TECH[1].p.splice(1, 0, "Equipped with visual cameras, depth sensors, thermal imaging, and spatial navigation capabilities, quadruped robots can support repeatable inspection missions, indoor reality capture, equipment monitoring, and remote site observation.");
@@ -610,19 +594,17 @@ reveals.filter(r => r.mode === 'self').forEach(r => ScrollTrigger.create({ trigg
 
 // ---- display headings: letters arrive when the section enters ----
 $$('.letters').forEach(h => {
-  h.innerHTML = [...h.textContent].map((c, i) => `<span aria-hidden="true" style="transition-delay:${i * 45}ms">${c}</span>`).join('');
+  const txt = h.textContent, fl = h.dataset.flight, cut = fl ? txt.lastIndexOf(fl) : -1, head = cut < 0 ? txt : txt.slice(0, cut);
+  h.innerHTML = [...head].map((c, i) => `<span aria-hidden="true" style="transition-delay:${i * 45}ms">${c}</span>`).join('') + (cut < 0 ? '' : `<span aria-hidden="true" class="flight" style="transition-delay:${head.length * 45}ms">${fl}</span>`);
   ScrollTrigger.create({ trigger: h, start: 'top 88%', onEnter: () => h.parentElement.classList.add('in'), onLeaveBack: () => h.parentElement.classList.remove('in') });
 });
 
 // ---- hero: the drone rises out of the wordmark, holds, banks and flies off; rotors never stop ----
-const drone = $('#drone'), mark = $('#hero .mark'), hero2 = $('#hero2');
+const hero2 = $('#hero2'), hbg = $('#hero .hbg');
+hbg.src = small ? hbg.dataset.srcS : hbg.dataset.src; if (reduce) hbg.pause();
+new IntersectionObserver(es => { if (es[0].isIntersecting) { if (!reduce) hbg.play().catch(() => {}); } else hbg.pause(); }).observe(hbg);
 function heroAt(p) {
-  const a = ease(band(p, 0, .42)), b = inout(band(p, .5, 1));
-  const x = -50 + b * 70, y = -50 + (1 - a) * 34 - b * 120, s = (.72 + .28 * a) * (1 - .45 * b), r = (1 - a) * -3 - b * 9;
-  const bob = reduce ? 0 : Math.sin(performance.now() / 900) * .8;
-  drone.style.transform = `translate(${x}%, calc(${y}% + ${bob}px)) scale(${s}) rotate(${r}deg)`;
   const h2 = band(p, .5, .85); hero2.style.opacity = h2; hero2.style.transform = `translateY(${(1 - h2) * 14}px)`; hero2.style.pointerEvents = h2 > .6 ? 'auto' : 'none';
-  mark.style.transform = `translateY(${-p * 9}vh)`; mark.style.opacity = 1 - band(p, .55, 1) * .7;
 }
 let heroP = 0;
 ScrollTrigger.create({ trigger: '#hero', start: 'top top', end: 'bottom bottom', onUpdate: s => { heroP = s.progress; } });
@@ -644,71 +626,92 @@ function showVid(k) {
 ScrollTrigger.create({ trigger: '#intro', start: 'top 70%', end: 'bottom bottom', onUpdate: s => { paint(introR, band(s.progress, .05, .62)); showVid(Math.min(2, Math.floor(band(s.progress, .1, 1) * 3))); }, onEnter: () => showVid(0) });
 
 // ---- coordination dial ----
-const cells = $$('#dial .cell'), arcOn = $('#arcOn'), arcDot = $('#arcDot'), hubDots = $$('#hub i'), ticks = $('#ticks');
-for (let i = 0; i <= 24; i++) { const a = Math.PI - i / 24 * Math.PI, R = 294, l = i % 8 === 0 ? 14 : 6; ticks.insertAdjacentHTML('beforeend', `<line x1="${300 + Math.cos(a) * R}" y1="${300 - Math.sin(a) * R}" x2="${300 + Math.cos(a) * (R - l)}" y2="${300 - Math.sin(a) * (R - l)}" stroke="rgba(16,43,78,${l > 6 ? .4 : .2})"/>`); }
-const HUB = [[[0, -6], [5, -2], [-5, -2], [3, 5], [-3, 5], [0, 0]], [[-6, -6], [6, -6], [0, 0], [-6, 6], [6, 6], [0, -9]], [[0, -9], [8, -4], [8, 5], [0, 9], [-8, 5], [-8, -4]], [[-8, 0], [-3, 5], [2, 0], [7, -5], [12, -10], [-3, 5]]];
-let curD = -1;
-function dialAt(p) {
-  const u = band(p, .04, .96), k = Math.min(3, Math.floor(u * 4));
-  arcOn.style.strokeDashoffset = 1 - u;
-  const a = Math.PI - u * Math.PI; arcDot.setAttribute('cx', 300 + Math.cos(a) * 294); arcDot.setAttribute('cy', 300 - Math.sin(a) * 294);
-  if (k === curD) return; curD = k;
-  cells.forEach((c, i) => c.classList.toggle('on', i === k));
-  $('#dialLbl').textContent = DIAL[k][0]; $('#dialDef').textContent = DIAL[k][1];
-  $$('#dial .dbg img').forEach((m, i) => m.classList.toggle('on', i === k));
-  hubDots.forEach((d, i) => { const [x, y] = HUB[k][i]; d.style.transform = `translate(${x}px,${y}px)`; });
+const DIALV = [['cons-5', 'Multimodal perception'], ['ind-manufacturing-v', 'Agentic AI'], ['how-loop', 'Mission orchestration'], ['cons-1', 'QA &amp; verification']];
+const dialNodes = $('#dialNodes'), dialRing = $('#dialRing'), dialStep = $('#dialStep'), dialSec = $('#dial');
+dialNodes.innerHTML = DIAL.map((d, i) => `<button class="rnode" type="button" aria-label="${d[0]}"><video muted playsinline loop preload="none" poster="media/${DIALV[i][0]}.jpg" data-src="media/${DIALV[i][0]}.mp4" data-src-s="media/${DIALV[i][0]}-s.mp4" aria-hidden="true"></video><span>${d[0]}</span></button>`).join('');
+const rnodes = $$('.rnode', dialNodes), dialPlay = playOpen(dialNodes);
+let ringG = null, curD = -1, dialPos = 0;
+function ringLayout() {   // measured from the window, so the ring always fits beside or under the words
+  const W = innerWidth, H = innerHeight, hdr = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr')), gx = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--gx'));
+  let R, cx, cy, aw;
+  const wideNow = W >= 1024 || (W >= 768 && W > H), defEl = $('#dialDef');
+  dialSec.classList.toggle('narrow', !wideNow); dialSec.classList.toggle('short', !wideNow && H < 780);
+  if (wideNow) { defEl.style.minHeight = ''; R = Math.min((H - hdr) / 2 - 64, (W - 2 * gx - 328) / 2.62); aw = Math.min(280, R * .74); cx = W - gx - R - aw * .34; cy = hdr + (H - hdr) / 2; dialSec.style.setProperty('--tw', Math.max(300, cx - R - aw / 2 - gx - 28) + 'px'); }
+  else {   // the text block is measured holding its longest step, so it can never grow into the ring
+    const keep = defEl.textContent; defEl.style.minHeight = ''; defEl.textContent = DIAL[1][1]; const dh = defEl.offsetHeight; defEl.textContent = keep; defEl.style.minHeight = dh + 'px';
+    const tb = $('#dialText').getBoundingClientRect(), top = tb.height + hdr + 28 + 10; R = Math.max(70, Math.min((H - top - 14) / 2.3, (W / 2 - gx) / 1.12)); aw = Math.max(96, R * .6); cx = W / 2; cy = top + R + aw * .625 / 2; }
+  ringG = { R, cx, cy, aw, ah: aw * .625, small: .62, base: wideNow ? 180 : 270 };
+  dialRing.style.cssText = `width:${R * 2}px;height:${R * 2}px;transform:translate(${cx - R}px,${cy - R}px);--from:${wideNow ? 225 : 315}deg`;
+  rnodes.forEach(n => { n.style.width = ringG.aw + 'px'; n.style.height = ringG.ah + 'px'; });
+  dialDraw();
 }
-dialAt(0);
-ScrollTrigger.create({ trigger: '#dial', start: 'top top', end: 'bottom bottom', onUpdate: s => dialAt(s.progress) });
+function dialDraw() {
+  if (!ringG) return; const g = ringG;
+  rnodes.forEach((n, i) => {
+    const a = (g.base + (i - dialPos) * 90) * Math.PI / 180, c = clamp(1 - Math.abs(i - dialPos)), s = g.small + (1 - g.small) * c * c * (3 - 2 * c);
+    n.style.transform = `translate3d(${g.cx + Math.cos(a) * g.R - g.aw / 2}px,${g.cy + Math.sin(a) * g.R - g.ah / 2}px,0) scale(${s})`; n.style.zIndex = Math.round(c * 9) + 1; n.style.setProperty('--s', s);
+  });
+}
+function dialAt(p) {
+  const q = band(p, .02, .98) * 3, k3 = Math.min(2, Math.floor(q)), u = clamp((q - k3 - .3) / .4); dialPos = k3 + u * u * (3 - 2 * u);   // each step holds still, then the ring turns to the next
+  dialSec.dataset.pos = dialPos.toFixed(3); dialDraw();
+  const k = Math.round(dialPos); if (k === curD) return; const first = curD < 0; curD = k;
+  rnodes.forEach((n, i) => n.classList.toggle('on', i === k)); dialPlay();
+  dialStep.style.opacity = first ? 1 : 0;
+  setTimeout(() => { $('#dialTag').innerHTML = `0${k + 1} / 04 · ${DIALV[k][1]}`; $('#dialWord').textContent = DIAL[k][0] + '.'; $('#dialDef').textContent = DIAL[k][1]; dialStep.style.opacity = 1; }, first || reduce ? 0 : 180);
+}
+dialAt(0); setTimeout(ringLayout, 0); addEventListener('resize', ringLayout); document.fonts && document.fonts.ready.then(ringLayout);
+const dialST = ScrollTrigger.create({ trigger: '#dial', start: 'top top', end: 'bottom bottom', onUpdate: s => dialAt(s.progress) });
+dialNodes.addEventListener('click', e => { const b = e.target.closest('.rnode'); if (!b) return; const y = dialST.start + (dialST.end - dialST.start) * (.02 + rnodes.indexOf(b) / 3 * .96); lenis ? lenis.scrollTo(y, { duration: 1.2 }) : scrollTo({ top: y, behavior: 'smooth' }); });
 
-// ---- industries tabs ----
-const tabs = $('#industries .tabs'), indTxt = $('#indTxt'), indImg = $('#indImg');
-IND.forEach((d, i) => {
-  tabs.insertAdjacentHTML('beforeend', `<button role="tab" id="tab${i}" aria-controls="indTxt" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${d.n}</button>`);
-  indImg.insertAdjacentHTML('beforeend', d.vid
-    ? `<video muted playsinline loop preload="none" poster="media/${d.vid}.jpg" data-src="media/${d.vid}.mp4" data-src-s="media/${d.vid}-s.mp4" aria-hidden="true" class="${i === 0 ? 'on' : ''}"></video>`
-    : `<img src="media/${d.img}.jpg" alt="" loading="lazy" class="${i === 0 ? 'on' : ''}">`);
-});
+// ---- industries: a film strip on desktop, scrolling opens one panel at a time; a plain stack on tablet and phone ----
+matchMedia('(max-width:1023px)').addEventListener('change', () => location.reload());   // these two sections are built differently on either side of this width
 function playOpen(box) {   // only the open picture's video runs, and only while it is on screen
   let seen = false;
-  const run = () => [...box.children].forEach(m => { if (m.tagName !== 'VIDEO') return;
-    if (m.classList.contains('on') && seen) { if (!m.src) m.src = small ? m.dataset.srcS : m.dataset.src; if (!reduce) m.play().catch(() => {}); } else m.pause(); });
+  const run = () => box.querySelectorAll('video').forEach(m => {
+    if (m.closest('.on') && seen) { if (!m.src) m.src = small ? m.dataset.srcS : m.dataset.src; if (!reduce) m.play().catch(() => {}); } else m.pause(); });
   new IntersectionObserver(es => { seen = es[0].isIntersecting; run(); }, { rootMargin: '240px' }).observe(box);
   return run;
 }
-const indPlay = playOpen(indImg);
-function showInd(k) {
-  $$('button', tabs).forEach((b, i) => { b.setAttribute('aria-selected', i === k); b.tabIndex = i === k ? 0 : -1; });
-  [...indImg.children].forEach((m, i) => m.classList.toggle('on', i === k)); indPlay();
-  indTxt.style.opacity = 0;
-  setTimeout(() => { const d = IND[k]; indTxt.setAttribute('aria-labelledby', 'tab' + k); indTxt.innerHTML = `<p class="mono br" style="color:var(--mid);margin-bottom:18px">${d.h}</p><p>${d.p}</p><ul>${d.u.map(x => `<li>${x}</li>`).join('')}</ul>`; indTxt.style.opacity = 1; }, reduce ? 0 : 160);
+const indPanels = $('#indPanels'), indTxt = $('#indTxt'), indVid = d => `<video muted playsinline loop preload="none" poster="media/${d.vid}.jpg" data-src="media/${d.vid}.mp4" data-src-s="media/${d.vid}-s.mp4" aria-hidden="true"></video>`;
+if (matchMedia('(max-width:1023px)').matches) {
+  indPanels.removeAttribute('role');
+  indPanels.innerHTML = IND.map(d => `<article class="icard">${indVid(d)}<span class="mono br">${d.n}</span><h3 class="h28">${d.h}</h3><p>${d.p}</p><ul>${d.u.map(x => `<li>${x}</li>`).join('')}</ul></article>`).join('');
+  $$('video', indPanels).forEach(m => new IntersectionObserver(es => { if (es[0].isIntersecting) { if (!m.src) m.src = small ? m.dataset.srcS : m.dataset.src; if (!reduce) m.play().catch(() => {}); } else m.pause(); }, { rootMargin: '120px' }).observe(m));
+} else {
+  indPanels.innerHTML = IND.map((d, i) => `<button class="ipanel" id="tab${i}" role="tab" aria-controls="indTxt" aria-label="${d.n}">${indVid(d)}<span class="n mono">0${i + 1}</span><span class="v">${d.n}</span></button>`).join('');
+  const panels = $$('.ipanel', indPanels), indPlay = playOpen(indPanels); let curI = -1;
+  const showInd = k => {
+    if (k === curI) return; const first = curI < 0; curI = k;
+    panels.forEach((b, i) => { b.classList.toggle('on', i === k); b.setAttribute('aria-selected', i === k); });
+    indPlay(); indTxt.style.setProperty('--k', k + 1); indTxt.style.opacity = first ? 1 : 0;
+    setTimeout(() => { const d = IND[k]; indTxt.setAttribute('aria-labelledby', 'tab' + k); indTxt.innerHTML = `<div class="a"><span class="mono">0${k + 1} / 05</span><h3 class="h28">${d.h}</h3></div><p class="b">${d.p}</p><ul>${d.u.map(x => `<li>${x}</li>`).join('')}</ul>`; indTxt.style.opacity = 1; }, first || reduce ? 0 : 220);
+  };
+  showInd(0);
+  const indST = ScrollTrigger.create({ trigger: '#indPin', start: () => `top ${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr'))}px`, end: 'bottom bottom', onUpdate: s => showInd(Math.min(4, Math.floor(s.progress * 5))) });
+  indPanels.addEventListener('click', e => { const b = e.target.closest('.ipanel'); if (!b) return; const y = indST.start + (indST.end - indST.start) * ((panels.indexOf(b) + .5) / 5); lenis ? lenis.scrollTo(y, { duration: 1.2 }) : scrollTo({ top: y, behavior: 'smooth' }); });
 }
-tabs.addEventListener('click', e => { const b = e.target.closest('button'); if (b) showInd($$('button', tabs).indexOf(b)); });
-tabs.addEventListener('keydown', e => { const bs = $$('button', tabs), i = bs.indexOf(document.activeElement); if (i < 0) return; const n = e.key === 'ArrowRight' ? (i + 1) % bs.length : e.key === 'ArrowLeft' ? (i - 1 + bs.length) % bs.length : -1; if (n >= 0) { e.preventDefault(); bs[n].focus(); showInd(n); } });
-showInd(0);
 
 // ---- technology: pinned, the scroll walks through the four systems ----
-const list = $('#technology .list'), pic = $('#techPic'), info = $('#techInfo');
+const list = $('#technology .list'), track = $('#techTrack');
 TECH.forEach((d, i) => {
-  list.insertAdjacentHTML('beforeend', `<button class="h28" role="tab" aria-selected="${i === 0}">${d.n}</button>`);
-  pic.insertAdjacentHTML('beforeend', `<img src="media/${d.img}.jpg" alt="${d.alt}" loading="lazy" style="--k:${i}">`);
-  info.insertAdjacentHTML('beforeend', `<div class="card" role="tabpanel" style="--k:${i}"><h3 class="h32">${d.h}</h3>${d.p.map(x => `<p>${x}</p>`).join('')}<div class="caps mono">${d.c.map(x => `<span class="br">${esc(x)}</span>`).join('')}</div></div>`);
+  list.insertAdjacentHTML('beforeend', `<button role="tab" aria-selected="${i === 0}">${d.n}</button>`);
+  track.insertAdjacentHTML('beforeend', `<article class="tslide" role="tabpanel"><figure><img src="media/${d.img}.jpg" alt="${d.alt}" loading="${i ? 'lazy' : 'eager'}"><figcaption class="mono br">${d.cap}</figcaption></figure><div><h3 class="h32">${d.h}</h3>${d.p.map(x => `<p>${x}</p>`).join('')}<div class="caps mono">${d.c.map(x => `<span class="br">${esc(x)}</span>`).join('')}</div></div></article>`);
 });
 let curT = -1;
 function techAt(k) {
   if (k === curT) return; curT = k;
   $$('button', list).forEach((b, i) => { b.classList.toggle('on', i === k); b.setAttribute('aria-selected', i === k); });
-  $$('img', pic).forEach((m, i) => m.classList.toggle('on', i === k));
-  $$('.card', info).forEach((c, i) => c.classList.toggle('on', i === k));
   $('#techN').textContent = `0${k + 1} / 04`;
 }
 techAt(0);
-const techST = ScrollTrigger.create({ trigger: '#technology', start: 'top top', end: 'bottom bottom', onUpdate: s => techAt(Math.min(3, Math.floor(band(s.progress, .04, .96) * 4))) });
-list.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const k = $$('button', list).indexOf(b), y = techST.start + (techST.end - techST.start) * (.04 + (k + .5) / 4 * .92); lenis ? lenis.scrollTo(y, { duration: 1.2 }) : scrollTo({ top: y, behavior: 'smooth' }); });
-
-// ---- ecosystem strip: on tablet and phone the page scroll moves it, down = left, up = right ----
-const strip = $('.strip4');
-if (strip && !reduce) ScrollTrigger.create({ trigger: strip, start: 'top 92%', end: 'top 25%', onUpdate: s => { strip.scrollLeft = s.progress * (strip.scrollWidth - strip.clientWidth); } });
+const techSideways = () => getComputedStyle($('.tstick')).position === 'sticky';
+const techST = ScrollTrigger.create({ trigger: '#techPin', start: () => `top ${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr'))}px`, end: 'bottom bottom', onUpdate: s => {
+  if (!techSideways()) return;
+  const q = s.progress * 3, k = Math.min(2, Math.floor(q)), u = clamp((q - k - .3) / .4), pos = k + u * u * (3 - 2 * u);   // each slide holds still, then the next slides in
+  track.style.transform = `translate3d(${-pos / 3 * (track.scrollWidth - innerWidth)}px,0,0)`; techAt(Math.round(pos));
+} });
+list.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const k = $$('button', list).indexOf(b), y = techST.start + (techST.end - techST.start) * (k / 3); lenis ? lenis.scrollTo(y, { duration: 1.2 }) : scrollTo({ top: y, behavior: 'smooth' }); });
 
 // ---- platform modules ----
 $('#mods').innerHTML = MODS.map((m, i) => `<div class="mod"><span class="mono">0${i + 1}</span><h3 class="h20">${esc(m[0])}</h3><p>${m[1]}</p></div>`).join('');
@@ -717,59 +720,6 @@ $('#mods').innerHTML = MODS.map((m, i) => `<div class="mod"><span class="mono">0
 const navA = $$('header nav a');
 ['platform', 'technology', 'construction', 'industries', 'about'].forEach((id, i) => ScrollTrigger.create({ trigger: '#' + id, start: 'top 50%', end: 'bottom 50%', onToggle: s => navA[i].classList.toggle('on', s.isActive) }));
 
-
-// ---- drone flyer: a photoreal flight clip scrubbed by scroll, flying the whole page ----
-// The clip is on pure white and multiplied onto the page, so only the drone shows. Scroll position picks the video frame
-// and the drone's place on screen; every waypoint below is a scroll position, so the flight follows the sections.
-const flyer = $('#flyer');
-if (flyer && !reduce) {
-  // the 3D drone (drone.js) takes over; this video is only the fallback if it cannot start
-  const startVideo = () => { if (document.documentElement.classList.contains('drone3d-on') || flyer.src) return; flyer.src = small ? flyer.dataset.srcS : flyer.dataset.src; };
-  addEventListener('load', () => setTimeout(startVideo, 4000));
-  let W = [], cur = 0, ready = false;
-  const top = id => $('#' + id).getBoundingClientRect().top + scrollY;
-  const sm = u => u * u * (3 - 2 * u);
-  function plan() {
-    const vh = innerHeight, k = innerWidth < 768 ? .5 : 1, hero = $('#hero');
-    const heroEnd = Math.max(1, hero.offsetHeight - vh), tech = $('#technology');
-    const w = (at, t, x, y, s, o) => [at, { t, x: x * k, y, s: s * 1.4 * (k < 1 ? .8 : 1), o }];
-    W = [
-      w(0, 0, 0, -3, 1, 1),
-      w(heroEnd * .55, 2.8, 8, -7, 1, 1),
-      w(heroEnd, 5.0, 24, -12, .82, 1),
-      w(top('vision') - vh * .6, 8.4, 34, -26, .65, 1),
-      w(top('vision') - vh * .15, 9.7, 52, -30, .6, 0),
-      w(top('industries') - vh * .4, 10.1, 30, -10, .7, 0),
-      w(top('industries') + vh * .1, 10.9, 30, -10, .7, 1),
-      w(top('technology'), 12.8, 30, 14, .5, 1),
-      w(top('technology') + tech.offsetHeight - vh, 13.8, 30, 14, .5, 1),
-      w(top('platform') + vh * .3, 14.4, -30, 16, .5, 1),
-      w(top('contact'), 15.0, 24, -10, .72, 1)
-    ].sort((a, b) => a[0] - b[0]);
-  }
-  const at = y => {
-    if (y <= W[0][0]) return W[0][1];
-    for (let i = 1; i < W.length; i++) if (y <= W[i][0]) {
-      const a = W[i - 1], b = W[i], u = sm((y - a[0]) / Math.max(1, b[0] - a[0])), r = {};
-      for (const k in a[1]) r[k] = a[1][k] + (b[1][k] - a[1][k]) * u;
-      return r;
-    }
-    return W[W.length - 1][1];
-  };
-  flyer.addEventListener('loadeddata', () => { flyer.pause(); ready = true; plan(); document.documentElement.classList.add('flyer-on'); });
-  ScrollTrigger.addEventListener('refresh', () => { if (ready) plan(); });
-  addEventListener('resize', () => { if (ready) plan(); });
-  gsap.ticker.add(() => {
-    if (!ready || !W.length || document.documentElement.classList.contains('drone3d-on')) return;
-    const p = at(scrollY);
-    cur += (p.t - cur) * .22; if (Math.abs(p.t - cur) < 1 / 90) cur = p.t;
-    if (!flyer.seeking && Math.abs(flyer.currentTime - cur) > 1 / 60) flyer.currentTime = cur;
-    // a slow hover: the drone floats and tilts a touch, out of step on each axis so it never looks mechanical
-    const n = performance.now() / 1000, dx = Math.sin(n * .7) * .45, dy = Math.sin(n * 1.1) * .7 + Math.sin(n * .43) * .35, rot = Math.sin(n * .9 + 1) * .7;
-    flyer.style.opacity = p.o;
-    flyer.style.transform = `translate(${p.x + dx}vw, ${p.y + dy}vh) rotate(${rot}deg) scale(${p.s})`;
-  });
-}
 
 // ---- lazy loops (the Vision band) ----
 $$('video.lazy').forEach(v => new IntersectionObserver(es => es.forEach(e => {
@@ -795,6 +745,6 @@ addEventListener('load', () => ScrollTrigger.refresh());
 })();
 </script>
 <script src="terrain.js" defer></script>
-<script src="drone.js" defer></script>
+<script src="drone.js" defer onerror="droneFail()"></script>
 </body>
 </html>
