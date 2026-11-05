@@ -98,3 +98,4 @@
 {"t":"2026-11-03T12:28:45.772Z","id":"v04","model":"kling-video/o3/first-last-frame","status":"completed","request_id":"01a1a15f-602c-7d52-aa70-e6141b3c38ab","usd":0.476}
 {"t":"2026-11-03T12:31:36.181Z","id":"c13b","model":"kling-video/o3/first-last-frame","status":"completed","request_id":"01a1a163-062f-79c6-9e4c-63ab92cbba5c","usd":0.476}
 {"t":"2026-11-03T12:31:43.044Z","id":"v02b","model":"kling-video/o3/first-last-frame","status":"completed","request_id":"01a1a163-072a-7e7e-a16e-84be1df01e1f","usd":0.476}
+{"t":"2026-11-05T03:19:04.590Z","id":"hero-1","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9b6-9437-7a46-bab9-41d92b8e30f6","usd":0.06}

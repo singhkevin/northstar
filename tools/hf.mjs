@@ -4,16 +4,17 @@
 import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
-const HF = '/Users/kevinsingh/Desktop/Projects/higgsfield-seedance';
+const ROOT = process.env.NORTHSTAR_ROOT || path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+// Dir holding node_modules with @higgsfield/client + dotenv (override with HF_DEPS).
+const HF = process.env.HF_DEPS || '/Users/kevinsingh/Desktop/Projects/higgsfield-seedance';
 const require = createRequire(HF + '/package.json');
 // Northstar uses its OWN Higgsfield account (29 Oct 2026): the key lives only in Northstar/.env.local.
 // No fallback to the shared studio key, so Northstar spend can never land on the wrong account.
-require('dotenv').config({ path: '/Users/kevinsingh/Desktop/Projects/Northstar/.env.local', quiet: true });
+require('dotenv').config({ path: ROOT + '/.env.local', quiet: true });
 if (!/^[^:\s]+:[^:\s]+$/.test(process.env.HF_CREDENTIALS || '')) { console.error('No Northstar Higgsfield key: set HF_CREDENTIALS=key-id:secret in Northstar/.env.local'); process.exit(1); }
 const { config, higgsfield } = await import(HF + '/node_modules/@higgsfield/client/dist/v2/index.js');
 config({ credentials: process.env.HF_CREDENTIALS, maxPollTime: 20 * 60 * 1000 });
 const AUTH = { Authorization: 'Key ' + process.env.HF_CREDENTIALS, 'Content-Type': 'application/json' };
-const ROOT = '/Users/kevinsingh/Desktop/Projects/Northstar';
 const LEDGER = ROOT + '/assets/ledger.jsonl';
 
 const uploads = new Map();
