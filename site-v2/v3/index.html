@@ -8,49 +8,51 @@
 <meta name="description" content="Northstar brings intelligence into the physical world through autonomous drones, quadruped robots, humanoid robotics, and connected industrial systems.">
 <link rel="icon" href="../brand/northstar-flight-ribbon-icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 /* Northstar /v3. Layout, type scale, spacing and motion follow a measured study of a minimal light editorial drone site
    (see plans/drone-riotters/04-build-spec.md). Brand, copy, images, drone and 3D are Northstar's own. */
 :root{
-  --bg:#FDFDFE;--paper:#fff;--hero-a:#E4EAF2;--ink:#102B4E;--text:#0E1A2B;--muted:#C3CCD8;--mid:rgba(16,43,78,.62);
-  --line:rgba(16,43,78,.14);--line2:rgba(16,43,78,.24);--chip:rgba(16,43,78,.06);--blue:#245FFF;--cyan:#00CDD9;
-  --gx:24px;--hdr:76px;--out:cubic-bezier(.22,1,.36,1);--std:cubic-bezier(.4,0,.2,1);
-  --sans:Inter,"Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --bg:#FDFDFE;--paper:#fff;--hero-a:#E4EAF2;--ink:#102B4E;--text:#1B2F4B;--muted:#687791;--mid:#5A6B85;
+  --line:#E3EAF4;--line2:#CFD9E6;--flight:linear-gradient(100deg,#00CDD9 0%,#009CF4 32%,#245FFF 70%,#9471FF 100%);--r:14px;--chip:rgba(16,43,78,.06);--blue:#245FFF;--cyan:#00CDD9;
+  --gx:24px;--hdr:80px;--out:cubic-bezier(.22,1,.36,1);--std:cubic-bezier(.4,0,.2,1);
+  --sans:Inter,"Helvetica Neue",Arial,sans-serif;--head:Sora,Inter,"Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
 }
 @media (max-width:1023px){:root{--gx:16px}}
-@media (max-width:767px){:root{--gx:8px;--hdr:60px}}
+@media (max-width:767px){:root{--gx:20px;--hdr:64px}}
 *{box-sizing:border-box;margin:0;padding:0}
-html{background:var(--bg);color:var(--text);font:400 16px/24px var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html{background:var(--bg);color:var(--text);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
 body{background:var(--bg);overflow-x:clip}
 a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img,video,canvas{display:block}
-.mono{font-family:var(--mono);font-size:12px;line-height:16px;letter-spacing:.3px;text-transform:uppercase}
+.mono{font-family:var(--mono);font-weight:500;font-size:11.5px;line-height:16px;letter-spacing:.14em;text-transform:uppercase}
 .br::before{content:"[ "}.br::after{content:" ]"}
-.dot::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:currentColor;margin-right:8px;vertical-align:middle}
-.disp{font-weight:300;font-size:clamp(50px,16.67vw,240px);line-height:.917;letter-spacing:-.054em;color:var(--ink)}
-.h32{font-weight:300;font-size:clamp(24px,2.22vw,32px);line-height:1.25;letter-spacing:-.025em}
-.h28{font-weight:300;font-size:clamp(22px,1.95vw,28px);line-height:1.15;letter-spacing:-.028em}
-.h24{font-weight:300;font-size:clamp(20px,1.67vw,24px);line-height:1.34;letter-spacing:-.033em}
-.h20{font-weight:300;font-size:20px;line-height:28px;letter-spacing:-.02em}
+.dot::before{content:"";display:inline-block;width:22px;height:2px;border-radius:2px;background:var(--flight);margin-right:10px;vertical-align:middle}
+.disp{font-family:var(--head);font-weight:500;font-size:clamp(46px,13.2vw,200px);line-height:1;letter-spacing:-.05em;color:var(--ink)}
+.h32{font-family:var(--head);font-weight:500;font-size:clamp(24px,2.22vw,32px);line-height:1.25;letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
+.h28{font-family:var(--head);font-weight:500;font-size:clamp(20px,1.8vw,26px);line-height:1.2;letter-spacing:-.03em}
+.h24{font-weight:400;font-size:clamp(19px,1.6vw,23px);line-height:1.42;letter-spacing:-.015em;color:var(--ink);text-wrap:pretty}
+.h20{font-family:var(--head);font-weight:500;font-size:19px;line-height:26px;letter-spacing:-.02em;color:var(--ink)}
 .sm{font-size:15px;line-height:20px;letter-spacing:-.027em}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr))}
 .wrap{padding-inline:var(--gx)}
 .num{width:24px;height:24px;border-radius:999px;border:1px solid var(--line2);display:grid;place-items:center;font:400 11px/1 var(--mono);color:var(--mid)}
 .w{color:var(--muted);transition:color .3s var(--std)}.w.on{color:var(--ink)}
-.pill{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px;border-radius:999px;background:var(--chip);font-size:13px;line-height:1;letter-spacing:-.01em;color:var(--ink);transition:background-color .3s var(--std),color .3s var(--std)}
-.pill:hover{background:var(--ink);color:#fff}
-.btn{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 18px;background:var(--ink);color:#fff;font-size:14px;letter-spacing:-.01em;transition:background-color .3s var(--std)}
-.btn:hover{background:var(--blue)}.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line2)}.btn.ghost:hover{background:var(--chip)}
+.pill{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;font-weight:500;background:var(--chip);font-size:14px;line-height:1;letter-spacing:-.01em;color:var(--ink);transition:background-color .3s var(--std),color .3s var(--std)}
+.pill:hover{background:var(--flight);color:#fff}.pill:active,.btn:active{transform:translateY(1px)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 22px;border-radius:999px;font-weight:500;background:var(--ink);color:#fff;font-size:14px;letter-spacing:-.01em;transition:background-color .3s var(--std)}
+.btn:hover{background:var(--flight)}.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line2)}.btn.ghost:hover{background:var(--chip)}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 
 /* header */
-header{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--hdr);background:rgba(253,253,254,.92);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);align-items:center;padding:0 var(--gx)}
-header .brand{grid-column:1/5;display:flex;align-items:center;gap:10px;color:var(--mid);font-size:12px}
-header .brand img{height:22px;width:auto}
-header nav{grid-column:6/10;display:flex;gap:24px;font-size:13px;color:var(--mid)}
-header nav a{transition:color .3s var(--std)}header nav a:hover,header nav a.on{color:var(--ink)}
+header{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--hdr);background:var(--bg);border-bottom:1px solid var(--line);align-items:center;padding:0 var(--gx)}
+header .brand{grid-column:1/4;justify-self:start;display:flex;align-items:center;gap:10px;color:var(--mid);font-size:12px}
+header .brand img{height:52px;width:auto;margin:-6px 0 -6px -9px}
+@media (max-width:767px){header .brand img{height:44px;margin:-4px 0 -4px -7px}}
+@media (max-width:359px){header .brand img{height:36px;margin:0 0 0 -6px}}
+header nav{grid-column:4/10;justify-self:center;display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--mid)}
+header nav a{white-space:nowrap;transition:color .3s var(--std)}header nav a:hover,header nav a.on{color:var(--ink)}
 header .cta{grid-column:10/13;justify-self:end}
 @media (max-width:1023px){header nav{display:none}header .brand{grid-column:1/9}header .cta{grid-column:9/13}}
 @media (max-width:767px){header .brand span{display:none}}
@@ -59,7 +61,7 @@ header .cta{grid-column:10/13;justify-self:end}
 #hero{height:200svh;position:relative}
 #hero .stick{position:sticky;top:0;height:100svh;padding:var(--hdr) var(--gx) 0;display:flex;flex-direction:column}
 #hero .box{position:relative;flex:1;overflow:hidden;background:linear-gradient(180deg,var(--hero-a) 0%,#F1F4F8 46%,var(--bg) 100%)}
-#hero .mark{position:absolute;left:0;right:0;top:4%;text-align:center;font-weight:300;font-size:min(23.4vw,40vh);line-height:.9;letter-spacing:-.06em;color:#EEF2F7;text-shadow:0 1px 0 #fff,0 -1px 0 rgba(16,43,78,.07),0 22px 50px rgba(16,43,78,.09);user-select:none;will-change:transform}
+#hero .mark{position:absolute;left:0;right:0;top:4%;text-align:center;font-family:var(--head);font-weight:400;font-size:min(19.5vw,36vh);line-height:.95;letter-spacing:-.06em;color:#EEF2F7;text-shadow:0 1px 0 #fff,0 -1px 0 rgba(16,43,78,.07),0 22px 50px rgba(16,43,78,.09);user-select:none;will-change:transform}
 #drone{position:absolute;left:50%;top:50%;width:min(52vw,74vh);aspect-ratio:1016/451;will-change:transform}
 #drone img{width:100%;height:auto;position:relative;z-index:2;filter:drop-shadow(0 30px 40px rgba(16,43,78,.16))}
 #drone .shadow{position:absolute;left:16%;right:16%;bottom:-34%;height:16%;border-radius:50%;background:radial-gradient(closest-side,rgba(16,43,78,.18),transparent);filter:blur(6px)}
@@ -68,6 +70,12 @@ header .cta{grid-column:10/13;justify-self:end}
 .rotor.r2::after{animation-direction:reverse}
 @keyframes sweep{from{transform:translateX(-46%)}to{transform:translateX(46%)}}
 .r1{left:5.2%;top:43%}.r2{left:61.8%;top:2%}.r3{left:94.8%;top:40%}
+
+/* drone flyer: a photoreal flight clip scrubbed by scroll; its white backdrop is multiplied away */
+#flyer{position:fixed;inset:0;z-index:40;width:100%;height:100%;object-fit:contain;pointer-events:none;mix-blend-mode:multiply;opacity:0;will-change:transform,opacity;transform-origin:50% 50%}
+.flyer-on #drone{visibility:hidden}
+#drone3d{position:fixed;inset:0;z-index:40;width:100%;height:100%;pointer-events:none}
+.drone3d-on #drone{visibility:hidden}.drone3d-on #flyer{display:none}
 #hero .foot{display:flex;justify-content:space-between;align-items:flex-end;padding:20px 0 22px}
 #hero .tag{font-size:15px;line-height:20px;letter-spacing:-.02em}#hero .tag span{display:block;color:var(--mid)}
 #hero .scroll{white-space:nowrap;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--mid)}
@@ -93,31 +101,33 @@ header .cta{grid-column:10/13;justify-self:end}
 .sec{position:relative;border-top:1px solid var(--line2)}
 .shead{position:relative;padding-top:32px}
 .shead .num{position:absolute;right:0;top:20px}
-.letters span{display:inline-block;opacity:0;transform:translateY(.12em);transition:opacity .9s var(--out),transform .9s var(--out)}
+.letters span{display:inline-block;white-space:pre;opacity:0;transform:translateY(.12em);transition:opacity .9s var(--out),transform .9s var(--out)}
 .in .letters span{opacity:1;transform:none}
-.lead{padding:56px 0 120px;align-items:start}
+.lead{padding:56px 0;align-items:start}
 .lead .mono{grid-column:1/4;color:var(--mid);padding-top:6px}
 .lead .copy{grid-column:7/13}
 .lead .copy p+p{margin-top:20px}
-@media (max-width:1023px){.lead{padding:32px 0 72px}.lead .mono{grid-column:1/13;margin-bottom:16px}.lead .copy{grid-column:1/13}}
+@media (max-width:1023px){.lead{padding:32px 0 56px}.lead .mono{grid-column:1/13;margin-bottom:16px}.lead .copy{grid-column:1/13}}
 
 /* coordination dial */
 #dial{height:420svh;position:relative}
 #dial .stick{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--hdr) var(--gx) 0}
 #dial .intro{position:absolute;left:var(--gx);right:var(--gx);top:calc(var(--hdr) + 24px);display:flex;justify-content:space-between;gap:24px;color:var(--mid)}
 #dial .intro p{max-width:30em;text-align:right;font-size:15px;line-height:20px;letter-spacing:-.02em}
-#dial .arcw{position:relative;align-self:center;width:min(620px,86vw);aspect-ratio:2/1;margin-bottom:-1px}
+#dial .arcw{position:relative;align-self:center;width:min(620px,86vw,max(280px,calc((100svh - var(--hdr) - min(24svh,190px) - 290px)*2)));aspect-ratio:2/1;margin-bottom:-1px}
 #dial svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 #dial .hub{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);width:56px;height:56px;border-radius:50%;background:var(--paper);border:1px solid var(--line2);display:grid;place-items:center;z-index:2}
 #dial .hub i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--ink);transition:transform .7s var(--out)}
 #dial .lbl{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);color:var(--mid);white-space:nowrap}
-#dial .def{position:absolute;left:50%;bottom:92px;transform:translateX(-50%);width:min(440px,80vw);text-align:center;font-size:15px;line-height:20px;letter-spacing:-.02em;color:var(--mid);min-height:60px}
+#dial .def{align-self:center;width:min(520px,86vw);text-align:center;font-size:16px;line-height:24px;letter-spacing:-.02em;color:var(--mid);min-height:120px;margin-bottom:64px}
+@media (min-width:768px) and (max-height:780px){#dial .intro{top:calc(var(--hdr) + 8px)}#dial .intro p{max-width:24em;font-size:13px;line-height:17px}#dial .def{width:min(420px,calc(100vw - 2*(312px + var(--gx) + 16px)));min-height:96px;margin-bottom:20px;font-size:14px;line-height:19px}#dial .arcw{width:min(620px,86vw,max(280px,calc((100svh - var(--hdr) - min(24svh,190px) - 170px)*2)))}}
+@media (min-width:768px) and (max-width:1000px) and (max-height:780px){#dial .intro p{display:none}#dial .def{width:min(420px,70vw)}}
 #dial .strip{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);grid-template-columns:repeat(4,1fr);height:min(24svh,190px)}
 #dial .cell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);transition:color .5s var(--std)}
 #dial .cell+.cell{border-left:1px solid var(--line2)}
 #dial .cell .mono{color:var(--muted);transition:color .5s var(--std);text-align:center;padding:0 10px}
 #dial .cell.on{color:var(--ink)}#dial .cell.on .mono{color:var(--mid)}
-@media (max-width:767px){#dial .strip{grid-template-columns:repeat(2,1fr);height:auto}#dial .cell{padding:22px 0}#dial .cell:nth-child(3){border-left:0}#dial .cell:nth-child(n+3){border-top:1px solid var(--line2)}#dial .intro p{display:none}#dial .def{bottom:calc(100% + 18px);min-height:0}#dial .arcw{margin-top:150px}}
+@media (max-width:767px){#dial .strip{grid-template-columns:repeat(2,1fr);height:auto}#dial .cell{padding:22px 0}#dial .cell:nth-child(3){border-left:0}#dial .cell:nth-child(n+3){border-top:1px solid var(--line2)}#dial .intro p{display:none}#dial .def{min-height:150px;margin-bottom:32px;font-size:15px;line-height:22px}}
 
 /* industries (tabs) */
 #industries{background:var(--paper)}
@@ -130,8 +140,8 @@ header .cta{grid-column:10/13;justify-self:end}
 .ind .t ul{list-style:none;margin-top:28px;border-top:1px solid var(--line)}
 .ind .t li{padding:10px 0;border-bottom:1px solid var(--line);color:var(--mid);font-size:14px}
 .ind .img{grid-column:7/13;position:relative;aspect-ratio:16/10;overflow:hidden;background:#0B1B33}
-.ind .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.03);transition:opacity .5s var(--out),transform 1.2s var(--out)}
-.ind .img img.on{opacity:1;transform:none}
+.ind .img img,.ind .img video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.03);transition:opacity .5s var(--out),transform 1.2s var(--out)}
+.ind .img img.on,.ind .img video.on{opacity:1;transform:none}
 .ind .fade{transition:opacity .3s var(--std)}
 @media (max-width:1023px){.ind .t{grid-column:1/13;padding:0 0 28px}.ind .img{grid-column:1/13}}
 
@@ -139,9 +149,9 @@ header .cta{grid-column:10/13;justify-self:end}
 #technology{height:520svh;background:var(--paper);position:relative}
 #technology .stick{position:sticky;top:var(--hdr);height:calc(100svh - var(--hdr));display:flex;flex-direction:column;padding:0 var(--gx) 16px}
 #technology .body{flex:1;border-top:1px solid var(--line2);margin-top:20px;min-height:0;position:relative}
-#technology .list{grid-column:1/4;display:flex;flex-direction:column;justify-content:center;gap:6px}
+#technology .list{grid-column:1/3;display:flex;flex-direction:column;justify-content:center;gap:6px}
 #technology .list button{text-align:left;color:var(--muted);transition:color .5s var(--std)}#technology .list button.on{color:var(--ink)}
-#technology .pic{grid-column:4/9;position:relative;overflow:hidden;margin:16px 0;background:#0B1B33}
+#technology .pic{grid-column:3/9;align-self:center;aspect-ratio:16/9;position:relative;overflow:hidden;background:#0B1B33}
 #technology .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .6s var(--out),transform 1.2s var(--out)}
 #technology .pic img.on{opacity:1;transform:none}
 #technology .info{grid-column:9/13;display:flex;flex-direction:column;justify-content:center;padding-left:32px;position:relative}
@@ -154,12 +164,14 @@ header .cta{grid-column:10/13;justify-self:end}
 #technology .corner{position:absolute;bottom:0;color:var(--mid)}#technology .corner.l{left:0}#technology .corner.r{right:0}
 #technology .body>.grid{height:100%}
 @media (max-width:1023px){
-  #technology .body>.grid{grid-template-rows:auto minmax(0,1fr) auto;row-gap:12px}
-  #technology .list{grid-column:1/13;flex-direction:row;flex-wrap:wrap;gap:4px 18px;padding-top:14px}
-  #technology .list button{font-size:18px;line-height:24px}
-  #technology .pic{grid-column:1/13;margin:0}
-  #technology .info{grid-column:1/13;padding:0 0 28px;min-height:min(36svh,300px);justify-content:flex-start}
-  #technology .card{left:0;top:0}
+  #technology{height:auto}
+  #technology .stick{position:static;height:auto;padding-bottom:40px}
+  #technology .body{border-top:0;margin-top:0}
+  #technology .body>.grid{height:auto;row-gap:0}
+  #technology .list,#technology .corner{display:none}
+  #technology .pic,#technology .info{display:contents}
+  #technology .pic img{position:static;grid-column:1/13;order:calc(var(--k)*2);height:auto;aspect-ratio:16/9;opacity:1;transform:none;background:#0B1B33;margin-top:32px}
+  #technology .card{position:static;grid-column:1/13;order:calc(var(--k)*2 + 1);opacity:1;transform:none;pointer-events:auto;padding-top:20px}
 }
 
 /* platform */
@@ -195,23 +207,120 @@ header .cta{grid-column:10/13;justify-self:end}
 .ctop .row{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
 .ctop .quote{margin-top:40px;color:var(--mid);font-size:15px;line-height:20px}
 footer{border-top:1px solid var(--line2);padding:40px 0 24px;align-items:end}
-footer .logo{grid-column:1/5}footer .logo img{height:36px;width:auto}footer .logo p{color:var(--mid);margin-top:14px;font-size:14px}
+footer .logo{grid-column:1/5}footer .logo img{height:56px;width:auto}footer .logo p{color:var(--mid);margin-top:14px;font-size:14px}
 footer .cols{grid-column:7/13;display:grid;grid-template-columns:1fr 1fr;gap:20px}
 footer .cols h4{font:400 12px/16px var(--mono);letter-spacing:.3px;text-transform:uppercase;color:var(--mid);margin-bottom:10px}
 footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
 .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line2);padding:14px 0 18px;color:var(--mid)}
 @media (max-width:1023px){.ctop .l,.ctop .r{grid-column:1/13;padding:0}.ctop .r{margin-top:28px}footer .logo{grid-column:1/13;margin-bottom:32px}footer .cols{grid-column:1/13}}
 
+/* client copy completed, and visuals for the quiet stretches */
+.disp.sm{font-size:clamp(40px,10.4vw,160px);line-height:1}
+.hero2{position:absolute;left:0;bottom:24px;z-index:6;width:min(44em,100%);opacity:0;transform:translateY(14px);pointer-events:none}
+.hero2 .mono{color:var(--mid)}.hero2 .mono+.mono{margin-top:6px;color:var(--ink)}
+.hero2 .txt{margin-top:16px;font-size:15px;line-height:22px;letter-spacing:-.02em;color:var(--text)}
+.hero2 .row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.band{position:relative;overflow:hidden;aspect-ratio:21/9;margin:0 0 0;background:#0B1B33}
+#vision .band{margin-bottom:96px}
+.band img,.band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sec>.band+.mods{margin-top:32px}
+.strip4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-bottom:96px}
+.strip4 figure{margin:0}.strip4 img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#0B1B33}
+.strip4 figcaption{margin-top:10px;color:var(--mid)}
+@media (max-width:1199px){.strip4{display:flex;gap:12px;overflow-x:hidden;margin:0 calc(var(--gx)*-1);padding:0 var(--gx) 72px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.strip4::-webkit-scrollbar{display:none}.strip4 figure{flex:0 0 min(82vw,620px)}}
+#dial .dbg{position:absolute;inset:var(--hdr) var(--gx) 0;z-index:-1;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 52%,#000 22%,transparent 80%);mask-image:radial-gradient(ellipse 72% 62% at 50% 52%,#000 22%,transparent 80%)}
+#dial .dbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s var(--out)}
+#dial .dbg img.on{opacity:.26}
+.sec>.mods:last-child{margin-bottom:96px}
+.closing{color:var(--ink);padding:56px 0 96px;max-width:30em}
+.cons{align-items:start;padding-bottom:24px}
+.cpic{grid-column:1/7;position:sticky;top:calc(var(--hdr) + 24px);aspect-ratio:16/10;max-height:calc(100svh - var(--hdr) - 48px);overflow:hidden;background:#0B1B33}
+.cpic img,.cpic video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity .6s var(--out),transform 1.2s var(--out)}
+.cpic img.on,.cpic video.on{opacity:1;transform:none}
+.clist{grid-column:7/13}
+.crow{padding:32px 0 40px;border-top:1px solid var(--line2);min-height:30svh}
+.crow .mono{color:var(--mid);display:block;margin-bottom:16px}
+.crow h3{color:var(--ink);margin-bottom:10px}.crow p{font-size:15px;line-height:22px;color:var(--text)}
+.mv{grid-template-columns:1fr 1fr;border-top:1px solid var(--line2);margin:56px 0 clamp(48px,8vw,96px)}
+.mv>div{padding:28px 32px 0 0}.mv>div+div{padding-left:32px;border-left:1px solid var(--line2)}
+.mv .mono{color:var(--mid);display:block;margin-bottom:16px}
+#technology .card p{font-size:14px;line-height:19px}
+@media (max-width:1023px){
+  .cpic{grid-column:1/13;position:relative;top:0;aspect-ratio:16/10;margin-bottom:24px}.clist{grid-column:1/13}.crow{min-height:0}.crow>img,.crow>video{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#0B1B33;margin-bottom:20px}
+  .band{aspect-ratio:16/9}
+  .mv{grid-template-columns:1fr}.mv>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line2);margin-top:28px}
+  .hero2{width:100%;left:0;bottom:16px}.hero2 .txt{font-size:14px;line-height:20px}
+}
+
+@media (prefers-reduced-motion:reduce) and (max-width:1199px){.strip4{overflow-x:auto}}
 @media (prefers-reduced-motion:reduce){.rotor::after,#hero .scroll i b{animation:none}.letters span{opacity:1;transform:none;transition:none}*{transition-duration:.01ms!important}}
+/* design pass, 5 Nov: type system, spacing, alignment (found by measured audit) */
+.band,.strip4 img,.cpic,.crow>img,.crow>video,.ind .img,#technology .pic,#technology .pic img,#intro .frame,#terrain{border-radius:var(--r);overflow:hidden}
+.disp,.disp.sm{font-size:clamp(38px,11.6vw,176px);line-height:1;letter-spacing:-.04em;margin-left:-.025em}
+#platform .disp,#industries .disp,#how .disp{margin-left:-.1em}#construction .disp{margin-left:-.05em}
+@media (min-width:1024px) and (max-height:760px),(min-width:1024px) and (max-width:1300px) and (max-height:820px){#technology .disp{font-size:min(11.6vw,13svh)}}
+.h20,.mono,figcaption{text-wrap:balance}p,li{text-wrap:pretty}
+.flight{background:var(--flight);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dot{display:flex;align-items:flex-start}.dot::before{flex:none;margin-top:7px}
+.mod p,.crow p,.ind .t li,.ctop .quote{font-size:16px;line-height:1.55;letter-spacing:0}
+#technology .card p{letter-spacing:0}
+@media (min-width:1024px) and (min-height:820px){#technology .card p{font-size:15px;line-height:1.4}}
+.ind .t p.mono{font-size:11.5px;line-height:16px;letter-spacing:.14em}
+.tabs button{font-family:var(--head);font-weight:500;font-size:clamp(20px,1.8vw,26px);line-height:32px;letter-spacing:-.03em}
+.tabs button:hover{color:var(--ink)}
+.tabs button[aria-selected=true]{border-image:var(--flight) 1}
+#hero .tag{font:500 clamp(22px,2.4vw,34px)/1.15 var(--head);letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
+#hero .tag span{display:block;font:400 16px/1.55 var(--sans);letter-spacing:0;margin-top:6px;color:var(--mid)}
+#hero .mark{font-weight:500;letter-spacing:-.04em;color:#D5DFEB;text-shadow:none}
+#hero .foot{gap:16px}
+#hero .scroll{font:500 11.5px/16px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.hero2 .txt{max-width:35em;font-size:16px;line-height:1.55;letter-spacing:0}
+.hero2 .mono+.mono{font:500 16px/1.4 var(--sans);letter-spacing:0;text-transform:none}
+.hero2 .mono+.mono::before,.hero2 .mono+.mono::after{content:none}
+@media (max-width:767px){#hero .scroll{display:none}}
+@media (max-height:620px){.hero2 .mono:first-child{display:none}}
+#dial .cell .h32{color:var(--muted);transition:color .5s var(--std)}
+#dial .cell.on .h32,#dial .cell.on .mono{color:var(--ink)}
+header .cta{background:var(--ink);color:#fff}
+.pill:hover,.btn:not(.ghost):hover{background:linear-gradient(100deg,#245FFF,#284BDE);color:#fff}
+.num{font:500 11px/1 var(--mono);letter-spacing:.04em}
+.cmeta,.tmeta{gap:16px}
+@media (max-width:767px){.cmeta,.tmeta{flex-direction:column;gap:4px}.pin .pc{left:-110px;bottom:108px}.pin.open{z-index:3}}
+#how,#why{background:#F3F6FB;--muted:#5A6B85}
+/* construction */
+.crow p{max-width:32em}
+@media (min-width:1024px){.clist{padding-left:48px}.crow{min-height:0;padding:32px 0 56px}}
+/* card rows share baselines */
+@media (min-width:1024px){.mod{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0}}
+/* technology text starts level with the picture on roomy screens */
+@media (min-width:1366px) and (min-height:760px){#technology .info{align-self:center;height:calc((100vw - 2*var(--gx))*.28125);justify-content:flex-start}#technology .card{top:0}}
+/* industries: list ends level with the picture */
+@media (min-width:1024px){.ind{align-items:stretch}.ind .img{align-self:start}.ind .t{display:flex;flex-direction:column}.ind .t p:not(.mono){margin-bottom:28px}.ind .t ul{margin-top:auto}}
+/* big statements */
+@media (min-width:1024px){#intro .h32{font-size:clamp(24px,2.4vw,46px)}.lead .mono{grid-column:1/6}}
+.ctop .l h2{font-size:clamp(30px,3.2vw,46px);line-height:1.1;letter-spacing:-.04em}
+#contact{padding-top:clamp(32px,6vw,96px)}
+/* dark close, per the brand's Night */
+.fdark{background:#060E1C;margin-inline:calc(var(--gx)*-1);padding-inline:var(--gx);color:#fff}
+.fdark footer{border-top:0;padding:56px 0 32px}
+.fdark footer .logo img{height:72px;margin-left:-12px}
+.fdark footer .logo p,.fdark footer .cols h4,.fdark .legal{color:rgba(255,255,255,.72)}
+.fdark footer .cols a{color:#fff;font-size:14px;line-height:24px}.fdark footer .cols a:hover{color:#3BA7FF}
+.fdark footer .cols h4{font:500 11.5px/16px var(--mono);letter-spacing:.14em}
+.fdark .legal{border-color:rgba(255,255,255,.12)}
+/* intro caption and small-screen dial labels */
+@media (max-width:1023px){#intro .stick{padding-bottom:20px}#dial .cell .mono{min-height:32px;text-wrap:balance}}
+@media (pointer:coarse){.fdark footer .cols a{padding:10px 0}#technology .list button{min-height:44px}.pin button::after{content:"";position:absolute;inset:-6px}}
 </style>
 </head>
 <body>
 <header class="grid">
   <a class="brand" href="#top" aria-label="Northstar, back to top"><img src="../brand/northstar-flight-ribbon-compact.svg" alt="Northstar"><span>·</span><span>Physical AI</span></a>
-  <nav aria-label="Sections"><a href="#vision">Vision</a><a href="#industries">Industries</a><a href="#technology">Technology</a><a href="#platform">Platform</a></nav>
+  <nav aria-label="Sections"><a href="#platform">Platform</a><a href="#technology">Technology</a><a href="#construction">Solutions</a><a href="#industries">Industries</a><a href="#about">About us</a></nav>
   <a class="pill cta" href="#contact">Talk to our team</a>
 </header>
 
+<video id="flyer" muted playsinline preload="auto" aria-hidden="true" tabindex="-1" data-src="media/drone-fly-1280.mp4" data-src-s="media/drone-fly-854.mp4"></video>
 <main id="top">
 <section id="hero" aria-label="Introduction">
   <div class="stick">
@@ -222,30 +331,34 @@ footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
         <img src="media/drone-body.png" srcset="media/drone-body-s.png 520w, media/drone-body.png 1016w" sizes="52vw" alt="">
         <i class="rotor r1"></i><i class="rotor r2"></i><i class="rotor r3"></i>
       </div>
+      <div class="hero2" id="hero2">
+        <p class="mono br">Physical AI | Autonomous Robotics | Industrial Intelligence</p>
+        <p class="mono br">Autonomous Inspection. Continuous Intelligence. Verified Reality.</p>
+        <p class="txt">Powered by our agentic AI platform, Northstar transforms how enterprises observe, inspect, verify, and understand their physical environments — connecting autonomous machines with intelligent decision-making to make industrial operations safer, smarter, and more predictable.</p>
+        <div class="row"><a class="btn" href="#platform">Explore our platform</a><a class="btn ghost" href="#contact">Talk to our team</a></div>
+      </div>
     </div>
     <div class="foot">
-      <p class="tag">Intelligence that moves beyond the screen.<span>Physical AI for the real world.</span></p>
+      <h1 class="tag">Intelligence that moves beyond the screen.<span>Physical AI for the real world.</span></h1>
       <p class="scroll">Scroll down <i aria-hidden="true"><b></b><b></b><b></b></i></p>
     </div>
   </div>
 </section>
-
 <section id="intro" aria-label="What Northstar does">
   <div class="stick wrap">
     <div class="grid">
       <div class="txt"><p class="h32 reveal" data-scrub="intro">We bring intelligence into the physical world through autonomous drones, quadruped robots, humanoid robotics, and connected industrial systems.</p></div>
       <div class="vid">
         <div class="frame">
-          <video data-src="../media/bg-air-1600.mp4" data-src-s="../media/bg-air-960.mp4" muted playsinline loop preload="none" poster="../media/bg-air.jpg"></video>
-          <video data-src="../media/bg-human-1600.mp4" data-src-s="../media/bg-human-960.mp4" muted playsinline loop preload="none" poster="../media/bg-human.jpg"></video>
-          <video data-src="../media/bg-quad-1600.mp4" data-src-s="../media/bg-quad-960.mp4" muted playsinline loop preload="none" poster="../media/bg-quad.jpg"></video>
+          <video data-src="media/loop-air.mp4" data-src-s="media/loop-air-s.mp4" muted playsinline loop preload="none" poster="../media/bg-air.jpg"></video>
+          <video data-src="media/loop-human.mp4" data-src-s="media/loop-human-s.mp4" muted playsinline loop preload="none" poster="../media/bg-human.jpg"></video>
+          <video data-src="media/loop-quad.mp4" data-src-s="media/loop-quad-s.mp4" muted playsinline loop preload="none" poster="../media/bg-quad.jpg"></video>
         </div>
         <div class="cap mono"><span class="lbl br"><span class="on">Aerial</span><span>Humanoid</span><span>Ground</span></span><span class="br" id="introN">01 / 03</span></div>
       </div>
     </div>
   </div>
 </section>
-
 <section id="vision" class="sec wrap">
   <div class="shead"><h2 class="disp letters" aria-label="Vision">Vision</h2><span class="num">01</span></div>
   <div class="grid lead">
@@ -253,13 +366,45 @@ footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
     <div class="copy">
       <p class="h24 reveal" data-scrub="self">The physical world is ready for intelligence. For decades, enterprise technology has focused on digitizing information. The next frontier is enabling intelligence to interact with the physical world.</p>
       <p class="h24 reveal" data-scrub="self">Northstar is building the intelligence layer between AI and the real world.</p>
+      <p class="h24 reveal" data-scrub="self">By combining embodied AI, autonomous robotics, computer vision, spatial intelligence, and IoT, we enable machines to capture real-world conditions, understand complex environments, and execute coordinated inspection and verification workflows. From construction sites and industrial facilities to energy infrastructure and critical assets, our vision is to turn physical operations into continuously observable, verifiable, and increasingly autonomous systems.</p>
+      <p class="h24 reveal" data-scrub="self">We don't just capture the physical world. We enable AI to understand it.</p>
+    </div>
+  </div>
+  <figure class="band"><video class="lazy" muted playsinline loop preload="none" poster="../media/bg-wide.jpg" data-src="media/loop-wide.mp4" data-src-s="media/loop-wide-s.mp4" aria-hidden="true"></video></figure>
+</section>
+<section id="ecosystem" class="sec wrap" aria-label="Our technology">
+  <div class="grid lead">
+    <p class="mono dot">Our technology</p>
+    <div class="copy">
+      <p class="h24 reveal" data-scrub="self">Intelligence in Every Dimension. A connected ecosystem of intelligent machines.</p>
+      <p class="h24 reveal" data-scrub="self">Northstar brings aerial robotics, ground robotics, humanoid systems, and distributed sensors together through one intelligent orchestration platform.</p>
+    </div>
+  </div>
+  <div class="strip4">
+    <figure><img src="media/fleet-drone.jpg" alt="" loading="lazy"><figcaption class="mono br">Autonomous drones</figcaption></figure>
+    <figure><img src="media/fleet-quad.jpg" alt="" loading="lazy"><figcaption class="mono br">Quadruped robotics</figcaption></figure>
+    <figure><img src="media/fleet-humanoid.jpg" alt="" loading="lazy"><figcaption class="mono br">Humanoid robotics</figcaption></figure>
+    <figure><img src="media/strip-iot.jpg" alt="" loading="lazy"><figcaption class="mono br">Industrial IoT &amp; edge intelligence</figcaption></figure>
+  </div>
+</section>
+<section id="technology" aria-label="Technology">
+  <div class="stick">
+    <div class="shead"><h2 class="disp letters" aria-label="Technology">Technology</h2><span class="num">02</span></div>
+    <div class="body">
+      <div class="grid">
+        <div class="list" role="tablist" aria-label="Systems"></div>
+        <div class="pic" id="techPic"></div>
+        <div class="info" id="techInfo"></div>
+      </div>
+      <span class="corner l mono br">Intelligence in every dimension</span><span class="corner r mono br" id="techN">01 / 04</span>
     </div>
   </div>
 </section>
-
 <section id="dial" aria-label="The coordination layer">
   <div class="stick">
+    <div class="dbg" aria-hidden="true"><img src="media/dial-perceive.jpg" alt="" loading="lazy" class="on"><img src="media/dial-reason.jpg" alt="" loading="lazy"><img src="media/dial-orchestrate.jpg" alt="" loading="lazy"><img src="media/dial-verify.jpg" alt="" loading="lazy"></div>
     <div class="intro"><span class="mono br">The coordination layer</span><p>Northstar serves as the coordination layer between machines, sensors, enterprise information, and the people responsible for operating physical assets.</p></div>
+    <p class="def" id="dialDef"></p>
     <div class="arcw">
       <svg viewBox="0 0 600 300" aria-hidden="true">
         <path d="M 6 300 A 294 294 0 0 1 594 300" fill="none" stroke="rgba(16,43,78,.18)" stroke-width="1"/>
@@ -267,7 +412,6 @@ footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
         <g id="ticks"></g>
         <circle id="arcDot" r="4" fill="#245FFF"/>
       </svg>
-      <p class="def" id="dialDef"></p>
       <span class="lbl mono br" id="dialLbl">Perceive</span>
       <div class="hub" id="hub" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
     </div>
@@ -279,37 +423,12 @@ footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
     </div>
   </div>
 </section>
-
-<section id="industries" class="sec wrap">
-  <div class="shead"><h2 class="disp letters" aria-label="Industries">Industries</h2><span class="num">02</span></div>
-  <p class="h24" style="margin-top:28px;color:var(--mid);max-width:24em">Built for environments where precision matters.</p>
-  <div class="tabs" role="tablist" aria-label="Industries"></div>
-  <div class="grid ind">
-    <div class="t fade" id="indTxt" role="tabpanel"></div>
-    <div class="img" id="indImg"></div>
-  </div>
-</section>
-
-<section id="technology" aria-label="Technology">
-  <div class="stick">
-    <div class="shead"><h2 class="disp letters" aria-label="Technology">Technology</h2><span class="num">03</span></div>
-    <div class="body">
-      <div class="grid">
-        <div class="list" role="tablist" aria-label="Systems"></div>
-        <div class="pic" id="techPic"></div>
-        <div class="info" id="techInfo"></div>
-      </div>
-      <span class="corner l mono br">Intelligence in every dimension</span><span class="corner r mono br" id="techN">01 / 04</span>
-    </div>
-  </div>
-</section>
-
 <section id="platform" class="sec wrap">
-  <div class="shead"><h2 class="disp letters" aria-label="Platform">Platform</h2><span class="num">04</span></div>
-  <div class="grid lead" style="padding-bottom:72px">
+  <div class="shead"><h2 class="disp letters" aria-label="Platform">Platform</h2><span class="num">03</span></div>
+  <div class="grid lead">
     <p class="mono dot">The Northstar platform</p>
     <div class="copy">
-      <p class="h24 reveal" data-scrub="self">One intelligence platform. Every physical system. An agentic intelligence and robotics orchestration platform designed to connect physical-world observations with autonomous workflows, intelligent analysis, and operational decision-making.</p>
+      <p class="h24 reveal" data-scrub="self">One intelligence platform. Every physical system. Meet Northstar Physical AI Platform. An agentic intelligence and robotics orchestration platform designed to connect physical-world observations with autonomous workflows, intelligent analysis, and operational decision-making.</p>
     </div>
   </div>
   <div id="terrain">
@@ -320,11 +439,97 @@ footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
   <div class="tmeta mono"><span class="br">Illustrative · sample data</span><span class="br">Digital twin &amp; reality intelligence</span></div>
   <div class="mods grid" id="mods"></div>
 </section>
-
-<section id="contact" class="wrap" style="padding-top:120px">
+<section id="how" class="sec wrap">
+  <div class="shead"><h2 class="disp sm letters" aria-label="How it works">How it works</h2><span class="num">04</span></div>
+  <div class="grid lead">
+    <p class="mono dot">How Northstar works</p>
+    <div class="copy">
+      <p class="h24 reveal" data-scrub="self">From physical observation to intelligent action.</p>
+      <p class="h24 reveal" data-scrub="self">A continuous intelligence loop connecting the real and digital worlds.</p>
+    </div>
+  </div>
+  <figure class="band"><video class="lazy" muted playsinline loop preload="none" poster="media/how-loop.jpg" data-src="media/how-loop.mp4" data-src-s="media/how-loop-s.mp4" aria-hidden="true"></video></figure>
+  <div class="mods grid">
+<div class="mod"><span class="mono">01</span><h3 class="h20">Plan</h3><p>Define inspection objectives, target assets, operating constraints, schedules, and verification requirements.</p></div>
+<div class="mod"><span class="mono">02</span><h3 class="h20">Deploy</h3><p>Assign approved missions to drones, robotic systems, or connected sensors, with the appropriate autonomy and human supervision.</p></div>
+<div class="mod"><span class="mono">03</span><h3 class="h20">Capture</h3><p>Collect spatially referenced visual, thermal, geometric, and operational data from the physical environment.</p></div>
+<div class="mod"><span class="mono">04</span><h3 class="h20">Understand</h3><p>Use multimodal AI, computer vision, and contextual reasoning to identify conditions, anomalies, changes, and potential deviations.</p></div>
+<div class="mod"><span class="mono">05</span><h3 class="h20">Verify</h3><p>Compare findings against drawings, BIM models, specifications, previous inspections, and defined acceptance criteria.</p></div>
+<div class="mod"><span class="mono">06</span><h3 class="h20">Act & Learn</h3><p>Create actionable findings, initiate review workflows, generate reports, and use verified outcomes to improve future inspection processes.</p></div>
+  </div>
+  <p class="h24 closing">From data capture to evidence-based decisions — connected by intelligence.</p>
+</section>
+<section id="construction" class="sec wrap">
+  <div class="shead"><h2 class="disp sm letters" aria-label="Construction">Construction</h2><span class="num">05</span></div>
+  <div class="grid lead">
+    <p class="mono dot">Featured solution — Construction intelligence</p>
+    <div class="copy">
+      <p class="h24 reveal" data-scrub="self">Every site. Every stage. Verified.</p>
+      <p class="h24" style="color:var(--mid)">AI-powered construction quality assurance and progress intelligence.</p>
+      <p class="h24 reveal" data-scrub="self">Construction environments are dynamic, complex, and constantly changing. Traditional inspections are periodic, heavily manual, and often fragmented across teams and systems.</p>
+      <p class="h24 reveal" data-scrub="self">Northstar combines aerial reality capture, ground robotics, computer vision, and agentic AI to support more consistent, evidence-driven construction monitoring and quality assurance.</p>
+      <p class="h24 reveal" data-scrub="self">Our goal is to provide contractors, developers, engineers, and project owners with a clearer understanding of what has been built, how work is progressing, and where intervention may be required.</p>
+    </div>
+  </div>
+  <div class="grid cons">
+    <div class="cpic" id="consPic" aria-hidden="true"><video muted playsinline loop preload="none" poster="media/cons-0.jpg" data-src="media/cons-0.mp4" data-src-s="media/cons-0-s.mp4" class="on"></video><video muted playsinline loop preload="none" poster="media/cons-1.jpg" data-src="media/cons-1.mp4" data-src-s="media/cons-1-s.mp4"></video><video muted playsinline loop preload="none" poster="media/cons-2.jpg" data-src="media/cons-2.mp4" data-src-s="media/cons-2-s.mp4"></video><video muted playsinline loop preload="none" poster="media/cons-3.jpg" data-src="media/cons-3.mp4" data-src-s="media/cons-3-s.mp4"></video><video muted playsinline loop preload="none" poster="media/cons-4.jpg" data-src="media/cons-4.mp4" data-src-s="media/cons-4-s.mp4"></video><video muted playsinline loop preload="none" poster="media/cons-5.jpg" data-src="media/cons-5.mp4" data-src-s="media/cons-5-s.mp4"></video><video muted playsinline loop preload="none" poster="media/cons-6.jpg" data-src="media/cons-6.mp4" data-src-s="media/cons-6-s.mp4"></video></div>
+    <div class="clist">
+    <article class="crow" data-i="0"><span class="mono">01</span><h3 class="h20">Construction progress intelligence</h3><p>Monitor site changes over time using aerial and ground-level observations. Compare captured progress with project schedules, work packages, and planned construction activities.</p></article>
+    <article class="crow" data-i="1"><span class="mono">02</span><h3 class="h20">Build-versus-design verification</h3><p>Use reality capture and spatial analysis to compare observed construction conditions with BIM models, approved drawings, and design specifications, identifying potential discrepancies for engineering review.</p></article>
+    <article class="crow" data-i="2"><span class="mono">03</span><h3 class="h20">Automated QA/QC inspections</h3><p>Support inspection checklists, workmanship observations, installation verification, defect identification, and evidence-based quality reporting throughout the construction lifecycle.</p></article>
+    <article class="crow" data-i="3"><span class="mono">04</span><h3 class="h20">Safety observation &amp; risk intelligence</h3><p>Identify visible safety concerns and potential site hazards through AI-assisted observations, helping safety teams prioritize investigations and corrective measures.</p></article>
+    <article class="crow" data-i="4"><span class="mono">05</span><h3 class="h20">Quantity &amp; work-in-place verification</h3><p>Support earthwork volume measurements, installation progress assessment, and verification of work-in-place quantities where capture accuracy and measurement methods meet project requirements.</p></article>
+    <article class="crow" data-i="5"><span class="mono">06</span><h3 class="h20">Digital as-built documentation</h3><p>Build a chronological, spatially referenced record of site conditions, supporting handover documentation, issue resolution, project coordination, and future asset management.</p></article>
+    <article class="crow" data-i="6"><span class="mono">07</span><h3 class="h20">Inspection evidence &amp; traceability</h3><p>Maintain georeferenced, time-stamped observations with associated images, inspection findings, responsible parties, verification status, and supporting documentation.</p></article>
+    </div>
+  </div>
+  <p class="h24 closing">See what is happening. Understand what has changed. Verify what has been delivered.</p>
+</section>
+<section id="industries" class="sec wrap">
+  <div class="shead"><h2 class="disp letters" aria-label="Industries">Industries</h2><span class="num">06</span></div>
+  <p class="h24" style="margin-top:28px;color:var(--mid);max-width:24em">Built for environments where precision matters.</p>
+  <div class="tabs" role="tablist" aria-label="Industries"></div>
+  <div class="grid ind">
+    <div class="t fade" id="indTxt" role="tabpanel"></div>
+    <div class="img" id="indImg"></div>
+  </div>
+</section>
+<section id="why" class="sec wrap">
+  <div class="shead"><h2 class="disp sm letters" aria-label="Why Northstar">Why Northstar</h2><span class="num">07</span></div>
+  <div class="grid lead">
+    <p class="mono dot">Why Northstar</p>
+    <div class="copy"><p class="h24 reveal" data-scrub="self">Beyond automation. Towards physical intelligence.</p></div>
+  </div>
+  <figure class="band"><video class="lazy" muted playsinline loop preload="none" poster="../media/bg-human.jpg" data-src="media/loop-human.mp4" data-src-s="media/loop-human-s.mp4" aria-hidden="true"></video></figure>
+  <div class="mods grid">
+<div class="mod"><span class="mono">01</span><h3 class="h20">One platform, multiple robotic systems</h3><p>Bring diverse robots, drones, sensors, and inspection data into a coordinated intelligence environment.</p></div>
+<div class="mod"><span class="mono">02</span><h3 class="h20">Designed for real-world complexity</h3><p>Combine spatial perception, contextual understanding, and adaptive workflows for dynamic physical environments.</p></div>
+<div class="mod"><span class="mono">03</span><h3 class="h20">Evidence before assumptions</h3><p>Ground inspection findings in captured observations, relevant specifications, timestamps, and traceable verification records.</p></div>
+<div class="mod"><span class="mono">04</span><h3 class="h20">Autonomy with accountability</h3><p>Balance automated missions and AI reasoning with safety controls, human supervision, and defined approval processes.</p></div>
+<div class="mod"><span class="mono">05</span><h3 class="h20">From individual assets to enterprise scale</h3><p>Apply consistent inspection and intelligence workflows across assets, facilities, projects, and distributed operations.</p></div>
+<div class="mod"><span class="mono">06</span><h3 class="h20">Intelligence that connects to enterprise workflows</h3><p>Move beyond dashboards by linking physical observations to quality, maintenance, asset, and operational management processes.</p></div>
+  </div>
+</section>
+<section id="about" class="sec wrap">
+  <div class="shead"><h2 class="disp letters" aria-label="About">About</h2><span class="num">08</span></div>
+  <div class="grid lead">
+    <p class="mono dot">About Northstar</p>
+    <div class="copy">
+      <p class="h24 reveal" data-scrub="self">Engineering the future of physical AI.</p>
+      <p class="h24 reveal" data-scrub="self">Northstar is a physical AI and autonomous systems company focused on connecting machine intelligence with real-world operations.</p>
+      <p class="h24 reveal" data-scrub="self">We are bringing together agentic AI, robotics, computer vision, spatial computing, and industrial connectivity to reimagine how enterprises inspect, verify, and manage physical environments. Our vision is a future where intelligent systems continuously understand the world around them, collaborate with human teams, and help enterprises make better decisions through reliable physical-world evidence.</p>
+    </div>
+  </div>
+  <figure class="band"><img src="../media/s-aerial.jpg" alt="" loading="lazy"></figure>
+  <div class="mv grid">
+    <div><span class="mono br">Our mission</span><p class="h24">To make physical environments more observable, intelligent, and verifiable through autonomous systems and AI.</p></div>
+    <div><span class="mono br">Our vision</span><p class="h24">A world where intelligence moves seamlessly between digital systems and physical reality.</p></div>
+  </div>
+</section>
+<section id="contact" class="wrap">
   <div class="cmeta mono"><span class="br">Contact</span><span class="br">Intelligence beyond the digital world</span></div>
   <div class="grid ctop">
-    <div class="l"><h2 class="h32">The future of intelligence is physical.</h2></div>
+    <div class="l"><h2 class="h32">The future of intelligence is <span class="flight">physical.</span></h2></div>
     <div class="r">
       <p class="h24" style="color:var(--ink);margin:0">Bring autonomous intelligence into your operations.</p>
       <p>From construction quality assurance to industrial inspection and intelligent asset monitoring, Northstar is building the next generation of physical AI solutions.</p>
@@ -332,14 +537,14 @@ footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
       <p class="quote">Let's build a world where machines don't just operate — they understand.</p>
     </div>
   </div>
-  <footer class="grid">
-    <div class="logo"><img src="../brand/northstar-flight-ribbon.svg" alt="Northstar"><p>Physical AI. Autonomous Systems. Real-World Intelligence.</p></div>
+  <div class="fdark"><footer class="grid">
+    <div class="logo"><img src="../brand/northstar-flight-ribbon-white.svg" alt="Northstar"><p>Physical AI. Autonomous Systems. Real-World Intelligence.</p></div>
     <div class="cols">
-      <div><h4>Explore</h4><a href="#vision">Vision</a><a href="#industries">Industries</a><a href="#technology">Technology</a><a href="#platform">Platform</a></div>
+      <div><h4>Explore</h4><a href="#platform">Platform</a><a href="#technology">Technology</a><a href="#construction">Construction</a><a href="#industries">Industries</a><a href="#about">About</a><a href="#contact">Contact</a></div>
       <div><h4>Northstar</h4><a href="../">Main site</a><a href="../#contact">Talk to our team</a></div>
     </div>
   </footer>
-  <div class="legal mono"><span>© Northstar - A HuntGlobal Venture. All rights reserved.</span><span>Intelligence Beyond the Digital World.</span></div>
+  <div class="legal mono"><span>© Northstar - A HuntGlobal Venture. All rights reserved.</span><span>Intelligence Beyond the Digital World.</span></div></div>
 </section>
 </main>
 
@@ -356,18 +561,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 // ---- content: the founders' approved copy ----
 const IND = [
-  { n: 'Manufacturing', img: 'ind-manufacturing', h: 'Industrial assets &amp; manufacturing', p: 'Support equipment condition monitoring, visual quality inspections, thermal anomaly detection, production-facility walkthroughs, and asset documentation.', u: ['Equipment condition monitoring', 'Visual quality inspections', 'Thermal anomaly detection', 'Production-facility walkthroughs', 'Asset documentation'] },
-  { n: 'Energy', img: 'ind-energy', h: 'Energy &amp; utilities', p: 'Inspect selected energy infrastructure, solar installations, substations, and utility assets through aerial imaging, thermal analysis, connected sensors, and robotic observation.', u: ['Solar installations', 'Substations', 'Utility assets', 'Thermal analysis'] },
-  { n: 'Oil &amp; gas', img: 'ind-oilgas', h: 'Oil, gas &amp; process facilities', p: 'Support remote visual inspection, equipment condition assessment, thermal observations, and routine monitoring in suitable industrial operating environments.', u: ['Remote visual inspection', 'Equipment condition assessment', 'Thermal observations', 'Routine monitoring'] },
-  { n: 'Infrastructure', img: 'ind-infra', h: 'Infrastructure &amp; civil engineering', p: 'Monitor roads, bridges, rail corridors, tunnels, and large-scale civil assets through reality capture, structural-condition observations, and change detection.', u: ['Roads and bridges', 'Rail corridors and tunnels', 'Structural-condition observations', 'Change detection'] },
-  { n: 'Logistics', img: 'ind-logistics', h: 'Warehouses &amp; logistics facilities', p: 'Enable inventory-area observation, facility inspection, equipment monitoring, and spatial documentation through autonomous mobile platforms and connected intelligence.', u: ['Inventory-area observation', 'Facility inspection', 'Equipment monitoring', 'Spatial documentation'] },
+  { n: 'Manufacturing', img: 'ind-manufacturing', vid: 'ind-manufacturing-v', h: 'Industrial assets &amp; manufacturing', p: 'Support equipment condition monitoring, visual quality inspections, thermal anomaly detection, production-facility walkthroughs, and asset documentation.', u: ['Equipment condition monitoring', 'Visual quality inspections', 'Thermal anomaly detection', 'Production-facility walkthroughs', 'Asset documentation'] },
+  { n: 'Energy', img: 'ind-energy', vid: 'ind-energy-v', h: 'Energy &amp; utilities', p: 'Inspect selected energy infrastructure, solar installations, substations, and utility assets through aerial imaging, thermal analysis, connected sensors, and robotic observation.', u: ['Solar installations', 'Substations', 'Utility assets', 'Thermal analysis'] },
+  { n: 'Oil &amp; gas', img: 'ind-oilgas', vid: 'ind-oilgas-v', h: 'Oil, gas &amp; process facilities', p: 'Support remote visual inspection, equipment condition assessment, thermal observations, and routine monitoring in suitable industrial operating environments.', u: ['Remote visual inspection', 'Equipment condition assessment', 'Thermal observations', 'Routine monitoring'] },
+  { n: 'Infrastructure', img: 'ind-infra', vid: 'ind-infra-v', h: 'Infrastructure &amp; civil engineering', p: 'Monitor roads, bridges, rail corridors, tunnels, and large-scale civil assets through reality capture, structural-condition observations, and change detection.', u: ['Roads and bridges', 'Rail corridors and tunnels', 'Structural-condition observations', 'Change detection'] },
+  { n: 'Logistics', img: 'ind-logistics', vid: 'ind-logistics-v', h: 'Warehouses &amp; logistics facilities', p: 'Enable inventory-area observation, facility inspection, equipment monitoring, and spatial documentation through autonomous mobile platforms and connected intelligence.', u: ['Inventory-area observation', 'Facility inspection', 'Equipment monitoring', 'Spatial documentation'] },
 ];
 const TECH = [
   { n: 'Drones', img: 'fleet-drone', alt: 'A Northstar drone hovering over a construction site', h: 'Intelligence from above.', p: ['Capture, map, monitor, and inspect complex environments from the air.', 'Our drone-enabled workflows support aerial surveying, photogrammetry, LiDAR scanning, thermal imaging, infrastructure inspection, volumetric analysis, and construction progress monitoring.'], c: ['Aerial reality capture', 'Mapping & 3D reconstruction', 'Progress monitoring', 'Thermal inspection', 'Asset verification'] },
   { n: 'Quadruped', img: 'fleet-quad', alt: 'A four-legged inspection robot in an industrial hall', h: 'Intelligence on the ground.', p: ['Four-legged robotic platforms extend inspection capabilities into complex industrial and construction environments.', 'They enable consistent data collection across large facilities, plant rooms, corridors, and other challenging operational environments.'], c: ['Autonomous patrols', 'Ground reality capture', 'Thermal monitoring', 'Equipment inspection', 'Remote observation'] },
-  { n: 'Humanoid', img: 'fleet-humanoid', alt: 'A humanoid robot walking through a plant room', h: 'Intelligence that works alongside people.', p: ['Humanoid robotics represents the next evolution of embodied intelligence, bringing AI-assisted perception and manipulation into human-designed environments.', 'Our approach combines visual reasoning, task planning, robotic control, and human oversight to progressively extend the role of autonomous systems in industrial operations.'], c: ['Embodied AI', 'Visual inspection', 'Human-robot collaboration', 'Task planning', 'Physical workflow assistance'] },
+  { n: 'Humanoid', img: 'tech-humanoid', alt: 'A humanoid robot at a plant valve beside a worker holding a tablet', h: 'Intelligence that works alongside people.', p: ['Humanoid robotics represents the next evolution of embodied intelligence, bringing AI-assisted perception and manipulation into human-designed environments.', 'Our approach combines visual reasoning, task planning, robotic control, and human oversight to progressively extend the role of autonomous systems in industrial operations.'], c: ['Embodied AI', 'Visual inspection', 'Human-robot collaboration', 'Task planning', 'Physical workflow assistance'] },
   { n: 'IoT &amp; edge', img: 'fleet-iot', alt: 'Connected industrial sensors in a facility', h: 'Intelligence from every connected asset.', p: ['Not every inspection requires a moving robot.', 'Northstar connects industrial sensors, cameras, edge devices, and operational systems to create a continuous flow of physical-world intelligence.'], c: ['Sensor integration', 'Edge AI', 'Condition monitoring', 'Anomaly detection', 'Equipment telemetry'] },
 ];
+TECH[0].p.push("From large construction developments to remote industrial infrastructure, aerial intelligence helps teams understand changing site conditions without relying exclusively on manual inspections.");
+TECH[1].p.splice(1, 0, "Equipped with visual cameras, depth sensors, thermal imaging, and spatial navigation capabilities, quadruped robots can support repeatable inspection missions, indoor reality capture, equipment monitoring, and remote site observation.");
+TECH[2].p.splice(1, 0, "Northstar is developing workflows for humanoid systems to support supervised visual inspections, equipment interaction, inspection checklist execution, material identification, and physical task assistance.");
+TECH[3].p.push("By bringing together machine telemetry, environmental measurements, asset conditions, and robotic observations, we establish a unified operational view of facilities and infrastructure.");
 const DIAL = [
   ['Perceive', 'Combine imagery, video, LiDAR, point clouds, thermal data, and sensor telemetry to build contextual understanding of sites, structures, equipment, and physical environments.'],
   ['Reason', 'AI agents interpret observations against inspection requirements, drawings, asset records, operating procedures, and historical evidence to identify anomalies, prioritize issues, and recommend follow-up actions.'],
@@ -391,7 +600,7 @@ if (!reduce && window.Lenis) {
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
 }
-$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = $(a.getAttribute('href')); if (!t) return; e.preventDefault(); const y = t.getBoundingClientRect().top + scrollY - (a.getAttribute('href') === '#top' ? 0 : 0); lenis ? lenis.scrollTo(y, { duration: 1.6 }) : scrollTo({ top: y, behavior: 'smooth' }); }));
+$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = $(a.getAttribute('href')); if (!t) return; e.preventDefault(); const y = t.getBoundingClientRect().top + scrollY - (a.getAttribute('href') === '#top' ? 0 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr'))); lenis ? lenis.scrollTo(y, { duration: 1.6 }) : scrollTo({ top: y, behavior: 'smooth' }); }));
 
 // ---- word-by-word reveal tied to scroll ----
 function splitWords(el) { el.innerHTML = el.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span>`).join(' '); return $$('.w', el); }
@@ -406,12 +615,13 @@ $$('.letters').forEach(h => {
 });
 
 // ---- hero: the drone rises out of the wordmark, holds, banks and flies off; rotors never stop ----
-const drone = $('#drone'), mark = $('#hero .mark');
+const drone = $('#drone'), mark = $('#hero .mark'), hero2 = $('#hero2');
 function heroAt(p) {
   const a = ease(band(p, 0, .42)), b = inout(band(p, .5, 1));
   const x = -50 + b * 70, y = -50 + (1 - a) * 34 - b * 120, s = (.72 + .28 * a) * (1 - .45 * b), r = (1 - a) * -3 - b * 9;
   const bob = reduce ? 0 : Math.sin(performance.now() / 900) * .8;
   drone.style.transform = `translate(${x}%, calc(${y}% + ${bob}px)) scale(${s}) rotate(${r}deg)`;
+  const h2 = band(p, .5, .85); hero2.style.opacity = h2; hero2.style.transform = `translateY(${(1 - h2) * 14}px)`; hero2.style.pointerEvents = h2 > .6 ? 'auto' : 'none';
   mark.style.transform = `translateY(${-p * 9}vh)`; mark.style.opacity = 1 - band(p, .55, 1) * .7;
 }
 let heroP = 0;
@@ -421,6 +631,7 @@ ScrollTrigger.create({ trigger: '#hero', start: 'top top', end: 'bottom bottom',
 // ---- intro: text reveals while the three systems play in turn ----
 const vids = $$('#intro video'), introR = reveals.find(r => r.mode === 'intro'), lbls = $$('#intro .lbl span');
 let curV = -1;
+new IntersectionObserver(es => { const v = vids[curV]; if (!v) return; if (es[0].isIntersecting) { if (!reduce) v.play().catch(() => {}); } else v.pause(); }, { rootMargin: '240px' }).observe($('#intro'));
 function showVid(k) {
   if (k === curV) return; curV = k;
   vids.forEach((v, i) => {
@@ -444,6 +655,7 @@ function dialAt(p) {
   if (k === curD) return; curD = k;
   cells.forEach((c, i) => c.classList.toggle('on', i === k));
   $('#dialLbl').textContent = DIAL[k][0]; $('#dialDef').textContent = DIAL[k][1];
+  $$('#dial .dbg img').forEach((m, i) => m.classList.toggle('on', i === k));
   hubDots.forEach((d, i) => { const [x, y] = HUB[k][i]; d.style.transform = `translate(${x}px,${y}px)`; });
 }
 dialAt(0);
@@ -453,11 +665,21 @@ ScrollTrigger.create({ trigger: '#dial', start: 'top top', end: 'bottom bottom',
 const tabs = $('#industries .tabs'), indTxt = $('#indTxt'), indImg = $('#indImg');
 IND.forEach((d, i) => {
   tabs.insertAdjacentHTML('beforeend', `<button role="tab" id="tab${i}" aria-controls="indTxt" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${d.n}</button>`);
-  indImg.insertAdjacentHTML('beforeend', `<img src="media/${d.img}.jpg" alt="" loading="lazy" class="${i === 0 ? 'on' : ''}">`);
+  indImg.insertAdjacentHTML('beforeend', d.vid
+    ? `<video muted playsinline loop preload="none" poster="media/${d.vid}.jpg" data-src="media/${d.vid}.mp4" data-src-s="media/${d.vid}-s.mp4" aria-hidden="true" class="${i === 0 ? 'on' : ''}"></video>`
+    : `<img src="media/${d.img}.jpg" alt="" loading="lazy" class="${i === 0 ? 'on' : ''}">`);
 });
+function playOpen(box) {   // only the open picture's video runs, and only while it is on screen
+  let seen = false;
+  const run = () => [...box.children].forEach(m => { if (m.tagName !== 'VIDEO') return;
+    if (m.classList.contains('on') && seen) { if (!m.src) m.src = small ? m.dataset.srcS : m.dataset.src; if (!reduce) m.play().catch(() => {}); } else m.pause(); });
+  new IntersectionObserver(es => { seen = es[0].isIntersecting; run(); }, { rootMargin: '240px' }).observe(box);
+  return run;
+}
+const indPlay = playOpen(indImg);
 function showInd(k) {
   $$('button', tabs).forEach((b, i) => { b.setAttribute('aria-selected', i === k); b.tabIndex = i === k ? 0 : -1; });
-  $$('img', indImg).forEach((m, i) => m.classList.toggle('on', i === k));
+  [...indImg.children].forEach((m, i) => m.classList.toggle('on', i === k)); indPlay();
   indTxt.style.opacity = 0;
   setTimeout(() => { const d = IND[k]; indTxt.setAttribute('aria-labelledby', 'tab' + k); indTxt.innerHTML = `<p class="mono br" style="color:var(--mid);margin-bottom:18px">${d.h}</p><p>${d.p}</p><ul>${d.u.map(x => `<li>${x}</li>`).join('')}</ul>`; indTxt.style.opacity = 1; }, reduce ? 0 : 160);
 }
@@ -469,8 +691,8 @@ showInd(0);
 const list = $('#technology .list'), pic = $('#techPic'), info = $('#techInfo');
 TECH.forEach((d, i) => {
   list.insertAdjacentHTML('beforeend', `<button class="h28" role="tab" aria-selected="${i === 0}">${d.n}</button>`);
-  pic.insertAdjacentHTML('beforeend', `<img src="media/${d.img}.jpg" alt="${d.alt}" loading="lazy">`);
-  info.insertAdjacentHTML('beforeend', `<div class="card" role="tabpanel"><h3 class="h32">${d.h}</h3>${d.p.map(x => `<p>${x}</p>`).join('')}<div class="caps mono">${d.c.map(x => `<span class="br">${esc(x)}</span>`).join('')}</div></div>`);
+  pic.insertAdjacentHTML('beforeend', `<img src="media/${d.img}.jpg" alt="${d.alt}" loading="lazy" style="--k:${i}">`);
+  info.insertAdjacentHTML('beforeend', `<div class="card" role="tabpanel" style="--k:${i}"><h3 class="h32">${d.h}</h3>${d.p.map(x => `<p>${x}</p>`).join('')}<div class="caps mono">${d.c.map(x => `<span class="br">${esc(x)}</span>`).join('')}</div></div>`);
 });
 let curT = -1;
 function techAt(k) {
@@ -484,12 +706,87 @@ techAt(0);
 const techST = ScrollTrigger.create({ trigger: '#technology', start: 'top top', end: 'bottom bottom', onUpdate: s => techAt(Math.min(3, Math.floor(band(s.progress, .04, .96) * 4))) });
 list.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const k = $$('button', list).indexOf(b), y = techST.start + (techST.end - techST.start) * (.04 + (k + .5) / 4 * .92); lenis ? lenis.scrollTo(y, { duration: 1.2 }) : scrollTo({ top: y, behavior: 'smooth' }); });
 
+// ---- ecosystem strip: on tablet and phone the page scroll moves it, down = left, up = right ----
+const strip = $('.strip4');
+if (strip && !reduce) ScrollTrigger.create({ trigger: strip, start: 'top 92%', end: 'top 25%', onUpdate: s => { strip.scrollLeft = s.progress * (strip.scrollWidth - strip.clientWidth); } });
+
 // ---- platform modules ----
-$('#mods').innerHTML = MODS.map((m, i) => `<div class="mod"><span class="mono br">0${i + 1}</span><h3 class="h20">${esc(m[0])}</h3><p>${m[1]}</p></div>`).join('');
+$('#mods').innerHTML = MODS.map((m, i) => `<div class="mod"><span class="mono">0${i + 1}</span><h3 class="h20">${esc(m[0])}</h3><p>${m[1]}</p></div>`).join('');
 
 // ---- header: the current section is marked ----
 const navA = $$('header nav a');
-['vision', 'industries', 'technology', 'platform'].forEach((id, i) => ScrollTrigger.create({ trigger: '#' + id, start: 'top 50%', end: 'bottom 50%', onToggle: s => navA[i].classList.toggle('on', s.isActive) }));
+['platform', 'technology', 'construction', 'industries', 'about'].forEach((id, i) => ScrollTrigger.create({ trigger: '#' + id, start: 'top 50%', end: 'bottom 50%', onToggle: s => navA[i].classList.toggle('on', s.isActive) }));
+
+
+// ---- drone flyer: a photoreal flight clip scrubbed by scroll, flying the whole page ----
+// The clip is on pure white and multiplied onto the page, so only the drone shows. Scroll position picks the video frame
+// and the drone's place on screen; every waypoint below is a scroll position, so the flight follows the sections.
+const flyer = $('#flyer');
+if (flyer && !reduce) {
+  // the 3D drone (drone.js) takes over; this video is only the fallback if it cannot start
+  const startVideo = () => { if (document.documentElement.classList.contains('drone3d-on') || flyer.src) return; flyer.src = small ? flyer.dataset.srcS : flyer.dataset.src; };
+  addEventListener('load', () => setTimeout(startVideo, 4000));
+  let W = [], cur = 0, ready = false;
+  const top = id => $('#' + id).getBoundingClientRect().top + scrollY;
+  const sm = u => u * u * (3 - 2 * u);
+  function plan() {
+    const vh = innerHeight, k = innerWidth < 768 ? .5 : 1, hero = $('#hero');
+    const heroEnd = Math.max(1, hero.offsetHeight - vh), tech = $('#technology');
+    const w = (at, t, x, y, s, o) => [at, { t, x: x * k, y, s: s * 1.4 * (k < 1 ? .8 : 1), o }];
+    W = [
+      w(0, 0, 0, -3, 1, 1),
+      w(heroEnd * .55, 2.8, 8, -7, 1, 1),
+      w(heroEnd, 5.0, 24, -12, .82, 1),
+      w(top('vision') - vh * .6, 8.4, 34, -26, .65, 1),
+      w(top('vision') - vh * .15, 9.7, 52, -30, .6, 0),
+      w(top('industries') - vh * .4, 10.1, 30, -10, .7, 0),
+      w(top('industries') + vh * .1, 10.9, 30, -10, .7, 1),
+      w(top('technology'), 12.8, 30, 14, .5, 1),
+      w(top('technology') + tech.offsetHeight - vh, 13.8, 30, 14, .5, 1),
+      w(top('platform') + vh * .3, 14.4, -30, 16, .5, 1),
+      w(top('contact'), 15.0, 24, -10, .72, 1)
+    ].sort((a, b) => a[0] - b[0]);
+  }
+  const at = y => {
+    if (y <= W[0][0]) return W[0][1];
+    for (let i = 1; i < W.length; i++) if (y <= W[i][0]) {
+      const a = W[i - 1], b = W[i], u = sm((y - a[0]) / Math.max(1, b[0] - a[0])), r = {};
+      for (const k in a[1]) r[k] = a[1][k] + (b[1][k] - a[1][k]) * u;
+      return r;
+    }
+    return W[W.length - 1][1];
+  };
+  flyer.addEventListener('loadeddata', () => { flyer.pause(); ready = true; plan(); document.documentElement.classList.add('flyer-on'); });
+  ScrollTrigger.addEventListener('refresh', () => { if (ready) plan(); });
+  addEventListener('resize', () => { if (ready) plan(); });
+  gsap.ticker.add(() => {
+    if (!ready || !W.length || document.documentElement.classList.contains('drone3d-on')) return;
+    const p = at(scrollY);
+    cur += (p.t - cur) * .22; if (Math.abs(p.t - cur) < 1 / 90) cur = p.t;
+    if (!flyer.seeking && Math.abs(flyer.currentTime - cur) > 1 / 60) flyer.currentTime = cur;
+    // a slow hover: the drone floats and tilts a touch, out of step on each axis so it never looks mechanical
+    const n = performance.now() / 1000, dx = Math.sin(n * .7) * .45, dy = Math.sin(n * 1.1) * .7 + Math.sin(n * .43) * .35, rot = Math.sin(n * .9 + 1) * .7;
+    flyer.style.opacity = p.o;
+    flyer.style.transform = `translate(${p.x + dx}vw, ${p.y + dy}vh) rotate(${rot}deg) scale(${p.s})`;
+  });
+}
+
+// ---- lazy loops (the Vision band) ----
+$$('video.lazy').forEach(v => new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { if (!v.src) v.src = small ? v.dataset.srcS : v.dataset.src; if (!reduce) v.play().catch(() => {}); } else v.pause();
+}), { rootMargin: '240px' }).observe(v));
+
+// ---- construction: the picture follows the item you are reading ----
+const consImgs = [...$('#consPic').children], narrow = matchMedia('(max-width:1023px)').matches;
+if (narrow) {   // tablet and phone: each picture sits inside its own row, each video runs while it is on screen
+  consImgs.forEach((m, i) => { m.classList.add('on'); $(`.crow[data-i="${i}"]`).prepend(m); if (m.tagName !== 'VIDEO') return;
+    new IntersectionObserver(es => { if (es[0].isIntersecting) { if (!m.src) m.src = small ? m.dataset.srcS : m.dataset.src; if (!reduce) m.play().catch(() => {}); } else m.pause(); }, { rootMargin: '120px' }).observe(m); });
+  $('#consPic').style.display = 'none';
+} else {
+  const consPlay = playOpen($('#consPic'));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const k = +e.target.dataset.i; consImgs.forEach((m, i) => m.classList.toggle('on', i === k)); consPlay(); } }), { rootMargin: '-42% 0px -48% 0px' });
+  $$('.crow').forEach(r => io.observe(r));
+}
 
 // snapshot hook for tests: ?y=<px>
 const q = new URLSearchParams(location.search).get('y');
@@ -498,5 +795,6 @@ addEventListener('load', () => ScrollTrigger.refresh());
 })();
 </script>
 <script src="terrain.js" defer></script>
+<script src="drone.js" defer></script>
 </body>
 </html>

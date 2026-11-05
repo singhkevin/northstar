@@ -34,3 +34,14 @@ Kevin topped up the Higgsfield API account (open.higgsfield.ai) on 28 Oct 2026, 
 | 5 Nov 2026 | Higgsfield API (Northstar account) | xai/grok-imagine-image-2.0 (edit) | Step 2 footage fix, key frames batch 1: opening wide, drone from behind, clear entrance, quadruped in hall, Vision wide, Contact background (6 frames × 2 tries; Kevin approved up to $13.11 for Step 2). All 12 completed; downloaded on 5 Nov with `tools/hf_recover.mjs` (no extra charge) into `assets/v6/kf/` | 12 | $0.96 | $0.96 (est.) | Not yet |
 
 **Total after 5 Nov key frames batch 1: $28.65** ($4.98 on the old shared account, $23.67 on the Northstar account). Step 2 spend so far: $0.96 of the $13.11 Kevin approved. Current list prices (open.higgsfield.ai, 5 Nov): Grok Imagine 2.0 $0.04 to $0.08 per image; Kling O3 first/last frame $0.056/s on a 50% sale (about $0.28 per 5 s clip; $0.56 at standard rate).
+
+| 5 Nov 2026 | Higgsfield API (Northstar account) | xai/grok-imagine-image-2.0 (edit) | /v3 flying drone: 8 key frames of the hero drone on white (4 poses x 2 tries; Kevin approved up to $5 for the drone flight). The model ignored the pose changes, so only `kf-a1` was used | 8 | $0.64 | $0.64 (est.) | Yes |
+| 5 Nov 2026 | Higgsfield API (Northstar account) | kling-video/v3.0/pro/image-to-video | /v3 flying drone: clip 1 (turn to side profile), clip 2 (turns away, flies off), clip 3 (flies back in), 5 s 1080p each. Used, with small shell marks painted out | 3 | $2.52 | $2.52 (est.) | Yes |
+| 5 Nov 2026 | Higgsfield API (Northstar account) | kling-video/v3.0/pro/image-to-video | /v3 flying drone: clip 4 (landing). NOT USED: the drone shows a "DJI" logo on its shell that could not be cleanly removed | 1 | $0.84 | $0.84 (est.) | No |
+
+**Total after the 5 Nov /v3 flying drone: $32.65** ($4.98 on the old shared account, $27.67 on the Northstar account). The drone pass cost $4.00 of the $5 Kevin approved. Request IDs are in `assets/ledger.jsonl`. Prices are the list prices used in the job files (Kling v3.0 pro image-to-video $0.84 per 5 s clip).
+
+| 5 Nov 2026 | Higgsfield API (Northstar account) | xai/grok-imagine-image-2.0 (edit) | /v3 relevance pass: 13 frames x 2 tries (7 video starting frames, Technology humanoid, strip IoT, 4 dial backgrounds; Kevin approved up to $10). Best try of each used | 26 | $2.08 | $2.08 (est.) | Yes |
+| 5 Nov 2026 | Higgsfield API (Northstar account) | kling-video/v3.0/pro/image-to-video | /v3 relevance pass: Construction rows 02, 06, 07 and Industries Energy, Oil & gas, Infrastructure, Logistics, 5 s 1080p each | 7 | $5.88 | $5.88 (est.) | Yes |
+
+**Total after the 5 Nov /v3 relevance pass: $40.61** ($4.98 on the old shared account, $35.63 on the Northstar account). This pass cost $7.96 of the $10 Kevin approved. Request IDs are in `assets/ledger.jsonl`.

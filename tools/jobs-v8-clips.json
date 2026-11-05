@@ -1,0 +1,79 @@
+[
+ {
+  "id": "v8-clip-c1",
+  "model": "kling-video/v3.0/pro/image-to-video",
+  "usd": 0.84,
+  "out": "assets/v8/clip-c1.mp4",
+  "input": {
+   "image_url": "@file:assets/v8/c1-2.png",
+   "prompt": "The drone hovers beside the building and drifts slowly sideways, propellers spinning as soft blurred discs. The thin cyan wireframe over the building stays locked exactly in place on the structure and pulses faintly; the amber beam glows gently. Slow gentle camera push-in, keep every machine fully inside the frame the whole time. One continuous shot, no cuts, natural physics, photorealistic. No text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "v8-clip-c5",
+  "model": "kling-video/v3.0/pro/image-to-video",
+  "usd": 0.84,
+  "out": "assets/v8/clip-c5.mp4",
+  "input": {
+   "image_url": "@file:assets/v8/c5-1.png",
+   "prompt": "The four-legged robot walks slowly forward along the boundary between the real hall and its blue point-cloud model. Faint fine dots shimmer gently in the model half. The boundary stays where it is. Slow gentle camera push-in, keep every machine fully inside the frame the whole time. One continuous shot, no cuts, natural physics, photorealistic. No text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "v8-clip-c6",
+  "model": "kling-video/v3.0/pro/image-to-video",
+  "usd": 0.84,
+  "out": "assets/v8/clip-c6.mp4",
+  "input": {
+   "image_url": "@file:assets/v8/c6-2.png",
+   "prompt": "The four-legged robot shifts its weight slightly and its sensor head makes a small turn toward the crack in the wall. The thin cyan line and the small map-pin marker stay fixed on the crack and pulse softly. Slow gentle camera push-in, keep every machine fully inside the frame the whole time. One continuous shot, no cuts, natural physics, photorealistic. No text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "v8-clip-i1",
+  "model": "kling-video/v3.0/pro/image-to-video",
+  "usd": 0.84,
+  "out": "assets/v8/clip-i1.mp4",
+  "input": {
+   "image_url": "@file:assets/v8/i1-1.png",
+   "prompt": "The drone flies slowly forward over the rows of solar panels, propellers spinning as soft blurred discs, thin morning mist drifting across the field. Slow gentle camera push-in, keep every machine fully inside the frame the whole time. One continuous shot, no cuts, natural physics, photorealistic. No text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "v8-clip-i2",
+  "model": "kling-video/v3.0/pro/image-to-video",
+  "usd": 0.84,
+  "out": "assets/v8/clip-i2.mp4",
+  "input": {
+   "image_url": "@file:assets/v8/i2-2.png",
+   "prompt": "The four-legged robot walks slowly forward along the steel walkway beside the pipe rack, its sensor head turning toward the pipes, wisps of steam and mist drifting behind it. Slow gentle camera push-in, keep every machine fully inside the frame the whole time. One continuous shot, no cuts, natural physics, photorealistic. No text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "v8-clip-i3",
+  "model": "kling-video/v3.0/pro/image-to-video",
+  "usd": 0.84,
+  "out": "assets/v8/clip-i3.mp4",
+  "input": {
+   "image_url": "@file:assets/v8/i3-1.png",
+   "prompt": "The drone drifts slowly along the bridge toward the far piers, propellers spinning as soft blurred discs, mist moving gently through the valley below. Slow gentle camera push-in, keep every machine fully inside the frame the whole time. One continuous shot, no cuts, natural physics, photorealistic. No text, no logos, no people.",
+   "duration": 5
+  }
+ },
+ {
+  "id": "v8-clip-i4",
+  "model": "kling-video/v3.0/pro/image-to-video",
+  "usd": 0.84,
+  "out": "assets/v8/clip-i4.mp4",
+  "input": {
+   "image_url": "@file:assets/v8/i4-1.png",
+   "prompt": "The four-legged robot walks slowly down the centre of the warehouse aisle toward the camera, its sensor head turning gently to scan the racking on one side, smooth natural gait. Slow gentle camera push-in, keep every machine fully inside the frame the whole time. One continuous shot, no cuts, natural physics, photorealistic. No text, no logos, no people.",
+   "duration": 5
+  }
+ }
+]

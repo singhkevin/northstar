@@ -1,0 +1,354 @@
+[
+ {
+  "id": "v8-c1-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/c1-1.png",
+  "input": {
+   "prompt": "A partly built concrete and steel structure on a construction site, seen from a slightly raised angle, with a thin translucent cyan architectural wireframe model precisely aligned over it, as if a BIM design is laid over the real building. One beam in the wireframe glows amber where it does not match the real structure. The drone from the second image hovers small to one side, its camera pointed at the building. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/media/s-site.jpg",
+    "@file:site-v2/v3/media/fleet-drone.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-c1-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/c1-2.png",
+  "input": {
+   "prompt": "A partly built concrete and steel structure on a construction site, seen from a slightly raised angle, with a thin translucent cyan architectural wireframe model precisely aligned over it, as if a BIM design is laid over the real building. One beam in the wireframe glows amber where it does not match the real structure. The drone from the second image hovers small to one side, its camera pointed at the building. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/media/s-site.jpg",
+    "@file:site-v2/v3/media/fleet-drone.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-c5-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/c5-1.png",
+  "input": {
+   "prompt": "A wide industrial hall seen in one continuous view: the left half is the real photographed space with pipes and motors, the right half is the same space rendered as a precise pale-blue 3D point-cloud digital model made of fine dots, with a clean soft boundary running down the middle where one becomes the other. The four-legged robot from the second image stands on the floor at the boundary, scanning. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/media/s-plant.jpg",
+    "@file:site-v2/v3/media/fleet-quad.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-c5-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/c5-2.png",
+  "input": {
+   "prompt": "A wide industrial hall seen in one continuous view: the left half is the real photographed space with pipes and motors, the right half is the same space rendered as a precise pale-blue 3D point-cloud digital model made of fine dots, with a clean soft boundary running down the middle where one becomes the other. The four-legged robot from the second image stands on the floor at the boundary, scanning. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/media/s-plant.jpg",
+    "@file:site-v2/v3/media/fleet-quad.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-c6-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/c6-1.png",
+  "input": {
+   "prompt": "The same four-legged robot, whole and centred slightly left, stands on a raw concrete floor and points its camera at a concrete wall on the right. On the wall there is a spray-marked crack, and a small clean glowing cyan map-pin marker floats exactly on that spot with a thin line linking it to the robot. Bare concrete building interior, one simple clear idea. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/fleet-quad.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-c6-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/c6-2.png",
+  "input": {
+   "prompt": "The same four-legged robot, whole and centred slightly left, stands on a raw concrete floor and points its camera at a concrete wall on the right. On the wall there is a spray-marked crack, and a small clean glowing cyan map-pin marker floats exactly on that spot with a thin line linking it to the robot. Bare concrete building interior, one simple clear idea. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/fleet-quad.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-i1-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/i1-1.png",
+  "input": {
+   "prompt": "Keep the first image's aerial solar farm and fenced substation at dawn exactly. Add the drone from the second image flying over the solar rows in the middle distance, seen from slightly above and behind, large enough to read clearly, camera pointed down at the panels. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/ind-energy.jpg",
+    "@file:site-v2/v3/media/fleet-drone.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-i1-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/i1-2.png",
+  "input": {
+   "prompt": "Keep the first image's aerial solar farm and fenced substation at dawn exactly. Add the drone from the second image flying over the solar rows in the middle distance, seen from slightly above and behind, large enough to read clearly, camera pointed down at the panels. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/ind-energy.jpg",
+    "@file:site-v2/v3/media/fleet-drone.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-i2-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/i2-1.png",
+  "input": {
+   "prompt": "Keep the first image's refinery with its pipe rack, columns and wet ground at dusk. Add the four-legged robot from the second image, whole and clearly readable in the lower middle of the frame, walking on a steel walkway beside the pipe rack with its sensor head turned toward the pipes. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/ind-oilgas.jpg",
+    "@file:site-v2/v3/media/fleet-quad.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-i2-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/i2-2.png",
+  "input": {
+   "prompt": "Keep the first image's refinery with its pipe rack, columns and wet ground at dusk. Add the four-legged robot from the second image, whole and clearly readable in the lower middle of the frame, walking on a steel walkway beside the pipe rack with its sensor head turned toward the pipes. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/ind-oilgas.jpg",
+    "@file:site-v2/v3/media/fleet-quad.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-i3-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/i3-1.png",
+  "input": {
+   "prompt": "Keep the first image's long concrete road bridge on tall piers over a misty river valley at dawn. Add the drone from the second image hovering beside the bridge piers in the middle distance, large enough to read clearly, its camera pointed at the bridge structure. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/ind-infra.jpg",
+    "@file:site-v2/v3/media/fleet-drone.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-i3-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/i3-2.png",
+  "input": {
+   "prompt": "Keep the first image's long concrete road bridge on tall piers over a misty river valley at dawn. Add the drone from the second image hovering beside the bridge piers in the middle distance, large enough to read clearly, its camera pointed at the bridge structure. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/ind-infra.jpg",
+    "@file:site-v2/v3/media/fleet-drone.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-i4-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/i4-1.png",
+  "input": {
+   "prompt": "Keep the first image's warehouse aisle with tall pallet racking, skylights and bright doorway. Add the four-legged robot from the second image walking down the centre of the aisle toward the camera, whole and mid-frame with clear floor around it, its sensor head turned to scan the racking. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/ind-logistics.jpg",
+    "@file:site-v2/v3/media/fleet-quad.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-i4-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/i4-2.png",
+  "input": {
+   "prompt": "Keep the first image's warehouse aisle with tall pallet racking, skylights and bright doorway. Add the four-legged robot from the second image walking down the centre of the aisle toward the camera, whole and mid-frame with clear floor around it, its sensor head turned to scan the racking. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/ind-logistics.jpg",
+    "@file:site-v2/v3/media/fleet-quad.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-p1-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/p1-1.png",
+  "input": {
+   "prompt": "The same white humanoid robot, stopped at a large plant valve, one hand resting on the valve wheel and its head turned to a pressure gauge. Beside it stands a human worker in a hard hat and work jacket, seen entirely from behind, holding a tablet, face not visible. Both figures whole from head to foot in the centre of the frame, in the same pipe-filled plant. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/fleet-humanoid.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-p1-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/p1-2.png",
+  "input": {
+   "prompt": "The same white humanoid robot, stopped at a large plant valve, one hand resting on the valve wheel and its head turned to a pressure gauge. Beside it stands a human worker in a hard hat and work jacket, seen entirely from behind, holding a tablet, face not visible. Both figures whole from head to foot in the centre of the frame, in the same pipe-filled plant. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/fleet-humanoid.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-p2-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/p2-1.png",
+  "input": {
+   "prompt": "A close view of one industrial sensor unit and a small edge gateway box clamped to a plant pipe, status LEDs glowing green, with a small fixed camera mounted just beside them. The devices fill the middle third of the frame and are the clear subject, the plant corridor softly blurred behind, a faint wisp of steam. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/fleet-iot.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-p2-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/p2-2.png",
+  "input": {
+   "prompt": "A close view of one industrial sensor unit and a small edge gateway box clamped to a plant pipe, status LEDs glowing green, with a small fixed camera mounted just beside them. The devices fill the middle third of the frame and are the clear subject, the plant corridor softly blurred behind, a faint wisp of steam. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/fleet-iot.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-d1-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/d1-1.png",
+  "input": {
+   "prompt": "The same industrial hall seen in three vertical layers blending left to right: the plain photograph, then the same view as a fine pale-blue LiDAR point cloud, then a soft thermal band with warm orange on one motor. One small sensor unit on a tripod is fully in frame. Bright, airy, high-key, readable at low opacity. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/media/s-plant.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-d1-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/d1-2.png",
+  "input": {
+   "prompt": "The same industrial hall seen in three vertical layers blending left to right: the plain photograph, then the same view as a fine pale-blue LiDAR point cloud, then a soft thermal band with warm orange on one motor. One small sensor unit on a tripod is fully in frame. Bright, airy, high-key, readable at low opacity. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/media/s-plant.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-d2-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/d2-1.png",
+  "input": {
+   "prompt": "An engineer's desk view in soft daylight: a large screen shows a photo of a plant component beside its technical line drawing and a plain record panel made of empty grey bars, joined by thin cyan lines to one amber-ringed component. All panels fully in frame. Bright, airy, high-key. The panels hold only shapes and lines, nothing readable. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/media/s-plant.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-d2-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/d2-2.png",
+  "input": {
+   "prompt": "An engineer's desk view in soft daylight: a large screen shows a photo of a plant component beside its technical line drawing and a plain record panel made of empty grey bars, joined by thin cyan lines to one amber-ringed component. All panels fully in frame. Bright, airy, high-key. The panels hold only shapes and lines, nothing readable. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/media/s-plant.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-d3-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/d3-1.png",
+  "input": {
+   "prompt": "A high wide view of one construction site in soft dawn light, showing the drone from the first image, the four-legged robot from the second image, and a small mast-mounted sensor unit, each in a different work zone, linked by thin glowing cyan route lines drawn across the ground. Each machine small but clear. Bright, airy, readable at low opacity. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/fleet-drone.jpg",
+    "@file:site-v2/v3/media/fleet-quad.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-d3-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/d3-2.png",
+  "input": {
+   "prompt": "A high wide view of one construction site in soft dawn light, showing the drone from the first image, the four-legged robot from the second image, and a small mast-mounted sensor unit, each in a different work zone, linked by thin glowing cyan route lines drawn across the ground. Each machine small but clear. Bright, airy, readable at low opacity. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/v3/media/fleet-drone.jpg",
+    "@file:site-v2/v3/media/fleet-quad.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-d4-1",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/d4-1.png",
+  "input": {
+   "prompt": "A concrete structure on a site with a thin translucent cyan design wireframe precisely aligned over it, one element highlighted amber as a mismatch, and three small glowing cyan tick-mark circles on elements that match. The whole structure is inside the frame. Bright, airy, high-key. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/media/s-site.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "v8-d4-2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v8/d4-2.png",
+  "input": {
+   "prompt": "A concrete structure on a site with a thin translucent cyan design wireframe precisely aligned over it, one element highlighted amber as a mismatch, and three small glowing cyan tick-mark circles on elements that match. The whole structure is inside the frame. Bright, airy, high-key. Photorealistic, same cool blue-grey dawn light and mood as the reference, natural materials, crisp detail, subtle film grain. Every machine fully inside the frame with generous margin on all sides. Absolutely no text, no letters, no numbers, no logos, no brand marks, no visible faces.",
+   "image_urls": [
+    "@file:site-v2/media/s-site.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ }
+]

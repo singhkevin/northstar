@@ -1,0 +1,13 @@
+[
+ {
+  "id": "dr-clip4",
+  "model": "kling-video/v3.0/pro/image-to-video",
+  "usd": 0.84,
+  "out": "assets/v7/drone/clip4.mp4",
+  "input": {
+   "image_url": "@file:assets/v7/drone/clip3-last.png",
+   "prompt": "The drone slowly descends and eases forward, levelling out as it lowers toward a landing, with its propellers gradually slowing from blurred discs down to visible blades, and settles lower in the frame, facing the camera, gimbal camera pointing toward the viewer. The camera is completely locked off and static. The background stays pure seamless white with no ground, no shadow and no other objects. The drone stays fully inside the frame. Natural physics, photorealistic, crisp detail, one continuous shot with no cuts, no text, no labels, no markings, no logos, no people.",
+   "duration": 5
+  }
+ }
+]
