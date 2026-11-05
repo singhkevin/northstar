@@ -1,0 +1,503 @@
+{
+  "probe": {
+    "url": "https://ai-robots.apps.mdxpreview.xyz/unitree-go2",
+    "viewport": [
+      1440,
+      900
+    ],
+    "type": [
+      [
+        "\"Work Sans\", sans-serif | 16px | 400 | 20px | normal",
+        108
+      ],
+      [
+        "\"Work Sans\" | 15.3px | 400 | normal | normal",
+        57
+      ],
+      [
+        "\"Work Sans\" | 15.3px | 500 | normal | normal",
+        26
+      ],
+      [
+        "\"Work Sans\" | 16.83px | 400 | normal | normal",
+        16
+      ],
+      [
+        "\"Work Sans\" | 16px | 400 | normal | normal",
+        13
+      ],
+      [
+        "\"Work Sans\" | 14.1235px | 500 | normal | -0.564631px",
+        12
+      ],
+      [
+        "\"Work Sans\" | 45.9px | 500 | 45.9px | normal",
+        9
+      ],
+      [
+        "\"Work Sans\" | 13.77px | 400 | normal | normal",
+        7
+      ],
+      [
+        "\"Work Sans\" | 12.24px | 400 | normal | normal",
+        6
+      ],
+      [
+        "\"Work Sans\" | 10.71px | 400 | 15.2082px | normal",
+        6
+      ],
+      [
+        "\"Work Sans\", sans-serif | 16px | 700 | 20px | normal",
+        5
+      ],
+      [
+        "\"Work Sans\" | 45.9px | 500 | 55.08px | normal",
+        4
+      ],
+      [
+        "\"Work Sans\" | 19.89px | 500 | 23.868px | normal",
+        4
+      ],
+      [
+        "\"Work Sans\" | 14.1235px | 500 | normal | -0.677851px",
+        4
+      ],
+      [
+        "\"Work Sans\" | 12.24px | 400 | 13.464px | normal",
+        4
+      ],
+      [
+        "\"Work Sans\" | 18.36px | 700 | normal | normal",
+        3
+      ],
+      [
+        "\"Work Sans\" | 23.2254px | 500 | normal | normal",
+        3
+      ],
+      [
+        "\"Work Sans\" | 12.3869px | 400 | normal | normal",
+        3
+      ],
+      [
+        "\"Work Sans\" | 14.1225px | 500 | normal | -0.564631px",
+        2
+      ],
+      [
+        "\"Work Sans\" | 19.89px | 500 | normal | normal",
+        1
+      ],
+      [
+        "\"Work Sans\" | 22.95px | 500 | normal | normal",
+        1
+      ],
+      [
+        "\"Work Sans\" | 19.89px | 400 | normal | normal",
+        1
+      ],
+      [
+        "\"Work Sans\" | 42.84px | 500 | normal | normal",
+        1
+      ]
+    ],
+    "color": [
+      [
+        "rgb(0, 0, 0)",
+        109
+      ],
+      [
+        "rgb(255, 255, 255)",
+        84
+      ],
+      [
+        "rgb(203, 203, 203)",
+        74
+      ],
+      [
+        "rgb(19, 19, 19)",
+        12
+      ],
+      [
+        "rgb(98, 137, 255)",
+        7
+      ],
+      [
+        "rgb(150, 150, 150)",
+        6
+      ],
+      [
+        "rgb(0, 0, 238)",
+        4
+      ]
+    ],
+    "bg": [
+      [
+        "rgb(10, 10, 10)",
+        7
+      ],
+      [
+        "rgb(0, 0, 0)",
+        6
+      ],
+      [
+        "rgb(18, 18, 18)",
+        5
+      ],
+      [
+        "rgb(16, 16, 16)",
+        5
+      ],
+      [
+        "rgba(18, 18, 18, 0.8)",
+        4
+      ],
+      [
+        "rgb(98, 137, 255)",
+        4
+      ],
+      [
+        "rgb(255, 255, 255)",
+        4
+      ],
+      [
+        "rgb(54, 54, 54)",
+        1
+      ]
+    ],
+    "gradient": [
+      [
+        "radial-gradient(rgb(38, 38, 38), rgba(0, 0, 0, 0) 50%)",
+        5
+      ],
+      [
+        "linear-gradient(224deg, rgb(108, 138, 227) -47.2%, rgb(61, 96, 201) 74.45%)",
+        4
+      ],
+      [
+        "linear-gradient(15deg, rgba(50, 50, 50, 0.5) 35%, rgba(255, 255, 255, 0.25) 80%)",
+        3
+      ]
+    ],
+    "radius": [
+      [
+        "7.65px",
+        13
+      ],
+      [
+        "10.71px",
+        12
+      ],
+      [
+        "9.18px",
+        9
+      ],
+      [
+        "15.3px",
+        7
+      ],
+      [
+        "8.82663px",
+        4
+      ],
+      [
+        "45.9px 0px 0px 45.9px",
+        1
+      ],
+      [
+        "0px 45.9px 45.9px 0px",
+        1
+      ]
+    ],
+    "shadow": [],
+    "padding": [
+      [
+        "26.8056px 26.8056px",
+        30
+      ],
+      [
+        "24.48px 24.48px",
+        8
+      ],
+      [
+        "91.8px 0px",
+        4
+      ],
+      [
+        "97.92px 0px",
+        4
+      ],
+      [
+        "36.72px 24.48px",
+        4
+      ],
+      [
+        "16.7688px 16.7688px",
+        3
+      ],
+      [
+        "41.4936px 41.4936px",
+        3
+      ],
+      [
+        "6.12px 6.12px",
+        1
+      ],
+      [
+        "4.284px 4.284px",
+        1
+      ],
+      [
+        "122.4px 61.2px",
+        1
+      ],
+      [
+        "48.96px 0px",
+        1
+      ],
+      [
+        "122.4px 0px",
+        1
+      ],
+      [
+        "122.4px 122.4px",
+        1
+      ]
+    ],
+    "gap": [
+      [
+        "16.4016px",
+        8
+      ],
+      [
+        "12.24px",
+        7
+      ],
+      [
+        "9.18px",
+        6
+      ],
+      [
+        "10.71px",
+        4
+      ],
+      [
+        "11.016px",
+        1
+      ],
+      [
+        "58.5px",
+        1
+      ],
+      [
+        "15.3px",
+        1
+      ],
+      [
+        "12.852px",
+        1
+      ]
+    ],
+    "layout": [
+      [
+        "flex row none",
+        44
+      ],
+      [
+        "flex column none",
+        14
+      ],
+      [
+        "grid row 236.625px",
+        4
+      ],
+      [
+        "grid row 235.625px",
+        4
+      ],
+      [
+        "grid row 1057.66px",
+        3
+      ],
+      [
+        "grid row 90.3906px",
+        2
+      ],
+      [
+        "grid row 256.609px",
+        2
+      ],
+      [
+        "grid row 121.078px 103.594px",
+        2
+      ],
+      [
+        "grid row 161.406px 125.297px",
+        1
+      ],
+      [
+        "grid row 93.0781px 97.5781px 102.969px 120.625px 85.9531px",
+        1
+      ],
+      [
+        "grid row 143.781px 94.7031px 95.6562px 139.453px",
+        1
+      ],
+      [
+        "grid row 143.781px",
+        1
+      ],
+      [
+        "grid row 94.7031px",
+        1
+      ],
+      [
+        "grid row 95.6562px",
+        1
+      ],
+      [
+        "grid row 139.453px",
+        1
+      ],
+      [
+        "grid row 1440px",
+        1
+      ],
+      [
+        "grid row 676.297px",
+        1
+      ],
+      [
+        "grid row 76.5px 112.891px 76.5px",
+        1
+      ],
+      [
+        "grid row 979.188px",
+        1
+      ],
+      [
+        "grid row 76.5px 37.9062px 76.5px",
+        1
+      ],
+      [
+        "grid row 447.438px 447.438px 447.438px",
+        1
+      ],
+      [
+        "grid row 102.688px 103.594px",
+        1
+      ],
+      [
+        "grid row 684px 684px",
+        1
+      ],
+      [
+        "grid row 154.078px 156.281px",
+        1
+      ],
+      [
+        "grid row 360px 360px 360px 360px",
+        1
+      ]
+    ],
+    "transition": [
+      [
+        "all",
+        276
+      ],
+      [
+        "background-color 0.15s ease-in",
+        12
+      ],
+      [
+        "opacity 0.35s ease-in-out",
+        5
+      ],
+      [
+        "transform 0.15s ease-out",
+        3
+      ]
+    ],
+    "animation": [],
+    "breakpoints": [
+      "(orientation: portrait) and (max-aspect-ratio: 0.624 / 1)",
+      "(orientation: portrait) and (min-aspect-ratio: 0.625 / 1)",
+      "(orientation: landscape) and (min-aspect-ratio: 2 / 1)",
+      "(orientation: portrait)",
+      "screen and (-ms-high-contrast:none)",
+      "(orientation: landscape)",
+      "(prefers-reduced-motion)",
+      "(orientation: portrait) and (max-width: 681px)",
+      "(orientation: portrait) and (max-aspect-ratio: 0.625 / 1)",
+      "(max-width: 300px) and (orientation: portrait)",
+      "(orientation: landscape) and (min-aspect-ratio: 1.8 / 1)"
+    ],
+    "keyframes": [
+      "splide-loading",
+      "astroFadeInOut",
+      "astroFadeIn",
+      "astroFadeOut",
+      "astroSlideFromRight",
+      "astroSlideFromLeft",
+      "astroSlideToRight",
+      "astroSlideToLeft",
+      "acc-spin",
+      "spinner-rotate",
+      "splide-loading"
+    ],
+    "vars": [
+      "--MAIN-BLUE: #6289ff",
+      "--border-gradient-color: linear-gradient( 90deg, rgba(102, 102, 102, 1), #00000000 )",
+      "--White: #fff",
+      "--line-color: #6289ff",
+      "--nav-height: calc(.85vw * 3.5)",
+      "--hor-padding: 2.5vw",
+      "--fs: .85vw",
+      "--top-space: min(calc(.85vw * 20), 30vh)",
+      "--button-height: calc(.85vw * 2.8125)",
+      "--Gray-Paragraph: #cbcbcb",
+      "--nav-background: rgba(18, 18, 18, .8)"
+    ],
+    "fonts": [
+      "Work Sans 100 900 italic",
+      "Work Sans 100 900 italic",
+      "Work Sans 100 900 italic",
+      "Work Sans 100 900 normal",
+      "Work Sans 100 900 normal",
+      "Work Sans 100 900 normal"
+    ],
+    "libs": [
+      "ondevicemotion",
+      "gsapVersions",
+      "TweenLite",
+      "TweenMax",
+      "gsap",
+      "ScrollTrigger",
+      "_gsap"
+    ],
+    "canvases": [
+      {
+        "w": 1440,
+        "h": 900,
+        "cls": ""
+      }
+    ],
+    "generator": "Astro v5.18.0",
+    "title": "Go2 - AI Robots",
+    "h1": [
+      "Unitree Go2",
+      "Brand New Intelligent Species",
+      "3D LiDAR Mapping",
+      "Intelligent Side-follow  System 2.0 (ISS 2.0)",
+      "Enhanced Power  and  Endurance",
+      "Open Platform for  Learning and Fun",
+      "Technical Specifications",
+      "Enhance Your Go2  Capabilities"
+    ]
+  },
+  "assets": [
+    "GET https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js",
+    "GET https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js",
+    "GET https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js",
+    "GET https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/SplitText.min.js",
+    "GET https://ai-robots.apps.mdxpreview.xyz/videos/go2/hero.mp4"
+  ]
+}

@@ -1,0 +1,925 @@
+{
+  "probe": {
+    "url": "https://www.dronedeploy.com/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "type": [
+      [
+        "Hankengrotesk, sans-serif | 16px | 400 | 24px | normal",
+        843
+      ],
+      [
+        "Hankengrotesk, sans-serif | 16px | 400 | 20.8px | normal",
+        68
+      ],
+      [
+        "Hankengrotesk, sans-serif | 16px | 300 | 24px | normal",
+        41
+      ],
+      [
+        "Hankengrotesk, sans-serif | 13.6px | 600 | 20.4px | normal",
+        30
+      ],
+      [
+        "Hankengrotesk, sans-serif | 14px | 400 | 21px | normal",
+        11
+      ],
+      [
+        "Arial, Helvetica, sans-serif | 16px | 400 | 24px | normal",
+        10
+      ],
+      [
+        "Hankengrotesk, sans-serif | 12px | 500 | 15px | -0.112px",
+        10
+      ],
+      [
+        "Hankengrotesk, sans-serif | 16px | 500 | 24px | normal",
+        9
+      ],
+      [
+        "Hankengrotesk, sans-serif | 16px | 400 | 16px | normal",
+        8
+      ],
+      [
+        "Hankengrotesk, sans-serif | 19.2px | 500 | 24.96px | -0.112px",
+        8
+      ],
+      [
+        "Hankengrotesk, sans-serif | 14.4px | 600 | 18.72px | -0.112px",
+        8
+      ],
+      [
+        "Hankengrotesk, sans-serif | 10px | 500 | 13px | -0.112px",
+        8
+      ],
+      [
+        "Dmmono, sans-serif | 18px | 300 | 27px | normal",
+        7
+      ],
+      [
+        "Hankengrotesk, sans-serif | 14px | 500 | 21px | normal",
+        6
+      ],
+      [
+        "Hankengrotesk, sans-serif | 17.6px | 700 | 26.4px | -0.36px",
+        6
+      ],
+      [
+        "Hankengrotesk, sans-serif | 32px | 600 | 42px | -0.56px",
+        6
+      ],
+      [
+        "Hankengrotesk, sans-serif | 20px | 600 | 20px | normal",
+        6
+      ],
+      [
+        "Hankengrotesk, sans-serif | 12px | 600 | 18px | normal",
+        6
+      ],
+      [
+        "Dmmono, sans-serif | 9.6px | 400 | 14.4px | normal",
+        6
+      ],
+      [
+        "Hankengrotesk, sans-serif | 14.4px | 600 | 18px | -0.112px",
+        5
+      ],
+      [
+        "Hankengrotesk, sans-serif | 16px | 600 | 19.0379px | normal",
+        5
+      ],
+      [
+        "Hankengrotesk, sans-serif | 16px | 600 | 24px | normal",
+        5
+      ],
+      [
+        "Arial, Helvetica, sans-serif | 14px | 400 | 21px | -0.13px",
+        4
+      ],
+      [
+        "webflow-icons | 16px | 400 | 16px | normal",
+        4
+      ],
+      [
+        "Hankengrotesk, sans-serif | 12.8px | 400 | 19.2px | normal",
+        4
+      ],
+      [
+        "Hankengrotesk, sans-serif | 14.4px | 500 | 18.72px | normal",
+        4
+      ],
+      [
+        "\"Hanken Grotesk\", system-ui, -apple-system, sans-serif | 16px | 600 | 22.4px | 0.16px",
+        4
+      ],
+      [
+        "Arial, Helvetica, sans-serif | 14px | 600 | 21px | normal",
+        3
+      ],
+      [
+        "Hankengrotesk, sans-serif | 14px | 500 | 19.6px | normal",
+        3
+      ],
+      [
+        "Hankengrotesk, sans-serif | 40px | 600 | 48px | -0.8px",
+        3
+      ],
+      [
+        "Hankengrotesk, sans-serif | 24px | 300 | 31.92px | normal",
+        3
+      ],
+      [
+        "Hankengrotesk, sans-serif | 24px | 700 | 31.92px | normal",
+        3
+      ],
+      [
+        "Hankengrotesk, sans-serif | 56px | 400 | 67.2px | -1.4px",
+        2
+      ],
+      [
+        "Arial, Helvetica, sans-serif | 20px | 700 | 30px | -0.2px",
+        1
+      ],
+      [
+        "Arial, Helvetica, sans-serif | 16px | 600 | 24px | normal",
+        1
+      ],
+      [
+        "Hankengrotesk, sans-serif | 80px | 600 | 88px | -1.6px",
+        1
+      ],
+      [
+        "Hankengrotesk, sans-serif | 20.8px | 400 | 27.04px | normal",
+        1
+      ],
+      [
+        "Hankengrotesk, sans-serif | 30px | 400 | 36px | -1.05px",
+        1
+      ],
+      [
+        "Hankengrotesk, sans-serif | 56px | 400 | 67.2px | -1.12px",
+        1
+      ],
+      [
+        "Hankengrotesk, sans-serif | 36px | 400 | 54px | -0.9px",
+        1
+      ],
+      [
+        "Dmmono, sans-serif | 18px | 400 | 27px | normal",
+        1
+      ],
+      [
+        "Hankengrotesk, sans-serif | 54px | 400 | 64.8px | -1.35px",
+        1
+      ],
+      [
+        "\"Inter Variablefont Opsz Wght\", Arial, sans-serif | 18px | 500 | 27px | -0.144px",
+        1
+      ],
+      [
+        "Hankengrotesk, sans-serif | 54px | 400 | 64.8px | -1.55px",
+        1
+      ]
+    ],
+    "color": [
+      [
+        "rgb(31, 31, 31)",
+        888
+      ],
+      [
+        "rgb(255, 255, 255)",
+        101
+      ],
+      [
+        "rgb(0, 0, 0)",
+        72
+      ],
+      [
+        "rgba(255, 255, 255, 0.82)",
+        41
+      ],
+      [
+        "rgb(102, 102, 102)",
+        14
+      ],
+      [
+        "rgb(63, 72, 233)",
+        12
+      ],
+      [
+        "rgb(245, 245, 247)",
+        9
+      ],
+      [
+        "rgb(155, 155, 155)",
+        6
+      ],
+      [
+        "rgba(255, 255, 255, 0.48)",
+        6
+      ],
+      [
+        "rgb(7, 26, 36)",
+        3
+      ],
+      [
+        "rgb(238, 238, 238)",
+        3
+      ],
+      [
+        "rgb(60, 76, 228)",
+        2
+      ],
+      [
+        "rgb(34, 34, 34)",
+        2
+      ],
+      [
+        "rgba(255, 255, 255, 0.85)",
+        1
+      ]
+    ],
+    "bg": [
+      [
+        "rgb(255, 255, 255)",
+        29
+      ],
+      [
+        "rgb(0, 0, 0)",
+        13
+      ],
+      [
+        "rgb(250, 175, 51)",
+        13
+      ],
+      [
+        "rgba(31, 31, 31, 0)",
+        9
+      ],
+      [
+        "rgb(17, 17, 17)",
+        7
+      ],
+      [
+        "rgb(155, 155, 155)",
+        7
+      ],
+      [
+        "rgb(238, 238, 238)",
+        3
+      ],
+      [
+        "rgb(60, 76, 228)",
+        3
+      ],
+      [
+        "rgb(77, 74, 77)",
+        3
+      ],
+      [
+        "rgb(63, 72, 233)",
+        2
+      ],
+      [
+        "rgb(249, 249, 249)",
+        2
+      ],
+      [
+        "rgba(0, 0, 0, 0.35)",
+        1
+      ],
+      [
+        "rgb(31, 31, 31)",
+        1
+      ],
+      [
+        "rgba(255, 255, 255, 0)",
+        1
+      ],
+      [
+        "rgba(212, 212, 212, 0.64)",
+        1
+      ]
+    ],
+    "gradient": [
+      [
+        "linear-gradient(rgba(0, 0, 0, 0) 73%, rgb(0, 0, 0))",
+        5
+      ],
+      [
+        "linear-gradient(rgba(0, 0, 0, 0) 74%, rgb(0, 0, 0))",
+        4
+      ],
+      [
+        "linear-gradient(308deg, rgb(0, 0, 0), rgb(0, 20, 100) 53%, rgb(0, 0, 0) 102%)",
+        1
+      ],
+      [
+        "linear-gradient(-114deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.79))",
+        1
+      ],
+      [
+        "linear-gradient(90deg, rgb(0, 0, 0) 20%, rgba(0, 0, 0, 0))",
+        1
+      ],
+      [
+        "linear-gradient(270deg, rgb(0, 0, 0) 20%, rgba(0, 0, 0, 0))",
+        1
+      ],
+      [
+        "radial-gradient(68% 26% at 50% 39%, rgba(63, 72, 233, 0.16) 0%, rgba(63, 72, 233, 0.09) 42%, rgba(63, 72, 233, 0.035) 62%, rgba(63, 72, 233, 0) 82%), radial-gradient(70% 26% at 50% 78%, rgba(63, 72, 233, 0.14) 0%, rgba(63, 72, 233, 0.07) 45%, rgba(63, 72, 233, 0.024) 65%, rgba(63, 72, 233, 0) 84%)",
+        1
+      ]
+    ],
+    "radius": [
+      [
+        "24px",
+        32
+      ],
+      [
+        "4px",
+        17
+      ],
+      [
+        "10px",
+        9
+      ],
+      [
+        "100%",
+        6
+      ],
+      [
+        "100px",
+        5
+      ],
+      [
+        "5px",
+        3
+      ],
+      [
+        "360px",
+        3
+      ],
+      [
+        "50%",
+        3
+      ]
+    ],
+    "shadow": [
+      [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+        8
+      ],
+      [
+        "rgb(255, 255, 255) 0px 0px 0px 1px inset",
+        2
+      ],
+      [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 26, 36, 0.24) 0px 3px 10px 1px",
+        1
+      ],
+      [
+        "rgb(238, 238, 238) 0px 24px 0px 0px",
+        1
+      ],
+      [
+        "rgba(0, 0, 0, 0.28) 0px 12px 32px 0px",
+        1
+      ]
+    ],
+    "padding": [
+      [
+        "8px 8px",
+        42
+      ],
+      [
+        "9px 9px",
+        9
+      ],
+      [
+        "0px 8px",
+        9
+      ],
+      [
+        "10px 10px",
+        7
+      ],
+      [
+        "323.875px 0px",
+        6
+      ],
+      [
+        "1.5px 1.5px",
+        6
+      ],
+      [
+        "6px 6px",
+        5
+      ],
+      [
+        "8px 3px",
+        5
+      ],
+      [
+        "0px 42px",
+        5
+      ],
+      [
+        "20px 0px",
+        4
+      ],
+      [
+        "12px 12px",
+        4
+      ],
+      [
+        "80px 0px",
+        3
+      ],
+      [
+        "0px 20px",
+        3
+      ],
+      [
+        "7.2px 7.2px",
+        2
+      ],
+      [
+        "96px 96px",
+        2
+      ],
+      [
+        "1px 1px",
+        1
+      ],
+      [
+        "16px 12px",
+        1
+      ],
+      [
+        "0px 4px",
+        1
+      ],
+      [
+        "22px 0px",
+        1
+      ],
+      [
+        "9.6px 9.6px",
+        1
+      ],
+      [
+        "5px 5px",
+        1
+      ],
+      [
+        "96px 0px",
+        1
+      ],
+      [
+        "96px 36px",
+        1
+      ],
+      [
+        "666px 0px",
+        1
+      ],
+      [
+        "317.25px 0px",
+        1
+      ],
+      [
+        "20px 20px",
+        1
+      ],
+      [
+        "0px 84px",
+        1
+      ],
+      [
+        "84px 42px",
+        1
+      ],
+      [
+        "104px 104px",
+        1
+      ],
+      [
+        "0px 32px",
+        1
+      ],
+      [
+        "8px 0px",
+        1
+      ]
+    ],
+    "gap": [
+      [
+        "12px",
+        13
+      ],
+      [
+        "20px",
+        10
+      ],
+      [
+        "13px",
+        9
+      ],
+      [
+        "16px",
+        7
+      ],
+      [
+        "32px",
+        7
+      ],
+      [
+        "14px",
+        7
+      ],
+      [
+        "8px",
+        6
+      ],
+      [
+        "7px",
+        6
+      ],
+      [
+        "10px",
+        6
+      ],
+      [
+        "24px",
+        5
+      ],
+      [
+        "64px",
+        4
+      ],
+      [
+        "40px",
+        2
+      ],
+      [
+        "52px",
+        2
+      ],
+      [
+        "18px",
+        2
+      ],
+      [
+        "4px",
+        1
+      ],
+      [
+        "28px",
+        1
+      ],
+      [
+        "56px",
+        1
+      ],
+      [
+        "0px normal",
+        1
+      ],
+      [
+        "0px 24px",
+        1
+      ]
+    ],
+    "layout": [
+      [
+        "flex row none",
+        77
+      ],
+      [
+        "flex column none",
+        69
+      ],
+      [
+        "flex column 100%",
+        5
+      ],
+      [
+        "grid row 564px 564px",
+        1
+      ],
+      [
+        "grid row 172.734px 575.781px 345.484px",
+        1
+      ],
+      [
+        "grid row 230.391px 921.609px",
+        1
+      ],
+      [
+        "grid row 182.391px 182.406px 182.406px 182.406px",
+        1
+      ],
+      [
+        "grid row 149.672px 201.469px 80.5938px 92.1094px",
+        1
+      ]
+    ],
+    "transition": [
+      [
+        "all",
+        1076
+      ],
+      [
+        "transform",
+        25
+      ],
+      [
+        "transform 0.3s",
+        16
+      ],
+      [
+        "color 0.25s",
+        13
+      ],
+      [
+        "0.25s",
+        6
+      ],
+      [
+        "background-color 0.3s",
+        6
+      ],
+      [
+        "opacity 0.3s",
+        6
+      ],
+      [
+        "color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), text-decoration-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), fill 0.3s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        4
+      ],
+      [
+        "color 0.3s",
+        3
+      ],
+      [
+        "color 0.35s",
+        2
+      ],
+      [
+        "background-color 0.25s",
+        1
+      ],
+      [
+        "transform 0.4s",
+        1
+      ],
+      [
+        "transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.16s cubic-bezier(0.16, 1, 0.3, 1)",
+        1
+      ]
+    ],
+    "animation": [
+      [
+        "scroll 40s linear",
+        2
+      ],
+      [
+        "ketch-bannerDesktopAnimate 0.4s ease",
+        1
+      ]
+    ],
+    "breakpoints": [
+      "screen and (max-width: 991px)",
+      "screen and (max-width: 767px)",
+      "screen and (max-width: 479px)",
+      "(min-width: 768px)",
+      "screen and (min-width: 1280px)",
+      "screen and (min-width: 1440px)",
+      "screen and (min-width: 1920px)",
+      "not all and (max-width: 479px) and (min-width: 0px)",
+      "not all and (max-width: 991px) and (min-width: 768px)",
+      "(hover: hover), screen and (-ms-high-contrast: active), (-ms-high-contrast: none)",
+      "(max-width: 768px)",
+      "",
+      "(width <= 520px)",
+      "(prefers-reduced-motion: reduce)",
+      "not all and (min-width: 480px)",
+      "(min-width: 420px)",
+      "(min-width: 480px)",
+      "(min-width: 769px)",
+      "(min-width: 1024px)",
+      "(min-width: 1440px)"
+    ],
+    "keyframes": [
+      "spin",
+      "launcher-glow-rotate",
+      "launcher-glow-shift",
+      "chat-open",
+      "chat-dot",
+      "chat-cursor",
+      "ketch-backdropFadeOut",
+      "ketch-bannerAnimateCenter",
+      "ketch-bannerAnimateTop",
+      "ketch-bannerDesktopAnimate",
+      "ketch-bannerDismissBottom",
+      "ketch-bannerDismissCenter",
+      "ketch-bannerMobileBottomAnimate",
+      "ketch-bannerMobileDismissBottom",
+      "ketch-fadeIn",
+      "ketch-modalAnimatedLeft",
+      "ketch-modalAnimatedRight",
+      "ketch-pulseOpacity",
+      "scroll",
+      "hr-scroll",
+      "glowIn",
+      "glowOut",
+      "scroll"
+    ],
+    "vars": [
+      "--k-preference-tabs-purposes-header-link-color: rgba(0, 0, 0, 1)",
+      "--k-consentGate-header-background: rgba(255, 255, 255, 1)",
+      "--k-banner-buttons-primary-background-color: rgba(60, 76, 228, 1)",
+      "--k-modal-gpcBanner-outline-color: rgba(255, 255, 255, 1)",
+      "--color--button-text: white",
+      "--k-modal-footer-actionButton-text-color: rgba(238, 238, 238, 1)",
+      "--k-banner-container-background-color: rgba(238, 238, 238, 1)",
+      "--k-consentGate-container-background-color: rgba(255, 255, 255, 1)",
+      "--k-preference-header-title-color: rgba(7, 26, 36, 1)",
+      "--k-preference-tabs-requests-home-header-description-color: rgba(0, 0, 0, 1)",
+      "--safe-area-inset-bottom: 0px",
+      "--k-preference-tabs-requests-rightForm-actionButton-text-color: rgba(255, 255, 255, 1)",
+      "--how-box-width: 45vw",
+      "--k-preference-navigation-layout-item-arrowIcon-color: rgba(7, 26, 36, 1)",
+      "--k-preference-tabs-purposes-purposeList-switchButtons-off-background-color: rgba(193, 198, 200, 1)",
+      "--k-preference-tabs-purposes-purposeList-actionButton-cornerRadius: 0px",
+      "--k-modal-gpcBanner-fill-color: rgba(235, 237, 237, 1)",
+      "--k-banner-gpcBanner-fill-color: rgba(235, 237, 237, 1)",
+      "--k-preference-exitButton-text-color: rgba(60, 76, 228, 1)",
+      "--k-preference-tabs-requests-rightForm-header-returnButton-background-color: rgba(255, 255, 255, 1)",
+      "--k-consentGate-consentBlock-purposes-list-bulkActionButtons-rejectAllButton-text-color: rgba(255, 255, 255, 1)",
+      "--k-preference-tabs-welcome-welcomeMsg-link-color: rgba(0, 0, 0, 1)",
+      "--dark--background: #1f1f1f",
+      "--color: white",
+      "--k-preference-tabs-subscriptions-list-switchButton-on-thumb-color: rgba(255, 255, 255, 1)",
+      "--k-consentGate-consentBlock-purposes-list-items-purposeOutline-color: rgba(193, 198, 200, 1)",
+      "--k-preference-tabs-purposes-purposeList-purposeListItems-purposeFill-color: rgba(255, 255, 255, 1)",
+      "--k-banner-buttons-tertiary-text-color: rgba(238, 238, 238, 1)",
+      "--k-preference-tabs-purposes-gpcBanner-outline-color: rgba(255, 255, 255, 1)",
+      "--k-modal-gpcBanner-link-text-color: rgba(0, 0, 0, 1)",
+      "--k-consentGate-consentBlock-purposes-list-bulkActionButtons-rejectAllButton-background-color: rgba(0, 0, 0, 1)",
+      "--k-consentGate-consentBlock-purposes-list-items-purposeLinks-color: rgba(0, 0, 0, 1)",
+      "--k-consentGate-consentBlock-button-text-color: rgba(255, 255, 255, 1)",
+      "--k-preference-tabs-purposes-purposeList-switchButtons-on-icon-color: rgba(255, 255, 255, 1)",
+      "--k-consentGate-container-cornerRadius: 0",
+      "--k-preference-tabs-subscriptions-unsubscribeAll-switchButton-off-text-color: rgba(7, 26, 36, 1)",
+      "--swatch--dark-grey: #b1aeae",
+      "--k-preference-tabs-purposes-footer-actionButton-text-color: rgba(255, 255, 255, 1)",
+      "--k-preference-tabs-purposes-purposeListHeader-rejectAllButton-background-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-purposes-purposeList-actionButton-unselected-background-color: rgba(255, 255, 255, 1)",
+      "--k-preference-tabs-purposes-purposeList-purposeListItems-purposeContent-color: rgba(0, 0, 0, 1)",
+      "--k-consentGate-actionBlock-button-background-color: rgba(0, 0, 0, 1)",
+      "--k-modal-description-text-color: rgba(42, 42, 39, 1)",
+      "--k-preference-tabs-subscriptions-list-checkbox-unselected-outline-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-subscriptions-list-checkbox-selected-label-color: rgba(0, 0, 0, 1)",
+      "--k-modal-purposeList-checkbox-unselected-background-color: rgba(193, 198, 200, 1)",
+      "--k-preference-tabs-requests-submitted-header-title-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-subscriptions-footer-actionButton-text-color: rgba(255, 255, 255, 1)",
+      "--k-preference-tabs-requests-rightForm-header-title-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-requests-rightForm-form-radioButtons-error-background-color: rgba(240, 0, 0, 1)",
+      "--k-banner-header-returnButton-background-color: rgba(238, 238, 238, 1)",
+      "--k-preference-tabs-welcome-about-title-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-purposes-purposeListHeader-acceptAllButton-background-color: rgba(0, 0, 0, 1)",
+      "--k-consentGate-consentBlock-purposes-list-bulkActionButtons-rejectAllButton-cornerRadius: 0",
+      "--k-modal-purposeList-switchButtons-off-text-color: rgba(42, 42, 39, 1)",
+      "--text: #1f1f1f",
+      "--k-modal-footer-actionButton-background-color: rgba(60, 76, 228, 1)",
+      "--k-preference-tabs-requests-rightForm-form-dividers-subtitle-color: rgba(0, 0, 0, 1)",
+      "--k-modal-purposeListHeader-rejectAllButton-text-color: rgba(42, 42, 39, 1)",
+      "--k-consentGate-consentBlock-button-cornerRadius: 0",
+      "--k-consentGate-consentBlock-purposes-list-bulkActionButtons-acceptAllButton-text-color: rgba(255, 255, 255, 1)",
+      "--k-banner-gpcBanner-title-text-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-requests-rightForm-form-checkboxes-error-label-color: rgba(240, 0, 0, 1)",
+      "--k-preference-exitButton-iconColor-color: rgba(0, 0, 0, 1)",
+      "--k-consentGate-actionBlock-button-text-color: rgba(255, 255, 255, 1)",
+      "--swatch--light-grey: #d7d7d7",
+      "--k-modal-purposeListHeader-rejectAllButton-cornerRadius: 5px",
+      "--k-modal-purposeList-actionButton-selected-outline-color: rgba(193, 198, 200, 1)",
+      "--k-preference-tabs-requests-rightForm-form-fields-inactive-background-color: rgba(255, 255, 255, 1)",
+      "--k-preference-tabs-purposes-purposeList-switchButtons-on-background-color: rgba(60, 76, 228, 1)",
+      "--k-preference-tabs-purposes-purposeListHeader-acceptAllButton-cornerRadius: 5px",
+      "--k-modal-purposeListHeader-acceptAllButton-background-color: rgba(42, 42, 39, 1)",
+      "--k-consentGate-consentBlock-purposes-list-items-cornerRadius: 0",
+      "--k-modal-container-background-color: rgba(255, 255, 255, 1)",
+      "--k-banner-buttons-secondary-background-color: rgba(60, 76, 228, 1)",
+      "--k-modal-gpcBanner-title-text-color: rgba(0, 0, 0, 1)",
+      "--k-modal-purposeList-switchButtons-off-thumb-color: rgba(255, 255, 255, 1)",
+      "--k-preference-navigation-layout-item-selectedText-color: rgba(7, 26, 36, 1)",
+      "--k-preference-tabs-purposes-purposeList-actionButton-selected-text-color: rgba(0, 0, 0, 1)",
+      "--k-consentGate-header-closeButton-text-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-requests-home-header-link-color: rgba(0, 0, 0, 1)",
+      "--k-consentGate-actionBlock-header-title-color: rgba(0, 0, 0, 1)",
+      "--k-modal-purposeList-purposeListItems-arrowIcon-color: rgba(42, 42, 39, 1)",
+      "--k-preference-tabs-subscriptions-footer-background-color: rgba(255, 255, 255, 1)",
+      "--k-banner-gpcBanner-link-text-color: rgba(0, 0, 0, 1)",
+      "--k-banner-container-backdrop-background-color: rgba(0, 0, 0, 0.24)",
+      "--k-preference-tabs-requests-rightForm-header-returnButton-icon-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-subscriptions-list-checkbox-unselected-label-color: rgba(0, 0, 0, 1)",
+      "--k-modal-purposeList-switchButtons-on-text-color: rgba(42, 42, 39, 1)",
+      "--k-banner-buttons-tertiary-cornerRadius: 5px",
+      "--k-preference-tabs-requests-home-dataSubjectDetails-fields-inactive-outline-color: rgba(194, 194, 194, 1)",
+      "--k-preference-tabs-purposes-purposeListHeader-rejectAllButton-text-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-subscriptions-list-switchButton-on-text-color: rgba(0, 0, 0, 1)",
+      "--k-modal-purposeList-switchButtons-on-background-color: rgba(60, 76, 228, 1)",
+      "--k-preference-tabs-subscriptions-unsubscribeAll-text-color: rgba(0, 0, 0, 1)",
+      "--k-banner-buttons-secondary-cornerRadius: 5px",
+      "--color--text: #1f1f1f",
+      "--k-preference-tabs-purposes-purposeList-checkbox-selected-background-color: rgba(0, 0, 0, 1)",
+      "--k-banner-header-title-color: rgba(7, 26, 36, 1)",
+      "--k-modal-purposeListHeader-acceptAllButton-cornerRadius: 5px",
+      "--k-preference-tabs-requests-home-dataSubjectDetails-fields-cornerRadius: 0",
+      "--k-preference-tabs-subscriptions-header-link-color: rgba(0, 0, 0, 1)",
+      "--k-modal-description-link-color: rgba(42, 42, 39, 1)",
+      "--k-modal-gpcBanner-description-text-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-purposes-footer-actionButton-background-color: rgba(60, 76, 228, 1)",
+      "--k-modal-purposeList-purposeListItems-purposeFill-color: rgba(255, 255, 255, 1)",
+      "--horizons-yellow: #ff9f00",
+      "--k-banner-buttons-secondary-text-color: rgba(238, 238, 238, 1)",
+      "--horizons-blue: #131ff1",
+      "--k-preference-tabs-purposes-gpcBanner-cornerRadius: 11px",
+      "--k-modal-container-backdrop-background-color: rgba(0, 0, 0, 0.24)",
+      "--k-consentGate-header-closeButton-background-color: rgba(235, 237, 237, 1)",
+      "--k-preference-tabs-purposes-purposeList-switchButtons-on-thumb-color: rgba(255, 255, 255, 1)",
+      "--k-consentGate-actionBlock-header-description-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-requests-submitted-footer-actionButton-cornerRadius: undefined",
+      "--k-preference-tabs-requests-rightForm-form-fields-active-background-color: rgba(255, 255, 255, 1)",
+      "--k-preference-tabs-requests-home-dataSubjectDetails-fields-fieldLabel-color: rgba(0, 0, 0, 1)",
+      "--k-consentGate-consentBlock-header-title-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-requests-rightForm-form-fields-fieldLabel-color: rgba(0, 0, 0, 1)",
+      "--k-preference-tabs-requests-rightForm-form-radioButtons-error-label-color: rgba(240, 0, 0, 1)"
+    ],
+    "fonts": [
+      "webflow-icons 400 normal",
+      "Dmmono 400 normal",
+      "Hankengrotesk 100 900 normal",
+      "Urbanist 100 900 normal",
+      "Dmmono 300 normal",
+      "Dmmono 500 normal",
+      "Inter Variablefont Opsz Wght 100 900 italic",
+      "Inter Variablefont Opsz Wght 100 900 normal",
+      "swiper-icons 400 normal",
+      "DM Mono 400 normal",
+      "DM Mono 400 normal",
+      "Hanken Grotesk 400 normal",
+      "Hanken Grotesk 400 normal",
+      "Hanken Grotesk 400 normal",
+      "Hanken Grotesk 400 normal",
+      "Hanken Grotesk 600 normal",
+      "Hanken Grotesk 600 normal",
+      "Hanken Grotesk 600 normal",
+      "Hanken Grotesk 600 normal"
+    ],
+    "libs": [
+      "ondevicemotion",
+      "Swiper",
+      "gsapVersions",
+      "TweenLite",
+      "TweenMax",
+      "gsap",
+      "ScrollTrigger",
+      "_gsap"
+    ],
+    "canvases": [],
+    "generator": null,
+    "title": "DroneDeploy | Understanding the built world with reality capture, robotics and AI",
+    "h1": [
+      "Visual AI and robotics across all your sites",
+      "More than just site photos",
+      "Understand all your sites",
+      "Don’t get left behind.",
+      "Learn how the best are  using DroneDeploy",
+      "Getting started is simple. Request a demo today."
+    ]
+  },
+  "assets": [
+    "GET https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js",
+    "GET https://cdn.prod.website-files.com/gsap/3.15.0/ScrollTrigger.min.js",
+    "GET https://cdn.prod.website-files.com/gsap/3.15.0/SplitText.min.js",
+    "GET https://cdn.prod.website-files.com/6968d87783e17d7da7f267fe/696bb287e507967758d11276_Untitled%20file%20(2).json",
+    "GET https://cdn.prod.website-files.com/643cbe7a3558770bcbe62ac0/6a3940c419f740216d6aa6b2_Progress-AI-Homepage.json",
+    "GET https://bzrcdn.openai.com/pixel-config/v1/9c1Wfk2wSwGTYgS1khsf7X.json",
+    "GET https://global.ketchcdn.com/web/v3/config/drone_deploy/drone_deploy/production/cpra/en/config.json?hash=17645200231261526115",
+    "GET https://fast.wistia.net/embed/medias/knce395m4y.json",
+    "GET https://fast.wistia.net/embed/medias/fecrxhy35h.json",
+    "GET https://fast.wistia.net/embed/medias/qgrtafzaja.json",
+    "GET https://fast.wistia.net/embed/medias/oy2avw33zp.json",
+    "GET https://fast.wistia.net/embed/medias/u07kcsov0q.json",
+    "GET https://fast.wistia.net/embed/medias/3aczhiqque.json",
+    "GET https://fast.wistia.net/embed/medias/95ee6tl97g.json",
+    "GET https://fast.wistia.net/embed/medias/hx1oilwlb6.json",
+    "GET https://fast.wistia.net/embed/medias/szus278gjs.json",
+    "GET https://fast.wistia.net/embed/medias/kueck0bz0l.json"
+  ]
+}
