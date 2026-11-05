@@ -7,3 +7,4 @@ node_modules/
 # temporary working files that can be rebuilt
 assets/v5/tmp/
 assets/audit/tmp/
+assets/v6/tmp/

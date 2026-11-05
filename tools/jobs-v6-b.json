@@ -1,0 +1,296 @@
+[
+ {
+  "id": "tw2",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/tw2.png",
+  "input": {
+   "aspect_ratio": "16:9",
+   "image_urls": [
+    "@file:assets/v6/kf/tw1.png",
+    "@file:assets/v5/ref/f7.0.jpg",
+    "@file:assets/v5/ref/f22.0.jpg"
+   ],
+   "prompt": "The exact same scene and the exact same headquarters tower from the first reference image, identical building, identical rooftop northstar logo sign, same position in the centre of the frame, same very wide high aerial viewpoint, the camera has only orbited slightly to the right. Now it is bright clear midday with crisp soft daylight and a pale blue sky, light haze. The construction around the tower has progressed, and a solar field and a substation now stretch along the right edge of the terrain. Drones scan the tower facade and the solar rows, white humanoid robots and workers in hard hats inspect rebar together, four-legged robots patrol the site roads. The drone matches the second reference image and the white humanoid robots match the third reference image; four-legged robots have exactly four legs. Many small figures, everything calm, coordinated and efficient. Photorealistic, believable scale, subtle film grain. No other text, no captions, no watermarks."
+  }
+ },
+ {
+  "id": "tw3",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/tw3.png",
+  "input": {
+   "aspect_ratio": "16:9",
+   "image_urls": [
+    "@file:assets/v6/kf/tw1.png",
+    "@file:assets/v5/ref/f7.0.jpg",
+    "@file:assets/v5/ref/f22.0.jpg"
+   ],
+   "prompt": "The exact same scene and the exact same headquarters tower from the first reference image, identical building, identical rooftop northstar logo sign, same position in the centre of the frame, same very wide high aerial viewpoint, the camera has only orbited slightly to the right. Now it is golden sunset, long warm light raking across the terrain with cool blue shadows. An industrial plant with pipelines and a logistics yard with containers sits beside the tower. Humanoid robots hand materials to workers, a four-legged robot walks beside an engineer along the pipelines, two drones fly a survey pattern. The drone matches the second reference image and the white humanoid robots match the third reference image; four-legged robots have exactly four legs. Many small figures, everything calm, coordinated and efficient. Photorealistic, believable scale, subtle film grain. No other text, no captions, no watermarks."
+  }
+ },
+ {
+  "id": "tw4",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/tw4.png",
+  "input": {
+   "aspect_ratio": "16:9",
+   "image_urls": [
+    "@file:assets/v6/kf/tw1.png",
+    "@file:assets/v5/ref/f7.0.jpg",
+    "@file:assets/v5/ref/f22.0.jpg"
+   ],
+   "prompt": "The exact same scene and the exact same headquarters tower from the first reference image, identical building, identical rooftop northstar logo sign, same position in the centre of the frame, same very wide high aerial viewpoint, the camera has only orbited slightly to the right. Now it is deep blue night, the tower glows with thin cyan light lines and the rooftop northstar logo is brightly lit, warm site floodlights pool on the ground, distant city lights. The whole terrain is calm and orderly. Drones with small navigation lights hover in a formation above the site, four-legged robots with headlights patrol, humanoid robots and a few workers finish a night inspection. The drone matches the second reference image and the white humanoid robots match the third reference image; four-legged robots have exactly four legs. Many small figures, everything calm, coordinated and efficient. Photorealistic, believable scale, subtle film grain. No other text, no captions, no watermarks."
+  }
+ },
+ {
+  "id": "s01",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s01.png",
+  "input": {
+   "aspect_ratio": "16:9",
+   "image_urls": [
+    "@file:assets/v5/ref/f7.0.jpg",
+    "@file:assets/v5/ref/f14.0.jpg",
+    "@file:assets/v5/ref/f27.0.jpg"
+   ],
+   "prompt": "A dramatic wide aerial view of a large construction site at blue hour. The exact drone from the first reference image hovers in the foreground, a four-legged robot like the third reference image walks across a finished concrete slab, an engineer in a white hard hat stands beside it. A faint glowing cyan verification grid lies across part of the slab. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s02",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s02.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f7.0.jpg",
+    "@file:assets/v5/ref/f14.0.jpg"
+   ],
+   "prompt": "A building under construction rising floor by floor, viewed from the air. The exact drone from the first reference image hovers beside it. Faint translucent cyan ghost outlines show the planned upper floors not yet built above the real concrete frame, showing progress against plan. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s03",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s03.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f22.0.jpg",
+    "@file:assets/v5/ref/f14.0.jpg"
+   ],
+   "prompt": "An engineer in a white hard hat and a white humanoid robot like the first reference image stand on a concrete floor. A precise glowing cyan BIM wireframe is overlaid exactly onto the real columns and beams around them, aligned with the structure. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s04",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s04.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f27.0.jpg",
+    "@file:assets/v5/ref/f14.0.jpg"
+   ],
+   "prompt": "Close view of a four-legged robot like the first reference image inspecting reinforcement steel and formwork on a construction deck, a thin cyan scanning beam sweeps across the rebar from its sensor head. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s05",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s05.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f7.0.jpg",
+    "@file:assets/v5/ref/f14.0.jpg"
+   ],
+   "prompt": "Top-down aerial view from a drone over a busy construction deck with workers in hard hats and hi-vis vests. One open slab edge is outlined by a soft glowing amber safety outline; everything else is calm and orderly. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s06",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s06.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f7.0.jpg",
+    "@file:assets/v5/ref/f14.0.jpg"
+   ],
+   "prompt": "The exact drone from the first reference image hovers above a large earthwork stockpile on a construction site. A glowing cyan volumetric mesh wraps the stockpile, measuring its volume. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s07",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s07.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f27.0.jpg",
+    "@file:assets/v5/ref/f19.0.jpg"
+   ],
+   "prompt": "A four-legged robot like the first reference image walks through a nearly finished building corridor capturing it; a faint cyan point cloud traces the walls, ceiling services and doorways behind it. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s08",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s08.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f22.0.jpg",
+    "@file:assets/v5/ref/f14.0.jpg"
+   ],
+   "prompt": "At blue hour on a construction slab, an engineer and a white humanoid robot like the first reference image look at a few small floating translucent cyan photo frames pinned to exact points on the structure, each linked by a thin line to a map pin. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s09",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s09.png",
+  "input": {
+   "aspect_ratio": "9:16",
+   "image_urls": [
+    "@file:assets/v5/ref/f7.0.jpg",
+    "@file:assets/v5/ref/f14.0.jpg"
+   ],
+   "prompt": "Vertical frame. Looking straight down past the gimbal camera of the exact drone from the first reference image onto a construction site far below, workers and cranes as small figures. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s10",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s10.png",
+  "input": {
+   "aspect_ratio": "9:16",
+   "image_urls": [
+    "@file:assets/v5/ref/f14.0.jpg"
+   ],
+   "prompt": "Vertical frame of the same concrete building core split exactly in half: the left half is real raw concrete and scaffolding, the right half is the identical structure as a glowing cyan wireframe model. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s11",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s11.png",
+  "input": {
+   "aspect_ratio": "9:16",
+   "image_urls": [
+    "@file:assets/v5/ref/f22.0.jpg",
+    "@file:assets/v5/ref/f14.0.jpg"
+   ],
+   "prompt": "Vertical frame. A white humanoid robot like the first reference image places its hand on a finished concrete column, a soft cyan confirmation glow ring appears where it touches; an engineer stands behind, nodding. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s12",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s12.png",
+  "input": {
+   "aspect_ratio": "16:9",
+   "image_urls": [
+    "@file:assets/v5/ref/f27.0.jpg",
+    "@file:assets/v5/ref/f19.0.jpg"
+   ],
+   "prompt": "A precise macro close-up of the sensor head of a four-legged robot like the first reference image scanning finely machined industrial equipment, gauges and valves in a plant room, a thin cyan laser line on the metal. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s13",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s13.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f22.0.jpg",
+    "@file:assets/v5/ref/f19.0.jpg"
+   ],
+   "prompt": "A white humanoid robot like the first reference image inspects a motor on a production line in a modern factory; a subtle thermal colour overlay glows on one motor housing. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s14",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s14.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f7.0.jpg"
+   ],
+   "prompt": "The exact drone from the first reference image flies low over long rows of solar panels next to an electrical substation; one panel shows a subtle warm thermal hotspot. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s15",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s15.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f27.0.jpg"
+   ],
+   "prompt": "A four-legged robot like the first reference image walks along a steel walkway past large pipes and process towers at an oil and gas facility at dusk, small warm lights in the distance. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s16",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s16.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f7.0.jpg"
+   ],
+   "prompt": "The exact drone from the first reference image inspects the underside of a large concrete bridge spanning a river; a faint cyan scan line sweeps across a pier. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s17",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s17.png",
+  "input": {
+   "aspect_ratio": "3:4",
+   "image_urls": [
+    "@file:assets/v5/ref/f27.0.jpg"
+   ],
+   "prompt": "A four-legged robot like the first reference image walks down a tall warehouse aisle between pallet racks; small industrial sensors with cyan status lights are mounted on the racks. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ },
+ {
+  "id": "s18",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.07,
+  "out": "assets/v6/kf/s18.png",
+  "input": {
+   "aspect_ratio": "16:9",
+   "image_urls": [
+    "@file:assets/v5/ref/f7.0.jpg",
+    "@file:assets/v5/ref/f22.0.jpg",
+    "@file:assets/v5/ref/f27.0.jpg"
+   ],
+   "prompt": "A wide view of an industrial complex at night. The exact drone from the first reference image, a white humanoid robot and a four-legged robot work at different points, and small sensors on equipment glow cyan, all linked by thin faint cyan lines into one network. Same photorealistic cinematic look as the references: cool steel-blue tones, thin mist, pale highlights, small cyan accent lights, subtle film grain, believable scale. No text, no captions, no logos, no watermarks."
+  }
+ }
+]

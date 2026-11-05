@@ -1,0 +1,38 @@
+[
+ {
+  "id": "vc1",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v6/out/vc1.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v6/kf/tw1.png",
+   "last_frame_url": "@file:assets/v6/kf/tw3.png",
+   "duration": 5,
+   "prompt": "A slow time-lapse from blue-hour dawn to warm golden morning light over the vast site. The camera hangs almost still, drifting very slightly forward. Workers and humanoid robots move materials together, four-legged robots walk the roads, the drone glides across the sky, a pipeline and container yard assemble at the lower left as the day progresses. One continuous smooth shot with no cuts. The headquarters tower and its rooftop northstar logo sign stay fixed, sharp and unchanged in the centre the whole time. Photorealistic, natural physics, steady professional aerial cinematic camera, believable proportions, no other text."
+  }
+ },
+ {
+  "id": "vc2",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v6/out/vc2.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v6/kf/tw3.png",
+   "last_frame_url": "@file:assets/v6/kf/tw2.png",
+   "duration": 5,
+   "prompt": "The camera orbits slowly and smoothly to the right around the tower while the light turns from golden morning to clear midday. Drones fly survey lines, humanoid robots and workers inspect together, four-legged robots patrol, construction visibly progresses around the tower. One continuous smooth shot with no cuts. The headquarters tower and its rooftop northstar logo sign stay fixed, sharp and unchanged in the centre the whole time. Photorealistic, natural physics, steady professional aerial cinematic camera, believable proportions, no other text."
+  }
+ },
+ {
+  "id": "vc3",
+  "model": "kling-video/o3/first-last-frame",
+  "usd": 0.476,
+  "out": "assets/v6/out/vc3.mp4",
+  "input": {
+   "first_frame_url": "@file:assets/v6/kf/tw2.png",
+   "last_frame_url": "@file:assets/v6/kf/tw4.png",
+   "duration": 5,
+   "prompt": "A slow time-lapse from midday into deep blue night while the camera holds its position and drifts slightly closer. The sky darkens, the tower's cyan light lines and the rooftop logo light up, site floodlights switch on, drones turn on navigation lights and gather into a formation, robots switch on headlights and continue patrolling. One continuous smooth shot with no cuts. The headquarters tower and its rooftop northstar logo sign stay fixed, sharp and unchanged in the centre the whole time. Photorealistic, natural physics, steady professional aerial cinematic camera, believable proportions, no other text."
+  }
+ }
+]
