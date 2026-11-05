@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Northstar · Physical AI</title>
+<meta name="description" content="Northstar brings intelligence into the physical world through autonomous drones, quadruped robots, humanoid robotics, and connected industrial systems.">
+<link rel="icon" href="../brand/northstar-flight-ribbon-icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* Northstar /v3. Layout, type scale, spacing and motion follow a measured study of a minimal light editorial drone site
+   (see plans/drone-riotters/04-build-spec.md). Brand, copy, images, drone and 3D are Northstar's own. */
+:root{
+  --bg:#FDFDFE;--paper:#fff;--hero-a:#E4EAF2;--ink:#102B4E;--text:#0E1A2B;--muted:#C3CCD8;--mid:rgba(16,43,78,.62);
+  --line:rgba(16,43,78,.14);--line2:rgba(16,43,78,.24);--chip:rgba(16,43,78,.06);--blue:#245FFF;--cyan:#00CDD9;
+  --gx:24px;--hdr:76px;--out:cubic-bezier(.22,1,.36,1);--std:cubic-bezier(.4,0,.2,1);
+  --sans:Inter,"Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (max-width:1023px){:root{--gx:16px}}
+@media (max-width:767px){:root{--gx:8px;--hdr:60px}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);color:var(--text);font:400 16px/24px var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--bg);overflow-x:clip}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img,video,canvas{display:block}
+.mono{font-family:var(--mono);font-size:12px;line-height:16px;letter-spacing:.3px;text-transform:uppercase}
+.br::before{content:"[ "}.br::after{content:" ]"}
+.dot::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:currentColor;margin-right:8px;vertical-align:middle}
+.disp{font-weight:300;font-size:clamp(50px,16.67vw,240px);line-height:.917;letter-spacing:-.054em;color:var(--ink)}
+.h32{font-weight:300;font-size:clamp(24px,2.22vw,32px);line-height:1.25;letter-spacing:-.025em}
+.h28{font-weight:300;font-size:clamp(22px,1.95vw,28px);line-height:1.15;letter-spacing:-.028em}
+.h24{font-weight:300;font-size:clamp(20px,1.67vw,24px);line-height:1.34;letter-spacing:-.033em}
+.h20{font-weight:300;font-size:20px;line-height:28px;letter-spacing:-.02em}
+.sm{font-size:15px;line-height:20px;letter-spacing:-.027em}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr))}
+.wrap{padding-inline:var(--gx)}
+.num{width:24px;height:24px;border-radius:999px;border:1px solid var(--line2);display:grid;place-items:center;font:400 11px/1 var(--mono);color:var(--mid)}
+.w{color:var(--muted);transition:color .3s var(--std)}.w.on{color:var(--ink)}
+.pill{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px;border-radius:999px;background:var(--chip);font-size:13px;line-height:1;letter-spacing:-.01em;color:var(--ink);transition:background-color .3s var(--std),color .3s var(--std)}
+.pill:hover{background:var(--ink);color:#fff}
+.btn{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 18px;background:var(--ink);color:#fff;font-size:14px;letter-spacing:-.01em;transition:background-color .3s var(--std)}
+.btn:hover{background:var(--blue)}.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line2)}.btn.ghost:hover{background:var(--chip)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--hdr);background:rgba(253,253,254,.92);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);align-items:center;padding:0 var(--gx)}
+header .brand{grid-column:1/5;display:flex;align-items:center;gap:10px;color:var(--mid);font-size:12px}
+header .brand img{height:22px;width:auto}
+header nav{grid-column:6/10;display:flex;gap:24px;font-size:13px;color:var(--mid)}
+header nav a{transition:color .3s var(--std)}header nav a:hover,header nav a.on{color:var(--ink)}
+header .cta{grid-column:10/13;justify-self:end}
+@media (max-width:1023px){header nav{display:none}header .brand{grid-column:1/9}header .cta{grid-column:9/13}}
+@media (max-width:767px){header .brand span{display:none}}
+
+/* hero */
+#hero{height:200svh;position:relative}
+#hero .stick{position:sticky;top:0;height:100svh;padding:var(--hdr) var(--gx) 0;display:flex;flex-direction:column}
+#hero .box{position:relative;flex:1;overflow:hidden;background:linear-gradient(180deg,var(--hero-a) 0%,#F1F4F8 46%,var(--bg) 100%)}
+#hero .mark{position:absolute;left:0;right:0;top:4%;text-align:center;font-weight:300;font-size:min(23.4vw,40vh);line-height:.9;letter-spacing:-.06em;color:#EEF2F7;text-shadow:0 1px 0 #fff,0 -1px 0 rgba(16,43,78,.07),0 22px 50px rgba(16,43,78,.09);user-select:none;will-change:transform}
+#drone{position:absolute;left:50%;top:50%;width:min(52vw,74vh);aspect-ratio:1016/451;will-change:transform}
+#drone img{width:100%;height:auto;position:relative;z-index:2;filter:drop-shadow(0 30px 40px rgba(16,43,78,.16))}
+#drone .shadow{position:absolute;left:16%;right:16%;bottom:-34%;height:16%;border-radius:50%;background:radial-gradient(closest-side,rgba(16,43,78,.18),transparent);filter:blur(6px)}
+.rotor{position:absolute;z-index:3;width:30%;aspect-ratio:1/.22;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(30,40,55,.30),rgba(30,40,55,.12) 60%,transparent);overflow:hidden}
+.rotor::after{content:"";position:absolute;inset:-10% -2%;border-radius:50%;background:linear-gradient(90deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 66%);animation:sweep .12s linear infinite}
+.rotor.r2::after{animation-direction:reverse}
+@keyframes sweep{from{transform:translateX(-46%)}to{transform:translateX(46%)}}
+.r1{left:5.2%;top:43%}.r2{left:61.8%;top:2%}.r3{left:94.8%;top:40%}
+#hero .foot{display:flex;justify-content:space-between;align-items:flex-end;padding:20px 0 22px}
+#hero .tag{font-size:15px;line-height:20px;letter-spacing:-.02em}#hero .tag span{display:block;color:var(--mid)}
+#hero .scroll{white-space:nowrap;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--mid)}
+#hero .scroll i{display:grid;grid-template-columns:repeat(3,3px);gap:2px}#hero .scroll i b{width:3px;height:3px;background:var(--ink);border-radius:50%;animation:blip 1.6s var(--std) infinite}
+#hero .scroll i b:nth-child(2){animation-delay:.2s}#hero .scroll i b:nth-child(3){animation-delay:.4s}
+@keyframes blip{0%,100%{opacity:.2}40%{opacity:1}}
+
+/* intro */
+#intro{height:240svh;position:relative}
+#intro .stick{position:sticky;top:var(--hdr);height:calc(100svh - var(--hdr))}
+#intro .stick>div{height:100%}
+#intro .txt{grid-column:1/7;display:flex;align-items:center;padding-right:48px;border-right:1px solid var(--line2)}
+#intro .txt p{max-width:15.5em}
+#intro .vid{grid-column:7/13;display:flex;flex-direction:column;justify-content:center;padding-left:48px;gap:14px}
+#intro .frame{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0B1B33}
+#intro .frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .7s var(--out),transform 1.4s var(--out)}
+#intro .frame video.on{opacity:1;transform:none}
+#intro .cap{display:flex;justify-content:space-between;color:var(--mid)}
+#intro .cap .lbl span{display:none}#intro .cap .lbl span.on{display:inline}
+@media (max-width:1023px){#intro .txt{grid-column:1/13;border-right:0;padding:0;align-items:flex-end;padding-bottom:4vh}#intro .vid{grid-column:1/13;padding:0;justify-content:flex-start}#intro .stick>div{grid-template-rows:1fr auto;align-content:center}#intro .frame{aspect-ratio:16/10;max-height:38svh;width:100%}}
+
+/* section heads */
+.sec{position:relative;border-top:1px solid var(--line2)}
+.shead{position:relative;padding-top:32px}
+.shead .num{position:absolute;right:0;top:20px}
+.letters span{display:inline-block;opacity:0;transform:translateY(.12em);transition:opacity .9s var(--out),transform .9s var(--out)}
+.in .letters span{opacity:1;transform:none}
+.lead{padding:56px 0 120px;align-items:start}
+.lead .mono{grid-column:1/4;color:var(--mid);padding-top:6px}
+.lead .copy{grid-column:7/13}
+.lead .copy p+p{margin-top:20px}
+@media (max-width:1023px){.lead{padding:32px 0 72px}.lead .mono{grid-column:1/13;margin-bottom:16px}.lead .copy{grid-column:1/13}}
+
+/* coordination dial */
+#dial{height:420svh;position:relative}
+#dial .stick{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--hdr) var(--gx) 0}
+#dial .intro{position:absolute;left:var(--gx);right:var(--gx);top:calc(var(--hdr) + 24px);display:flex;justify-content:space-between;gap:24px;color:var(--mid)}
+#dial .intro p{max-width:30em;text-align:right;font-size:15px;line-height:20px;letter-spacing:-.02em}
+#dial .arcw{position:relative;align-self:center;width:min(620px,86vw);aspect-ratio:2/1;margin-bottom:-1px}
+#dial svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#dial .hub{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);width:56px;height:56px;border-radius:50%;background:var(--paper);border:1px solid var(--line2);display:grid;place-items:center;z-index:2}
+#dial .hub i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--ink);transition:transform .7s var(--out)}
+#dial .lbl{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);color:var(--mid);white-space:nowrap}
+#dial .def{position:absolute;left:50%;bottom:92px;transform:translateX(-50%);width:min(440px,80vw);text-align:center;font-size:15px;line-height:20px;letter-spacing:-.02em;color:var(--mid);min-height:60px}
+#dial .strip{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);grid-template-columns:repeat(4,1fr);height:min(24svh,190px)}
+#dial .cell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);transition:color .5s var(--std)}
+#dial .cell+.cell{border-left:1px solid var(--line2)}
+#dial .cell .mono{color:var(--muted);transition:color .5s var(--std);text-align:center;padding:0 10px}
+#dial .cell.on{color:var(--ink)}#dial .cell.on .mono{color:var(--mid)}
+@media (max-width:767px){#dial .strip{grid-template-columns:repeat(2,1fr);height:auto}#dial .cell{padding:22px 0}#dial .cell:nth-child(3){border-left:0}#dial .cell:nth-child(n+3){border-top:1px solid var(--line2)}#dial .intro p{display:none}#dial .def{bottom:calc(100% + 18px);min-height:0}#dial .arcw{margin-top:150px}}
+
+/* industries (tabs) */
+#industries{background:var(--paper)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px 28px;padding:40px 0 0}
+.tabs button{font-weight:300;font-size:clamp(22px,1.95vw,28px);line-height:32px;letter-spacing:-.028em;color:var(--muted);padding-bottom:10px;border-bottom:1px solid transparent;transition:color .3s var(--std),border-color .3s var(--std)}
+.tabs button:hover{color:var(--mid)}.tabs button[aria-selected=true]{color:var(--ink);border-color:var(--ink)}
+.ind{border-top:1px solid var(--line2);margin-top:-1px;padding:32px 0 80px;align-items:start}
+.ind .t{grid-column:1/6;padding-right:32px}
+.ind .t p{font-size:16px;line-height:24px;color:var(--text)}
+.ind .t ul{list-style:none;margin-top:28px;border-top:1px solid var(--line)}
+.ind .t li{padding:10px 0;border-bottom:1px solid var(--line);color:var(--mid);font-size:14px}
+.ind .img{grid-column:7/13;position:relative;aspect-ratio:16/10;overflow:hidden;background:#0B1B33}
+.ind .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.03);transition:opacity .5s var(--out),transform 1.2s var(--out)}
+.ind .img img.on{opacity:1;transform:none}
+.ind .fade{transition:opacity .3s var(--std)}
+@media (max-width:1023px){.ind .t{grid-column:1/13;padding:0 0 28px}.ind .img{grid-column:1/13}}
+
+/* technology (pinned) */
+#technology{height:520svh;background:var(--paper);position:relative}
+#technology .stick{position:sticky;top:var(--hdr);height:calc(100svh - var(--hdr));display:flex;flex-direction:column;padding:0 var(--gx) 16px}
+#technology .body{flex:1;border-top:1px solid var(--line2);margin-top:20px;min-height:0;position:relative}
+#technology .list{grid-column:1/4;display:flex;flex-direction:column;justify-content:center;gap:6px}
+#technology .list button{text-align:left;color:var(--muted);transition:color .5s var(--std)}#technology .list button.on{color:var(--ink)}
+#technology .pic{grid-column:4/9;position:relative;overflow:hidden;margin:16px 0;background:#0B1B33}
+#technology .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .6s var(--out),transform 1.2s var(--out)}
+#technology .pic img.on{opacity:1;transform:none}
+#technology .info{grid-column:9/13;display:flex;flex-direction:column;justify-content:center;padding-left:32px;position:relative}
+#technology .card{position:absolute;left:32px;right:0;opacity:0;transform:translateY(14px);transition:opacity .5s var(--out),transform .5s var(--out);pointer-events:none}
+#technology .card.on{opacity:1;transform:none;pointer-events:auto}
+#technology .card h3{color:var(--ink);margin-bottom:14px}
+#technology .card p{font-size:15px;line-height:20px;letter-spacing:-.02em;color:var(--text)}
+#technology .card p+p{margin-top:10px;color:var(--mid)}
+#technology .card .caps{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:18px;color:var(--mid)}
+#technology .corner{position:absolute;bottom:0;color:var(--mid)}#technology .corner.l{left:0}#technology .corner.r{right:0}
+#technology .body>.grid{height:100%}
+@media (max-width:1023px){
+  #technology .body>.grid{grid-template-rows:auto minmax(0,1fr) auto;row-gap:12px}
+  #technology .list{grid-column:1/13;flex-direction:row;flex-wrap:wrap;gap:4px 18px;padding-top:14px}
+  #technology .list button{font-size:18px;line-height:24px}
+  #technology .pic{grid-column:1/13;margin:0}
+  #technology .info{grid-column:1/13;padding:0 0 28px;min-height:min(36svh,300px);justify-content:flex-start}
+  #technology .card{left:0;top:0}
+}
+
+/* platform */
+#platform{background:var(--paper)}
+#terrain{position:relative;height:min(86svh,860px);overflow:hidden;background:#EEF2F7;margin-top:8px}
+#terrain canvas{position:absolute;inset:0;width:100%;height:100%}
+#terrain.noGL{background:url(media/fleet-drone.jpg) center/cover}
+.pin{position:absolute;left:0;top:0;z-index:2;width:0;height:0;transition:opacity .3s var(--std)}
+.pin::before{content:"";position:absolute;left:-.5px;bottom:0;width:1px;height:64px;background:var(--ink)}
+.pin button{position:absolute;left:-16px;bottom:64px;width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:18px;line-height:1;transition:transform .5s var(--out),background-color .3s var(--std)}
+.pin button:hover{background:var(--blue)}.pin.open button{transform:rotate(45deg)}
+.pin .pc{position:absolute;left:24px;bottom:72px;width:220px;padding:12px 14px;background:var(--paper);box-shadow:0 1px 0 var(--line2),0 18px 40px rgba(16,43,78,.12);opacity:0;transform:translateY(6px);transition:opacity .4s var(--out),transform .4s var(--out);pointer-events:none}
+.pin.open .pc{opacity:1;transform:none;pointer-events:auto}
+.pin .pc b{display:block;font-weight:400;font-size:15px;line-height:20px;color:var(--ink);letter-spacing:-.02em}
+.pin .pc span{display:block;margin-top:6px;color:var(--mid)}
+.tmeta{display:flex;justify-content:space-between;padding:12px 0 0;color:var(--mid)}
+.mods{margin:72px 0 0;border-top:1px solid var(--line2);grid-template-columns:repeat(3,1fr)}
+.mod{padding:28px 32px 36px 0;border-bottom:1px solid var(--line2)}
+.mod:not(:nth-child(3n+1)){padding-left:32px;border-left:1px solid var(--line2)}
+.mod .mono{color:var(--mid);display:block;margin-bottom:22px}
+.mod h3{color:var(--ink);margin-bottom:12px}
+.mod p{font-size:14px;line-height:22px;color:var(--mid)}
+@media (max-width:1023px){.mods{grid-template-columns:1fr}.mod,.mod:not(:nth-child(3n+1)){padding:24px 0 28px;border-left:0}}
+
+/* contact + footer */
+#contact{background:var(--bg)}
+.cmeta{display:flex;justify-content:space-between;color:var(--mid);padding:14px 0}
+.ctop{border-top:1px solid var(--line2);padding:56px 0 96px;align-items:start}
+.ctop .l{grid-column:1/7;padding-right:32px}
+.ctop .l h2{color:var(--ink)}
+.ctop .r{grid-column:7/13}
+.ctop .r p{color:var(--mid);margin-top:16px;max-width:34em}
+.ctop .row{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.ctop .quote{margin-top:40px;color:var(--mid);font-size:15px;line-height:20px}
+footer{border-top:1px solid var(--line2);padding:40px 0 24px;align-items:end}
+footer .logo{grid-column:1/5}footer .logo img{height:36px;width:auto}footer .logo p{color:var(--mid);margin-top:14px;font-size:14px}
+footer .cols{grid-column:7/13;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+footer .cols h4{font:400 12px/16px var(--mono);letter-spacing:.3px;text-transform:uppercase;color:var(--mid);margin-bottom:10px}
+footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
+.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line2);padding:14px 0 18px;color:var(--mid)}
+@media (max-width:1023px){.ctop .l,.ctop .r{grid-column:1/13;padding:0}.ctop .r{margin-top:28px}footer .logo{grid-column:1/13;margin-bottom:32px}footer .cols{grid-column:1/13}}
+
+@media (prefers-reduced-motion:reduce){.rotor::after,#hero .scroll i b{animation:none}.letters span{opacity:1;transform:none;transition:none}*{transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<header class="grid">
+  <a class="brand" href="#top" aria-label="Northstar, back to top"><img src="../brand/northstar-flight-ribbon-compact.svg" alt="Northstar"><span>·</span><span>Physical AI</span></a>
+  <nav aria-label="Sections"><a href="#vision">Vision</a><a href="#industries">Industries</a><a href="#technology">Technology</a><a href="#platform">Platform</a></nav>
+  <a class="pill cta" href="#contact">Talk to our team</a>
+</header>
+
+<main id="top">
+<section id="hero" aria-label="Introduction">
+  <div class="stick">
+    <div class="box">
+      <div class="mark" aria-hidden="true">northstar</div>
+      <div id="drone" role="img" aria-label="A Northstar survey drone in flight">
+        <div class="shadow"></div>
+        <img src="media/drone-body.png" srcset="media/drone-body-s.png 520w, media/drone-body.png 1016w" sizes="52vw" alt="">
+        <i class="rotor r1"></i><i class="rotor r2"></i><i class="rotor r3"></i>
+      </div>
+    </div>
+    <div class="foot">
+      <p class="tag">Intelligence that moves beyond the screen.<span>Physical AI for the real world.</span></p>
+      <p class="scroll">Scroll down <i aria-hidden="true"><b></b><b></b><b></b></i></p>
+    </div>
+  </div>
+</section>
+
+<section id="intro" aria-label="What Northstar does">
+  <div class="stick wrap">
+    <div class="grid">
+      <div class="txt"><p class="h32 reveal" data-scrub="intro">We bring intelligence into the physical world through autonomous drones, quadruped robots, humanoid robotics, and connected industrial systems.</p></div>
+      <div class="vid">
+        <div class="frame">
+          <video data-src="../media/bg-air-1600.mp4" data-src-s="../media/bg-air-960.mp4" muted playsinline loop preload="none" poster="../media/bg-air.jpg"></video>
+          <video data-src="../media/bg-human-1600.mp4" data-src-s="../media/bg-human-960.mp4" muted playsinline loop preload="none" poster="../media/bg-human.jpg"></video>
+          <video data-src="../media/bg-quad-1600.mp4" data-src-s="../media/bg-quad-960.mp4" muted playsinline loop preload="none" poster="../media/bg-quad.jpg"></video>
+        </div>
+        <div class="cap mono"><span class="lbl br"><span class="on">Aerial</span><span>Humanoid</span><span>Ground</span></span><span class="br" id="introN">01 / 03</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vision" class="sec wrap">
+  <div class="shead"><h2 class="disp letters" aria-label="Vision">Vision</h2><span class="num">01</span></div>
+  <div class="grid lead">
+    <p class="mono dot">The Northstar vision</p>
+    <div class="copy">
+      <p class="h24 reveal" data-scrub="self">The physical world is ready for intelligence. For decades, enterprise technology has focused on digitizing information. The next frontier is enabling intelligence to interact with the physical world.</p>
+      <p class="h24 reveal" data-scrub="self">Northstar is building the intelligence layer between AI and the real world.</p>
+    </div>
+  </div>
+</section>
+
+<section id="dial" aria-label="The coordination layer">
+  <div class="stick">
+    <div class="intro"><span class="mono br">The coordination layer</span><p>Northstar serves as the coordination layer between machines, sensors, enterprise information, and the people responsible for operating physical assets.</p></div>
+    <div class="arcw">
+      <svg viewBox="0 0 600 300" aria-hidden="true">
+        <path d="M 6 300 A 294 294 0 0 1 594 300" fill="none" stroke="rgba(16,43,78,.18)" stroke-width="1"/>
+        <path id="arcOn" d="M 6 300 A 294 294 0 0 1 594 300" fill="none" stroke="#102B4E" stroke-width="1" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+        <g id="ticks"></g>
+        <circle id="arcDot" r="4" fill="#245FFF"/>
+      </svg>
+      <p class="def" id="dialDef"></p>
+      <span class="lbl mono br" id="dialLbl">Perceive</span>
+      <div class="hub" id="hub" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="strip grid" role="list">
+      <div class="cell on" role="listitem"><span class="h32">Perceive.</span><span class="mono br">Multimodal perception</span></div>
+      <div class="cell" role="listitem"><span class="h32">Reason.</span><span class="mono br">Agentic AI</span></div>
+      <div class="cell" role="listitem"><span class="h32">Orchestrate.</span><span class="mono br">Mission orchestration</span></div>
+      <div class="cell" role="listitem"><span class="h32">Verify.</span><span class="mono br">QA &amp; verification</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="industries" class="sec wrap">
+  <div class="shead"><h2 class="disp letters" aria-label="Industries">Industries</h2><span class="num">02</span></div>
+  <p class="h24" style="margin-top:28px;color:var(--mid);max-width:24em">Built for environments where precision matters.</p>
+  <div class="tabs" role="tablist" aria-label="Industries"></div>
+  <div class="grid ind">
+    <div class="t fade" id="indTxt" role="tabpanel"></div>
+    <div class="img" id="indImg"></div>
+  </div>
+</section>
+
+<section id="technology" aria-label="Technology">
+  <div class="stick">
+    <div class="shead"><h2 class="disp letters" aria-label="Technology">Technology</h2><span class="num">03</span></div>
+    <div class="body">
+      <div class="grid">
+        <div class="list" role="tablist" aria-label="Systems"></div>
+        <div class="pic" id="techPic"></div>
+        <div class="info" id="techInfo"></div>
+      </div>
+      <span class="corner l mono br">Intelligence in every dimension</span><span class="corner r mono br" id="techN">01 / 04</span>
+    </div>
+  </div>
+</section>
+
+<section id="platform" class="sec wrap">
+  <div class="shead"><h2 class="disp letters" aria-label="Platform">Platform</h2><span class="num">04</span></div>
+  <div class="grid lead" style="padding-bottom:72px">
+    <p class="mono dot">The Northstar platform</p>
+    <div class="copy">
+      <p class="h24 reveal" data-scrub="self">One intelligence platform. Every physical system. An agentic intelligence and robotics orchestration platform designed to connect physical-world observations with autonomous workflows, intelligent analysis, and operational decision-making.</p>
+    </div>
+  </div>
+  <div id="terrain">
+    <div class="pin" data-x="-6" data-z="-2" data-lift="16"><button aria-expanded="false" aria-label="Show finding: Anomaly, Pump 3 thermal">+</button><div class="pc"><b>Anomaly · Pump 3 thermal</b><span class="mono">Illustrative finding</span></div></div>
+    <div class="pin" data-x="22" data-z="2" data-lift="22"><button aria-expanded="false" aria-label="Show finding: Verified, Valve 12 checklist">+</button><div class="pc"><b>Verified · Valve 12 checklist</b><span class="mono">Illustrative finding</span></div></div>
+    <div class="pin" data-x="14" data-z="20" data-lift="10"><button aria-expanded="false" aria-label="Show finding: Deviation, Level B2 vs BIM">+</button><div class="pc"><b>Deviation · Level B2 vs BIM</b><span class="mono">Illustrative finding</span></div></div>
+  </div>
+  <div class="tmeta mono"><span class="br">Illustrative · sample data</span><span class="br">Digital twin &amp; reality intelligence</span></div>
+  <div class="mods grid" id="mods"></div>
+</section>
+
+<section id="contact" class="wrap" style="padding-top:120px">
+  <div class="cmeta mono"><span class="br">Contact</span><span class="br">Intelligence beyond the digital world</span></div>
+  <div class="grid ctop">
+    <div class="l"><h2 class="h32">The future of intelligence is physical.</h2></div>
+    <div class="r">
+      <p class="h24" style="color:var(--ink);margin:0">Bring autonomous intelligence into your operations.</p>
+      <p>From construction quality assurance to industrial inspection and intelligent asset monitoring, Northstar is building the next generation of physical AI solutions.</p>
+      <div class="row"><a class="btn" href="../#contact">Partner with us <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn ghost" href="../">Explore Northstar</a></div>
+      <p class="quote">Let's build a world where machines don't just operate — they understand.</p>
+    </div>
+  </div>
+  <footer class="grid">
+    <div class="logo"><img src="../brand/northstar-flight-ribbon.svg" alt="Northstar"><p>Physical AI. Autonomous Systems. Real-World Intelligence.</p></div>
+    <div class="cols">
+      <div><h4>Explore</h4><a href="#vision">Vision</a><a href="#industries">Industries</a><a href="#technology">Technology</a><a href="#platform">Platform</a></div>
+      <div><h4>Northstar</h4><a href="../">Main site</a><a href="../#contact">Talk to our team</a></div>
+    </div>
+  </footer>
+  <div class="legal mono"><span>© Northstar - A HuntGlobal Venture. All rights reserved.</span><span>Intelligence Beyond the Digital World.</span></div>
+</section>
+</main>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, small = matchMedia('(max-width: 860px)').matches;
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v)), band = (p, a, b) => clamp((p - a) / (b - a));
+const ease = u => 1 - Math.pow(1 - u, 3), inout = u => u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+gsap.registerPlugin(ScrollTrigger);
+
+// ---- content: the founders' approved copy ----
+const IND = [
+  { n: 'Manufacturing', img: 'ind-manufacturing', h: 'Industrial assets &amp; manufacturing', p: 'Support equipment condition monitoring, visual quality inspections, thermal anomaly detection, production-facility walkthroughs, and asset documentation.', u: ['Equipment condition monitoring', 'Visual quality inspections', 'Thermal anomaly detection', 'Production-facility walkthroughs', 'Asset documentation'] },
+  { n: 'Energy', img: 'ind-energy', h: 'Energy &amp; utilities', p: 'Inspect selected energy infrastructure, solar installations, substations, and utility assets through aerial imaging, thermal analysis, connected sensors, and robotic observation.', u: ['Solar installations', 'Substations', 'Utility assets', 'Thermal analysis'] },
+  { n: 'Oil &amp; gas', img: 'ind-oilgas', h: 'Oil, gas &amp; process facilities', p: 'Support remote visual inspection, equipment condition assessment, thermal observations, and routine monitoring in suitable industrial operating environments.', u: ['Remote visual inspection', 'Equipment condition assessment', 'Thermal observations', 'Routine monitoring'] },
+  { n: 'Infrastructure', img: 'ind-infra', h: 'Infrastructure &amp; civil engineering', p: 'Monitor roads, bridges, rail corridors, tunnels, and large-scale civil assets through reality capture, structural-condition observations, and change detection.', u: ['Roads and bridges', 'Rail corridors and tunnels', 'Structural-condition observations', 'Change detection'] },
+  { n: 'Logistics', img: 'ind-logistics', h: 'Warehouses &amp; logistics facilities', p: 'Enable inventory-area observation, facility inspection, equipment monitoring, and spatial documentation through autonomous mobile platforms and connected intelligence.', u: ['Inventory-area observation', 'Facility inspection', 'Equipment monitoring', 'Spatial documentation'] },
+];
+const TECH = [
+  { n: 'Drones', img: 'fleet-drone', alt: 'A Northstar drone hovering over a construction site', h: 'Intelligence from above.', p: ['Capture, map, monitor, and inspect complex environments from the air.', 'Our drone-enabled workflows support aerial surveying, photogrammetry, LiDAR scanning, thermal imaging, infrastructure inspection, volumetric analysis, and construction progress monitoring.'], c: ['Aerial reality capture', 'Mapping & 3D reconstruction', 'Progress monitoring', 'Thermal inspection', 'Asset verification'] },
+  { n: 'Quadruped', img: 'fleet-quad', alt: 'A four-legged inspection robot in an industrial hall', h: 'Intelligence on the ground.', p: ['Four-legged robotic platforms extend inspection capabilities into complex industrial and construction environments.', 'They enable consistent data collection across large facilities, plant rooms, corridors, and other challenging operational environments.'], c: ['Autonomous patrols', 'Ground reality capture', 'Thermal monitoring', 'Equipment inspection', 'Remote observation'] },
+  { n: 'Humanoid', img: 'fleet-humanoid', alt: 'A humanoid robot walking through a plant room', h: 'Intelligence that works alongside people.', p: ['Humanoid robotics represents the next evolution of embodied intelligence, bringing AI-assisted perception and manipulation into human-designed environments.', 'Our approach combines visual reasoning, task planning, robotic control, and human oversight to progressively extend the role of autonomous systems in industrial operations.'], c: ['Embodied AI', 'Visual inspection', 'Human-robot collaboration', 'Task planning', 'Physical workflow assistance'] },
+  { n: 'IoT &amp; edge', img: 'fleet-iot', alt: 'Connected industrial sensors in a facility', h: 'Intelligence from every connected asset.', p: ['Not every inspection requires a moving robot.', 'Northstar connects industrial sensors, cameras, edge devices, and operational systems to create a continuous flow of physical-world intelligence.'], c: ['Sensor integration', 'Edge AI', 'Condition monitoring', 'Anomaly detection', 'Equipment telemetry'] },
+];
+const DIAL = [
+  ['Perceive', 'Combine imagery, video, LiDAR, point clouds, thermal data, and sensor telemetry to build contextual understanding of sites, structures, equipment, and physical environments.'],
+  ['Reason', 'AI agents interpret observations against inspection requirements, drawings, asset records, operating procedures, and historical evidence to identify anomalies, prioritize issues, and recommend follow-up actions.'],
+  ['Orchestrate', 'Plan, assign, and coordinate inspection missions across supported drones, ground robots, and connected systems.'],
+  ['Verify', 'Compare observed site conditions with defined specifications, BIM models, inspection checklists, and quality requirements.'],
+];
+const MODS = [
+  ['Autonomous mission orchestration', 'Plan, assign, and coordinate inspection missions across supported drones, ground robots, and connected systems. Manage recurring capture activities and mission execution through centralized workflows.'],
+  ['Multimodal perception & spatial intelligence', 'Combine imagery, video, LiDAR, point clouds, thermal data, and sensor telemetry to build contextual understanding of sites, structures, equipment, and physical environments.'],
+  ['Agentic AI & intelligent reasoning', 'AI agents interpret observations against inspection requirements, drawings, asset records, operating procedures, and historical evidence to identify anomalies, prioritize issues, and recommend follow-up actions.'],
+  ['AI-powered QA & verification', 'Compare observed site conditions with defined specifications, BIM models, inspection checklists, and quality requirements. Generate evidence-linked findings, identify possible deviations, and support verification workflows.'],
+  ['Digital twin & reality intelligence', 'Connect captured site conditions with spatial models and digital asset records to maintain a contextual view of the physical environment and its changes over time.'],
+  ['Enterprise integration & human oversight', 'Connect intelligence with construction, asset management, maintenance, and enterprise systems. Keep humans in control of safety-critical decisions, corrective actions, and formal approvals.'],
+];
+const esc = s => s.replace(/&(?!amp;)/g, '&amp;');
+
+// ---- smooth scroll: one controller, ScrollTrigger reads it ----
+let lenis = null;
+if (!reduce && window.Lenis) {
+  lenis = new Lenis({ lerp: .1, wheelMultiplier: 1 });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
+}
+$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = $(a.getAttribute('href')); if (!t) return; e.preventDefault(); const y = t.getBoundingClientRect().top + scrollY - (a.getAttribute('href') === '#top' ? 0 : 0); lenis ? lenis.scrollTo(y, { duration: 1.6 }) : scrollTo({ top: y, behavior: 'smooth' }); }));
+
+// ---- word-by-word reveal tied to scroll ----
+function splitWords(el) { el.innerHTML = el.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span>`).join(' '); return $$('.w', el); }
+const reveals = $$('.reveal').map(el => ({ el, words: splitWords(el), mode: el.dataset.scrub }));
+function paint(r, u) { const n = Math.round(u * r.words.length); r.words.forEach((w, i) => w.classList.toggle('on', i < n)); }
+reveals.filter(r => r.mode === 'self').forEach(r => ScrollTrigger.create({ trigger: r.el, start: 'top 85%', end: 'bottom 45%', onUpdate: s => paint(r, s.progress), onRefresh: s => paint(r, s.progress) }));
+
+// ---- display headings: letters arrive when the section enters ----
+$$('.letters').forEach(h => {
+  h.innerHTML = [...h.textContent].map((c, i) => `<span aria-hidden="true" style="transition-delay:${i * 45}ms">${c}</span>`).join('');
+  ScrollTrigger.create({ trigger: h, start: 'top 88%', onEnter: () => h.parentElement.classList.add('in'), onLeaveBack: () => h.parentElement.classList.remove('in') });
+});
+
+// ---- hero: the drone rises out of the wordmark, holds, banks and flies off; rotors never stop ----
+const drone = $('#drone'), mark = $('#hero .mark');
+function heroAt(p) {
+  const a = ease(band(p, 0, .42)), b = inout(band(p, .5, 1));
+  const x = -50 + b * 70, y = -50 + (1 - a) * 34 - b * 120, s = (.72 + .28 * a) * (1 - .45 * b), r = (1 - a) * -3 - b * 9;
+  const bob = reduce ? 0 : Math.sin(performance.now() / 900) * .8;
+  drone.style.transform = `translate(${x}%, calc(${y}% + ${bob}px)) scale(${s}) rotate(${r}deg)`;
+  mark.style.transform = `translateY(${-p * 9}vh)`; mark.style.opacity = 1 - band(p, .55, 1) * .7;
+}
+let heroP = 0;
+ScrollTrigger.create({ trigger: '#hero', start: 'top top', end: 'bottom bottom', onUpdate: s => { heroP = s.progress; } });
+(function loop() { if (heroP < 1) heroAt(heroP); requestAnimationFrame(loop); })();
+
+// ---- intro: text reveals while the three systems play in turn ----
+const vids = $$('#intro video'), introR = reveals.find(r => r.mode === 'intro'), lbls = $$('#intro .lbl span');
+let curV = -1;
+function showVid(k) {
+  if (k === curV) return; curV = k;
+  vids.forEach((v, i) => {
+    const on = i === k; v.classList.toggle('on', on); lbls[i].classList.toggle('on', on);
+    if (on) { if (!v.src) { v.src = small ? v.dataset.srcS : v.dataset.src; } if (!reduce) v.play().catch(() => {}); } else v.pause();
+  });
+  $('#introN').textContent = `0${k + 1} / 03`;
+  const next = vids[k + 1]; if (next && !next.src) { next.preload = 'auto'; next.src = small ? next.dataset.srcS : next.dataset.src; }
+}
+ScrollTrigger.create({ trigger: '#intro', start: 'top 70%', end: 'bottom bottom', onUpdate: s => { paint(introR, band(s.progress, .05, .62)); showVid(Math.min(2, Math.floor(band(s.progress, .1, 1) * 3))); }, onEnter: () => showVid(0) });
+
+// ---- coordination dial ----
+const cells = $$('#dial .cell'), arcOn = $('#arcOn'), arcDot = $('#arcDot'), hubDots = $$('#hub i'), ticks = $('#ticks');
+for (let i = 0; i <= 24; i++) { const a = Math.PI - i / 24 * Math.PI, R = 294, l = i % 8 === 0 ? 14 : 6; ticks.insertAdjacentHTML('beforeend', `<line x1="${300 + Math.cos(a) * R}" y1="${300 - Math.sin(a) * R}" x2="${300 + Math.cos(a) * (R - l)}" y2="${300 - Math.sin(a) * (R - l)}" stroke="rgba(16,43,78,${l > 6 ? .4 : .2})"/>`); }
+const HUB = [[[0, -6], [5, -2], [-5, -2], [3, 5], [-3, 5], [0, 0]], [[-6, -6], [6, -6], [0, 0], [-6, 6], [6, 6], [0, -9]], [[0, -9], [8, -4], [8, 5], [0, 9], [-8, 5], [-8, -4]], [[-8, 0], [-3, 5], [2, 0], [7, -5], [12, -10], [-3, 5]]];
+let curD = -1;
+function dialAt(p) {
+  const u = band(p, .04, .96), k = Math.min(3, Math.floor(u * 4));
+  arcOn.style.strokeDashoffset = 1 - u;
+  const a = Math.PI - u * Math.PI; arcDot.setAttribute('cx', 300 + Math.cos(a) * 294); arcDot.setAttribute('cy', 300 - Math.sin(a) * 294);
+  if (k === curD) return; curD = k;
+  cells.forEach((c, i) => c.classList.toggle('on', i === k));
+  $('#dialLbl').textContent = DIAL[k][0]; $('#dialDef').textContent = DIAL[k][1];
+  hubDots.forEach((d, i) => { const [x, y] = HUB[k][i]; d.style.transform = `translate(${x}px,${y}px)`; });
+}
+dialAt(0);
+ScrollTrigger.create({ trigger: '#dial', start: 'top top', end: 'bottom bottom', onUpdate: s => dialAt(s.progress) });
+
+// ---- industries tabs ----
+const tabs = $('#industries .tabs'), indTxt = $('#indTxt'), indImg = $('#indImg');
+IND.forEach((d, i) => {
+  tabs.insertAdjacentHTML('beforeend', `<button role="tab" id="tab${i}" aria-controls="indTxt" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${d.n}</button>`);
+  indImg.insertAdjacentHTML('beforeend', `<img src="media/${d.img}.jpg" alt="" loading="lazy" class="${i === 0 ? 'on' : ''}">`);
+});
+function showInd(k) {
+  $$('button', tabs).forEach((b, i) => { b.setAttribute('aria-selected', i === k); b.tabIndex = i === k ? 0 : -1; });
+  $$('img', indImg).forEach((m, i) => m.classList.toggle('on', i === k));
+  indTxt.style.opacity = 0;
+  setTimeout(() => { const d = IND[k]; indTxt.setAttribute('aria-labelledby', 'tab' + k); indTxt.innerHTML = `<p class="mono br" style="color:var(--mid);margin-bottom:18px">${d.h}</p><p>${d.p}</p><ul>${d.u.map(x => `<li>${x}</li>`).join('')}</ul>`; indTxt.style.opacity = 1; }, reduce ? 0 : 160);
+}
+tabs.addEventListener('click', e => { const b = e.target.closest('button'); if (b) showInd($$('button', tabs).indexOf(b)); });
+tabs.addEventListener('keydown', e => { const bs = $$('button', tabs), i = bs.indexOf(document.activeElement); if (i < 0) return; const n = e.key === 'ArrowRight' ? (i + 1) % bs.length : e.key === 'ArrowLeft' ? (i - 1 + bs.length) % bs.length : -1; if (n >= 0) { e.preventDefault(); bs[n].focus(); showInd(n); } });
+showInd(0);
+
+// ---- technology: pinned, the scroll walks through the four systems ----
+const list = $('#technology .list'), pic = $('#techPic'), info = $('#techInfo');
+TECH.forEach((d, i) => {
+  list.insertAdjacentHTML('beforeend', `<button class="h28" role="tab" aria-selected="${i === 0}">${d.n}</button>`);
+  pic.insertAdjacentHTML('beforeend', `<img src="media/${d.img}.jpg" alt="${d.alt}" loading="lazy">`);
+  info.insertAdjacentHTML('beforeend', `<div class="card" role="tabpanel"><h3 class="h32">${d.h}</h3>${d.p.map(x => `<p>${x}</p>`).join('')}<div class="caps mono">${d.c.map(x => `<span class="br">${esc(x)}</span>`).join('')}</div></div>`);
+});
+let curT = -1;
+function techAt(k) {
+  if (k === curT) return; curT = k;
+  $$('button', list).forEach((b, i) => { b.classList.toggle('on', i === k); b.setAttribute('aria-selected', i === k); });
+  $$('img', pic).forEach((m, i) => m.classList.toggle('on', i === k));
+  $$('.card', info).forEach((c, i) => c.classList.toggle('on', i === k));
+  $('#techN').textContent = `0${k + 1} / 04`;
+}
+techAt(0);
+const techST = ScrollTrigger.create({ trigger: '#technology', start: 'top top', end: 'bottom bottom', onUpdate: s => techAt(Math.min(3, Math.floor(band(s.progress, .04, .96) * 4))) });
+list.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const k = $$('button', list).indexOf(b), y = techST.start + (techST.end - techST.start) * (.04 + (k + .5) / 4 * .92); lenis ? lenis.scrollTo(y, { duration: 1.2 }) : scrollTo({ top: y, behavior: 'smooth' }); });
+
+// ---- platform modules ----
+$('#mods').innerHTML = MODS.map((m, i) => `<div class="mod"><span class="mono br">0${i + 1}</span><h3 class="h20">${esc(m[0])}</h3><p>${m[1]}</p></div>`).join('');
+
+// ---- header: the current section is marked ----
+const navA = $$('header nav a');
+['vision', 'industries', 'technology', 'platform'].forEach((id, i) => ScrollTrigger.create({ trigger: '#' + id, start: 'top 50%', end: 'bottom 50%', onToggle: s => navA[i].classList.toggle('on', s.isActive) }));
+
+// snapshot hook for tests: ?y=<px>
+const q = new URLSearchParams(location.search).get('y');
+if (q !== null) addEventListener('load', () => { const y = +q; lenis ? lenis.scrollTo(y, { immediate: true }) : scrollTo(0, y); ScrollTrigger.update(); });
+addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+<script src="terrain.js" defer></script>
+</body>
+</html>

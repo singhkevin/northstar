@@ -21,7 +21,7 @@
   ],
   "redirects": [
     {
-      "source": "/(v1|v3|v4)(/.*)?",
+      "source": "/(v1|v4)(/.*)?",
       "destination": "/",
       "permanent": false
     }
