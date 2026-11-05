@@ -30,3 +30,7 @@ Kevin topped up the Higgsfield API account (open.higgsfield.ai) on 28 Oct 2026, 
 | 5 Nov 2026 | Higgsfield API (Northstar account) | bytedance/seedance-2.5/text-to-video | SDK setup test: cinematic sunset, 5 s 720p 16:9 (Kevin approved the $2.31 quote; request 01a1a9bc-2f34-71b4-95ff-b60d5c2fbe43, completed) | 1 | $2.31 | $2.31 (est.) | No |
 
 **Total after the 5 Nov SDK test: $27.69** ($4.98 on the old shared account, $22.71 on the Northstar account). Quote is the list price from the model page ($0.4622/s at 720p), before any discount. Per the SDK docs, failed or nsfw requests are refunded; this one completed, so it is billed.
+
+| 5 Nov 2026 | Higgsfield API (Northstar account) | xai/grok-imagine-image-2.0 (edit) | Step 2 footage fix, key frames batch 1: opening wide, drone from behind, clear entrance, quadruped in hall, Vision wide, Contact background (6 frames × 2 tries; Kevin approved up to $13.11 for Step 2). All 12 completed, but **not yet downloaded**: the cloud session's network blocks Higgsfield's download server. Retrieve free with `node tools/hf_recover.mjs tools/jobs-v6-kf1.json` once it's allowed | 12 | $0.96 | $0.96 (est.) | Not yet |
+
+**Total after 5 Nov key frames batch 1: $28.65** ($4.98 on the old shared account, $23.67 on the Northstar account). Step 2 spend so far: $0.96 of the $13.11 Kevin approved. Current list prices (open.higgsfield.ai, 5 Nov): Grok Imagine 2.0 $0.04 to $0.08 per image; Kling O3 first/last frame $0.056/s on a 50% sale (about $0.28 per 5 s clip; $0.56 at standard rate).

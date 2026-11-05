@@ -98,3 +98,15 @@
 {"t":"2026-11-03T12:28:45.772Z","id":"v04","model":"kling-video/o3/first-last-frame","status":"completed","request_id":"01a1a15f-602c-7d52-aa70-e6141b3c38ab","usd":0.476}
 {"t":"2026-11-03T12:31:36.181Z","id":"c13b","model":"kling-video/o3/first-last-frame","status":"completed","request_id":"01a1a163-062f-79c6-9e4c-63ab92cbba5c","usd":0.476}
 {"t":"2026-11-03T12:31:43.044Z","id":"v02b","model":"kling-video/o3/first-last-frame","status":"completed","request_id":"01a1a163-072a-7e7e-a16e-84be1df01e1f","usd":0.476}
+{"t":"2026-11-05T03:34:13.509Z","id":"w01a","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c5-1d0b-70f5-b24f-49c36be12538","usd":0.08}
+{"t":"2026-11-05T03:34:13.682Z","id":"w01b","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c5-1e0a-7699-aebd-4587f7d5dc2e","usd":0.08}
+{"t":"2026-11-05T03:34:15.637Z","id":"k03na","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c5-1d9a-7f68-a7e4-b264a56e6a12","usd":0.08}
+{"t":"2026-11-05T03:34:37.069Z","id":"k03nb","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c5-79ed-7135-83cf-04721f1c57de","usd":0.08}
+{"t":"2026-11-05T03:34:38.610Z","id":"k04na","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c5-7fcf-7505-b8de-e6ea763cb009","usd":0.08}
+{"t":"2026-11-05T03:34:39.107Z","id":"k04nb","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c5-822c-791f-a194-c3326b4c1684","usd":0.08}
+{"t":"2026-11-05T03:35:02.188Z","id":"k10nb","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c5-dbf8-775d-8f40-166390d4731f","usd":0.08}
+{"t":"2026-11-05T03:35:08.381Z","id":"k10na","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c5-da21-7a2b-9cac-d85ab33b058d","usd":0.08}
+{"t":"2026-11-05T03:35:11.165Z","id":"vwa","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c5-e330-7bca-9b67-d79dd6de19d3","usd":0.08}
+{"t":"2026-11-05T03:35:30.122Z","id":"vwb","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c6-381c-783a-84f2-d5172393b928","usd":0.08}
+{"t":"2026-11-05T03:35:33.953Z","id":"cta","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c6-5031-72a8-a80b-598a4806ce99","usd":0.08}
+{"t":"2026-11-05T03:35:43.635Z","id":"ctb","model":"xai/grok-imagine-image-2.0","status":"completed","request_id":"01a1a9c6-5b0c-797b-b21d-29e88afe248a","usd":0.08}

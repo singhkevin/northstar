@@ -1,0 +1,162 @@
+[
+ {
+  "id": "w01a",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/w01a.png",
+  "input": {
+   "prompt": "Pull the camera far back and higher to a very wide high aerial establishing view of this same construction site, with the same yellow crane, concrete cores, curving site roads and the grey building on the right, all now much smaller. The drone is tiny and far away near the horizon in the upper-left third, under 4 percent of the frame width, flying in towards the camera. Most of the frame is the calm wide site. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/kf/k02a.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "w01b",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/w01b.png",
+  "input": {
+   "prompt": "Pull the camera far back and higher to a very wide high aerial establishing view of this same construction site, with the same yellow crane, concrete cores, curving site roads and the grey building on the right, all now much smaller. The drone is tiny and far away near the horizon in the upper-left third, under 4 percent of the frame width, flying in towards the camera. Most of the frame is the calm wide site. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/kf/k02a.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "k03na",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/k03na.png",
+  "input": {
+   "prompt": "Same scene and camera. Turn the drone around: we now see it from behind in a three-quarter rear view, its nose and gimbal camera pointing away from us towards the building's large entrance, flying level towards it; make it a little smaller, about 7 percent of the frame width. The building's entrance clearly shows an overhead horizontally slatted steel roller shutter rolled fully up at the top of the opening, the opening clear. Keep the building, site and light identical. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/kf/k03a.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "k03nb",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/k03nb.png",
+  "input": {
+   "prompt": "Same scene and camera. Turn the drone around: we now see it from behind in a three-quarter rear view, its nose and gimbal camera pointing away from us towards the building's large entrance, flying level towards it; make it a little smaller, about 7 percent of the frame width. The building's entrance clearly shows an overhead horizontally slatted steel roller shutter rolled fully up at the top of the opening, the opening clear. Keep the building, site and light identical. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/kf/k03a.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "k04na",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/k04na.png",
+  "input": {
+   "prompt": "Same building, entrance and camera position, with the camera raised slightly to about two metres. Clear almost all the dust and fog: only a faint haze remains, so the building, the doorway, the ground and the aisle inside are sharp and clear. The overhead horizontally slatted steel roller shutter is rolled fully up at the top of the opening and stays there. No doors at the sides of the opening. No drone, no robots. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/kf/k04b.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "k04nb",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/k04nb.png",
+  "input": {
+   "prompt": "Same building, entrance and camera position, with the camera raised slightly to about two metres. Clear almost all the dust and fog: only a faint haze remains, so the building, the doorway, the ground and the aisle inside are sharp and clear. The overhead horizontally slatted steel roller shutter is rolled fully up at the top of the opening and stays there. No doors at the sides of the opening. No drone, no robots. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/kf/k04b.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "k10na",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/k10na.png",
+  "input": {
+   "prompt": "Same hall, same windows, beams, stairs, lighting and camera. The same four-legged robot now stands still, closer to the camera, in a three-quarter view facing right, at about 60 percent across the frame, about 26 percent of the frame width, complete from its sensor head to all four feet on the floor. In the back wall of the hall a huge open loading bay shows the misty construction site outside at dawn. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/kf/k09a.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "k10nb",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/k10nb.png",
+  "input": {
+   "prompt": "Same hall, same windows, beams, stairs, lighting and camera. The same four-legged robot now stands still, closer to the camera, in a three-quarter view facing right, at about 60 percent across the frame, about 26 percent of the frame width, complete from its sensor head to all four feet on the floor. In the back wall of the hall a huge open loading bay shows the misty construction site outside at dawn. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/kf/k09a.png"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "vwa",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/vwa.png",
+  "input": {
+   "prompt": "A very wide high aerial establishing shot of a large industrial process campus seen from a new direction: plant buildings, long pipe racks, storage tanks and a cooling tower, roads and a wide concrete apron between them, low mist in the hollows. No cranes, no construction site, no robots, no drone. Calm, epic scale. The lower-left third is darker quiet ground. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/ref/f14.0.jpg",
+    "@file:assets/v5/ref/f16.0.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "vwb",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/vwb.png",
+  "input": {
+   "prompt": "A very wide high aerial establishing shot of a large industrial process campus seen from a new direction: plant buildings, long pipe racks, storage tanks and a cooling tower, roads and a wide concrete apron between them, low mist in the hollows. No cranes, no construction site, no robots, no drone. Calm, epic scale. The lower-left third is darker quiet ground. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/ref/f14.0.jpg",
+    "@file:assets/v5/ref/f16.0.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "cta",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/cta.png",
+  "input": {
+   "prompt": "A calm ground-level view along a quiet wide concrete road between tall industrial plant buildings with pipework and lit windows, at deep blue hour, the road leading away to a soft glow on the horizon. Dark and moody, low contrast, plenty of quiet dark space on both the left and right halves of the frame. No robots, no drone, no vehicles. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/ref/f14.0.jpg",
+    "@file:assets/v5/ref/f16.0.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ },
+ {
+  "id": "ctb",
+  "model": "xai/grok-imagine-image-2.0",
+  "usd": 0.08,
+  "out": "assets/v6/kf/ctb.png",
+  "input": {
+   "prompt": "A calm ground-level view along a quiet wide concrete road between tall industrial plant buildings with pipework and lit windows, at deep blue hour, the road leading away to a soft glow on the horizon. Dark and moody, low contrast, plenty of quiet dark space on both the left and right halves of the frame. No robots, no drone, no vehicles. Keep the same photorealistic cinematic look: blue hour just before sunrise, cool steel-blue shadows, thin mist, pale highlights, subtle film grain, 35mm lens, believable scale. No text, no logos, no people.",
+   "image_urls": [
+    "@file:assets/v5/ref/f14.0.jpg",
+    "@file:assets/v5/ref/f16.0.jpg"
+   ],
+   "aspect_ratio": "16:9"
+  }
+ }
+]
