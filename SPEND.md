@@ -26,3 +26,7 @@ Kevin topped up the Higgsfield API account (open.higgsfield.ai) on 28 Oct 2026, 
 | 3 Nov 2026 | Higgsfield API (Northstar account) | kling-video/o3/first-last-frame | Re-dos: quadruped departure (came too close), Vision drone-to-humanoid (crane inside room) | 2 | $0.95 | $0.95 (est.) | Review |
 
 **Total after the 3 Nov refinement: $25.38** ($4.98 on the old shared account, $20.40 on the Northstar account). The 3 Nov pass cost $11.56 against the $13 Kevin approved.
+
+| 5 Nov 2026 | Higgsfield API (Northstar account) | bytedance/seedance-2.5/text-to-video | SDK setup test: cinematic sunset, 5 s 720p 16:9 (Kevin approved the $2.31 quote; request 01a1a9bc-2f34-71b4-95ff-b60d5c2fbe43, completed) | 1 | $2.31 | $2.31 (est.) | No |
+
+**Total after the 5 Nov SDK test: $27.69** ($4.98 on the old shared account, $22.71 on the Northstar account). Quote is the list price from the model page ($0.4622/s at 720p), before any discount. Per the SDK docs, failed or nsfw requests are refunded; this one completed, so it is billed.
