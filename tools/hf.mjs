@@ -1,19 +1,21 @@
 // Runs a list of Higgsfield jobs. Any input string "@file:<path>" is uploaded first and replaced by its CDN URL.
 // Every paid call is appended to ../assets/ledger.jsonl (id, model, status, request id, quoted USD).
 // Usage: node hf.mjs <jobs.json> [onlyId ...]
-import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
-const HF = '/Users/kevinsingh/Desktop/Projects/higgsfield-seedance';
-const require = createRequire(HF + '/package.json');
-// Northstar uses its OWN Higgsfield account (29 Oct 2026): the key lives only in Northstar/.env.local.
-// No fallback to the shared studio key, so Northstar spend can never land on the wrong account.
-require('dotenv').config({ path: '/Users/kevinsingh/Desktop/Projects/Northstar/.env.local', quiet: true });
-if (!/^[^:\s]+:[^:\s]+$/.test(process.env.HF_CREDENTIALS || '')) { console.error('No Northstar Higgsfield key: set HF_CREDENTIALS=key-id:secret in Northstar/.env.local'); process.exit(1); }
-const { config, higgsfield } = await import(HF + '/node_modules/@higgsfield/client/dist/v2/index.js');
+import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+// The key lives only in <repo>/.env.local (HF_CREDENTIALS=key-id:secret).
+try {
+  for (const line of fs.readFileSync(ROOT + '/.env.local', 'utf8').split('\n')) {
+    const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*"?([^"\n]*)"?\s*$/);
+    if (m && !(m[1] in process.env)) process.env[m[1]] = m[2];
+  }
+} catch {}
+if (!/^[^:\s]+:[^:\s]+$/.test(process.env.HF_CREDENTIALS || '')) { console.error('No Higgsfield key: set HF_CREDENTIALS=key-id:secret in .env.local'); process.exit(1); }
+const { config, higgsfield } = await import('@higgsfield/client/v2');
 config({ credentials: process.env.HF_CREDENTIALS, maxPollTime: 20 * 60 * 1000 });
 const AUTH = { Authorization: 'Key ' + process.env.HF_CREDENTIALS, 'Content-Type': 'application/json' };
-const ROOT = '/Users/kevinsingh/Desktop/Projects/Northstar';
 const LEDGER = ROOT + '/assets/ledger.jsonl';
 
 const uploads = new Map();
