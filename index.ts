@@ -19,18 +19,18 @@ const MODEL = 'bytedance/seedance-2.5/text-to-video';
 const input = { prompt: 'A cinematic scene at sunset', duration: 5, resolution: '720p', aspect_ratio: '16:9' };
 
 try {
-  const jobSet = await higgsfield.subscribe(MODEL, { input, withPolling: true });
-  const job = jobSet.jobs[0];
-  const status = String(job?.status ?? 'unknown');
-  const url = job?.results?.raw?.url;
-  console.log(`request ${jobSet.id}: status ${status}`);
+  // The SDK returns the plain API response: { status, request_id, video?: { url }, images? }
+  const result = await higgsfield.subscribe(MODEL, { input, withPolling: true });
+  const status = String(result?.status ?? 'unknown');
+  const url = result?.video?.url;
+  console.log(`request ${result?.request_id}: status ${status}`);
 
-  if (jobSet.isCompleted && url) {
+  if (status === 'completed' && url) {
     console.log(`Video URL: ${url}`);
-  } else if (jobSet.isNsfw) {
+  } else if (status === 'nsfw') {
     console.error('Not generated: the request was rejected by content moderation (credits are refunded).');
     process.exitCode = 2;
-  } else if (jobSet.isFailed) {
+  } else if (status === 'failed') {
     console.error('Not generated: the generation failed (credits are refunded).');
     process.exitCode = 2;
   } else if (status === 'canceled' || status === 'cancelled') {
