@@ -70,10 +70,10 @@ Others:
 
 | Path | What it is |
 |---|---|
-| `site-v2/` | The published site. `index.html` is generated, so never hand-edit it |
+| `site-v2/` | The published site. **Since 13 Nov the home page is the hand-written /v6 design; see README.md.** The film page described below now lives at `site-v2/archive/v1/` |
 | `site-v2/vercel.json` | Noindex header, media caching, old-version redirects |
 | `tools/v4_engine.js`, `tools/v4.css`, `tools/v4_form.js` | Edit these. `SEG` in the engine is the timeline and the source of truth for timings |
-| `tools/build_v4.py` | `python3 tools/build_v4.py` rebuilds `site-v2/index.html` |
+| `tools/build_v4.py` | Retired: it built the old film home page and would overwrite the current one |
 | `tools/v4_source.html` | The older page the build takes its loader, Site View and form from. Same as the old root |
 | `site-v2/ref/index.html`, `COPY.md`, `docs/source/NORTHSTAR-founders-copy.pdf` | Starting points for the content inventory, with `tools/v4_source.html` |
 | `archive/site-versions-2026-11-04/` | Older versions, which may hold more approved copy |

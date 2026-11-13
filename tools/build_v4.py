@@ -2,6 +2,8 @@
 """Build site-v2/index.html, the live main page (one continuous film), from tools/v4_source.html (the older page it takes its loader, Site View and form from).
 Keeps loader, header, Site View and form; replaces the page body with a single pinned stage."""
 import re, os, sys
+if '--i-know-this-overwrites-home' not in sys.argv:
+    sys.exit('build_v4.py is retired (13 Nov 2026): the home page is now the hand-written /v6 design, and this script would overwrite it.\nThe old film page lives at site-v2/archive/v1/. See README.md.')
 ROOT = os.path.join(os.path.dirname(__file__), '..', 'site-v2')
 src = open(os.path.join(os.path.dirname(__file__), 'v4_source.html')).read()
 
