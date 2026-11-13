@@ -4,7 +4,6 @@ Website for **Northstar**, which works on physical AI: autonomous drones, quadru
 
 It's a static site: plain HTML, CSS and JavaScript, with no framework and no build step to serve it. Everything the website serves is in `site/`.
 
-- **Live site:** https://northstar.viralinbound.in
 - **Preview:** https://northstar-khujinxxc-viral-inbound.vercel.app
 - **Hosting:** Vercel, project `northstar`, team `viral-inbound`
 
