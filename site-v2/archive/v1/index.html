@@ -13,8 +13,8 @@
 <meta property="og:url" content="https://northstar.viralinbound.in/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#060E1C">
-<link rel="icon" href="../brand/northstar-flight-ribbon-icon.svg" type="image/svg+xml">
-<link rel="preload" as="video" href="../media/hero-loop-e.mp4">
+<link rel="icon" href="../../brand/northstar-flight-ribbon-icon.svg" type="image/svg+xml">
+<link rel="preload" as="video" href="../../media/hero-loop-e.mp4">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -737,7 +737,6 @@ nav a:not(.on):not(:hover)::after{transition:none}
   .stop[data-side="bl"] .pnl .chips{margin-top:8px;gap:4px}
   .stop[data-side="bl"] .pnl .chips span{padding:3px 7px;font-size:9.5px}
 }
-#holo{position:absolute;inset:0;width:100%;height:100%;z-index:9;pointer-events:none;mix-blend-mode:screen}
 </style></head><body>
 
 <div id="loader" aria-hidden="true">
@@ -768,7 +767,7 @@ nav a:not(.on):not(:hover)::after{transition:none}
 </div>
 
 <header id="hdr">
-  <a class="logo" href="#top" aria-label="Northstar home"><img class="wt" src="../brand/northstar-flight-ribbon-compact-white.svg" alt="Northstar"><img class="dk" src="../brand/northstar-flight-ribbon-compact.svg" alt=""></a>
+  <a class="logo" href="#top" aria-label="Northstar home"><img class="wt" src="../../brand/northstar-flight-ribbon-compact-white.svg" alt="Northstar"><img class="dk" src="../../brand/northstar-flight-ribbon-compact.svg" alt=""></a>
   <nav><a href="#drone" data-go="d1">Drone</a><a href="#humanoid" data-go="h1">Humanoid</a><a href="#quadruped" data-go="q1">Quadruped</a><a href="#platform" data-go="plat">Platform</a><a href="#vision" data-go="brand">Vision</a><a href="#contact" data-go="contact">Contact</a></nav>
   <a class="btn" href="#contact" data-go="contact">Talk to our team <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
 </header>
@@ -780,9 +779,9 @@ nav a:not(.on):not(:hover)::after{transition:none}
     <video id="film" muted playsinline preload="auto"></video>
     <div id="mfade"></div><div id="dim"></div>
     <canvas id="cloud" aria-hidden="true"></canvas>
-    <video id="vis" muted playsinline preload="none" poster="../media/vision-e.jpg"></video>
-    <video id="bgcorr" muted playsinline loop preload="none" poster="../media/bg-corridor.jpg"></video>
-    <video id="loop" src="../media/hero-loop-e.mp4" muted playsinline loop autoplay preload="auto" poster="../media/poster-e.jpg"></video>
+    <video id="vis" muted playsinline preload="none" poster="../../media/vision-e.jpg"></video>
+    <video id="bgcorr" muted playsinline loop preload="none" poster="../../media/bg-corridor.jpg"></video>
+    <video id="loop" src="../../media/hero-loop-e.mp4" muted playsinline loop autoplay preload="auto" poster="../../media/poster-e.jpg"></video>
     <div class="grade"></div><div class="grain"></div>
     <div class="hud" id="hud">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -825,8 +824,8 @@ nav a:not(.on):not(:hover)::after{transition:none}
           <div id="viewList" role="tablist" aria-label="Views"></div>
         </div>
         <div class="map" id="map">
-          <img id="mapImg" src="../media/s-site.jpg" alt="Aerial capture of a construction site" loading="lazy">
-          <img id="mapImgB" class="cmpimg" src="../media/s-site.jpg" alt="" aria-hidden="true">
+          <img id="mapImg" src="../../media/s-site.jpg" alt="Aerial capture of a construction site" loading="lazy">
+          <img id="mapImgB" class="cmpimg" src="../../media/s-site.jpg" alt="" aria-hidden="true">
           <div class="layer" id="mlayer"></div>
           <div class="cmpline mono"><span>Last week</span><span>Today</span></div>
           <input type="range" id="cmp" min="2" max="98" value="50" aria-label="Drag to compare last week with today" hidden>
@@ -841,7 +840,7 @@ nav a:not(.on):not(:hover)::after{transition:none}
         </div>
       </div>
     </div>
-        <p class="illus mono">Illustrative interface · sample data · <a href="../media/northstar-sample-report.pdf" target="_blank" rel="noopener">sample report (PDF)</a></p>
+        <p class="illus mono">Illustrative interface · sample data · <a href="../../media/northstar-sample-report.pdf" target="_blank" rel="noopener">sample report (PDF)</a></p>
       </div>
     </div>
 
@@ -874,7 +873,7 @@ nav a:not(.on):not(:hover)::after{transition:none}
       <p class="formnote mono" id="formNote"></p>
       <p class="privacy">We only use these details to reply to your request.</p>
     </form>
-        <div class="cfoot mono"><img src="../brand/northstar-flight-ribbon-compact-white.svg" alt="Northstar"><span>© Northstar - A HuntGlobal Venture. All rights reserved.</span><span>Intelligence Beyond the Digital World.</span></div>
+        <div class="cfoot mono"><img src="../../brand/northstar-flight-ribbon-compact-white.svg" alt="Northstar"><span>© Northstar - A HuntGlobal Venture. All rights reserved.</span><span>Intelligence Beyond the Digital World.</span></div>
       </div>
     </div>
 
@@ -888,7 +887,7 @@ nav a:not(.on):not(:hover)::after{transition:none}
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const film = $('#film'), loop = $('#loop');
 const mobile = matchMedia('(max-width: 860px)').matches;
-film.src = mobile ? '../media/film-960-e.mp4' : '../media/film-1600-e.mp4';
+film.src = mobile ? '../../media/film-960-e.mp4' : '../../media/film-1600-e.mp4';
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Where demo requests go. Empty until the founders give us an inbox.
@@ -1181,8 +1180,8 @@ function sceneContact(u) {
 // ---- the next video is fetched only as the visitor approaches it ----
 let visReady = false, corrReady = false;
 function nextAssets(p) {
-  if (!visReady && p > SEGS.q1.p0) { visReady = true; vis.preload = 'auto'; vis.src = `../media/vision-${mobile ? 960 : 1600}-e.mp4`; vis.load(); }
-  if (!corrReady && p > SEGS.plat.p0) { corrReady = true; bgcorr.preload = 'auto'; bgcorr.src = `../media/bg-corridor-${mobile ? 960 : 1600}.mp4`; bgcorr.load(); }
+  if (!visReady && p > SEGS.q1.p0) { visReady = true; vis.preload = 'auto'; vis.src = `media/vision-${mobile ? 960 : 1600}-e.mp4`; vis.load(); }
+  if (!corrReady && p > SEGS.plat.p0) { corrReady = true; bgcorr.preload = 'auto'; bgcorr.src = `media/bg-corridor-${mobile ? 960 : 1600}.mp4`; bgcorr.load(); }
 }
 function vidOpacity(v, o) { v.style.opacity = o; if (o > 0.01) { if (v.paused && !reduce && v.src) { const pr = v.play(); if (pr) pr.catch(() => {}); } } else if (!v.paused) v.pause(); }
 
@@ -1262,7 +1261,6 @@ function frame(tms) {
   railItems.forEach((el, k) => { el.classList.toggle('on', k === shown); if (k === shown) el.setAttribute('aria-current', 'step'); else el.removeAttribute('aria-current'); });
   $('#hint').style.opacity = p > 0.02 ? 0 : 1;
 }
-window.NS = { S, SEG, SEGS, segAt, band, ease, fmap, STOP, isPhone, isCompact, reduce };
 requestAnimationFrame(frame);
 addEventListener('touchstart', () => { film.play().then(() => film.pause()).catch(() => {}); }, { once: true, passive: true });
 
@@ -1329,7 +1327,7 @@ function svSite(i) {
   SV.site = i; SV.sel = -1; svPop.hidden = true;
   const st = SITES[i];
   svImg.style.opacity = 0; svImgB.style.opacity = 0;
-  setTimeout(() => { svImg.src = '../media/' + st.img; svImgB.src = '../media/' + st.img; svImg.alt = st.alt; svImg.onload = () => { svImg.style.opacity = 1; svImgB.style.opacity = 1; }; }, 180);
+  setTimeout(() => { svImg.src = '../../media/' + st.img; svImgB.src = '../../media/' + st.img; svImg.alt = st.alt; svImg.onload = () => { svImg.style.opacity = 1; svImgB.style.opacity = 1; }; }, 180);
   svPins.innerHTML = ''; svIssues.innerHTML = '';
   st.f.forEach((f, k) => {
     const pin = document.createElement('button'); pin.type = 'button'; pin.className = 'pin ' + (f.s === 'h' ? 'hi' : f.s === 'o' ? 'ok' : ''); pin.style.left = f.x + '%'; pin.style.top = f.y + '%'; pin.textContent = k + 1; pin.setAttribute('aria-label', f.t); pin.addEventListener('click', () => svSelect(k)); svPins.append(pin);
@@ -1369,7 +1367,7 @@ function svApplyView() {
   else svTag.innerHTML = `<span>${st.tag[0]}</span><span>${st.tag[1]}</span>`;
   if (SV.view === 'rep') {
     svFeedTitle.textContent = 'Reports'; svHint.textContent = 'Sample reports built from the same findings.';
-    svIssues.innerHTML = [['Weekly progress report', st.n + ' · PDF · sample'], ['Safety observations', 'This week · PDF · sample'], ['Inspection evidence log', 'Georeferenced findings · PDF · sample']].map(r => `<a class="rep" href="../media/northstar-sample-report.pdf" target="_blank" rel="noopener"><div><h4>${r[0]}</h4><p>${r[1]}</p></div><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v9M4 7l4 4 4-4M3 14h10"/></svg></a>`).join('');
+    svIssues.innerHTML = [['Weekly progress report', st.n + ' · PDF · sample'], ['Safety observations', 'This week · PDF · sample'], ['Inspection evidence log', 'Georeferenced findings · PDF · sample']].map(r => `<a class="rep" href="../../media/northstar-sample-report.pdf" target="_blank" rel="noopener"><div><h4>${r[0]}</h4><p>${r[1]}</p></div><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v9M4 7l4 4 4-4M3 14h10"/></svg></a>`).join('');
   } else if (svFeedTitle.textContent !== 'Flagged') { svFeedTitle.textContent = 'Flagged'; svHint.textContent = 'Click a finding or a map marker to see where it is. Sample data.'; svSite(SV.site); }
 }
 svCmp.addEventListener('input', () => svMap.style.setProperty('--cmp', svCmp.value + '%'));
@@ -1419,5 +1417,4 @@ $('#app').addEventListener('click', e => { if (!e.target.closest('.pin') && !e.t
 }
 setTimeout(() => (window.__ready = true), 1500);
 </script>
-<script src="holo.js" defer></script>
 </body></html>
