@@ -31,9 +31,8 @@ The repo is large (about 600 MB of footage and source files). A shallow clone is
 | `/industries/` | `site-v2/industries/index.html` | Generated |
 | `/about/` | `site-v2/about/index.html` | Generated |
 | `/contact/` | `site-v2/contact/index.html` | Generated |
-| `/archive/v1/` … `/archive/v4/` | `site-v2/archive/` | Older design versions, kept for reference only. Don't edit them |
 
-The old addresses `/v1/` to `/v6/` redirect to `/` (see `site-v2/vercel.json`).
+This is the only version of the site in this repo. Old addresses (`/v1/` to `/v6/`, `/archive/`) redirect to `/` (see `site-v2/vercel.json`).
 
 ### Editing the inner pages
 
@@ -63,7 +62,7 @@ Commit the home page and the regenerated pages together.
 
 ### The two 3D bundles
 
-`drone.js` and `terrain.js` are compiled bundles recovered from Vercel preview `northstar-gxaxac387` on 13 Nov. The sources in `tools/v3_drone.js` and `tools/v3_terrain.js` belong to a later /v3 experiment: the drone source expects a `#dialRing` element that the home page doesn't have. **Don't rebuild these bundles from `tools/` unless you mean to change their behaviour**, and test the home page afterwards if you do. To rebuild: `npm install`, then `python3 tools/build_v3.py`, which writes to `site-v2/archive/v3/`.
+`drone.js` and `terrain.js` are compiled, minified bundles (three.js). Their sources are not in the current tree, so edit them with care and test the home page afterwards. Earlier sources are in git history (`git log --all -- tools/v3_drone.js`).
 
 ## Publishing
 
@@ -83,10 +82,9 @@ To roll back, use Vercel's rollback to an earlier deployment in the dashboard (`
 | Path | What it is |
 |---|---|
 | `tools/build_pages.py` | Builds the inner pages from the home page |
-| `tools/build_v4.py` | **Retired.** Built the old film home page, now at `/archive/v1/`. Running it would overwrite the current home page, so it refuses to run |
 | `tools/hf.mjs`, `tools/jobs-*.json`, `SPEND.md` | AI footage generation (Higgsfield) and its spend log. Paid: only with Kevin's approval |
-| `assets/`, `frames/`, `storyboard/` | Source footage, key frames and planning material, not served |
-| `HANDOVER.md`, `PLAN.md`, `docs/briefs/` | Project history and briefs. Parts describe the older film home page |
-| `BRAND-GUIDELINES.md`, `COPY.md` | Brand rules and approved copy |
+| `assets/` | Source footage and key frames (not served) |
+| `docs/briefs/`, `docs/source/` | Briefs and the founders' approved copy |
+| `BRAND-GUIDELINES.md`, `COPY.md`, `brand/`, `logo/` | Brand rules, approved copy and logo files |
 
 Keys (`.env`, `.env.local`) are never committed.
