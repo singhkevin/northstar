@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build Northstar's inner pages from the home page (site-v2/index.html).
+"""Build Northstar's inner pages from the home page (site/index.html).
 
 The home page is the single source: every inner page reuses its styles, header, sections,
 contact block and script, with a short page head on top. Run after editing index.html:
@@ -8,7 +8,7 @@ Copy on every page is the founders' approved copy already on the home page; noth
 """
 import re, pathlib
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent / 'site-v2'
+ROOT = pathlib.Path(__file__).resolve().parent.parent / 'site'
 home = (ROOT / 'index.html').read_text()
 
 PAGES = {

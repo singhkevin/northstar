@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Industries · Northstar · Physical AI</title>
+<meta name="description" content="Northstar brings intelligence into the physical world through autonomous drones, quadruped robots, humanoid robotics, and connected industrial systems.">
+<link rel="icon" href="/brand/northstar-flight-ribbon-icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Northstar website. Brand, copy, images, drone and 3D are Northstar's own. */
+:root{
+  --bg:#FDFDFE;--paper:#fff;--hero-a:#E4EAF2;--ink:#102B4E;--text:#1B2F4B;--muted:#687791;--mid:#5A6B85;
+  --line:#E3EAF4;--line2:#CFD9E6;--flight:linear-gradient(100deg,#00CDD9 0%,#009CF4 32%,#245FFF 70%,#9471FF 100%);--r:14px;--chip:rgba(16,43,78,.06);--blue:#245FFF;--cyan:#00CDD9;
+  --gx:24px;--hdr:80px;--out:cubic-bezier(.22,1,.36,1);--std:cubic-bezier(.4,0,.2,1);
+  --sans:Inter,"Helvetica Neue",Arial,sans-serif;--head:Sora,Inter,"Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (max-width:1023px){:root{--gx:16px}}
+@media (max-width:767px){:root{--gx:20px;--hdr:64px}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);color:var(--text);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--bg);overflow-x:clip}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img,video,canvas{display:block}
+.mono{font-family:var(--mono);font-weight:500;font-size:11.5px;line-height:16px;letter-spacing:.14em;text-transform:uppercase}
+.br::before{content:"[ "}.br::after{content:" ]"}
+.dot::before{content:"";display:inline-block;width:22px;height:2px;border-radius:2px;background:var(--flight);margin-right:10px;vertical-align:middle}
+.disp{font-family:var(--head);font-weight:500;font-size:clamp(46px,13.2vw,200px);line-height:1;letter-spacing:-.05em;color:var(--ink)}
+.h32{font-family:var(--head);font-weight:500;font-size:clamp(24px,2.22vw,32px);line-height:1.25;letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
+.h28{font-family:var(--head);font-weight:500;font-size:clamp(20px,1.8vw,26px);line-height:1.2;letter-spacing:-.03em}
+.h24{font-weight:400;font-size:clamp(19px,1.6vw,23px);line-height:1.42;letter-spacing:-.015em;color:var(--ink);text-wrap:pretty}
+.h20{font-family:var(--head);font-weight:500;font-size:19px;line-height:26px;letter-spacing:-.02em;color:var(--ink)}
+.sm{font-size:15px;line-height:20px;letter-spacing:-.027em}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr))}
+.wrap{padding-inline:var(--gx)}
+.num{width:24px;height:24px;border-radius:999px;border:1px solid var(--line2);display:grid;place-items:center;font:400 11px/1 var(--mono);color:var(--mid)}
+.w{color:var(--muted);transition:color .3s var(--std)}.w.on{color:var(--ink)}
+.pill{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;font-weight:500;background:var(--chip);font-size:14px;line-height:1;letter-spacing:-.01em;color:var(--ink);transition:background-color .3s var(--std),color .3s var(--std)}
+.pill:hover{background:var(--flight);color:#fff}.pill:active,.btn:active{transform:translateY(1px)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 22px;border-radius:999px;font-weight:500;background:var(--ink);color:#fff;font-size:14px;letter-spacing:-.01em;transition:background-color .3s var(--std)}
+.btn:hover{background:var(--flight)}.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line2)}.btn.ghost:hover{background:var(--chip)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--hdr);background:var(--bg);border-bottom:1px solid var(--line);align-items:center;padding:0 var(--gx)}
+header .brand{grid-column:1/4;justify-self:start;white-space:nowrap;display:flex;align-items:center;gap:10px;color:var(--mid);font-size:12px}
+header .brand img{height:52px;width:auto;margin:-6px 0 -6px -9px}
+@media (max-width:767px){header .brand img{height:44px;margin:-4px 0 -4px -7px}}
+@media (max-width:359px){header .brand img{height:36px;margin:0 0 0 -6px}}
+header nav{grid-column:4/10;justify-self:center;display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--mid)}
+header nav a{white-space:nowrap;transition:color .3s var(--std)}header nav a:hover,header nav a.on{color:var(--ink)}
+header .cta{grid-column:10/13;justify-self:end}
+@media (max-width:1023px){header nav{display:none}header .brand{grid-column:1/9}header .cta{grid-column:9/13}}
+header .menu{display:none}#mnav{display:none}
+@media (max-width:1023px){header .brand{grid-column:1/7}header .cta{grid-column:7/12}header>*{grid-row:1}header .cta{margin-right:14px}header .menu{grid-column:12/13;justify-self:end;display:grid;place-items:center;gap:5px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line2);align-content:center}header .menu i{display:block;width:16px;height:1.5px;background:var(--ink);transition:transform .3s var(--std)}.mopen header .menu i:first-child{transform:translateY(3.25px) rotate(45deg)}.mopen header .menu i:last-child{transform:translateY(-3.25px) rotate(-45deg)}#mnav{display:flex;flex-direction:column;position:fixed;top:var(--hdr);left:0;right:0;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2);padding:8px var(--gx) 20px;transform:translateY(-110%);visibility:hidden;transition:transform .45s var(--out),visibility .45s}#mnav a{font:500 22px/1.2 var(--head);letter-spacing:-.02em;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line)}#mnav a:last-child{border:0}#mnav a.on{color:var(--blue)}.mopen #mnav{transform:none;visibility:visible}}
+@media (max-width:420px){header .cta{font-size:12px;padding-inline:12px}}
+@media (max-width:1180px){header .brand span{display:none}}
+
+/* hero */
+#hero{height:200svh;position:relative}
+#hero .stick{position:sticky;top:0;height:100svh;padding:var(--hdr) var(--gx) 0;display:flex;flex-direction:column}
+#hero .box{position:relative;flex:1;overflow:hidden;background:linear-gradient(180deg,var(--hero-a) 0%,#F1F4F8 46%,var(--bg) 100%)}
+#hero .mark{position:absolute;left:0;right:0;top:4%;text-align:center;font-family:var(--head);font-weight:400;font-size:min(19.5vw,36vh);line-height:.95;letter-spacing:-.06em;color:#EEF2F7;text-shadow:0 1px 0 #fff,0 -1px 0 rgba(16,43,78,.07),0 22px 50px rgba(16,43,78,.09);user-select:none;will-change:transform}
+.rotor{position:absolute;z-index:3;width:30%;aspect-ratio:1/.22;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(30,40,55,.30),rgba(30,40,55,.12) 60%,transparent);overflow:hidden}
+.rotor::after{content:"";position:absolute;inset:-10% -2%;border-radius:50%;background:linear-gradient(90deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 66%);animation:sweep .12s linear infinite}
+.rotor.r2::after{animation-direction:reverse}
+@keyframes sweep{from{transform:translateX(-46%)}to{transform:translateX(46%)}}
+.r1{left:5.2%;top:43%}.r2{left:61.8%;top:2%}.r3{left:94.8%;top:40%}
+
+/* drone flyer: a photoreal flight clip scrubbed by scroll; its white backdrop is multiplied away */
+#drone3d{position:fixed;inset:0;z-index:40;width:100%;height:100%;pointer-events:none}
+#hero .foot{display:flex;justify-content:space-between;align-items:flex-end;padding:20px 0 22px}
+#hero .tag{font-size:15px;line-height:20px;letter-spacing:-.02em}#hero .tag span{display:block;color:var(--mid)}
+#hero .scroll{white-space:nowrap;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--mid)}
+#hero .scroll i{display:grid;grid-template-columns:repeat(3,3px);gap:2px}#hero .scroll i b{width:3px;height:3px;background:var(--ink);border-radius:50%;animation:blip 1.6s var(--std) infinite}
+#hero .scroll i b:nth-child(2){animation-delay:.2s}#hero .scroll i b:nth-child(3){animation-delay:.4s}
+@keyframes blip{0%,100%{opacity:.2}40%{opacity:1}}
+
+/* intro */
+#intro{height:240svh;position:relative}
+#intro .stick{position:sticky;top:var(--hdr);height:calc(100svh - var(--hdr))}
+#intro .stick>div{height:100%}
+#intro .txt{grid-column:1/7;display:flex;align-items:center;padding-right:48px;border-right:1px solid var(--line2)}
+#intro .txt p{max-width:15.5em}
+#intro .vid{grid-column:7/13;display:flex;flex-direction:column;justify-content:center;padding-left:48px;gap:14px}
+#intro .frame{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0B1B33}
+#intro .frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .7s var(--out),transform 1.4s var(--out)}
+#intro .frame video.on{opacity:1;transform:none}
+#intro .cap{display:flex;justify-content:space-between;color:var(--mid)}
+#intro .cap .lbl span{display:none}#intro .cap .lbl span.on{display:inline}
+@media (max-width:1023px){#intro .txt{grid-column:1/13;border-right:0;padding:0;align-items:flex-end;padding-bottom:4vh}#intro .vid{grid-column:1/13;padding:0;justify-content:flex-start}#intro .stick>div{grid-template-rows:1fr auto;align-content:center}#intro .frame{aspect-ratio:16/10;max-height:38svh;width:100%}}
+
+/* section heads */
+.sec{position:relative;border-top:1px solid var(--line2)}
+.shead{position:relative;padding-top:32px}
+.shead .num{position:absolute;right:0;top:20px}
+.letters span{display:inline-block;white-space:pre;opacity:0;transform:translateY(.12em);transition:opacity .9s var(--out),transform .9s var(--out)}
+.in .letters span{opacity:1;transform:none}
+.lead{padding:56px 0;align-items:start}
+.lead .mono{grid-column:1/4;color:var(--mid);padding-top:6px}
+.lead .copy{grid-column:7/13}
+.lead .copy p+p{margin-top:20px}
+@media (max-width:1023px){.lead{padding:32px 0 56px}.lead .mono{grid-column:1/13;margin-bottom:16px}.lead .copy{grid-column:1/13}}
+
+/* coordination dial */
+#dial{height:420svh;position:relative}
+#dial .stick{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--hdr) var(--gx) 0}
+#dial .intro{position:absolute;left:var(--gx);right:var(--gx);top:calc(var(--hdr) + 24px);display:flex;justify-content:space-between;gap:24px;color:var(--mid)}
+#dial .intro p{max-width:30em;text-align:right;font-size:15px;line-height:20px;letter-spacing:-.02em}
+#dial .arcw{position:relative;align-self:center;width:min(620px,86vw,max(280px,calc((100svh - var(--hdr) - min(24svh,190px) - 290px)*2)));aspect-ratio:2/1;margin-bottom:-1px}
+#dial svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#dial .hub{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);width:56px;height:56px;border-radius:50%;background:var(--paper);border:1px solid var(--line2);display:grid;place-items:center;z-index:2}
+#dial .hub i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--ink);transition:transform .7s var(--out)}
+#dial .lbl{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);color:var(--mid);white-space:nowrap}
+#dial .def{align-self:center;width:min(520px,86vw);text-align:center;font-size:16px;line-height:24px;letter-spacing:-.02em;color:var(--mid);min-height:120px;margin-bottom:64px}
+@media (min-width:768px) and (max-height:780px){#dial .intro{top:calc(var(--hdr) + 8px)}#dial .intro p{max-width:24em;font-size:13px;line-height:17px}#dial .def{width:min(420px,calc(100vw - 2*(312px + var(--gx) + 16px)));min-height:96px;margin-bottom:20px;font-size:14px;line-height:19px}#dial .arcw{width:min(620px,86vw,max(280px,calc((100svh - var(--hdr) - min(24svh,190px) - 170px)*2)))}}
+@media (min-width:768px) and (max-width:1000px) and (max-height:780px){#dial .intro p{display:none}#dial .def{width:min(420px,70vw)}}
+#dial .strip{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);grid-template-columns:repeat(4,1fr);height:min(24svh,190px)}
+#dial .cell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);transition:color .5s var(--std)}
+#dial .cell+.cell{border-left:1px solid var(--line2)}
+#dial .cell .mono{color:var(--muted);transition:color .5s var(--std);text-align:center;padding:0 10px}
+#dial .cell.on{color:var(--ink)}#dial .cell.on .mono{color:var(--mid)}
+@media (max-width:767px){#dial .strip{grid-template-columns:repeat(2,1fr);height:auto}#dial .cell{padding:22px 0}#dial .cell:nth-child(3){border-left:0}#dial .cell:nth-child(n+3){border-top:1px solid var(--line2)}#dial .intro p{display:none}#dial .def{min-height:150px;margin-bottom:32px;font-size:15px;line-height:22px}}
+
+/* industries (tabs) */
+#industries{background:var(--paper)}
+
+/* technology (pinned) */
+
+/* platform */
+#platform{background:var(--paper)}
+#terrain{position:relative;height:min(86svh,860px);overflow:hidden;background:#EEF2F7;margin-top:8px}
+#terrain canvas{position:absolute;inset:0;width:100%;height:100%}
+#terrain.noGL{background:url(/media/fleet-drone.jpg) center/cover}
+.pin{position:absolute;left:0;top:0;z-index:2;width:0;height:0;transition:opacity .3s var(--std)}
+.pin::before{content:"";position:absolute;left:-.5px;bottom:0;width:1px;height:64px;background:var(--ink)}
+.pin button{position:absolute;left:-16px;bottom:64px;width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:18px;line-height:1;transition:transform .5s var(--out),background-color .3s var(--std)}
+.pin button:hover{background:var(--blue)}.pin.open button{transform:rotate(45deg)}
+.pin .pc{position:absolute;left:24px;bottom:72px;width:220px;padding:12px 14px;background:var(--paper);box-shadow:0 1px 0 var(--line2),0 18px 40px rgba(16,43,78,.12);opacity:0;transform:translateY(6px);transition:opacity .4s var(--out),transform .4s var(--out);pointer-events:none}
+.pin.open .pc{opacity:1;transform:none;pointer-events:auto}
+.pin .pc b{display:block;font-weight:400;font-size:15px;line-height:20px;color:var(--ink);letter-spacing:-.02em}
+.pin .pc span{display:block;margin-top:6px;color:var(--mid)}
+.tmeta{display:flex;justify-content:space-between;padding:12px 0 0;color:var(--mid)}
+.mods{margin:72px 0 0;border-top:1px solid var(--line2);grid-template-columns:repeat(3,1fr)}
+.mod{padding:28px 32px 36px 0;border-bottom:1px solid var(--line2)}
+.mod:not(:nth-child(3n+1)){padding-left:32px;border-left:1px solid var(--line2)}
+.mod .mono{color:var(--mid);display:block;margin-bottom:22px}
+.mod h3{color:var(--ink);margin-bottom:12px}
+.mod p{font-size:14px;line-height:22px;color:var(--mid)}
+@media (max-width:1023px){.mods{grid-template-columns:1fr}.mod,.mod:not(:nth-child(3n+1)){padding:24px 0 28px;border-left:0}}
+
+/* contact + footer */
+#contact{background:var(--bg)}
+.cmeta{display:flex;justify-content:space-between;color:var(--mid);padding:14px 0}
+.ctop{border-top:1px solid var(--line2);padding:56px 0 96px;align-items:start}
+.ctop .l{grid-column:1/7;padding-right:32px}
+.ctop .l h2{color:var(--ink)}
+.ctop .r{grid-column:7/13}
+.ctop .r p{color:var(--mid);margin-top:16px;max-width:34em}
+.ctop .row{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.ctop .quote{margin-top:40px;color:var(--mid);font-size:15px;line-height:20px}
+footer{border-top:1px solid var(--line2);padding:40px 0 24px;align-items:end}
+footer .logo{grid-column:1/5}footer .logo img{height:56px;width:auto}footer .logo p{color:var(--mid);margin-top:14px;font-size:14px}
+footer .cols{grid-column:7/13;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+footer .cols h4{font:400 12px/16px var(--mono);letter-spacing:.3px;text-transform:uppercase;color:var(--mid);margin-bottom:10px}
+footer .cols a{display:block;font-size:13px;line-height:22px;color:var(--ink)}
+.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line2);padding:14px 0 18px;color:var(--mid)}
+@media (max-width:1023px){.ctop .l,.ctop .r{grid-column:1/13;padding:0}.ctop .r{margin-top:28px}footer .logo{grid-column:1/13;margin-bottom:32px}footer .cols{grid-column:1/13}}
+
+/* client copy completed, and visuals for the quiet stretches */
+.disp.sm{font-size:clamp(40px,10.4vw,160px);line-height:1}
+.hero2{position:absolute;left:0;bottom:24px;z-index:6;width:min(44em,100%);opacity:0;transform:translateY(14px);pointer-events:none}
+.hero2 .mono{color:var(--mid)}.hero2 .mono+.mono{margin-top:6px;color:var(--ink)}
+.hero2 .txt{margin-top:16px;font-size:15px;line-height:22px;letter-spacing:-.02em;color:var(--text)}
+.hero2 .row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.band{position:relative;overflow:hidden;aspect-ratio:21/9;margin:0 0 0;background:#0B1B33}
+#vision .band{margin-bottom:96px}
+.band img,.band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sec>.band+.mods{margin-top:32px}
+#dial .dbg{position:absolute;inset:var(--hdr) var(--gx) 0;z-index:-1;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 52%,#000 22%,transparent 80%);mask-image:radial-gradient(ellipse 72% 62% at 50% 52%,#000 22%,transparent 80%)}
+#dial .dbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s var(--out)}
+#dial .dbg img.on{opacity:.26}
+.sec>.mods:last-child{margin-bottom:96px}
+.closing{color:var(--ink);padding:56px 0 96px;max-width:30em}
+.cons{align-items:start;padding-bottom:24px}
+.cpic{grid-column:1/7;position:sticky;top:calc(var(--hdr) + 24px);aspect-ratio:16/10;max-height:calc(100svh - var(--hdr) - 48px);overflow:hidden;background:#0B1B33}
+.cpic img,.cpic video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity .6s var(--out),transform 1.2s var(--out)}
+.cpic img.on,.cpic video.on{opacity:1;transform:none}
+.clist{grid-column:7/13}
+.crow{padding:32px 0 40px;border-top:1px solid var(--line2);min-height:30svh}
+.crow .mono{color:var(--mid);display:block;margin-bottom:16px}
+.crow h3{color:var(--ink);margin-bottom:10px}.crow p{font-size:15px;line-height:22px;color:var(--text)}
+.mv{grid-template-columns:1fr 1fr;border-top:1px solid var(--line2);margin:56px 0 clamp(48px,8vw,96px)}
+.mv>div{padding:28px 32px 0 0}.mv>div+div{padding-left:32px;border-left:1px solid var(--line2)}
+.mv .mono{color:var(--mid);display:block;margin-bottom:16px}
+@media (max-width:1023px){
+  .cpic{grid-column:1/13;position:relative;top:0;aspect-ratio:16/10;margin-bottom:24px}.clist{grid-column:1/13}.crow{min-height:0}.crow>img,.crow>video{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#0B1B33;margin-bottom:20px}
+  .band{aspect-ratio:16/9}
+  .mv{grid-template-columns:1fr}.mv>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line2);margin-top:28px}
+  .hero2{width:calc(100% - 16px);left:8px;bottom:8px}.hero2 .txt{font-size:14px;line-height:20px}
+}
+
+@media (prefers-reduced-motion:reduce){.rotor::after,#hero .scroll i b{animation:none}.letters span{opacity:1;transform:none;transition:none}*{transition-duration:.01ms!important}}
+/* design pass, 5 Nov: type system, spacing, alignment (found by measured audit) */
+.band,.cpic,.crow>img,.crow>video,.tslide img,#intro .frame,#terrain{border-radius:var(--r);overflow:hidden}
+.disp,.disp.sm{font-size:clamp(38px,11.6vw,176px);line-height:1;letter-spacing:-.04em;margin-left:-.025em}
+#platform .disp,#industries .disp,#how .disp{margin-left:-.1em}#construction .disp{margin-left:-.05em}
+.h20,.mono,figcaption{text-wrap:balance}p,li{text-wrap:pretty}
+.flight{font-style:normal;background:var(--flight);-webkit-background-clip:text;background-clip:text;color:transparent}
+.letters span.flight{padding:0 .06em .2em 0;margin:0 -.06em -.2em 0}
+.dot{display:flex;align-items:flex-start}.dot::before{flex:none;margin-top:7px}
+.mod p,.crow p,.ctop .quote{font-size:16px;line-height:1.55;letter-spacing:0}
+#hero .tag{font:500 clamp(22px,2.4vw,34px)/1.15 var(--head);letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
+#hero .tag span{display:block;font:400 16px/1.55 var(--sans);letter-spacing:0;margin-top:6px;color:var(--mid)}
+#hero .mark{font-weight:500;letter-spacing:-.04em;color:#D5DFEB;text-shadow:none}
+#hero .foot{gap:16px}
+#hero .scroll{font:500 11.5px/16px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.hero2 .txt{max-width:35em;font-size:16px;line-height:1.55;letter-spacing:0}
+.hero2 .mono+.mono{font:500 16px/1.4 var(--sans);letter-spacing:0;text-transform:none}
+.hero2 .mono+.mono::before,.hero2 .mono+.mono::after{content:none}
+@media (max-width:767px){#hero .scroll{display:none}}
+#dial .cell .h32{color:var(--muted);transition:color .5s var(--std)}
+#dial .cell.on .h32,#dial .cell.on .mono{color:var(--ink)}
+header .cta{background:var(--ink);color:#fff}
+.pill:hover,.btn:not(.ghost):hover{background:linear-gradient(100deg,#245FFF,#284BDE);color:#fff}
+.num{font:500 11px/1 var(--mono);letter-spacing:.04em}
+.cmeta,.tmeta{gap:16px}
+@media (max-width:767px){.cmeta,.tmeta{flex-direction:column;gap:4px}.pin .pc{left:-110px;bottom:108px}.pin.open{z-index:3}}
+#how,#why{background:#F3F6FB;--muted:#5A6B85}
+/* industries: a film strip. Scrolling opens one panel at a time, and the words for it sit in one row below */
+#indPin{height:calc(100svh - var(--hdr) + 4*62svh);margin-top:24px}
+.istick{position:sticky;top:var(--hdr);height:calc(100svh - var(--hdr));display:flex;flex-direction:column;justify-content:center;gap:24px}
+.ipanels{display:flex;gap:8px;height:min(36vw,calc(100svh - var(--hdr) - 228px));--aw:calc((100vw - 2*var(--gx) - 32px)*8/12)}
+.ipanel{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border-radius:var(--r);background:#0B1B33;text-align:left;transition:flex-grow .8s var(--out)}
+.ipanel.on{flex-grow:8}
+.ipanel video{position:absolute;top:0;left:50%;height:100%;width:var(--aw);max-width:none;transform:translateX(-50%);object-fit:cover}
+.ipanel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,14,28,.82),rgba(6,14,28,.34) 70%,rgba(6,14,28,.6));transition:opacity .6s var(--out)}
+.ipanel:hover::after{opacity:.7}.ipanel.on::after{opacity:0}
+.ipanel .n{position:absolute;left:0;right:0;top:16px;z-index:1;text-align:center;color:#fff;letter-spacing:.04em;transition:opacity .4s var(--out)}
+.ipanel .v{position:absolute;left:50%;bottom:18px;z-index:1;writing-mode:vertical-rl;transform:translateX(-50%) rotate(180deg);white-space:nowrap;color:#fff;font:500 clamp(15px,1.25vw,19px)/1 var(--head);letter-spacing:-.01em;transition:opacity .4s var(--out)}
+.ipanel.on .n,.ipanel.on .v{opacity:0}
+.idetail{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:start;padding-top:18px;border-top:1px solid var(--line2);min-height:176px;transition:opacity .25s var(--std)}
+.idetail::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:calc(var(--k,1)*20%);background:var(--flight);transition:width .6s var(--out)}
+.idetail .a{grid-column:1/5;padding-right:32px}.idetail .a .mono{display:block;color:var(--mid);margin-bottom:8px}
+.idetail .b{grid-column:5/9;padding-right:40px;font-size:16px;line-height:1.5;color:var(--text)}
+.idetail ul{grid-column:9/13;list-style:none}
+.idetail li{padding:5px 0;border-bottom:1px solid var(--line);color:var(--mid);font-size:14px;line-height:20px}.idetail li:first-child{padding-top:0}.idetail li:last-child{border-bottom:0}
+@media (max-width:1023px){
+  #indPin{height:auto}.istick{position:static;height:auto;display:block}
+  .ipanels{display:block;height:auto}.idetail{display:none}
+  .icard{padding-bottom:40px}.icard video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r);background:#0B1B33;margin-bottom:18px}
+  .icard .mono{display:block;color:var(--mid);margin-bottom:8px}.icard h3{margin-bottom:10px}.icard p{color:var(--text)}
+  .icard ul{list-style:none;margin-top:14px;border-top:1px solid var(--line)}.icard li{padding:9px 0;border-bottom:1px solid var(--line);color:var(--mid);font-size:15px;line-height:22px}
+}
+/* technology: the four systems once, large, moved sideways by the page scroll */
+#techPin{height:calc(100svh - var(--hdr) + 3*130svh);margin-top:12px}
+.tstick{position:sticky;top:var(--hdr);height:calc(100svh - var(--hdr));display:flex;flex-direction:column;overflow:clip;margin-inline:calc(var(--gx)*-1);padding-block:12px 20px}
+.tnav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 var(--gx) 12px;color:var(--mid);border-bottom:1px solid var(--line2);margin-inline:var(--gx);padding-inline:0}
+.tnav .list{display:flex;gap:6px 28px;flex-wrap:wrap}
+.tnav .list button{font-family:var(--head);font-weight:500;font-size:clamp(17px,1.6vw,23px);line-height:1.3;letter-spacing:-.025em;color:var(--muted);position:relative;padding:4px 0;transition:color .4s var(--std)}
+.tnav .list button:hover,.tnav .list button.on{color:var(--ink)}
+.tnav .mono{white-space:nowrap}
+@media (max-width:767px){.tnav .list{gap:2px 14px}.tnav .list button{font-size:15px}.tnav .list button.on::after{bottom:0}}
+.tnav .list button.on::after{content:"";position:absolute;left:0;right:0;bottom:-13px;height:2px;background:var(--flight)}
+.ttrack{flex:1;min-height:0;display:flex;gap:40px;padding-inline:var(--gx);width:max-content;will-change:transform}
+.tslide{width:calc(100vw - 2*var(--gx) - 56px);height:100%;display:grid;grid-template-columns:minmax(0,2.15fr) minmax(0,1fr);gap:clamp(24px,3vw,48px);align-items:center}
+.tslide figure{margin:0}
+.tslide img{display:block;width:100%;aspect-ratio:16/9;max-height:calc(100svh - var(--hdr) - 100px);object-fit:cover;background:#0B1B33}
+.tslide figcaption{margin-top:10px;color:var(--mid)}
+.tslide h3{margin-bottom:14px}
+.tslide p{font-size:clamp(14px,1.1vw,16px);line-height:1.5;color:var(--text)}.tslide p+p{margin-top:10px;color:var(--mid)}
+.tslide .caps{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:18px;color:var(--mid)}
+@media (max-width:1023px){
+  .tslide{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px}
+  .tslide p{font-size:14px;line-height:19px}.tslide .h32{font-size:21px}.tslide .caps{margin-top:12px;gap:4px 10px}
+}
+@media (max-width:1023px) and (orientation:portrait){
+  .tslide{width:calc(100vw - 2*var(--gx) - 24px);grid-template-columns:minmax(0,1fr);align-content:start;gap:14px;padding-top:16px;align-items:start}.ttrack{gap:16px}
+}
+@media (max-width:767px) and (max-height:699px){
+  #techPin{height:auto}.tstick{position:static;height:auto;overflow:visible}.tnav{display:none}
+  .ttrack{display:block;width:auto;transform:none!important}.tslide{width:auto;height:auto;padding-bottom:36px}
+}
+/* hero: lettering from the logo over a working site */
+.hero2{left:16px;bottom:16px;width:min(620px,calc(100% - 32px));padding:18px 20px 20px;border-radius:var(--r);background:rgba(253,253,254,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+@media (max-width:767px){.hero2{left:8px;bottom:8px;width:calc(100% - 16px);padding:12px 14px 14px}}
+@media (min-width:768px) and (max-width:1199px){.hero2{width:400px;padding:12px 14px}.hero2 .txt{font-size:14px;line-height:1.4;margin-top:8px}.hero2 .row{margin-top:10px}}
+@media (max-width:767px) and (max-height:700px){.hero2 .mono:first-child{display:none}.hero2 .txt{font-size:13px;line-height:18px;margin-top:8px}.hero2 .row{margin-top:10px;flex-wrap:nowrap}.hero2 .btn{height:36px;padding:0 14px;font-size:13px;white-space:nowrap}#hero .tag{font-size:19px}#hero .tag span{display:none}}
+.hbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;filter:brightness(.7) saturate(.92);-webkit-mask-image:linear-gradient(#000 0,#000 40%,transparent 88%);mask-image:linear-gradient(#000 0,#000 40%,transparent 88%)}
+#hero .mark{position:absolute;left:6%;right:auto;width:88%;top:7%;height:auto;opacity:1;transform:none;filter:none}
+/* loading screen, until the 3D drone is ready */
+#loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--bg);opacity:0;visibility:hidden;transition:opacity .6s var(--std),visibility .6s}
+.loading #loader{opacity:1;visibility:visible}
+#loader>div{display:grid;justify-items:center;gap:18px}#loader img{height:64px;width:auto}
+#loader i{display:block;width:180px;height:2px;border-radius:2px;background:var(--line);overflow:hidden}
+#loader b{display:block;height:100%;width:8%;background:var(--flight);transition:width .3s var(--std)}
+/* construction */
+.crow p{max-width:32em}
+@media (min-width:1024px){.cpic{--ch:min(calc((100vw - 2*var(--gx))*.3125),calc(100svh - var(--hdr) - 48px));top:calc(var(--hdr) + (100svh - var(--hdr) - var(--ch))/2)}}
+@media (min-width:1024px){.clist{padding-left:48px;padding-bottom:32svh}.crow{min-height:0;padding:32px 0 56px}}
+/* card rows share baselines */
+@media (min-width:1024px){.mod{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0}}
+/* big statements */
+@media (min-width:1024px){#intro .h32{font-size:clamp(24px,2.4vw,46px)}.lead .mono{grid-column:1/6}}
+.ctop .l h2{font-size:clamp(30px,3.2vw,46px);line-height:1.1;letter-spacing:-.04em}
+#contact{padding-top:clamp(32px,6vw,96px)}
+/* dark close, per the brand's Night */
+.fdark{background:#060E1C;margin-inline:calc(var(--gx)*-1);padding-inline:var(--gx);color:#fff}
+.fdark footer{border-top:0;padding:56px 0 32px}
+.fdark footer .logo img{height:72px;margin-left:-12px}
+.fdark footer .logo p,.fdark footer .cols h4,.fdark .legal{color:rgba(255,255,255,.72)}
+.fdark footer .cols a{color:#fff;font-size:14px;line-height:24px}.fdark footer .cols a:hover{color:#3BA7FF}
+.fdark footer .cols h4{font:500 11.5px/16px var(--mono);letter-spacing:.14em}
+.fdark .legal{border-color:rgba(255,255,255,.12)}
+/* intro caption and small-screen dial labels */
+@media (max-width:1023px){#intro .stick{padding-bottom:20px}#dial .cell .mono{min-height:32px;text-wrap:balance}}
+@media (pointer:coarse){.fdark footer .cols a{padding:10px 0}.pin button::after{content:"";position:absolute;inset:-6px}}
+</style>
+<style>
+/* inner pages: a short head under the header, then the home page's own sections */
+.phead{padding-top:calc(var(--hdr) + clamp(40px,7vw,112px))}
+.phead .crumb{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;color:var(--mid)}
+.phead .crumb a:hover{color:var(--ink)}
+.phead h1{margin-top:clamp(28px,4vw,56px);font:500 clamp(38px,5.6vw,92px)/1.02 var(--head);letter-spacing:-.045em;color:var(--ink);max-width:13em}
+.phead .sub{margin:28px 0 0 auto;max-width:34em;color:var(--mid);font-size:clamp(17px,1.35vw,21px);line-height:1.5;letter-spacing:-.01em}
+.phead .band{margin-top:clamp(40px,6vw,88px)}
+.phead.solo{padding-bottom:clamp(24px,4vw,56px)}
+@media (max-width:767px){.phead .sub{margin-left:0}}
+header nav a[aria-current]{color:var(--ink)}#mnav a[aria-current]{color:var(--blue)}
+</style>
+</head>
+<body>
+<div id="loader" aria-hidden="true"><div><img src="/brand/northstar-flight-ribbon-compact.svg" alt=""><i><b id="loaderBar"></b></i></div></div>
+<header class="grid">
+  <a class="brand" href="/" aria-label="Northstar home"><img src="/brand/northstar-flight-ribbon-compact.svg" alt="Northstar"><span>·</span><span>Physical AI</span></a>
+  <nav aria-label="Pages"><a href="/platform/">Platform</a><a href="/technology/">Technology</a><a href="/solutions/">Solutions</a><a href="/industries/" aria-current="page">Industries</a><a href="/about/">About us</a></nav>
+  <button class="menu" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><i></i><i></i></button>
+  <a class="pill cta" href="#contact">Talk to our team</a>
+</header>
+<nav id="mnav" aria-label="Pages"><a href="/">Home</a><a href="/platform/">Platform</a><a href="/technology/">Technology</a><a href="/solutions/">Solutions</a><a href="/industries/" aria-current="page">Industries</a><a href="/about/">About us</a><a href="/contact/">Contact</a></nav>
+
+<main id="top">
+<section class="phead wrap" aria-label="Industries">
+  <div class="crumb mono"><a class="br" href="/">Northstar</a><span class="br">Industries</span></div>
+  <h1>Built for environments where <span class="flight">precision matters.</span></h1>
+  <p class="sub">From construction sites and industrial facilities to energy infrastructure and critical assets.</p>
+  <figure class="band"><video class="lazy" muted playsinline loop preload="none" poster="/media/ind-energy-v.jpg" data-src="/media/ind-energy-v.mp4" data-src-s="/media/ind-energy-v-s.mp4" aria-hidden="true"></video></figure>
+</section>
+<section id="industries" class="sec wrap">
+  <div class="shead"><h2 class="disp letters" aria-label="Industries">Industries</h2><span class="num">06</span></div>
+  <p class="h24" style="margin-top:28px;color:var(--mid);max-width:24em">Built for environments where precision matters.</p>
+  <div id="indPin"><div class="istick">
+    <div class="ipanels" id="indPanels" role="tablist" aria-label="Industries"></div>
+    <div class="idetail" id="indTxt" role="tabpanel" aria-live="polite"></div>
+  </div></div>
+</section>
+<section id="why" class="sec wrap">
+  <div class="shead"><h2 class="disp sm letters" data-flight="Northstar" aria-label="Why Northstar">Why Northstar</h2><span class="num">07</span></div>
+  <div class="grid lead">
+    <p class="mono dot">Why Northstar</p>
+    <div class="copy"><p class="h24 reveal" data-scrub="self">Beyond automation. Towards physical intelligence.</p></div>
+  </div>
+  <figure class="band"><video class="lazy" muted playsinline loop preload="none" poster="/media/bg-human.jpg" data-src="/media/loop-human.mp4" data-src-s="/media/loop-human-s.mp4" aria-hidden="true"></video></figure>
+  <div class="mods grid">
+<div class="mod"><span class="mono">01</span><h3 class="h20">One platform, multiple robotic systems</h3><p>Bring diverse robots, drones, sensors, and inspection data into a coordinated intelligence environment.</p></div>
+<div class="mod"><span class="mono">02</span><h3 class="h20">Designed for real-world complexity</h3><p>Combine spatial perception, contextual understanding, and adaptive workflows for dynamic physical environments.</p></div>
+<div class="mod"><span class="mono">03</span><h3 class="h20">Evidence before assumptions</h3><p>Ground inspection findings in captured observations, relevant specifications, timestamps, and traceable verification records.</p></div>
+<div class="mod"><span class="mono">04</span><h3 class="h20">Autonomy with accountability</h3><p>Balance automated missions and AI reasoning with safety controls, human supervision, and defined approval processes.</p></div>
+<div class="mod"><span class="mono">05</span><h3 class="h20">From individual assets to enterprise scale</h3><p>Apply consistent inspection and intelligence workflows across assets, facilities, projects, and distributed operations.</p></div>
+<div class="mod"><span class="mono">06</span><h3 class="h20">Intelligence that connects to enterprise workflows</h3><p>Move beyond dashboards by linking physical observations to quality, maintenance, asset, and operational management processes.</p></div>
+  </div>
+</section>
+<section id="contact" class="wrap">
+  <div class="cmeta mono"><span class="br">Contact</span><span class="br">Intelligence beyond the digital world</span></div>
+  <div class="grid ctop">
+    <div class="l"><h2 class="h32">The future of intelligence is <span class="flight">physical.</span></h2></div>
+    <div class="r">
+      <p class="h24" style="color:var(--ink);margin:0">Bring autonomous intelligence into your operations.</p>
+      <p>From construction quality assurance to industrial inspection and intelligent asset monitoring, Northstar is building the next generation of physical AI solutions.</p>
+      <div class="row"><a class="btn" href="#contact">Partner with us <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn ghost" href="/platform/">Explore the platform</a></div>
+      <p class="quote">Let's build a world where machines don't just operate — they understand.</p>
+    </div>
+  </div>
+  <div class="fdark"><footer class="grid">
+    <div class="logo"><img src="/brand/northstar-flight-ribbon-white.svg" alt="Northstar"><p>Physical AI. Autonomous Systems. Real-World Intelligence.</p></div>
+    <div class="cols">
+      <div><h4>Explore</h4><a href="/platform/">Platform</a><a href="/technology/">Technology</a><a href="/solutions/">Solutions</a><a href="/industries/">Industries</a><a href="/about/">About</a><a href="/contact/">Contact</a></div>
+      <div><h4>Northstar</h4><a href="/">Home</a><a href="#contact">Talk to our team</a></div>
+    </div>
+  </footer>
+  <div class="legal mono"><span>© Northstar - A HuntGlobal Venture. All rights reserved.</span><span>Intelligence Beyond the Digital World.</span></div></div>
+</section>
+</main>
+
+<script src="/vendor/gsap.min.js"></script>
+<script src="/vendor/ScrollTrigger.min.js"></script>
+<script src="/vendor/lenis.min.js"></script>
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, small = matchMedia('(max-width: 860px)').matches;
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v)), band = (p, a, b) => clamp((p - a) / (b - a));
+const ease = u => 1 - Math.pow(1 - u, 3), inout = u => u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+gsap.registerPlugin(ScrollTrigger);
+
+// ---- content: the founders' approved copy ----
+const IND = [
+  { n: 'Manufacturing', img: 'ind-manufacturing', vid: 'ind-manufacturing-v', h: 'Industrial assets &amp; manufacturing', p: 'Support equipment condition monitoring, visual quality inspections, thermal anomaly detection, production-facility walkthroughs, and asset documentation.', u: ['Equipment condition monitoring', 'Visual quality inspections', 'Thermal anomaly detection', 'Production-facility walkthroughs', 'Asset documentation'] },
+  { n: 'Energy', img: 'ind-energy', vid: 'ind-energy-v', h: 'Energy &amp; utilities', p: 'Inspect selected energy infrastructure, solar installations, substations, and utility assets through aerial imaging, thermal analysis, connected sensors, and robotic observation.', u: ['Solar installations', 'Substations', 'Utility assets', 'Thermal analysis'] },
+  { n: 'Oil &amp; gas', img: 'ind-oilgas', vid: 'ind-oilgas-v', h: 'Oil, gas &amp; process facilities', p: 'Support remote visual inspection, equipment condition assessment, thermal observations, and routine monitoring in suitable industrial operating environments.', u: ['Remote visual inspection', 'Equipment condition assessment', 'Thermal observations', 'Routine monitoring'] },
+  { n: 'Infrastructure', img: 'ind-infra', vid: 'ind-infra-v', h: 'Infrastructure &amp; civil engineering', p: 'Monitor roads, bridges, rail corridors, tunnels, and large-scale civil assets through reality capture, structural-condition observations, and change detection.', u: ['Roads and bridges', 'Rail corridors and tunnels', 'Structural-condition observations', 'Change detection'] },
+  { n: 'Logistics', img: 'ind-logistics', vid: 'ind-logistics-v', h: 'Warehouses &amp; logistics facilities', p: 'Enable inventory-area observation, facility inspection, equipment monitoring, and spatial documentation through autonomous mobile platforms and connected intelligence.', u: ['Inventory-area observation', 'Facility inspection', 'Equipment monitoring', 'Spatial documentation'] },
+];
+const TECH = [
+  { n: 'Drones', cap: 'Autonomous drones', img: 'fleet-drone', alt: 'A Northstar drone hovering over a construction site', h: 'Intelligence from above.', p: ['Capture, map, monitor, and inspect complex environments from the air.', 'Our drone-enabled workflows support aerial surveying, photogrammetry, LiDAR scanning, thermal imaging, infrastructure inspection, volumetric analysis, and construction progress monitoring.'], c: ['Aerial reality capture', 'Mapping & 3D reconstruction', 'Progress monitoring', 'Thermal inspection', 'Asset verification'] },
+  { n: 'Quadruped', cap: 'Quadruped robotics', img: 'fleet-quad', alt: 'A four-legged inspection robot in an industrial hall', h: 'Intelligence on the ground.', p: ['Four-legged robotic platforms extend inspection capabilities into complex industrial and construction environments.', 'They enable consistent data collection across large facilities, plant rooms, corridors, and other challenging operational environments.'], c: ['Autonomous patrols', 'Ground reality capture', 'Thermal monitoring', 'Equipment inspection', 'Remote observation'] },
+  { n: 'Humanoid', cap: 'Humanoid robotics', img: 'tech-humanoid', alt: 'A humanoid robot at a plant valve beside a worker holding a tablet', h: 'Intelligence that works alongside people.', p: ['Humanoid robotics represents the next evolution of embodied intelligence, bringing AI-assisted perception and manipulation into human-designed environments.', 'Our approach combines visual reasoning, task planning, robotic control, and human oversight to progressively extend the role of autonomous systems in industrial operations.'], c: ['Embodied AI', 'Visual inspection', 'Human-robot collaboration', 'Task planning', 'Physical workflow assistance'] },
+  { n: 'IoT &amp; edge', cap: 'Industrial IoT &amp; edge intelligence', img: 'strip-iot', alt: 'An industrial sensor and edge gateway on a plant pipe, with a small camera beside it', h: 'Intelligence from every connected asset.', p: ['Not every inspection requires a moving robot.', 'Northstar connects industrial sensors, cameras, edge devices, and operational systems to create a continuous flow of physical-world intelligence.'], c: ['Sensor integration', 'Edge AI', 'Condition monitoring', 'Anomaly detection', 'Equipment telemetry'] },
+];
+TECH[0].p.push("From large construction developments to remote industrial infrastructure, aerial intelligence helps teams understand changing site conditions without relying exclusively on manual inspections.");
+TECH[1].p.splice(1, 0, "Equipped with visual cameras, depth sensors, thermal imaging, and spatial navigation capabilities, quadruped robots can support repeatable inspection missions, indoor reality capture, equipment monitoring, and remote site observation.");
+TECH[2].p.splice(1, 0, "Northstar is developing workflows for humanoid systems to support supervised visual inspections, equipment interaction, inspection checklist execution, material identification, and physical task assistance.");
+TECH[3].p.push("By bringing together machine telemetry, environmental measurements, asset conditions, and robotic observations, we establish a unified operational view of facilities and infrastructure.");
+const DIAL = [
+  ['Perceive', 'Combine imagery, video, LiDAR, point clouds, thermal data, and sensor telemetry to build contextual understanding of sites, structures, equipment, and physical environments.'],
+  ['Reason', 'AI agents interpret observations against inspection requirements, drawings, asset records, operating procedures, and historical evidence to identify anomalies, prioritize issues, and recommend follow-up actions.'],
+  ['Orchestrate', 'Plan, assign, and coordinate inspection missions across supported drones, ground robots, and connected systems.'],
+  ['Verify', 'Compare observed site conditions with defined specifications, BIM models, inspection checklists, and quality requirements.'],
+];
+const MODS = [
+  ['Autonomous mission orchestration', 'Plan, assign, and coordinate inspection missions across supported drones, ground robots, and connected systems. Manage recurring capture activities and mission execution through centralized workflows.'],
+  ['Multimodal perception & spatial intelligence', 'Combine imagery, video, LiDAR, point clouds, thermal data, and sensor telemetry to build contextual understanding of sites, structures, equipment, and physical environments.'],
+  ['Agentic AI & intelligent reasoning', 'AI agents interpret observations against inspection requirements, drawings, asset records, operating procedures, and historical evidence to identify anomalies, prioritize issues, and recommend follow-up actions.'],
+  ['AI-powered QA & verification', 'Compare observed site conditions with defined specifications, BIM models, inspection checklists, and quality requirements. Generate evidence-linked findings, identify possible deviations, and support verification workflows.'],
+  ['Digital twin & reality intelligence', 'Connect captured site conditions with spatial models and digital asset records to maintain a contextual view of the physical environment and its changes over time.'],
+  ['Enterprise integration & human oversight', 'Connect intelligence with construction, asset management, maintenance, and enterprise systems. Keep humans in control of safety-critical decisions, corrective actions, and formal approvals.'],
+];
+const esc = s => s.replace(/&(?!amp;)/g, '&amp;');
+
+// ---- phone and tablet menu ----
+const menuB = $('header .menu');
+if (menuB) { const set = o => { document.documentElement.classList.toggle('mopen', o); menuB.setAttribute('aria-expanded', o); menuB.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); };
+  menuB.addEventListener('click', () => set(!document.documentElement.classList.contains('mopen'))); $$('#mnav a').forEach(a => a.addEventListener('click', () => set(false))); }
+
+// ---- smooth scroll: one controller, ScrollTrigger reads it ----
+let lenis = null;
+if (!reduce && window.Lenis) {
+  lenis = new Lenis({ lerp: .1, wheelMultiplier: 1 });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
+}
+$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = $(a.getAttribute('href')); if (!t) return; e.preventDefault(); const y = t.getBoundingClientRect().top + scrollY - (a.getAttribute('href') === '#top' ? 0 : parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr'))); lenis ? lenis.scrollTo(y, { duration: 1.6 }) : scrollTo({ top: y, behavior: 'smooth' }); }));
+
+// ---- word-by-word reveal tied to scroll ----
+function splitWords(el) { el.innerHTML = el.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span>`).join(' '); return $$('.w', el); }
+const reveals = $$('.reveal').map(el => ({ el, words: splitWords(el), mode: el.dataset.scrub }));
+function paint(r, u) { const n = Math.round(u * r.words.length); r.words.forEach((w, i) => w.classList.toggle('on', i < n)); }
+reveals.filter(r => r.mode === 'self').forEach(r => ScrollTrigger.create({ trigger: r.el, start: 'top 85%', end: 'bottom 45%', onUpdate: s => paint(r, s.progress), onRefresh: s => paint(r, s.progress) }));
+
+// ---- display headings: letters arrive when the section enters ----
+$$('.letters').forEach(h => {
+  const txt = h.textContent, fl = h.dataset.flight, cut = fl ? txt.lastIndexOf(fl) : -1, head = cut < 0 ? txt : txt.slice(0, cut);
+  h.innerHTML = [...head].map((c, i) => `<span aria-hidden="true" style="transition-delay:${i * 45}ms">${c}</span>`).join('') + (cut < 0 ? '' : `<span aria-hidden="true" class="flight" style="transition-delay:${head.length * 45}ms">${fl}</span>`);
+  ScrollTrigger.create({ trigger: h, start: 'top 88%', onEnter: () => h.parentElement.classList.add('in'), onLeaveBack: () => h.parentElement.classList.remove('in') });
+});
+
+// ---- hero: the drone rises out of the wordmark, holds, banks and flies off; rotors never stop ----
+if ($('#hero2')) {
+const hero2 = $('#hero2'), hbg = $('#hero .hbg');
+hbg.src = small ? hbg.dataset.srcS : hbg.dataset.src; if (reduce) hbg.pause();
+new IntersectionObserver(es => { if (es[0].isIntersecting) { if (!reduce) hbg.play().catch(() => {}); } else hbg.pause(); }).observe(hbg);
+function heroAt(p) {
+  const h2 = band(p, .5, .85); hero2.style.opacity = h2; hero2.style.transform = `translateY(${(1 - h2) * 14}px)`; hero2.style.pointerEvents = h2 > .6 ? 'auto' : 'none';
+}
+let heroP = 0;
+ScrollTrigger.create({ trigger: '#hero', start: 'top top', end: 'bottom bottom', onUpdate: s => { heroP = s.progress; } });
+(function loop() { if (heroP < 1) heroAt(heroP); requestAnimationFrame(loop); })();
+}
+
+// ---- intro: text reveals while the three systems play in turn ----
+if ($('#intro')) {
+const vids = $$('#intro video'), introR = reveals.find(r => r.mode === 'intro'), lbls = $$('#intro .lbl span');
+let curV = -1;
+new IntersectionObserver(es => { const v = vids[curV]; if (!v) return; if (es[0].isIntersecting) { if (!reduce) v.play().catch(() => {}); } else v.pause(); }, { rootMargin: '240px' }).observe($('#intro'));
+function showVid(k) {
+  if (k === curV) return; curV = k;
+  vids.forEach((v, i) => {
+    const on = i === k; v.classList.toggle('on', on); lbls[i].classList.toggle('on', on);
+    if (on) { if (!v.src) { v.src = small ? v.dataset.srcS : v.dataset.src; } if (!reduce) v.play().catch(() => {}); } else v.pause();
+  });
+  $('#introN').textContent = `0${k + 1} / 03`;
+  const next = vids[k + 1]; if (next && !next.src) { next.preload = 'auto'; next.src = small ? next.dataset.srcS : next.dataset.src; }
+}
+ScrollTrigger.create({ trigger: '#intro', start: 'top 70%', end: 'bottom bottom', onUpdate: s => { paint(introR, band(s.progress, .05, .62)); showVid(Math.min(2, Math.floor(band(s.progress, .1, 1) * 3))); }, onEnter: () => showVid(0) });
+}
+
+// ---- coordination dial ----
+if ($('#dial')) {
+const cells = $$('#dial .cell'), arcOn = $('#arcOn'), arcDot = $('#arcDot'), hubDots = $$('#hub i'), ticks = $('#ticks');
+for (let i = 0; i <= 24; i++) { const a = Math.PI - i / 24 * Math.PI, R = 294, l = i % 8 === 0 ? 14 : 6; ticks.insertAdjacentHTML('beforeend', `<line x1="${300 + Math.cos(a) * R}" y1="${300 - Math.sin(a) * R}" x2="${300 + Math.cos(a) * (R - l)}" y2="${300 - Math.sin(a) * (R - l)}" stroke="rgba(16,43,78,${l > 6 ? .4 : .2})"/>`); }
+const HUB = [[[0, -6], [5, -2], [-5, -2], [3, 5], [-3, 5], [0, 0]], [[-6, -6], [6, -6], [0, 0], [-6, 6], [6, 6], [0, -9]], [[0, -9], [8, -4], [8, 5], [0, 9], [-8, 5], [-8, -4]], [[-8, 0], [-3, 5], [2, 0], [7, -5], [12, -10], [-3, 5]]];
+let curD = -1;
+function dialAt(p) {
+  const u = band(p, .04, .96), k = Math.min(3, Math.floor(u * 4));
+  arcOn.style.strokeDashoffset = 1 - u;
+  const a = Math.PI - u * Math.PI; arcDot.setAttribute('cx', 300 + Math.cos(a) * 294); arcDot.setAttribute('cy', 300 - Math.sin(a) * 294);
+  if (k === curD) return; curD = k;
+  cells.forEach((c, i) => c.classList.toggle('on', i === k));
+  $('#dialLbl').textContent = DIAL[k][0]; $('#dialDef').textContent = DIAL[k][1];
+  $$('#dial .dbg img').forEach((m, i) => m.classList.toggle('on', i === k));
+  hubDots.forEach((d, i) => { const [x, y] = HUB[k][i]; d.style.transform = `translate(${x}px,${y}px)`; });
+}
+dialAt(0);
+ScrollTrigger.create({ trigger: '#dial', start: 'top top', end: 'bottom bottom', onUpdate: s => dialAt(s.progress) });
+}
+
+// ---- industries: a film strip on desktop, scrolling opens one panel at a time; a plain stack on tablet and phone ----
+matchMedia('(max-width:1023px)').addEventListener('change', () => location.reload());   // these two sections are built differently on either side of this width
+function playOpen(box) {   // only the open picture's video runs, and only while it is on screen
+  let seen = false;
+  const run = () => box.querySelectorAll('video').forEach(m => {
+    if (m.closest('.on') && seen) { if (!m.src) m.src = small ? m.dataset.srcS : m.dataset.src; if (!reduce) m.play().catch(() => {}); } else m.pause(); });
+  new IntersectionObserver(es => { seen = es[0].isIntersecting; run(); }, { rootMargin: '240px' }).observe(box);
+  return run;
+}
+const indPanels = $('#indPanels'), indTxt = $('#indTxt'), indVid = d => `<video muted playsinline loop preload="none" poster="/media/${d.vid}.jpg" data-src="/media/${d.vid}.mp4" data-src-s="/media/${d.vid}-s.mp4" aria-hidden="true"></video>`;
+if (!indPanels) {} else if (matchMedia('(max-width:1023px)').matches) {
+  indPanels.removeAttribute('role');
+  indPanels.innerHTML = IND.map(d => `<article class="icard">${indVid(d)}<span class="mono br">${d.n}</span><h3 class="h28">${d.h}</h3><p>${d.p}</p><ul>${d.u.map(x => `<li>${x}</li>`).join('')}</ul></article>`).join('');
+  $$('video', indPanels).forEach(m => new IntersectionObserver(es => { if (es[0].isIntersecting) { if (!m.src) m.src = small ? m.dataset.srcS : m.dataset.src; if (!reduce) m.play().catch(() => {}); } else m.pause(); }, { rootMargin: '120px' }).observe(m));
+} else {
+  indPanels.innerHTML = IND.map((d, i) => `<button class="ipanel" id="tab${i}" role="tab" aria-controls="indTxt" aria-label="${d.n}">${indVid(d)}<span class="n mono">0${i + 1}</span><span class="v">${d.n}</span></button>`).join('');
+  const panels = $$('.ipanel', indPanels), indPlay = playOpen(indPanels); let curI = -1;
+  const showInd = k => {
+    if (k === curI) return; const first = curI < 0; curI = k;
+    panels.forEach((b, i) => { b.classList.toggle('on', i === k); b.setAttribute('aria-selected', i === k); });
+    indPlay(); indTxt.style.setProperty('--k', k + 1); indTxt.style.opacity = first ? 1 : 0;
+    setTimeout(() => { const d = IND[k]; indTxt.setAttribute('aria-labelledby', 'tab' + k); indTxt.innerHTML = `<div class="a"><span class="mono">0${k + 1} / 05</span><h3 class="h28">${d.h}</h3></div><p class="b">${d.p}</p><ul>${d.u.map(x => `<li>${x}</li>`).join('')}</ul>`; indTxt.style.opacity = 1; }, first || reduce ? 0 : 220);
+  };
+  showInd(0);
+  const indST = ScrollTrigger.create({ trigger: '#indPin', start: () => `top ${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr'))}px`, end: 'bottom bottom', onUpdate: s => showInd(Math.min(4, Math.floor(s.progress * 5))) });
+  indPanels.addEventListener('click', e => { const b = e.target.closest('.ipanel'); if (!b) return; const y = indST.start + (indST.end - indST.start) * ((panels.indexOf(b) + .5) / 5); lenis ? lenis.scrollTo(y, { duration: 1.2 }) : scrollTo({ top: y, behavior: 'smooth' }); });
+}
+
+// ---- technology: pinned, the scroll walks through the four systems ----
+if ($('#techTrack')) {
+const list = $('#technology .list'), track = $('#techTrack');
+TECH.forEach((d, i) => {
+  list.insertAdjacentHTML('beforeend', `<button role="tab" aria-selected="${i === 0}">${d.n}</button>`);
+  track.insertAdjacentHTML('beforeend', `<article class="tslide" role="tabpanel"><figure><img src="/media/${d.img}.jpg" alt="${d.alt}" loading="${i ? 'lazy' : 'eager'}"><figcaption class="mono br">${d.cap}</figcaption></figure><div><h3 class="h32">${d.h}</h3>${d.p.map(x => `<p>${x}</p>`).join('')}<div class="caps mono">${d.c.map(x => `<span class="br">${esc(x)}</span>`).join('')}</div></div></article>`);
+});
+let curT = -1;
+function techAt(k) {
+  if (k === curT) return; curT = k;
+  $$('button', list).forEach((b, i) => { b.classList.toggle('on', i === k); b.setAttribute('aria-selected', i === k); });
+  $('#techN').textContent = `0${k + 1} / 04`;
+}
+techAt(0);
+const techSideways = () => getComputedStyle($('.tstick')).position === 'sticky';
+const techST = ScrollTrigger.create({ trigger: '#techPin', start: () => `top ${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr'))}px`, end: 'bottom bottom', onUpdate: s => {
+  if (!techSideways()) return;
+  const q = s.progress * 3, k = Math.min(2, Math.floor(q)), u = clamp((q - k - .3) / .4), pos = k + u * u * (3 - 2 * u);   // each slide holds still, then the next slides in
+  track.style.transform = `translate3d(${-pos / 3 * (track.scrollWidth - innerWidth)}px,0,0)`; techAt(Math.round(pos));
+} });
+list.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const k = $$('button', list).indexOf(b), y = techST.start + (techST.end - techST.start) * (k / 3); lenis ? lenis.scrollTo(y, { duration: 1.2 }) : scrollTo({ top: y, behavior: 'smooth' }); });
+
+}
+// ---- platform modules ----
+if ($('#mods')) $('#mods').innerHTML = MODS.map((m, i) => `<div class="mod"><span class="mono">0${i + 1}</span><h3 class="h20">${esc(m[0])}</h3><p>${m[1]}</p></div>`).join('');
+
+// ---- header: the current section is marked ----
+const navA = $$('header nav a');
+['platform', 'technology', 'construction', 'industries', 'about'].forEach((id, i) => $('#' + id) && navA[i] && navA[i].getAttribute('href').startsWith('#') && ScrollTrigger.create({ trigger: '#' + id, start: 'top 50%', end: 'bottom 50%', onToggle: s => navA[i].classList.toggle('on', s.isActive) }));
+
+
+// ---- lazy loops (the Vision band) ----
+$$('video.lazy').forEach(v => new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { if (!v.src) v.src = small ? v.dataset.srcS : v.dataset.src; if (!reduce) v.play().catch(() => {}); } else v.pause();
+}), { rootMargin: '240px' }).observe(v));
+
+// ---- construction: the picture follows the item you are reading ----
+if ($('#consPic')) {
+const consImgs = [...$('#consPic').children], narrow = matchMedia('(max-width:1023px)').matches;
+if (narrow) {   // tablet and phone: each picture sits inside its own row, each video runs while it is on screen
+  consImgs.forEach((m, i) => { m.classList.add('on'); $(`.crow[data-i="${i}"]`).prepend(m); if (m.tagName !== 'VIDEO') return;
+    new IntersectionObserver(es => { if (es[0].isIntersecting) { if (!m.src) m.src = small ? m.dataset.srcS : m.dataset.src; if (!reduce) m.play().catch(() => {}); } else m.pause(); }, { rootMargin: '120px' }).observe(m); });
+  $('#consPic').style.display = 'none';
+} else {
+  const consPlay = playOpen($('#consPic'));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const k = +e.target.dataset.i; consImgs.forEach((m, i) => m.classList.toggle('on', i === k)); consPlay(); } }), { rootMargin: '-42% 0px -48% 0px' });
+  $$('.crow').forEach(r => io.observe(r));
+}
+}
+
+// snapshot hook for tests: ?y=<px>
+const q = new URLSearchParams(location.search).get('y');
+if (q !== null) addEventListener('load', () => { const y = +q; lenis ? lenis.scrollTo(y, { immediate: true }) : scrollTo(0, y); ScrollTrigger.update(); });
+addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
